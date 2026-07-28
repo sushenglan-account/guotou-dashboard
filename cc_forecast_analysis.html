@@ -1,0 +1,335 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>CC模型拟合度分析 - corn_price_v7</title>
+<script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js"></script>
+<style>
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body { font-family: "PingFang SC","Microsoft YaHei","Helvetica Neue",Arial,sans-serif; background: #f8f9fa; color: #333; min-height: 100vh; }
+  .container { max-width: 1200px; margin: 0 auto; padding: 20px; }
+  .header { background: linear-gradient(135deg, #1a237e 0%, #283593 100%); color: #fff; padding: 24px 28px; border-radius: 12px; margin-bottom: 20px; }
+  .header h1 { font-size: 22px; font-weight: 700; margin-bottom: 8px; }
+  .header .meta { font-size: 13px; opacity: 0.85; }
+  .cc-badge { display: inline-block; background: rgba(255,255,255,0.2); padding: 4px 12px; border-radius: 100px; font-size: 12px; font-weight: 600; margin-left: 12px; }
+
+  .metrics-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 14px; margin-bottom: 24px; }
+  .metric-card { background: #fff; border: 1px solid #e8e8e8; border-radius: 10px; padding: 18px; text-align: center; transition: transform 0.15s, box-shadow 0.15s; }
+  .metric-card:hover { transform: translateY(-2px); box-shadow: 0 4px 12px rgba(0,0,0,0.08); }
+  .metric-card .label { font-size: 12px; color: #666; margin-bottom: 6px; }
+  .metric-card .value { font-size: 26px; font-weight: 700; }
+  .metric-card .sub { font-size: 11px; color: #999; margin-top: 4px; }
+  .metric-card .eval { font-size: 12px; font-weight: 600; margin-top: 6px; padding: 2px 8px; border-radius: 4px; display: inline-block; }
+  .good { color: #0f6e56; }
+  .warn { color: #c2550a; }
+  .bad { color: #c22d2d; }
+  .good-bg { background: rgba(15,110,86,0.08); }
+  .warn-bg { background: rgba(194,85,0,0.08); }
+  .bad-bg { background: rgba(194,45,45,0.08); }
+
+  .chart-section { background: #fff; border: 1px solid #e8e8e8; border-radius: 10px; padding: 18px; margin-bottom: 20px; }
+  .chart-section h2 { font-size: 16px; font-weight: 600; margin-bottom: 4px; }
+  .chart-section .desc { font-size: 12px; color: #888; margin-bottom: 12px; }
+  .chart-wrap { position: relative; width: 100%; height: 340px; }
+  .chart-wrap-sm { height: 280px; }
+
+  .month-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 12px; margin-bottom: 20px; }
+  .month-card { background: #fff; border: 1px solid #e8e8e8; border-radius: 10px; padding: 14px; }
+  .month-card.hit { border-left: 3px solid #0f6e56; }
+  .month-card.miss { border-left: 3px solid #c22d2d; }
+  .month-head { display: flex; justify-content: space-between; align-items: center; margin-bottom: 10px; }
+  .month-name { font-size: 15px; font-weight: 600; }
+  .month-tag { font-size: 11px; padding: 2px 8px; border-radius: 100px; font-weight: 500; }
+  .tag-hit { background: rgba(15,110,86,0.1); color: #0f6e56; }
+  .tag-miss { background: rgba(194,45,45,0.1); color: #c22d2d; }
+  .month-rows { display: grid; grid-template-columns: 1fr 1fr; gap: 5px 12px; font-size: 13px; }
+  .month-row { display: flex; justify-content: space-between; }
+  .month-row span:first-child { color: #666; }
+  .month-row span:last-child { font-weight: 500; font-family: 'SF Mono',monospace; }
+  .err-bar { height: 4px; border-radius: 100px; margin-top: 8px; background: #eee; overflow: hidden; }
+  .err-fill { height: 100%; border-radius: 100px; }
+
+  .conclusion { background: #fff; border: 1px solid #e8e8e8; border-radius: 10px; padding: 18px; }
+  .conclusion h2 { font-size: 16px; font-weight: 600; margin-bottom: 12px; }
+  .conclusion ul { padding-left: 18px; font-size: 13px; color: #555; line-height: 1.8; }
+  .conclusion li { margin-bottom: 6px; }
+
+  .two-col { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
+  @media (max-width: 768px) { .two-col { grid-template-columns: 1fr; } }
+</style>
+</head>
+<body>
+<div class="container">
+
+  <div class="header">
+    <h1>CC模型拟合度分析 <span class="cc-badge">Claude Sonnet 4.6</span></h1>
+    <div class="meta">实验: corn_price_v7 · 预测: DCE玉米期货主连收盘价 · 周期: 2026-01~06 · 验证: 伐谋_验证数据集0713.xlsx</div>
+  </div>
+
+  <div class="metrics-grid">
+    <div class="metric-card">
+      <div class="label">Lin's CCC 一致性相关系数</div>
+      <div class="value bad">-0.0023</div>
+      <div class="sub">一致性很差 (<0.5)</div>
+      <div class="eval bad-bg bad">预测与实际几乎无关</div>
+    </div>
+    <div class="metric-card">
+      <div class="label">Pearson r 线性相关</div>
+      <div class="value bad">-0.0254</div>
+      <div class="sub">t=-0.051, df=4</div>
+      <div class="eval bad-bg bad">负相关（走势相反）</div>
+    </div>
+    <div class="metric-card">
+      <div class="label">Spearman ρ 秩相关</div>
+      <div class="value warn">0.0857</div>
+      <div class="sub">单调性极弱</div>
+      <div class="eval warn-bg warn">几乎无线性单调关系</div>
+    </div>
+    <div class="metric-card">
+      <div class="label">R² 决定系数</div>
+      <div class="value bad">-9.61</div>
+      <div class="sub">劣于均值基线</div>
+      <div class="eval bad-bg bad">模型完全失效</div>
+    </div>
+    <div class="metric-card">
+      <div class="label">MAE 平均绝对误差</div>
+      <div class="value warn">127.7</div>
+      <div class="sub">元/吨</div>
+      <div class="eval warn-bg warn">6个月全部高估偏低</div>
+    </div>
+    <div class="metric-card">
+      <div class="label">MAPE 百分比误差</div>
+      <div class="value warn">5.4%</div>
+      <div class="sub">月均偏差幅度</div>
+      <div class="eval warn-bg warn">中等偏高水平</div>
+    </div>
+  </div>
+
+  <div class="two-col">
+    <div class="chart-section">
+      <h2>散点图：预测 vs 实际</h2>
+      <div class="desc">45°参考线为完美拟合，点偏离越远拟合越差</div>
+      <div class="chart-wrap chart-wrap-sm"><canvas id="scatterChart"></canvas></div>
+    </div>
+    <div class="chart-section">
+      <h2>残差图：月度预测误差</h2>
+      <div class="desc">正值=实际>预测（低估），负值=实际<预测（高估）</div>
+      <div class="chart-wrap chart-wrap-sm"><canvas id="residualChart"></canvas></div>
+    </div>
+  </div>
+
+  <div class="chart-section">
+    <h2>时间序列：预测均值 vs 实际均值 月度走势</h2>
+    <div class="desc">观察两条线是否同向变化（CC模型关注一致性）</div>
+    <div class="chart-wrap"><canvas id="timeSeriesChart"></canvas></div>
+  </div>
+
+  <div class="chart-section">
+    <h2>日线收盘价 vs 月度预测区间</h2>
+    <div class="desc">109个交易日实际收盘价 + 月度预测均值（橙色虚线）+ 预测区间（浅橙带）</div>
+    <div class="chart-wrap"><canvas id="dailyChart"></canvas></div>
+  </div>
+
+  <div class="month-grid" id="monthCards"></div>
+
+  <div class="conclusion">
+    <h2>CC模型分析结论</h2>
+    <ul>
+      <li><b>CCC=-0.0023（一致性极差）</b>：预测与实际走势几乎完全无关。理想CCC应接近1，当前值表明模型未捕捉到价格变动的任何一致性。</li>
+      <li><b>Pearson r=-0.0254（负相关）</b>：预测值上升时实际值反而有轻微下降趋势，模型方向判断与实际情况相反。</li>
+      <li><b>系统性低估</b>：6个月预测全部低于实际（MAE=127.7），趋势外推过度延续2024→2025下行趋势，未捕捉2026企稳反弹。</li>
+      <li><b>3-4月偏差最大</b>：误差达195.8和184.5元/吨，对应春节后售粮+补库周期，季节性系数失效。</li>
+      <li><b>区间覆盖率33%</b>：仅1-2月落入预测区间，3月起持续运行在预测上限之上，区间宽度基于历史波动率偏窄。</li>
+      <li><b>方向预测失败</b>：预测1-4月"偏弱→回升"，实际为"持续上行→回落"，走势完全相反。</li>
+      <li><b>建议</b>：引入实时基本面信号（库存/售粮/CBOT）替代纯历史外推；扩大预测区间；3-4月单独建模。</li>
+    </ul>
+  </div>
+
+</div>
+
+<script>
+const MONTHLY = [
+  {month:"2026-01",pred:2197,actual:2274.3,low:2049,high:2345,amin:2222,amax:2300,err:77.3,errpct:3.5,inrange:true},
+  {month:"2026-02",pred:2199,actual:2303.1,low:2074,high:2323,amin:2261,amax:2360,err:104.1,errpct:4.7,inrange:true},
+  {month:"2026-03",pred:2186,actual:2381.8,low:2105,high:2268,amin:2346,amax:2415,err:195.8,errpct:9.0,inrange:false},
+  {month:"2026-04",pred:2209,actual:2393.5,low:2131,high:2286,amin:2343,amax:2434,err:184.5,errpct:8.4,inrange:false},
+  {month:"2026-05",pred:2224,actual:2347.5,low:2139,high:2310,amin:2310,amax:2391,err:123.5,errpct:5.6,inrange:false},
+  {month:"2026-06",pred:2247,actual:2328.1,low:2173,high:2321,amin:2300,amax:2351,err:81.1,errpct:3.6,inrange:false}
+];
+
+const DAILY = [["2026-01-05",2224],["2026-01-06",2222],["2026-01-07",2248],["2026-01-08",2266],["2026-01-09",2263],["2026-01-12",2290],["2026-01-13",2284],["2026-01-14",2272],["2026-01-15",2295],["2026-01-16",2281],["2026-01-19",2281],["2026-01-20",2280],["2026-01-21",2283],["2026-01-22",2295],["2026-01-23",2300],["2026-01-26",2293],["2026-01-27",2283],["2026-01-28",2274],["2026-01-29",2281],["2026-01-30",2271],["2026-02-02",2261],["2026-02-03",2267],["2026-02-04",2271],["2026-02-05",2273],["2026-02-06",2279],["2026-02-09",2274],["2026-02-10",2286],["2026-02-11",2316],["2026-02-12",2320],["2026-02-13",2320],["2026-02-24",2332],["2026-02-25",2342],["2026-02-26",2342],["2026-02-27",2360],["2026-03-02",2384],["2026-03-03",2373],["2026-03-04",2379],["2026-03-05",2384],["2026-03-06",2393],["2026-03-09",2395],["2026-03-10",2381],["2026-03-11",2395],["2026-03-12",2396],["2026-03-13",2386],["2026-03-16",2379],["2026-03-17",2386],["2026-03-18",2382],["2026-03-19",2384],["2026-03-20",2387],["2026-03-23",2415],["2026-03-24",2383],["2026-03-25",2376],["2026-03-26",2376],["2026-03-27",2369],["2026-03-30",2346],["2026-03-31",2351],["2026-04-01",2350],["2026-04-02",2356],["2026-04-03",2344],["2026-04-07",2343],["2026-04-08",2345],["2026-04-09",2354],["2026-04-10",2379],["2026-04-13",2373],["2026-04-14",2397],["2026-04-15",2390],["2026-04-16",2394],["2026-04-17",2402],["2026-04-20",2414],["2026-04-21",2432],["2026-04-22",2434],["2026-04-23",2426],["2026-04-24",2417],["2026-04-27",2427],["2026-04-28",2429],["2026-04-29",2431],["2026-04-30",2427],["2026-05-06",2391],["2026-05-07",2377],["2026-05-08",2365],["2026-05-11",2353],["2026-05-12",2359],["2026-05-13",2378],["2026-05-14",2367],["2026-05-15",2355],["2026-05-18",2353],["2026-05-19",2365],["2026-05-20",2351],["2026-05-21",2324],["2026-05-22",2331],["2026-05-25",2327],["2026-05-26",2316],["2026-05-27",2311],["2026-05-28",2310],["2026-05-29",2322],["2026-06-01",2330],["2026-06-02",2333],["2026-06-03",2307],["2026-06-04",2300],["2026-06-05",2323],["2026-06-08",2332],["2026-06-09",2339],["2026-06-10",2335],["2026-06-11",2346],["2026-06-12",2351],["2026-06-15",2320],["2026-06-16",2325],["2026-06-17",2323],["2026-06-18",2329]];
+
+// Render month cards
+const cardContainer = document.getElementById('monthCards');
+const maxErr = Math.max(...MONTHLY.map(m => Math.abs(m.err)));
+MONTHLY.forEach(m => {
+  const hit = m.inrange;
+  const errColor = m.errpct <= 5 ? '#0F6E56' : m.errpct <= 7 ? '#C2550A' : '#C22D2D';
+  const errWidth = Math.min(100, Math.abs(m.err) / maxErr * 100);
+  const card = document.createElement('div');
+  card.className = 'month-card ' + (hit ? 'hit' : 'miss');
+  card.innerHTML = `
+    <div class="month-head">
+      <span class="month-name">${m.month}</span>
+      <span class="month-tag ${hit ? 'tag-hit' : 'tag-miss'}">${hit ? '✓ 区间内' : '✗ 超区间'}</span>
+    </div>
+    <div class="month-rows">
+      <div class="month-row"><span>预测均值</span><span>${m.pred}</span></div>
+      <div class="month-row"><span>实际均值</span><span>${m.actual.toFixed(1)}</span></div>
+      <div class="month-row"><span>预测区间</span><span>${m.low}~${m.high}</span></div>
+      <div class="month-row"><span>实际范围</span><span>${m.amin}~${m.amax}</span></div>
+      <div class="month-row"><span>误差</span><span style="color:${errColor}">${m.err > 0 ? '+' : ''}${m.err.toFixed(1)}</span></div>
+      <div class="month-row"><span>误差率</span><span style="color:${errColor}">${m.errpct > 0 ? '+' : ''}${m.errpct.toFixed(1)}%</span></div>
+    </div>
+    <div class="err-bar"><div class="err-fill" style="width:${errWidth}%;background:${errColor};"></div></div>
+  `;
+  cardContainer.appendChild(card);
+});
+
+Chart.defaults.font.family = "'PingFang SC','Microsoft YaHei',sans-serif";
+Chart.defaults.color = '#888';
+
+// ===== SCATTER CHART =====
+new Chart(document.getElementById('scatterChart'), {
+  type: 'scatter',
+  data: {
+    datasets: [{
+      label: '月度预测 vs 实际',
+      data: MONTHLY.map(m => ({x: m.pred, y: m.actual})),
+      backgroundColor: MONTHLY.map(m => m.inrange ? 'rgba(15,110,86,0.7)' : 'rgba(194,45,45,0.7)'),
+      pointRadius: 10,
+      pointHoverRadius: 14,
+    }, {
+      label: '45°完美拟合线',
+      data: [{x:2180,y:2180},{x:2420,y:2420}],
+      type: 'line',
+      borderColor: 'rgba(128,128,128,0.4)',
+      borderWidth: 2,
+      borderDash: [6,4],
+      pointRadius: 0,
+      fill: false,
+    }]
+  },
+  options: {
+    responsive: true, maintainAspectRatio: false,
+    plugins: {
+      legend: { display: true, labels: { font: { size: 11 } } },
+      tooltip: {
+        callbacks: {
+          label: (ctx) => {
+            if (ctx.datasetIndex === 1) return null;
+            const m = MONTHLY[ctx.dataIndex];
+            return `${m.month}: 预测${m.pred} vs 实际${m.actual.toFixed(1)} (误差${m.err > 0 ? '+' : ''}${m.err.toFixed(1)})`;
+          }
+        }
+      }
+    },
+    scales: {
+      x: { title: { display: true, text: '预测值 (元/吨)', color: '#666' }, min: 2160, max: 2400, grid: { color: '#f0f0f0' } },
+      y: { title: { display: true, text: '实际值 (元/吨)', color: '#666' }, min: 2160, max: 2400, grid: { color: '#f0f0f0' } }
+    }
+  }
+});
+
+// ===== RESIDUAL CHART =====
+new Chart(document.getElementById('residualChart'), {
+  type: 'bar',
+  data: {
+    labels: MONTHLY.map(m => m.month),
+    datasets: [{
+      label: '预测误差',
+      data: MONTHLY.map(m => m.err),
+      backgroundColor: MONTHLY.map(m => m.err > 0 ? 'rgba(194,45,45,0.6)' : 'rgba(15,110,86,0.6)'),
+      borderColor: MONTHLY.map(m => m.err > 0 ? 'rgba(194,45,45,1)' : 'rgba(15,110,86,1)'),
+      borderWidth: 1,
+      borderRadius: 4,
+    }]
+  },
+  options: {
+    responsive: true, maintainAspectRatio: false,
+    plugins: {
+      legend: { display: false },
+      tooltip: { callbacks: { label: (ctx) => `误差: ${ctx.parsed.y > 0 ? '+' : ''}${ctx.parsed.y.toFixed(1)} 元/吨` } }
+    },
+    scales: {
+      x: { grid: { display: false } },
+      y: { title: { display: true, text: '误差 (元/吨)', color: '#666' }, grid: { color: '#f0f0f0' }, suggestedMin: -20, suggestedMax: 220 }
+    }
+  }
+});
+
+// ===== TIME SERIES CHART =====
+new Chart(document.getElementById('timeSeriesChart'), {
+  type: 'line',
+  data: {
+    labels: MONTHLY.map(m => m.month),
+    datasets: [{
+      label: '预测均值',
+      data: MONTHLY.map(m => m.pred),
+      borderColor: 'rgba(255,159,64,0.9)',
+      backgroundColor: 'rgba(255,159,64,0.06)',
+      pointRadius: 6, borderWidth: 2.5, fill: false, tension: 0.3,
+    }, {
+      label: '实际均值',
+      data: MONTHLY.map(m => m.actual),
+      borderColor: 'rgba(62,132,255,1)',
+      backgroundColor: 'rgba(62,132,255,0.06)',
+      pointRadius: 6, borderWidth: 2.5, fill: false, tension: 0.3,
+    }]
+  },
+  options: {
+    responsive: true, maintainAspectRatio: false,
+    interaction: { mode: 'index', intersect: false },
+    plugins: {
+      legend: { display: true, position: 'top', labels: { boxWidth: 14, font: { size: 12 } } },
+      tooltip: { callbacks: { afterBody: (ctx) => {
+        const m = MONTHLY[ctx[0].dataIndex];
+        return [`误差: ${m.err > 0 ? '+' : ''}${m.err.toFixed(1)}`, `误差率: ${m.errpct.toFixed(1)}%`];
+      } } }
+    },
+    scales: {
+      x: { grid: { display: false } },
+      y: { title: { display: true, text: '价格 (元/吨)', color: '#666' }, grid: { color: '#f0f0f0' }, min: 2140, max: 2430 }
+    }
+  }
+});
+
+// ===== DAILY CHART =====
+const dailyLabels = DAILY.map(d => d[0]);
+const dailyPrices = DAILY.map(d => d[1]);
+const forecastLine = [], forecastLow = [], forecastHigh = [];
+DAILY.forEach(d => {
+  const monthKey = d[0].substring(0, 7);
+  const m = MONTHLY.find(x => x.month === monthKey);
+  if (m) { forecastLine.push(m.pred); forecastLow.push(m.low); forecastHigh.push(m.high); }
+  else { forecastLine.push(null); forecastLow.push(null); forecastHigh.push(null); }
+});
+
+new Chart(document.getElementById('dailyChart'), {
+  type: 'line',
+  data: {
+    labels: dailyLabels,
+    datasets: [
+      { label: '预测区间上限', data: forecastHigh, borderColor: 'rgba(255,159,64,0.2)', backgroundColor: 'rgba(255,159,64,0.06)', fill: '+1', pointRadius: 0, borderWidth: 1, stepped: true },
+      { label: '预测区间下限', data: forecastLow, borderColor: 'rgba(255,159,64,0.2)', backgroundColor: 'rgba(255,159,64,0.06)', fill: false, pointRadius: 0, borderWidth: 1, stepped: true },
+      { label: '预测均值', data: forecastLine, borderColor: 'rgba(255,159,64,0.85)', backgroundColor: 'transparent', pointRadius: 0, borderWidth: 2, borderDash: [6,4], stepped: true },
+      { label: '实际收盘价', data: dailyPrices, borderColor: 'rgba(62,132,255,1)', backgroundColor: 'rgba(62,132,255,0.04)', pointRadius: 0, borderWidth: 1.5, fill: false, tension: 0.3 }
+    ]
+  },
+  options: {
+    responsive: true, maintainAspectRatio: false,
+    interaction: { mode: 'index', intersect: false },
+    plugins: {
+      legend: { display: true, position: 'top', labels: { boxWidth: 12, font: { size: 11 } } },
+      tooltip: { callbacks: { label: (ctx) => { const v = ctx.parsed.y; if (v === null) return null; return ctx.dataset.label + ': ' + v.toFixed(0) + ' 元/吨'; } } }
+    },
+    scales: {
+      x: { display: true, ticks: { maxTicksLimit: 14, font: { size: 10 } }, grid: { display: false } },
+      y: { display: true, title: { display: true, text: '价格 (元/吨)', color: '#666', font: { size: 11 } }, ticks: { font: { size: 10 } }, min: 2150, max: 2450 }
+    }
+  }
+});
+</script>
+</body>
+</html>

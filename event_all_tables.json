@@ -1,0 +1,282 @@
+[
+  {
+    "seq": 1,
+    "cat1": "",
+    "cat2": "",
+    "cat3": "",
+    "src": "",
+    "name": "TA_SJC_MASTER_MI",
+    "cn": "事件池-主表",
+    "desc": ""
+  },
+  {
+    "seq": 2,
+    "cat1": "车辆业务事件",
+    "cat2": "运营业务域",
+    "cat3": "路单",
+    "src": "调度系统",
+    "name": "TA_SJC_SUB_BS_LD_DAY_MI",
+    "cn": "事件池-子表-车辆运营路单",
+    "desc": ""
+  },
+  {
+    "seq": 3,
+    "cat1": "车辆业务事件",
+    "cat2": "运营业务域",
+    "cat3": "调度计算到离站",
+    "src": "调度系统",
+    "name": "TA_SJC_SUB_BS_DLZ_CLZBH_DAY_MI",
+    "cn": "事件池-子表-服务计算到离站",
+    "desc": ""
+  },
+  {
+    "seq": 4,
+    "cat1": "车辆业务事件",
+    "cat2": "安全业务域",
+    "cat3": "CAN数据报警-仪表",
+    "src": "车辆CAN设备",
+    "name": "TA_SJC_BUS_CAN_METESTATE_MI",
+    "cn": "事件池-子表-CAN数据报警-仪表",
+    "desc": ""
+  },
+  {
+    "seq": 5,
+    "cat1": "车辆业务事件",
+    "cat2": "能源业务域",
+    "cat3": "充电交易表",
+    "src": "区块链",
+    "name": "TA_SJC_SUB_ZHJRQKL_CDJY_DETAIL",
+    "cn": "事件池-子表-充电交易表",
+    "desc": ""
+  },
+  {
+    "seq": 6,
+    "cat1": "车辆业务事件",
+    "cat2": "能源业务域",
+    "cat3": "加气交易表",
+    "src": "区块链",
+    "name": "TA_SJC_SUB_ZHJRQKL_QIJY_DETAIL_MI",
+    "cn": "事件池-子表-充气加燃-非电交易表-加气",
+    "desc": "-- 加气\nPROD_DW.TF_ZHJRQKL_QIJY_DETAIL_MI"
+  },
+  {
+    "seq": 7,
+    "cat1": "车辆业务事件",
+    "cat2": "能源业务域",
+    "cat3": "加氢交易表",
+    "src": "区块链",
+    "name": "TA_SJC_SUB_ZHJRQKL_QJY_DETAIL_MI",
+    "cn": "事件池-子表-充气加燃-非电交易表-加氢",
+    "desc": "-- 加氢\nPROD_DW.TF_ZHJRQKL_QJY_DETAIL_MI"
+  },
+  {
+    "seq": 8,
+    "cat1": "车辆业务事件",
+    "cat2": "能源业务域",
+    "cat3": "加油交易表",
+    "src": "区块链",
+    "name": "TA_SJC_SUB_ZHJRQKL_CQYJY_DETAIL_MI",
+    "cn": "事件池-子表-充气加燃-非电交易表-柴汽油",
+    "desc": "-- 柴汽油\nPROD_DW.TF_ZHJRQKL_CQYJY_DETAIL_MI"
+  },
+  {
+    "seq": 9,
+    "cat1": "主数据变动事件",
+    "cat2": "主数据变更",
+    "cat3": "主数据充电设备表",
+    "src": "智慧加燃系统",
+    "name": "TA_SJC_SUB_MD_CDZSB_MI",
+    "cn": "事件池-子表-主数据充电设备表",
+    "desc": "PROD_DIM.TD_MD_QT_NY_CDZSB_DA主数据-能源充电设备 每天更新 按照操作时间,关联到前一个30秒的指标上"
+  },
+  {
+    "seq": 10,
+    "cat1": "车辆业务事件",
+    "cat2": "能源业务域",
+    "cat3": "充电桩实时状态表",
+    "src": "隆瑞三优设备",
+    "name": "TA_SJC_SUB_FUEL_DEVICESTATE_DETAIL_MI",
+    "cn": "事件池-子表-充气加燃-充电实时状态表",
+    "desc": "充气加燃-充电实时状态表"
+  },
+  {
+    "seq": 11,
+    "cat1": "主数据变动事件",
+    "cat2": "主数据变更",
+    "cat3": "主数据能源站信息表",
+    "src": "智慧加燃系统",
+    "name": "TA_SJC_SUB_MD_NYZ_MI",
+    "cn": "事件池-子表-主数据能源站信息表",
+    "desc": "PROD_DW.TA_MD_NYZ_DA 每天更新 按照操作时间,关联到前一个30秒的指标上"
+  },
+  {
+    "seq": 12,
+    "cat1": "主数据变动事件",
+    "cat2": "主数据变更",
+    "cat3": "主数据车辆表",
+    "src": "车辆综合管理系统",
+    "name": "TA_SJC_SUB_MD_CL_MI",
+    "cn": "事件池-子表-主数据车辆表",
+    "desc": "ZDCOM_RHSC.MD_HX_CL，每天更新 按照操作时间，关联到前一个30秒的指标上"
+  },
+  {
+    "seq": 13,
+    "cat1": "车辆业务事件",
+    "cat2": "维保业务域",
+    "cat3": "维修工单",
+    "src": "车辆综合管理系统",
+    "name": "TA_SJC_SUB_JSBX_WXGD_MI",
+    "cn": "事件池-子表-维修工单",
+    "desc": ""
+  },
+  {
+    "seq": 14,
+    "cat1": "车辆业务事件",
+    "cat2": "客流业务域",
+    "cat3": "刷卡刷码数据",
+    "src": "POS机设备",
+    "name": "TA_SJC_SUB_KL_ICQR_MI",
+    "cn": "事件池-子表-刷卡刷码数据",
+    "desc": "PROD_DW.TA_JSBX_SCGL_WXGD_DAY_MI，按照操作时间，关联到前一个30秒的指标上"
+  },
+  {
+    "seq": 15,
+    "cat1": "车辆业务事件",
+    "cat2": "安全业务域",
+    "cat3": "驾驶员异常驾驶模型识别",
+    "src": "按照模型识别所需的原始数据来源系统记录，ADAS/DSM/车辆CAN设备/车辆定位设备",
+    "name": "TA_SJC_SUB_AQ_DRIVERABNORMAL_MI",
+    "cn": "事件池-子表-驾驶员异常驾驶行为识别",
+    "desc": "实时数据正在开发，按照告警时间，关联到前一个30秒的指标上"
+  },
+  {
+    "seq": 16,
+    "cat1": "车辆业务事件",
+    "cat2": "安全业务域",
+    "cat3": "车辆异常事件模型识别",
+    "src": "按照模型识别所需的原始数据来源系统记录，ADAS/DSM/车辆CAN设备/车辆定位设备",
+    "name": "TA_SJC_SUB_AQ_BUSABNORMAL_MI",
+    "cn": "事件池-子表-车辆异常事件模型识别",
+    "desc": "实时数据正在开发，按照告警时间，关联到前一个30秒的指标上"
+  },
+  {
+    "seq": 17,
+    "cat1": "车辆业务事件",
+    "cat2": "安全业务域",
+    "cat3": "CAN总线故障报警",
+    "src": "车辆CAN设备",
+    "name": "TA_SJC_SUB_AQ_SSCLGZXX_MI",
+    "cn": "事件池-子表-CAN总线故障报警",
+    "desc": "PROD_CAN_MG.TF_HNS_SSCLGZXX_MI，按照故障开始时间，关联到前一个30秒的指标上"
+  },
+  {
+    "seq": 18,
+    "cat1": "主数据变动事件",
+    "cat2": "主数据变更",
+    "cat3": "主数据场站表",
+    "src": "宗地",
+    "name": "TA_SJC_SUB_MD_CZ_MI",
+    "cn": "事件池-子表-主数据场站表",
+    "desc": "MD_HX_CZ，按照操作时间,关联到前一个30秒的指标上"
+  },
+  {
+    "seq": 19,
+    "cat1": "主数据变动事件",
+    "cat2": "主数据变更",
+    "cat3": "主数据站位表",
+    "src": "线网",
+    "name": "TA_SJC_SUB_MD_ZW_MI",
+    "cn": "事件池-子表-主数据站位表",
+    "desc": "MD_HX_XL_ZW,按照操作时间,关联到前一个30秒的指标上"
+  },
+  {
+    "seq": 20,
+    "cat1": "主数据变动事件",
+    "cat2": "主数据变更",
+    "cat3": "主数据区域信息表",
+    "src": "宗地",
+    "name": "TA_SJC_SUB_MD_QY_MI",
+    "cn": "事件池-子表-主数据区域信息表",
+    "desc": "MD_QT_QY,按照操作时间,关联到前一个30秒的指标上"
+  },
+  {
+    "seq": 21,
+    "cat1": "主数据变动事件",
+    "cat2": "主数据变更",
+    "cat3": "主数据路口信息表",
+    "src": "安服系统",
+    "name": "TA_SJC_SUB_MD_XLXLKXX_MI",
+    "cn": "事件池-子表-主数据路口信息表",
+    "desc": "prod_ods.ti_ps_af_xlxlkxx_di,按照操作时间,关联到前一个30秒的指标上"
+  },
+  {
+    "seq": 22,
+    "cat1": "主数据变动事件",
+    "cat2": "主数据变更",
+    "cat3": "主数据保养点表",
+    "src": "车辆综合管理系统",
+    "name": "TA_SJC_SUB_MD_BYD_MI",
+    "cn": "事件池-子表-主数据保养点表",
+    "desc": "MD_JSBX_BYD,按照操作时间,关联到前一个30秒的指标上"
+  },
+  {
+    "seq": 23,
+    "cat1": "主数据变动事件",
+    "cat2": "主数据变更",
+    "cat3": "主数据抢修站点表",
+    "src": "车辆综合管理系统",
+    "name": "TA_SJC_SUB_MD_QXZDXX_MI",
+    "cn": "事件池-子表-主数据抢修站点表",
+    "desc": "MD_HX_QXZDXX,按照操作时间,关联到前一个30秒的指标上"
+  },
+  {
+    "seq": 24,
+    "cat1": "车辆业务事件",
+    "cat2": "维保业务域",
+    "cat3": "抢修工单",
+    "src": "车辆综合管理系统",
+    "name": "TA_SJC_SUB_JSBX_QXRW_MI",
+    "cn": "事件池-子表-抢修工单",
+    "desc": "PROD_DW.TA_JSBX_QX_RW_DAY_MI"
+  },
+  {
+    "seq": 25,
+    "cat1": "车辆业务事件",
+    "cat2": "维保业务域",
+    "cat3": "中整修工单",
+    "src": "车辆综合管理系统",
+    "name": "TA_SJC_SUB_JSBX_ZZX_MI",
+    "cn": "事件池-子表-中整修",
+    "desc": "PROD_DW.TA_JSBX_ZXWX_ZZX_DAY_MI"
+  },
+  {
+    "seq": 26,
+    "cat1": "车辆业务事件",
+    "cat2": "维保业务域",
+    "cat3": "特修工单",
+    "src": "车辆综合管理系统",
+    "name": "TA_SJC_SUB_JSBX_TX_MI",
+    "cn": "事件池-子表-特修",
+    "desc": "PROD_DW.TA_JSBX_ZXWX_TX_DAY_MI"
+  },
+  {
+    "seq": 27,
+    "cat1": "车辆业务事件",
+    "cat2": "安全业务域",
+    "cat3": "事故报警",
+    "src": "安全服务系统",
+    "name": "TA_SJC_SUB_AQ_SSSG_MI",
+    "cn": "事件池-子表-事故报警",
+    "desc": "TI_ANF_SSSG_DAY_MI 按照告警时间，关联到前一个30秒的指标上"
+  },
+  {
+    "seq": 28,
+    "cat1": "车辆业务事件",
+    "cat2": "安全业务域",
+    "cat3": "滞站报警",
+    "src": "安全服务系统",
+    "name": "TA_SJC_SUB_AQ_ZZCLCLJG_MI",
+    "cn": "事件池-子表-滞站告警",
+    "desc": "PROD_STAT.TA_ZTYC_ANF_ZZCLCLJG_DAY_MI 按照告警时间，关联到前一个30秒的指标上"
+  }
+]

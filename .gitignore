@@ -18,10 +18,7 @@ demo/
 *.jpg
 *.docx
 *.pdf
-*.md
-*.json
 *.xlsx
-data.js
 dashboard.html
 page2.html
 page3.html

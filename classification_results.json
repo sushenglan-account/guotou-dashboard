@@ -1,0 +1,287 @@
+{
+  "2": {
+    "H": "（1）已接入数据可回答",
+    "F": "TD_MD_HX_CL_DA",
+    "G": "DWMC,CXMC,CLZBH"
+  },
+  "3": {
+    "H": "（1）已接入数据可回答",
+    "F": "TD_MD_HX_CL_DA",
+    "G": "DWMC,RL,CLZBH"
+  },
+  "4": {
+    "H": "（2）未接入数据需要明确场景、统计口径和数据表",
+    "F": "TA_SJC_SUB_MD_NYZ_MI",
+    "G": "NYZMC,JD,WD,NYZLX,NYZZT"
+  },
+  "5": {
+    "H": "（2）未接入数据需要明确场景、统计口径和数据表",
+    "F": "TA_SJC_SUB_MD_NYZ_MI",
+    "G": "NYZMC,JYDWMC,JYMS,NYLX"
+  },
+  "6": {
+    "H": "（2）未接入数据需要明确场景、统计口径和数据表",
+    "F": "TA_SJC_SUB_MD_NYZ_MI,TA_SJC_SUB_MD_CDZSB_MI",
+    "G": "CZMC,NYZMC,CDZSBBH,CDZSBMC,SYZT"
+  },
+  "7": {
+    "H": "（1）已接入数据可回答",
+    "F": "TI_MD_HX_CZ_DA",
+    "G": "czmc,tcrq,czlx,czxz,czyt,syzt,xzqh,jd,wd"
+  },
+  "8": {
+    "H": "（2）未接入数据需要明确场景、统计口径和数据表",
+    "F": "TA_XW_XL_ZD_WF_JZXS_TGL_DI,TA_CA_CLEAN_LINE_DI",
+    "G": "满载率,百公里人次,线路编号,线路名称,高峰时段"
+  },
+  "9": {
+    "H": "（2）未接入数据需要明确场景、统计口径和数据表",
+    "F": "TA_CA_CLEAN_LINE_DI,TA_CA_CLEAN_LINE_MONTH_DI",
+    "G": "线路编号,线路名称,客流量,日期,同比增幅"
+  },
+  "10": {
+    "H": "（3）数据表schema不支持",
+    "F": "",
+    "G": ""
+  },
+  "11": {
+    "H": "（2）未接入数据需要明确场景、统计口径和数据表",
+    "F": "TA_SJC_SUB_KL_ICQR_MI,TA_CA_CLEAN_LINE_DI,TA_XW_XL_ZD_HCDJL_DI,TA_XW_XL_ZD_TGL_DI",
+    "G": "RQ,STID,线路ID,客流量,刷卡笔数,结算客流,站点登降量,站间通过量"
+  },
+  "12": {
+    "H": "（2）未接入数据需要明确场景、统计口径和数据表",
+    "F": "TD_MD_HX_XL_DA,TD_MD_HX_XL_ZD_DA,TA_XW_XL_ZD_TGL_DI,TA_XW_XL_ZD_HCDJL_DI",
+    "G": "xlid,xlmc,xlbh,zdmc,jszjl,jmzjl,JD,WD,站间通过量,登降量"
+  },
+  "13": {
+    "H": "（2）未接入数据需要明确场景、统计口径和数据表",
+    "F": "TA_CA_CLEAN_LINE_DI,TA_XW_XL_ZD_TGL_DI,TA_XW_XL_ZD_HCDJL_DI,TD_MD_HX_XL_DA",
+    "G": "xlid,xlmc,xlbh,结算客流,站间通过量,登降量,线路长度,配车数"
+  },
+  "14": {
+    "H": "（2）未接入数据需要明确场景、统计口径和数据表",
+    "F": "TI_V_LINE_TINFO_DA,TI_V_LINE_OPER_TINFO_DA,TD_MD_HX_XL_DA,TD_MD_HX_XL_ZD_DA,TA_XW_XL_ZD_TGL_DI",
+    "G": "线路长度,站点数,覆盖率,重复系数,非直线系数,pjzjxlcd,pjjjxlcd,jszjl,jmzjl"
+  },
+  "15": {
+    "H": "（2）未接入数据需要明确场景、统计口径和数据表",
+    "F": "TA_CA_CLEAN_LINE_DI,TA_JC_XL_LC_KYL_DI,TD_MD_HX_XL_DA",
+    "G": "xlid,xlmc,结算客流,里程,客运量,百公里客运量"
+  },
+  "16": {
+    "H": "（2）未接入数据需要明确场景、统计口径和数据表",
+    "F": "TD_MD_HX_XL_DA,TD_MD_HX_CL_DA,TA_JC_XL_LC_KYL_DI,TA_CA_CLEAN_LINE_DI,TA_SJTS_YYDD_DD_LD_DAY_DI",
+    "G": "xlid,xlmc,xlbh,pjzjxlcd,pjjjxlcd,配车数,日均客运量,每车日均里程"
+  },
+  "17": {
+    "H": "（2）未接入数据需要明确场景、统计口径和数据表",
+    "F": "TA_XW_XL_ZD_SD_TGL_DI,TA_XW_XL_ZD_WF_JZXS_TGL_DI,TA_YYDD_DD_DMFX_QY_DAY_DI,TA_YYDD_DD_DMFX_QY_DAY_MI",
+    "G": "xlid,站点区间,小时通过量,峰段通过量,满载率,断面客流,时间段"
+  },
+  "18": {
+    "H": "（2）未接入数据需要明确场景、统计口径和数据表",
+    "F": "TA_CA_CLEAN_LINE_DI（线路结算客流）、TA_BS_LD_DAY_MI（BS路单）",
+    "G": "线路ID、线路名称、班次数、客运量、每班次平均客运量"
+  },
+  "19": {
+    "H": "（2）未接入数据需要明确场景、统计口径和数据表",
+    "F": "TA_SJC_SUB_KL_ICQR_MI（事件池-刷卡刷码数据，未接入）、TA_XW_XL_ZD_HCDJL_DI（线网-线路站点全天登降量）",
+    "G": "站点ID、站点名称、线路方向（上行/下行）、上客量、发生时间（早高峰7:00-9:00）"
+  },
+  "20": {
+    "H": "（2）未接入数据需要明确场景、统计口径和数据表",
+    "F": "TA_CA_CLEAN_LINE_DI（线路结算客流）、TA_XW_XL_ZD_SD_TGL_DI（线网-线路站间小时通过量）",
+    "G": "线路ID、线路名称、日期类型（工作日/周末）、小时、客流量"
+  },
+  "21": {
+    "H": "（3）数据表schema不支持",
+    "F": "",
+    "G": ""
+  },
+  "22": {
+    "H": "（3）数据表schema不支持",
+    "F": "",
+    "G": ""
+  },
+  "23": {
+    "H": "（2）未接入数据需要明确场景、统计口径和数据表",
+    "F": "TA_SJTS_YYDD_DD_LD_DAY_DI（数据探索-路单表）、TD_MD_HX_XL_DA（主数据线路表，已接入）、TD_MD_HX_XL_ZD_DA（主数据线路站点，已接入）",
+    "G": "线路ID、线路名称、首站站点名称、末站站点名称、末班时间、站点名称"
+  },
+  "24": {
+    "H": "（2）未接入数据需要明确场景、统计口径和数据表",
+    "F": "TD_MD_HX_XL_DA（主数据线路表，已接入可提供途经站点和票价）、TA_SJTS_YYDD_DD_LD_DAY_DI（数据探索-路单表，首末班时间）",
+    "G": "xlbh、xlmc、szzdmc、mzzdmc、qbj、sfdypj、jjlx（TD_MD_HX_XL_DA）；首班时间、末班时间（TA_SJTS_YYDD_DD_LD_DAY_DI）；zdmc、zdxh（TD_MD_HX_XL_ZD_DA）"
+  },
+  "25": {
+    "H": "（1）已接入数据可回答",
+    "F": "TD_MD_HX_XL_ZD_DA（主数据线路站点）",
+    "G": "xlid、xlbh、zdid、zdmc、zdxh、xlfx、jszjl、jmzjl、jxzjl、JD、WD"
+  },
+  "26": {
+    "H": "（2）未接入数据需要明确场景、统计口径和数据表",
+    "F": "TA_XW_XL_ZD_HCDJL_DI（线网-线路站点全天登降量）",
+    "G": "站点ID、站点名称、上客量、下客量、时段、日期"
+  },
+  "27": {
+    "H": "（2）未接入数据需要明确场景、统计口径和数据表",
+    "F": "TA_XW_XL_ZD_HCDJL_DI（线网-线路站点全天登降量）",
+    "G": "站点ID、站点名称、上客量、下客量、时段（7:00-9:00）、日期"
+  },
+  "28": {
+    "H": "（2）未接入数据需要明确场景、统计口径和数据表",
+    "F": "TA_XW_XL_ZD_HCDJL_DI（线网-线路站点全天登降量）、TA_XW_XL_ZD_SD_TGL_DI（线网-线路站间小时通过量）",
+    "G": "站点ID、站点名称、上客量、下客量、小时段、日期"
+  },
+  "29": {
+    "H": "（2）未接入数据需要明确场景、统计口径和数据表",
+    "F": "TA_XW_XL_ZD_HCDJL_DI（线网-线路站点全天登降量）",
+    "G": "站点ID、站点名称、上客量、下客量、日期（用于区分工作日/周末）"
+  },
+  "30": {
+    "H": "（2）未接入数据需要明确场景、统计口径和数据表",
+    "F": "TA_XW_XL_ZD_HCDJL_DI（线网-线路站点全天登降量）、TA_XW_XL_ZD_WF_JZXS_TGL_DI（线网-线路站间峰段小时通过量满载率）",
+    "G": "线路ID、站点ID、站点名称、上客量、下客量、晚高峰时段、日期"
+  },
+  "31": {
+    "H": "（2）未接入数据需要明确场景、统计口径和数据表",
+    "F": "TA_XW_XL_ZD_HCDJL_DI（线网-线路站点全天登降量）",
+    "G": "线路ID、站点ID、站点名称、上客量、下客量、日期"
+  },
+  "32": {
+    "H": "（2）未接入数据需要明确场景、统计口径和数据表",
+    "F": "TA_XW_XL_ZD_HCDJL_DI（线网-线路站点全天登降量）",
+    "G": "线路ID、站点ID、站点名称、上客量、时段、日期"
+  },
+  "33": {
+    "H": "（2）未接入数据需要明确场景、统计口径和数据表",
+    "F": "TA_XW_XL_ZD_HCDJL_DI（线网-线路站点全天登降量）",
+    "G": "线路ID、站点ID、站点名称、上客量、日期（用于本月/上月对比）"
+  },
+  "34": {
+    "H": "（2）未接入数据需要明确场景、统计口径和数据表",
+    "F": "TA_XW_XL_ZD_HCDJL_DI（线网-线路站点全天登降量）",
+    "G": "站点ID、站点名称、登车量、降车量、日期"
+  },
+  "35": {
+    "H": "（3）数据表schema不支持",
+    "F": "",
+    "G": ""
+  },
+  "36": {
+    "H": "（3）数据表schema不支持",
+    "F": "",
+    "G": ""
+  },
+  "37": {
+    "H": "（3）数据表schema不支持",
+    "F": "",
+    "G": ""
+  },
+  "38": {
+    "H": "（2）未接入数据需要明确场景、统计口径和数据表",
+    "F": "TA_XW_XL_ZD_TGL_DI（线网-线路站间全天通过量）、TA_XW_XL_ZD_SD_TGL_DI（线网-线路站间小时通过量）",
+    "G": "线路ID、站点ID、站间通过量、日期"
+  },
+  "39": {
+    "H": "（2）未接入数据需要明确场景、统计口径和数据表",
+    "F": "TA_XW_XL_ZD_HCDJL_DI（线网-线路站点全天登降量）、TA_XW_XL_ZD_TGL_DI（线网-线路站间全天通过量）",
+    "G": "线路ID、站点ID、站点名称、登车量、降车量、站间通过量、日期"
+  },
+  "40": {
+    "H": "（3）数据表schema不支持",
+    "F": "",
+    "G": ""
+  },
+  "41": {
+    "H": "（3）数据表schema不支持",
+    "F": "",
+    "G": ""
+  },
+  "42": {
+    "H": "（2）未接入数据需要明确场景、统计口径和数据表",
+    "F": "TA_CA_CLEAN_BUS_DI, TA_CA_CLEAN_LINE_DI",
+    "G": "上车站点, 下车站点, 线路编号, 日期, 工作日标识, 时段, 客流量"
+  },
+  "43": {
+    "H": "（2）未接入数据需要明确场景、统计口径和数据表",
+    "F": "TA_CA_CLEAN_BUS_DI, TA_CA_CLEAN_LINE_DI",
+    "G": "上车站点, 下车站点, 线路编号, 日期, 工作日/周末标识, 客流量"
+  },
+  "44": {
+    "H": "（2）未接入数据需要明确场景、统计口径和数据表",
+    "F": "TA_CA_CLEAN_BUS_DI, TA_CA_CLEAN_LINE_DI",
+    "G": "上车站点, 下车站点, 线路编号, 出行距离, 线路全长, 客流量"
+  },
+  "45": {
+    "H": "（2）未接入数据需要明确场景、统计口径和数据表",
+    "F": "TA_CA_CLEAN_BUS_DI, TA_CA_CLEAN_LINE_DI",
+    "G": "上车站点, 下车站点, 换乘线路, 换乘枢纽, 换乘步行距离, 客流量"
+  },
+  "46": {
+    "H": "（2）未接入数据需要明确场景、统计口径和数据表",
+    "F": "TA_CA_CLEAN_BUS_DI, TA_CA_CLEAN_LINE_DI",
+    "G": "上车站点, 下车站点, 区域, 换乘次数, 客流量, 线路编号"
+  },
+  "47": {
+    "H": "（1）已接入数据可回答",
+    "F": "TD_MD_HX_XL_DA",
+    "G": "xlbh, xlmc, xllx, flag, zt, csid, dwid"
+  },
+  "48": {
+    "H": "（1）已接入数据可回答",
+    "F": "TD_MD_HX_XL_DA",
+    "G": "xlbh, xlmc, xllx, flag, zt, sxrq, kssj, jssj, rq"
+  },
+  "49": {
+    "H": "（1）已接入数据可回答",
+    "F": "TD_MD_HX_XL_DA",
+    "G": "xlbh, xlmc, xllx, flag, zt"
+  },
+  "50": {
+    "H": "（1）已接入数据可回答",
+    "F": "TD_MD_HX_XL_DA",
+    "G": "xlbh,xlmc,pjjjxlcd,pjzjxlcd,xllx"
+  },
+  "51": {
+    "H": "（2）未接入数据需要明确场景、统计口径和数据表",
+    "F": "TD_MD_HX_CL_DA",
+    "G": "XLID,XLMC,CLZBH,CLZT"
+  },
+  "52": {
+    "H": "（1）已接入数据可回答",
+    "F": "TD_MD_HX_XL_ZD_DA,TD_MD_HX_XL_DA",
+    "G": "TD_MD_HX_XL_ZD_DA.zdmc,TD_MD_HX_XL_ZD_DA.xlid,TD_MD_HX_XL_DA.xlbh,TD_MD_HX_XL_DA.xlmc,TD_MD_HX_XL_DA.xllx"
+  },
+  "53": {
+    "H": "（1）已接入数据可回答",
+    "F": "TD_MD_HX_XL_ZD_DA",
+    "G": "zdid,zdmc,xzqh,JD,WD,zt,flag"
+  },
+  "54": {
+    "H": "（2）未接入数据需要明确场景、统计口径和数据表",
+    "F": "TA_XW_XL_ZD_HCDJL_DI",
+    "G": "站点ID,站点名称,上客量,下客量,净登降量,小时段"
+  },
+  "55": {
+    "H": "（2）未接入数据需要明确场景、统计口径和数据表",
+    "F": "TA_XW_XL_ZD_HCDJL_DI",
+    "G": "线路ID,站点ID,站点名称,站点序号,登车量,降车量"
+  },
+  "56": {
+    "H": "（3）数据表schema不支持",
+    "F": "",
+    "G": ""
+  },
+  "57": {
+    "H": "（3）数据表schema不支持",
+    "F": "",
+    "G": ""
+  },
+  "58": {
+    "H": "（3）数据表schema不支持",
+    "F": "",
+    "G": ""
+  }
+}

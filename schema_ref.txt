@@ -1,0 +1,1074 @@
+=== 已接入数据表（可回答） ===
+
+【数据湖指标表-已接入】
+
+表: TD_MD_HX_CL_DA (主数据车辆维表) [业务系统: 主数据管理]
+字段:
+  RQ - 日期
+  CLZBH - 车辆资产编号(5位)
+  CLID - 主数据对象ID （用于对象唯一ID，保持最新(FLAG=1)记录ID不变，历史记录(FLAG<>1)ID变化）
+  CLZBH8 - 车辆自编号（7位）
+  CLIDO - 主数据对象IDO ： 对象ID最早生成的值，永远不变；对象IDO标识此业务对象全部变更的历史；
+  CSID - 城市ID
+  GSID - 单位ID
+  PZH - 牌照号
+  CXID - 车型ID
+  CXIDO - 主数据对象IDO ： 对象ID最早生成的值，永远不变；对象IDO标识此业务对象全部变更的历史；
+  CXMC - 车型名称
+  CXBM - 车型编码（别名，全局唯一）
+  CZ - 车种
+  CLFL - 车辆分类
+  ZZC - 制造厂
+  CP - 厂牌
+  QDXS - 驱动形式
+  MJ - 米级
+  RL - 燃料
+  BZCZSXS - 标准车折算系数
+  FDJ_PFBZ - 发动机排放标准
+  CC - 车长（MM）
+  CK - 车宽（MM）
+  CG - 车高（MM）
+  CKMS - 乘客门数
+  ZXS - 乘客座数（人）
+  CYS - 车型定员（人）
+  CANX - CAN线(是否安装)，1-是， 0 否
+  ZCJGID - 资产归属机构ID
+  ZCJGMC - 资产归属机构名称
+  DWID - 分公司ID
+  DWMC - 分公司名称(冗余)
+  DWJC - 分公司简称
+  DWPX - 分公司排序
+  CDID - 运营机构ID
+  CDMC - 运营机构名称（冗余）
+  CDJC - 运营机构简称
+  CDPX - 运营机构排序
+  XLID - 线路ID
+  XLMC - 线路名称（冗余）
+  XLBH - 线路编号
+  XLBHIC - IC线路编号
+  XLPX - 线路排序
+  XLH - 线路号
+  DJH - 车辆识别码VIN：（底架号）
+  JDCDJZBH - 机动车登记证编号
+  YYXKZBH - 运营许可证编号(哈公交管字号）
+  CDRQ - 初登日期
+  CLZT - 车辆状态
+  CLYT - 车辆用途
+  CSYS - 车身颜色
+  JSDAH - 技术档案号
+  DLYSZH - 道路运输证号
+  FDJH - 发动机号
+  FDJJYXH - 发动机机油型号
+  FDJJYPP - 发动机机油品牌
+  BSXYXH - 变速箱油型号
+  BSXYPP - 变速箱油品牌
+  CJYXH - 车桥油型号
+  CJYPP - 车桥油品牌
+  ZXZLYXH - 转向助力油型号
+  ZXZLYPP - 转向助力油品牌
+  JZRHYXH - 集中润滑油型号
+  JZRHYPP - 集中润滑油品牌
+  FDYPP - 防冻液品牌
+  NSPP - 尿素品牌
+  NYNX - 耐用年限
+  BFSJ - 报废时间
+  GBBM - 国标编号(28181协议通讯使用，216虚拟组织目录编码，20位数字，详见编码规则定义文档)
+  CL - 车龄
+  RLID - 燃料id
+  LJGL - 累计里程
+  XLLX_ZL - 线路类型子类
+  MJDY - 米级定员
+  EDZWS - 额定座位数
+  ZKRS - 载客人数
+  QYBH - 区域编号
+  QYMC - 区域名称
+  QYPX - 区域排序
+
+表: TD_MD_HX_XL_DA (主数据_线路表) [业务系统: 主数据管理]
+字段:
+  rq - 【字段名】日期
+  xlid - 【字段名】线路ID 【解释】主数据对象ID （用于对象唯一ID，保持最新(FLAG=1)记录ID不变，历史记录(FLAG<>1)ID变化）
+  xlido - 【字段名】线路IDO【解释】主数据对象IDO ： 对象ID最早生成的值，永远不变；对象IDO标识此业务对象全部变更的历史；
+  xlbh - 【字段名】线路编号【解释】线路编号(可以带英文字母或纯数字的)
+  flag - 【字段名】记录标识【解释】记录标识 0-历史;1-最新;2-预生效;3-预生效历史
+  kssj - 【字段名】生效时间【解释】生效时间 格式:YYYY-MM-DD HH24:MI:SS
+  jssj - 【字段名】失效时间【解释】失效时间 格式:YYYY-MM-DD HH24:MI:SS
+  zt - 【字段名】状态【解释】状态 ： 1 有效 0 无效
+  czsj - 【字段名】操作时间【解释】操作时间
+  czrid - 【字段名】操作人ID【解释】操作人ID
+  czr - 【字段名】操作人【解释】操作人
+  ysxywbz - 【字段名】预生效业务标志【解释】预生效业务标志:1 预成立 2 预撤销 3 预调动4 预成立生效5 预撤销生效6 预调动生效
+  csid - 【字段名】城市ID【解释】城市ID
+  dwid - 【字段名】单位ID【解释】单位ID
+  xlmc - 【字段名】线路名称【解释】线路名称（站牌上显示的文字，可以带中文路字）
+  gsid - 【字段名】公司ID【解释】归属公司ID
+  gsmc - 【字段名】公司名称【解释】归属公司名称（冗余）
+  jgid - 【字段名】运营机构ID【解释】运营机构ID（归属车队）
+  jgmc - 【字段名】运营机构名称【解释】运营机构名称（冗余）
+  szzdid - 【字段名】首站站点ID【解释】首站站点ID，（首站->末站为下行，下行第一站）
+  szzdmc - 【字段名】首站站点名称【解释】首站站点名称，（首站->末站为下行，下行第一站）
+  mzzdid - 【字段名】末站站点ID【解释】末站站点ID，（末站->首站为上行，上行第一站）
+  mzzdmc - 【字段名】末站站点名称【解释】末站站点名称，（末站->首站为上行，上行第一站）
+  xlbhic - 【字段名】线路编号IC卡【解释】线路编号IC卡
+  sfhxxl - 【字段名】是否环形线路【解释】是否环形线路
+  sfdypj - 【字段名】是否单一票制【解释】是否单一票制
+  jjlx - 【字段名】计价类型【解释】计价类型（10-5-5）
+  qbj - 【字段名】起步价【解释】起步价（分）
+  xllx - 【字段名】线路类型【解释】线路类型(常规线路，多样化线路，其他线路)
+  pjzjxlcd - 【字段名】平均站距线路长度【解释】平均站距线路长度(米)(上下行累计站距公里的平均值)
+  pjjjxlcd - 【字段名】平均计价线路长度【解释】平均计价线路长度(米)(上下行累计计价公里的平均值)
+  sxrq - 【字段名】生效日期【解释】生效日期（线路正式生效日期）
+  fbrq - 【字段名】发布日期【解释】发布日期（线网推送日期）
+  bz - 【字段名】备注【解释】备注
+
+表: TD_MD_HX_XL_ZD_DA (主数据线路站点) [业务系统: 主数据管理]
+字段:
+  rq - 【字段名】日期
+  zdid - 【字段名】线路站点ID【解释】主数据对象ID （用于对象唯一ID，保持最新(FLAG=1)记录ID不变，历史记录(FLAG<>1)ID变化）
+  zdido - 【字段名】线路站点IDO【解释】主数据对象IDO ： 对象ID最早生成的值，永远不变；对象IDO标识此业务对象全部变更的历史；
+  xlid - 【字段名】线路ID【解释】线路ID
+  xlfx - 【字段名】线路方向【解释】线路方向： 0-上行，1-下行 
+  zwid - 【字段名】站位ID【解释】站位ID
+  zdxh - 【字段名】站点序号【解释】站点序号(按始发站开始排序)
+  zdmc - 【字段名】站点名称【解释】站点名称
+  flag - 【字段名】记录标识【解释】记录标识 0-历史;1-最新;2-预生效;3-预生效历史
+  kssj - 【字段名】生效时间【解释】生效时间 格式:YYYY-MM-DD HH24:MI:SS
+  jssj - 【字段名】失效时间【解释】失效时间 格式:YYYY-MM-DD HH24:MI:SS
+  zt - 【字段名】状态【解释】状态 ： 1 有效 0 无效
+  czsj - 【字段名】操作时间【解释】操作时间
+  czrid - 【字段名】操作人ID【解释】操作人ID
+  czr - 【字段名】操作人【解释】操作人
+  ysxywbz - 【字段名】预生效业务标志【解释】预生效业务标志:1 预成立 2 预撤销 3 预调动4 预成立生效5 预撤销生效6 预调动生效
+  fxj - 【字段名】方向角【解释】方向角
+  xzqh - 【字段名】行政区划【解释】行政区划 [冗余]
+  zflwz - 【字段名】主辅路位置【解释】主辅路位置 [冗余]
+  fx - 【字段名】方向【解释】方向 [冗余]
+  sfsqn - 【字段名】是否市区内【解释】是否市区内 [冗余]
+  jszjl - 【字段名】距始发站距离【解释】距始发站距离 单位:米
+  jmzjl - 【字段名】距终点站距离【解释】距终点站距离 单位:米
+  jxzjl - 【字段名】距下站距离【解释】距下站距离 单位:米
+  jshangzjl - 【字段名】距上站距离【解释】距上站距离 单位:米
+  JD - 经度
+  WD - 纬度
+  GDJD - 高德经度
+  GDWD - 高德纬度
+  BDJD - 百度经度
+  BDWD - 百度纬度
+  HLWZ - 环路位置
+  BZ - 备注
+  JJH - 计价号
+
+表: TI_MD_HX_CZ_DA (主数据场站表) [业务系统: 主数据管理]
+字段:
+  rq - 日期
+  czid -  【字段名】场站ID【解释】主数据对象ID （用于对象唯一ID，保持最新(FLAG=1)记录ID不变，历史记录(FLAG<>1)ID变化）
+  flag - 【字段名】记录标识【解释】记录标识 0-历史;1-最新;2-预生效;3-预生效历史
+  zt - 【字段名】状态【解释】状态 ： 1 有效 0 无效
+  czido - 【字段名】场站IDO【解释】主数据对象IDO ： 对象ID最早生成的值，永远不变；对象IDO标识此业务对象全部变更的历史；
+  kssj - 【字段名】生效时间【解释】生效时间 格式:YYYY-MM-DD HH24:MI:SS
+  jssj - 【字段名】失效时间【解释】失效时间 格式:YYYY-MM-DD HH24:MI:SS
+  czsj - 【字段名】操作时间【解释】操作时间
+  czrid - 【字段名】操作人ID【解释】操作人ID
+  czr - 【字段名】操作人【解释】操作人
+  csid - 【字段名】城市ID【解释】城市ID
+  dwid - 【字段名】单位ID【解释】单位ID
+  czbm - 【字段名】场站编码【解释】场站编码
+  czmc - 【字段名】场站名称【解释】场站名称
+  czjc - 【字段名】场站简称【解释】场站简称
+  jgid - 【字段名】机构ID【解释】分公司ID(管理单位)
+  jgmc - 【字段名】机构名称【解释】分公司名称(冗余)
+  czlx - 【字段名】场站类型【解释】场站类型(独立，综合)
+  czxz - 【字段名】场站性质【解释】场站性质（自有，三方）
+  czyt - 【字段名】场站用途【解释】场站用途
+  syzt - 【字段名】使用状态【解释】使用状态 ： 1 在用 0 停用
+  xzqh - 【字段名】行政区划【解释】行政区划
+  hlwz - 【字段名】环路位置【解释】环路位置
+  jd - 【字段名】经度【解释】经度
+  wd - 【字段名】纬度【解释】纬度
+  gdjd - 【字段名】高德经度【解释】高德经度
+  gdwd - 【字段名】高德纬度【解释】高德纬度
+  bdjd - 【字段名】百度经度【解释】百度经度
+  bdwd - 【字段名】百度纬度【解释】百度纬度
+  tdbm - 【字段名】土地编码【解释】土地编码
+  tdmc - 【字段名】土地名称【解释】土地名称
+  jymj - 【字段名】经营面积【解释】经营面积
+  zymj - 【字段名】占用面积【解释】占用面积
+  zysj - 【字段名】占用时间【解释】占用时间
+  xzmj - 【字段名】闲置面积【解释】闲置面积
+  qtmj - 【字段名】其他面积【解释】其他面积
+  tcrq - 【字段名】投产日期【解释】投产日期
+  zfrq - 【字段名】作废日期【解释】作废日期
+  czid_zd - 【字段名】原场站ID【解释】原宗地系统场站ID(冗余 调度系统及场站设备使用)
+  dz - 【字段名】地址【解释】地址
+  bz - 备注
+  lqsj - 【字段名】拉取时间【解释】拉取时间/推送时间
+  rksj - 【字段名】入库时间【解释】入库时间
+
+【事件池-已接入】
+
+表: TA_SJC_MASTER_MI (事件池-主表) [分类: //]
+字段:
+  RQ - 事件日期
+  TYPE - 类型，1:时间插帧;2:业务事件
+  ID - 事件唯一标识
+  FSSJ - 发生时间
+  FSSJC - 发生时间戳
+  STLX - 实体类型
+  STID - 实体id
+  KRTIME - Kafka时间
+  PTE - 写入时间
+  SPEED - 事件时车速(km/h)
+  XHLC - 当前剩余续航里程(km)
+  SOC - 当前SOC
+  JD - 经度
+  WD - 纬度
+  CQID - 城区位置ID
+  CQMC - 城区位置名称
+  HLID - 环路位置ID
+  HLMC - 环路位置名称
+  ZWID - 直线距离最近的站位ID
+  ZWMC - 直线距离最近的站位名称
+  ZWJL - 直线距离最近的站位距离
+  QLID - 桥ID
+  QLMC - 桥名称
+  QLJL - 桥距离
+  MID - 门ID
+  MMC - 门名称
+  MJL - 门距离
+  QCLZID - 七站两场ID
+  QCLZMC - 七站两场名称
+  QCLZJL - 七站两场距离
+  YYID - 医院ID
+  YYMC - 医院名称
+  YYJL - 医院距离
+  XXID - 学校ID
+  XXMC - 学校名称
+  XXJL - 学校距离
+  JDID - 景点ID
+  JDMC - 景点名称
+  JDJL - 景点距离
+  SWQID - 商务区ID
+  ... +32 more fields
+
+表: TA_SJC_SUB_BS_LD_DAY_MI (事件池-子表-车辆运营路单) [分类: 车辆业务事件/运营业务域/路单]
+字段:
+  RQ - 事件日期
+  TYPE - 类型，1:时间插帧;2:业务事件
+  ID - 事件唯一标识
+  FSSJ - 发生时间
+  FSSJC - 发生时间戳
+  STLX - 实体类型
+  STID - 实体id
+  KRTIME - Kafka时间
+  PTE - 写入时间
+  SPEED - 事件时车速(km/h)
+  XHLC - 当前剩余续航里程(km)
+  SOC - 当前SOC
+  JD - 经度
+  WD - 纬度
+  CQID - 城区位置ID
+  CQMC - 城区位置名称
+  HLID - 环路位置ID
+  HLMC - 环路位置名称
+  ZWID - 直线距离最近的站位ID
+  ZWMC - 直线距离最近的站位名称
+  ZWJL - 直线距离最近的站位距离
+  QLID - 桥ID
+  QLMC - 桥名称
+  QLJL - 桥距离
+  MID - 门ID
+  MMC - 门名称
+  MJL - 门距离
+  QCLZID - 七站两场ID
+  QCLZMC - 七站两场名称
+  QCLZJL - 七站两场距离
+  YYID - 医院ID
+  YYMC - 医院名称
+  YYJL - 医院距离
+  XXID - 学校ID
+  XXMC - 学校名称
+  XXJL - 学校距离
+  JDID - 景点ID
+  JDMC - 景点名称
+  JDJL - 景点距离
+  SWQID - 商务区ID
+  ... +148 more fields
+
+表: TA_SJC_SUB_BS_DLZ_CLZBH_DAY_MI (事件池-子表-服务计算到离站) [分类: 车辆业务事件/运营业务域/调度计算到离站]
+字段:
+  RQ - 事件日期
+  TYPE - 类型，1:时间插帧;2:业务事件
+  ID - 事件唯一标识
+  FSSJ - 发生时间
+  FSSJC - 发生时间戳
+  STLX - 实体类型
+  STID - 实体id
+  KRTIME - Kafka时间
+  PTE - 写入时间
+  SPEED - 事件时车速(km/h)
+  XHLC - 当前剩余续航里程(km)
+  SOC - 当前SOC
+  JD - 经度
+  WD - 纬度
+  CQID - 城区位置ID
+  CQMC - 城区位置名称
+  HLID - 环路位置ID
+  HLMC - 环路位置名称
+  ZWID - 直线距离最近的站位ID
+  ZWMC - 直线距离最近的站位名称
+  ZWJL - 直线距离最近的站位距离
+  QLID - 桥ID
+  QLMC - 桥名称
+  QLJL - 桥距离
+  MID - 门ID
+  MMC - 门名称
+  MJL - 门距离
+  QCLZID - 七站两场ID
+  QCLZMC - 七站两场名称
+  QCLZJL - 七站两场距离
+  YYID - 医院ID
+  YYMC - 医院名称
+  YYJL - 医院距离
+  XXID - 学校ID
+  XXMC - 学校名称
+  XXJL - 学校距离
+  JDID - 景点ID
+  JDMC - 景点名称
+  JDJL - 景点距离
+  SWQID - 商务区ID
+  ... +48 more fields
+
+表: TA_SJC_BUS_CAN_METESTATE_MI (事件池-子表-CAN数据报警-仪表) [分类: 车辆业务事件/安全业务域/CAN数据报警-仪表]
+字段:
+  RQ - 事件日期
+  TYPE - 类型，1:时间插帧;2:业务事件
+  ID - 事件唯一标识
+  FSSJ - 发生时间
+  FSSJC - 发生时间戳
+  STLX - 实体类型
+  STID - 实体id
+  KRTIME - Kafka时间
+  PTE - 写入时间
+  SPEED - 事件时车速(km/h)
+  XHLC - 当前剩余续航里程(km)
+  SOC - 当前SOC
+  JD - 经度
+  WD - 纬度
+  CQID - 城区位置ID
+  CQMC - 城区位置名称
+  HLID - 环路位置ID
+  HLMC - 环路位置名称
+  ZWID - 直线距离最近的站位ID
+  ZWMC - 直线距离最近的站位名称
+  ZWJL - 直线距离最近的站位距离
+  QLID - 桥ID
+  QLMC - 桥名称
+  QLJL - 桥距离
+  MID - 门ID
+  MMC - 门名称
+  MJL - 门距离
+  QCLZID - 七站两场ID
+  QCLZMC - 七站两场名称
+  QCLZJL - 七站两场距离
+  YYID - 医院ID
+  YYMC - 医院名称
+  YYJL - 医院距离
+  XXID - 学校ID
+  XXMC - 学校名称
+  XXJL - 学校距离
+  JDID - 景点ID
+  JDMC - 景点名称
+  JDJL - 景点距离
+  SWQID - 商务区ID
+  ... +48 more fields
+
+表: TA_SJC_SUB_ZHJRQKL_CDJY_DETAIL (事件池-子表-充电交易表) [分类: 车辆业务事件/能源业务域/充电交易表]
+字段:
+  RQ - 事件日期
+  TYPE - 类型，1:时间插帧;2:业务事件
+  ID - 事件唯一标识
+  FSSJ - 发生时间
+  FSSJC - 发生时间戳
+  STLX - 实体类型
+  STID - 实体id
+  KRTIME - Kafka时间
+  PTE - 写入时间
+  SPEED - 事件时车速(km/h)
+  XHLC - 当前剩余续航里程(km)
+  SOC - 当前SOC
+  JD - 经度
+  WD - 纬度
+  CQID - 城区位置ID
+  CQMC - 城区位置名称
+  HLID - 环路位置ID
+  HLMC - 环路位置名称
+  ZWID - 直线距离最近的站位ID
+  ZWMC - 直线距离最近的站位名称
+  ZWJL - 直线距离最近的站位距离
+  QLID - 桥ID
+  QLMC - 桥名称
+  QLJL - 桥距离
+  MID - 门ID
+  MMC - 门名称
+  MJL - 门距离
+  QCLZID - 七站两场ID
+  QCLZMC - 七站两场名称
+  QCLZJL - 七站两场距离
+  YYID - 医院ID
+  YYMC - 医院名称
+  YYJL - 医院距离
+  XXID - 学校ID
+  XXMC - 学校名称
+  XXJL - 学校距离
+  JDID - 景点ID
+  JDMC - 景点名称
+  JDJL - 景点距离
+  SWQID - 商务区ID
+  ... +74 more fields
+
+表:  (事件池-子表-充气加燃-非电交易表) [分类: 车辆业务事件/能源业务域/非电交易表]
+字段:
+  RQ - 事件日期
+  TYPE - 类型，1:时间插帧;2:业务事件
+  ID - 事件唯一标识
+  FSSJ - 发生时间
+  FSSJC - 发生时间戳
+  STLX - 实体类型
+  STID - 实体id
+  KRTIME - Kafka时间
+  PTE - 写入时间
+  SPEED - 事件时车速(km/h)
+  XHLC - 当前剩余续航里程(km)
+  SOC - 当前SOC
+  JD - 经度
+  WD - 纬度
+  CQID - 城区位置ID
+  CQMC - 城区位置名称
+  HLID - 环路位置ID
+  HLMC - 环路位置名称
+  ZWID - 直线距离最近的站位ID
+  ZWMC - 直线距离最近的站位名称
+  ZWJL - 直线距离最近的站位距离
+  QLID - 桥ID
+  QLMC - 桥名称
+  QLJL - 桥距离
+  MID - 门ID
+  MMC - 门名称
+  MJL - 门距离
+  QCLZID - 七站两场ID
+  QCLZMC - 七站两场名称
+  QCLZJL - 七站两场距离
+  YYID - 医院ID
+  YYMC - 医院名称
+  YYJL - 医院距离
+  XXID - 学校ID
+  XXMC - 学校名称
+  XXJL - 学校距离
+  JDID - 景点ID
+  JDMC - 景点名称
+  JDJL - 景点距离
+  SWQID - 商务区ID
+  ... +71 more fields
+
+表:  (事件池-子表-主数据充电设备表) [分类: 车辆业务事件/安全业务域/主数据充电设备表]
+字段:
+  RQ - 事件日期
+  TYPE - 类型，1:时间插帧;2:业务事件
+  ID - 事件唯一标识
+  FSSJ - 发生时间
+  FSSJC - 发生时间戳
+  STLX - 实体类型
+  STID - 实体id
+  CDZSBID - 【字段名】充电桩设备ID【解释】主数据对象ID （用于对象唯一ID，保持最新(FLAG=1)记录ID不变，历史记录(FLAG<>1)ID变化）
+  CDZSBBH - 【字段名】充电桩编号【解释】充电桩编号
+  CDZSBMC - 【字段名】充电桩名称【解释】充电桩名称
+  NYZID - 【字段名】能源站ID【解释】能源站ID（充电站）
+  NYZBM - 【字段名】能源站编码【解释】能源站编码（充电站）
+  CDQSL - 【字段名】充电枪数量【解释】充电枪数量
+  CDLX - 【字段名】充电类型【解释】充电类型：0-交流，1-直流
+  CDZSBFL - 【字段名】充电桩分类【解释】充电桩分类：1-快充，2-慢充
+  CDZSBGL - 【字段名】充电桩功率【解释】充电桩功率，单位KW
+  CDZSBGLSM - 【字段名】充电桩功率说明【解释】充电桩功率说明：450KW直流/180KW直流/360KW直流
+  SYZT - 【字段名】使用状态【解释】使用状态:0-停用，1-启用
+  SFGJKY - 【字段名】是否公交可用【解释】是否公交可用：1-不可用，2-可用，3-降功率使用 （使用状态为1-启用时，标识此字段）
+  BZ - 【字段名】备注【解释】备注
+  CDZSBIDO - 【字段名】充电桩设备IDO【解释】主数据对象IDO:对象ID最早生成的值，永远不变；对象IDO标识此业务对象全部变更的历史；
+  KSSJ - 【字段名】生效时间【解释】生效时间 格式:YYYY-MM-DD HH24:MI:SS
+  JSSJ - 【字段名】失效时间【解释】失效时间 格式:YYYY-MM-DD HH24:MI:SS
+  CZSJ - 【字段名】操作时间【解释】操作时间
+  CZRID - 【字段名】操作人ID【解释】操作人ID
+  CZR - 【字段名】操作人【解释】操作人
+  SFGX - 是否共享
+
+表:  (事件池-子表-充气加燃-充电实时状态表) [分类: 车辆业务事件/能源业务域/充电桩实时状态表]
+字段:
+  RQ - 事件日期
+  TYPE - 类型，1:时间插帧;2:业务事件
+  ID - 事件唯一标识
+  FSSJ - 发生时间
+  FSSJC - 发生时间戳
+  STLX - 实体类型
+  STID - 实体id
+  KRTIME - Kafka时间
+  PTE - 写入时间
+  SPEED - 事件时车速(km/h)
+  XHLC - 当前剩余续航里程(km)
+  SOC - 当前SOC
+  JD - 经度
+  WD - 纬度
+  CQID - 城区位置ID
+  CQMC - 城区位置名称
+  HLID - 环路位置ID
+  HLMC - 环路位置名称
+  ZWID - 直线距离最近的站位ID
+  ZWMC - 直线距离最近的站位名称
+  ZWJL - 直线距离最近的站位距离
+  QLID - 桥ID
+  QLMC - 桥名称
+  QLJL - 桥距离
+  MID - 门ID
+  MMC - 门名称
+  MJL - 门距离
+  QCLZID - 七站两场ID
+  QCLZMC - 七站两场名称
+  QCLZJL - 七站两场距离
+  YYID - 医院ID
+  YYMC - 医院名称
+  YYJL - 医院距离
+  XXID - 学校ID
+  XXMC - 学校名称
+  XXJL - 学校距离
+  JDID - 景点ID
+  JDMC - 景点名称
+  JDJL - 景点距离
+  SWQID - 商务区ID
+  ... +62 more fields
+
+表:  (事件池-子表-主数据能源站信息表) [分类: 主数据变动事件/主数据变更/主数据能源站信息表]
+字段:
+  RQ - 事件日期
+  TYPE - 类型，1:时间插帧;2:业务事件
+  ID - 事件唯一标识
+  FSSJ - 发生时间
+  FSSJC - 发生时间戳
+  STLX - 实体类型
+  STID - 实体id
+  DWID - 单位ID
+  DWMC - 单位名称
+  DWPX - 单位排序
+  CZID - 场站ID
+  CZBM - 场站编码
+  CZMC - 场站名称
+  CZJC - 场站简称
+  NYZID - 能源站ID
+  NYZIDO - 能源站IDO
+  CSID - 城市ID
+  NYZBM - 能源站编码
+  NYZMC - 能源站名称
+  NYZMCJP - 能源站名称简拼
+  PX - 排序
+  NYZLX - 能源站类型
+  CDZFWLX - 充电站服务类型
+  NYZFL - 能源站分类
+  NYZZT - 能源站状态
+  NYLX - 能源类型
+  CQSFJTDW - 产权是否集团单位
+  CQDWID - 产权单位ID
+  CQDWMC - 产权单位
+  JYSFJTDW - 经营是否集团单位
+  JYDWID - 经营单位ID
+  JYDWMC - 经营单位
+  JYMS - 经营模式
+  SBCSID - 设备厂商ID
+  SBCSMC - 设备厂商
+  SFXFSY - 是否具备消防水源
+  FZR - 负责人
+  LXDH - 联系电话
+  GZSJ - 工作时间
+  ZDMJ - 占地面积
+  ... +17 more fields
+
+表:  (事件池-子表-主数据车辆表) [分类: 主数据变动事件/主数据变更/主数据车辆表]
+字段:
+  RQ - 事件日期
+  TYPE - 类型，1:时间插帧;2:业务事件
+  ID - 事件唯一标识
+  FSSJ - 发生时间
+  FSSJC - 发生时间戳
+  STLX - 实体类型
+  STID - 实体id
+  KRTIME - Kafka时间
+  PTE - 写入时间
+  SPEED - 事件时车速(km/h)
+  XHLC - 当前剩余续航里程(km)
+  SOC - 当前SOC
+  JD - 经度
+  WD - 纬度
+  CQID - 城区位置ID
+  CQMC - 城区位置名称
+  HLID - 环路位置ID
+  HLMC - 环路位置名称
+  ZWID - 直线距离最近的站位ID
+  ZWMC - 直线距离最近的站位名称
+  ZWJL - 直线距离最近的站位距离
+  QLID - 桥ID
+  QLMC - 桥名称
+  QLJL - 桥距离
+  MID - 门ID
+  MMC - 门名称
+  MJL - 门距离
+  QCLZID - 七站两场ID
+  QCLZMC - 七站两场名称
+  QCLZJL - 七站两场距离
+  YYID - 医院ID
+  YYMC - 医院名称
+  YYJL - 医院距离
+  XXID - 学校ID
+  XXMC - 学校名称
+  XXJL - 学校距离
+  JDID - 景点ID
+  JDMC - 景点名称
+  JDJL - 景点距离
+  SWQID - 商务区ID
+  ... +31 more fields
+
+表:  (事件池-子表-刷卡刷码数据) [分类: 车辆业务事件/客流业务域/刷卡刷码数据]
+字段:
+  RQ - 事件日期
+  TYPE - 类型，1:时间插帧;2:业务事件
+  ID - 事件唯一标识
+  FSSJ - 发生时间
+  FSSJC - 发生时间戳
+  STLX - 实体类型
+  STID - 实体id
+  KRTIME - Kafka时间
+  PTE - 写入时间
+  SPEED - 事件时车速(km/h)
+  XHLC - 当前剩余续航里程(km)
+  SOC - 当前SOC
+  JD - 经度
+  WD - 纬度
+  CQID - 城区位置ID
+  CQMC - 城区位置名称
+  HLID - 环路位置ID
+  HLMC - 环路位置名称
+  ZWID - 直线距离最近的站位ID
+  ZWMC - 直线距离最近的站位名称
+  ZWJL - 直线距离最近的站位距离
+  QLID - 桥ID
+  QLMC - 桥名称
+  QLJL - 桥距离
+  MID - 门ID
+  MMC - 门名称
+  MJL - 门距离
+  QCLZID - 七站两场ID
+  QCLZMC - 七站两场名称
+  QCLZJL - 七站两场距离
+  YYID - 医院ID
+  YYMC - 医院名称
+  YYJL - 医院距离
+  XXID - 学校ID
+  XXMC - 学校名称
+  XXJL - 学校距离
+  JDID - 景点ID
+  JDMC - 景点名称
+  JDJL - 景点距离
+  SWQID - 商务区ID
+  ... +31 more fields
+
+=== 未接入数据表（可参考但暂不可查） ===
+
+【数据湖指标表-未接入】(共1215张表，按业务系统分组)
+
+  线路运营调度管理 (257张表):
+    TA_SJTS_YYDD_DD_LD_DAY_DI (数据探索-路单表)
+    TF_SJTS_SECURITY_DSM_RECORD_DI (数据探索dsm明细表)
+    TD_PS_DD_JSD_LINE_REL_DA (积水点线路关联表)
+    TA_BSDD_SMSB_BZF_MONTH_MI (首末三班不准发原因月表)
+    TA_CL_CJBZ_INFO_DI (车机报站表)
+    TA_ETA_DATA_QA_1_DI (ETA-数据稽核程序-1)
+    TA_ETA_DATA_QA_2_DI (ETA-数据稽核程序-2)
+    TA_ETA_DATA_QA_3_DI (ETA-数据稽核程序-3)
+    TA_ETA_GPS_BZ_DAY_MI (ETA-GPS计算报站)
+    TA_ETA_RC_DI (ETA站间用时)
+    ... +247 more
+
+  整车CAN数据监控分析 (152张表):
+    TA_CAN_AIRCONDITIONERINFO (CAN融合-空调数据)
+    TA_CAN_AIRCONDITIONERINFO_ALL (CAN融合-空调数据车辆接入)
+    TA_CAN_BUS_CANID (CAN融合-CAN车辆协议接入)
+    TA_CAN_BUS_CANID_ALL (CAN融合-CAN车辆协议接入)
+    TA_NE_BUS_NEID (CAN融合-新能源车辆接入表)
+    TF_BLALARM_DCFSJG_DI (北理-电池评分数据表)
+    TF_HNS_CLGZMX_DI (汉纳森-车辆故障明细)
+    TF_HNS_CLGZTJ_DI (汉纳森-车辆故障统计)
+    TF_HNS_CLXWTJ_DI (汉纳森回吐-车辆行为统计)
+    TF_HNS_JGGZTJ_DI (汉纳森回吐-机构故障统计)
+    ... +142 more
+
+  车辆技术保修综合管理 (100张表):
+    TA_JSBX_ZZX_GD_DI (技术保修-中整修工单)
+    TA_SJTS_JSBX_WBTJ_CL_DI (数据探索-技术保修-维保统计-车辆)
+    TA_SJTS_JSBX_WBTJ_XL_DI (数据探索-技术保修-维保统计-线路维度)
+    TA_SJTS_JSBX_WL_DETAIL_DI (数据探索-技术保修-物料明细)
+    TA_SJTS_JSBX_WXGD_DI (数据探索-技术保修-维修工单)
+    TA_SJTS_JSBX_WXGD_WL_DI (数据探索-技术保修-维修工单-物料)
+    TF_JSBX_WL_DCCBMX_DI (技术保修-物料-单车成本明细)
+    TF_JSBX_WXGDMX_DI (技术保修-维修工单明细)
+    TF_JSBX_WXGD_NEW_DI (技术保修-维修工单)
+    TM_JSBX_QX_RW_DI (技术保修-抢修任务)
+    ... +90 more
+
+  主数据管理 (98张表):
+    TD_CDFX_SD_DA (能源-充电分析时段)
+    TD_MD_CZ_NYZ_XL_DA (主数据_场站能源站关系)
+    TD_MD_CZ_NYZ_XL_TJ_DA (主数据距场站最近能源站信息)
+    TD_MD_HX_JG_DA (主数据-机构表)
+    TD_MD_HX_RY_DA (主数据_人员表)
+    TD_MD_HX_XL_DA (主数据_线路表)
+    TD_MD_HX_XL_ZD_DA (主数据线路站点)
+    TD_MD_QT_NY_CDZSB_DA (主数据-能源充电设备)
+    TD_ORGAF_DIM (安服数据-组织机构信息)
+    TD_SZ_DA (主数据-时组表)
+    ... +88 more
+
+  数字化票务管理平台 (91张表):
+    TA_CA_CLEAN_BUS_DI (车辆结算客流表)
+    TA_CA_CLEAN_LINE_DI (线路结算客流)
+    TA_CA_CLEAN_LINE_MONTH_DI (检录结算统计_月)
+    TA_CA_CLEAN_LINE_YEAR_DI (线路结算客流年表)
+    TA_CA_CLEAN_QY_DI (区域结算客流)
+    TA_CA_CLEAN_SJTS_BUS_DI (数据探索车辆结算客流表)
+    TA_GRRB_KL_RY_DI (个人日报人员客流表)
+    TA_YYDD_DD_DMFX_QY_DAY_DI (运营调度区域断面分析-天)
+    TA_YYDD_DD_DMFX_QY_DAY_MI (运营调度区域段main分析-天)
+    TA_YYDD_DD_DMFX_QY_WF_DI (运营调度区域断面分析_五峰)
+    ... +81 more
+
+  安服管理 (79张表):
+    TA_AQJH_ALARM_STATISTICS_QUARTER_DI (驾驶员画像-驾驶员季度报警情况分项统计)
+    TA_AQJH_ALARM_STATISTICS_YEAR_DI (驾驶员画像-驾驶员年度报警情况分项统计)
+    TA_AQJH_OVERVIEW_STATISTICS_QUARTER_DI (驾驶员画像-驾驶员画像概况)
+    TA_AQJH_PBQD_MONTH_DI (驾驶员画像-月度排班计划-日增)
+    TA_AQJH_PJQK_QUARTER_DI (驾驶员画像-驾驶员评价情况)
+    TA_AQJH_STATISTICS_YEAR_DI (驾驶员画像-驾驶员年度情况统计)
+    TA_AQJH_XLTJ_QUARTER_DI (安全驾画-线路统计-季度表)
+    TA_AS_BJ_ACCIDENT_DA (驾驶员画像-驾驶员事故明细)
+    TA_AS_BJ_BREAK_LAW_DA (驾驶员画像-驾驶员违法信息)
+    TA_AS_BJ_CUSTOMER_COMPLAINT_DA (驾驶员画像-驾驶员客诉明细)
+    ... +69 more
+
+  通学公交学校业务 (57张表):
+    TD_PS_TXGJ_PW_CUSTOM_REQUIREMENT_REL_DA (通学公交-学校线路关系)
+    TA_PS_DD_PLANASSIS_T_BREAKPOINT_SCHOOLDETAIL_DI (通学公交-校车区段点)
+    TD_PS_TXGJ_PW_CUSTOM_REQUIREMENT_REL_DA (通学公交-学校线路关系)
+    TD_PS_TXGJ_XXXX_DA (通学公交-学校信息)
+    TD_PS_TXGJ_XSXX_DA (通学公交-学生信息)
+    TD_PS_TXGJ_JZXSGX_DA (通学公交-家长学生关系)
+    TD_PS_TXGJ_JZXX_DA (通学公交-家长信息)
+    TD_PS_TXGJ_LSXX_DA (通学公交-老师信息)
+    TD_TXGJ_XX_XS_JZ_DA (通学公交-学校学生家长信息表)
+    TD_PS_TXGJ_ZYZXX_DA (通学公交-志愿者信息)
+    ... +47 more
+
+  车辆综合管理 (48张表):
+    TA_CLJS_BUS_LSGD_MI (技术保修历史工单)
+    TA_CLJS_BUS_STATUS_MI (技术保修-车辆状态)
+    TA_CLJS_CLFX_DA (车辆技术-车辆分析)
+    TA_CLJS_CLFX_GJY_MONA (车辆技术-车辆分析-公交月-月表)
+    TA_CLJS_CLFX_ZRY_MONA (soa车辆明细表)
+    TA_CLJS_QX_BUS_DAY_MI (车辆技术-抢修车辆表)
+    TA_CLJS_WB_BUS_DAY_MI (车辆技术-车辆维保)
+    TA_GPS_XHQS_BUS_DAY_DI (车辆gps信号缺失统计)
+    TF_CZFZSB_RYKEY_DI (can指标计算_车辆转弯数据推断)
+    TF_PS_BQ_QH_CLZB_DA (北汽-车辆指标表)
+    ... +38 more
+
+  车辆能源管控 (44张表):
+    TI_LRSU_CHARGEPILE (龙瑞三优-充电桩状态信息)
+    TA_FUEL_NYLXDSUM_BUS_MI_VIEW (充气加燃-充电车辆级汇总_视图)
+    TA_FUEL_NYLXDSUM_BUS_SZ_MI_VIEW (充气加燃-充电车辆级汇总_时组_视图)
+    TA_FUEL_NYLXDSUM_LINE_MI_VIEW (充气加燃_线路_视图)
+    TA_FUEL_NYLXDSUM_LINE_SZ_MI_VIEW (充气加燃-充电线路汇总_时组)
+    TA_FUEL_NYLXDSUM_PILE_MI_VIEW (充气加燃-充电桩汇总_视图)
+    TA_FUEL_NYLXDSUM_PILE_SZ_MI_VIEW (充气加燃-充电充电桩级汇总_时组_视图)
+    TA_FUEL_NYLXDSUM_STATION_MI_VIEW (充气加燃-能源站汇总-视图)
+    TA_FUEL_NYLXDSUM_STATION_SZ_MI_VIEW (充气加燃-充电场站汇总_时组)
+    TA_LRSU_CHARGEORDER_DAY_DI (隆瑞三优充电工单)
+    ... +34 more
+
+  市民意见管理 (30张表):
+    TA_SMYJ_TSJSTJ_LINE_DI (市民意见-投诉件数统计-线路)
+    TA_SMYJ_TSJSTJ_LINE_MONTH_DI (市民意见-投诉件数统计-线路-月表)
+    TA_SMYJ_TSJSTJ_LINE_TSLX_DI (市民意见-投诉件数统计-线路-投诉类型)
+    TA_SMYJ_TSJSTJ_LINE_TSLX_WTFL_DI (市民意见-投诉件数统计-线路-投诉类型-问题分类)
+    TA_SMYJ_TSJSTJ_LINE_YEAR_DI (市民意见-投诉件数统计-线路-年)
+    TF_SMYJ_TSXXGL_DI (市民意见-投诉信息管理)
+    TF_SMYJ_12328_ORDERINFO_DI (市民意见-12328-工单信息)
+    TF_PS_SMYJ_T_BJCSS_TSXXGL_HSCLB_DI (市民意见-投诉信息核实处理表)
+    TF_PS_T_BJCSS_TSXXJR_96166_DI (市民意见-96166热线信息表)
+    TF_PS_WS_12345V2_ORDERINFO_DI (市民意见-12345明细信息表)
+    ... +20 more
+
+  智慧加燃管理系统 (29张表):
+    TA_LRSU_CHARGEORDER (龙瑞三优-充电工单)
+    TD_PS_ZHJR_CD_CDZFSDJ_DA (智慧加燃-充电站分时电价)
+    TA_NY_ZHJR_CDRB_DI (能源-智慧加燃-充电日报)
+    TA_NY_ZHJR_CDYB (能源-智慧加燃-充电月报)
+    T_SCYS_CD_CDHZTJB (充电汇总统计表)
+    T_SCYS_CD_CDJL_ZJB (能源-充电记录表)
+    T_SCYS_CD_CDSDTJB (能源-充电记录时段表)
+    TA_ZHJR_CDHZTJ_SD_MI (智慧加燃-充电汇总统计-时段表)
+    TA_ZHJR_CDHZTJ_DAY_MI (智慧加燃-充电汇总统计-加维-天表)
+    TA_ZHJR_CDZSSJY_DIM_DAY_MI (智慧加燃-充电桩实时交易-加维-天表)
+    ... +19 more
+
+  综合安全防范管理 (27张表):
+    TA_EPIDEMIC_STATISTICS_JT_DI (集团复工情况)
+    TA_EPIDEMIC_STATISTICS_NYZMX_DI (能源站疫情防控信息)
+    TA_EPIDEMIC_STATISTICS_WXCZMX_DI (保养点疫情防控信息)
+    TA_JSYHX_GJ_DAY_MI_VIEW (驾驶员画像-实时告警数据)
+    TA_SECURITY_DSM_DRIVER_DI (DSM司机聚合表)
+    TA_SECURITY_DSM_DRIVER_MI (DSM主动安全司机数据)
+    TA_SECURITY_DSM_LINE_DI (DSM线路聚合表)
+    TA_SECURITY_DSM_LINE_MI (DSM主动安全统计_线路)
+    TA_SECURITY_DSM_LINE_MI_VIEW (DSM-线路级告警汇总_视图)
+    TA_SECURITY_DSM_PERIOD_DI (DSM离线时段聚合表)
+    ... +17 more
+
+  数据资产管理 (21张表):
+    QA_TABLEDATA_MONITOR_DI (QA表数据监控)
+    TA_JJJ_WEATHER_AIR_ALARM_HI (京津冀天气预警和空气重污染预警)
+    TA_JJJ_WEATHER_AIR_ALARM_NEW_HI (万云天气京津冀预警)
+    TA_SCZC_DAY_DI (数仓资产表（数据库表信息）)
+    TA_WEATHER_24HOUR_ALL_HI (万云天气24预报-全量)
+    TA_WEATHER_24HOUR_HI (万云天气24预报-最新)
+    TA_WEATHER_BWL_ALL_HI (万云天气报文类全量)
+    TA_WEATHER_DLYXSK_ALL_HI (道路沿线实况数据_全量)
+    TA_WEATHER_DLYXSK_HI (道路沿线实况数据_最新)
+    TA_WEATHER_DLYXYB_ALL_HI (万云天气道路沿线预报数据_全量)
+    ... +11 more
+
+  物联管理平台 (20张表):
+    TA_CAMERA_BUS_MZL_MI (视频通道人数识别)
+    TA_CZFZSB_CDKQJL_DAY_DI (场站辅助设备-车队考勤记录)
+    TA_CZFZSB_CDKQJL_DAY_MI (场站辅助设备-车队考勤记录)
+    TA_CZFZSB_CJSFHG_DAY_DI (场站辅助设备-车检是否合格)
+    TA_CZFZSB_CJZPXQ_DAY_DI (场站辅助设备-车检照片详情)
+    TA_CZFZSB_CJZPXQ_DAY_MI (场站辅助设备-车检照片详情)
+    TA_CZFZSB_RYKQJL_DAY_DI (场站辅助设备-人员考勤记录)
+    TA_CZFZSB_RYKQJL_DAY_MI (场站辅助设备-人员考勤记录)
+    TA_CZFZSB_RYKQXQ_DAY_DI (场站辅助设备-人员考勤详情)
+    TA_CZFZSB_RYKQXQ_DAY_MI (场站辅助设备-人员考勤详情)
+    ... +10 more
+
+  稽查管理 (18张表):
+    TF_PS_ZHJC_JCWTGDLZMXB_DA (稽查问题工单流转明细表)
+    TF_PS_ZHJC_RWXZCYGXB_DA (综合稽查任务小组成员对应关系表)
+    TF_PS_ZHJC_XLJCJL_DA (综合稽查-线路稽查记录)
+    TF_PS_ZHJC_DMKLJCJL_DA (综合稽查-断面客流稽查记录)
+    TF_PS_ZHJC_YCDMKLJCJLXQ_DA (综合稽查-远程断面客流稽查记录详情)
+    TF_PS_ZHJC_SMZJCJL_DA (综合稽查-首末站稽稽查记录)
+    TF_PS_ZHJC_YCCZJCJL_DA (综合稽查-远程场站稽查记录)
+    TF_PS_ZHJC_DMKLJCJLXQ_DA (综合稽查-断面客流稽查记录详情)
+    TF_PS_ZHJC_YCDMKLJCJL_DA (综合稽查-远程断面客流稽查记录)
+    TF_PS_ZHJC_SMZJCJLXQ_DA (综合稽查-首末站稽查记录详情)
+    ... +8 more
+
+  物业食堂管理 (17张表):
+    TF_PS_PROPERTY_HOTLINE_RECORDS_DA (物业通话记录)
+    TF_PS_SYS_DICT_DATA_DA (物业数据字典表)
+    TF_PS_REPAIR_REPORT_ORDER_DETAIL_DA (物业报修工单详情表)
+    TF_PS_REPAIR_REPORT_ORDER_DA (物业报修工单表)
+    TF_PS_REPAIR_FIX_ORDER_DA (物业维修工单表)
+    TF_PS_PROPERTY_CONFIG_FOLLOWUP_DA (物业回访信息表)
+    TF_PS_PROPERTY_HOTLINE_ORDER_DA (物业工单)
+    TF_PS_INS_PROPERTY_COMP_INVENTORY_DA (物业稽查记录)
+    TF_PS_INS_PROPERTY_COMP_TASK_CONTENT_DA (物业稽查任务派班明细表)
+    TF_PS_INS_PROPERTY_COMP_TASK_CONTENT_MEMBER_DA (物业综合稽查任务小组成员对应关系表)
+    ... +7 more
+
+  综合运维管理 (16张表):
+    TF_PS_ZHJC_INSPECTION_STANDARD_ITEMS_DI (综合稽查-项目标准项)
+    TA_PS_ZHJC_INSPECTION_TASK_BZXMX_DI (综合稽查-检查任务标准项明细)
+    TA_PS_ZHJC_INSPECTION_TASK_DI (综合稽查-检查任务明细)
+    TA_PS_ZHJC_TASK_TJ_DI (综合稽查-检查任务指标统计)
+    TA_SBAZ_CZSBSMX_VIEW_MI (项目-分公司-场站设备安装数明细)
+    TA_SBAZ_CZSBS_VIEW_MI (项目-场站设备安装视图)
+    TA_SBAZ_FGS_CZSBMX_VIEW_MI (项目-分公司-场站设备安装明细视图)
+    TA_SBAZ_FGS_CZSBS_VIEW_MI (项目-分公司-场站设备安装视图)
+    TA_SBAZ_PROJECT_CZSBS_DI (设备安装-项目场站设备安装汇总表)
+    TA_SBAZ_PROJECT_FGS_CZSBS_DI (设备安装-项目分公司场站设备安装汇总表)
+    ... +6 more
+
+  定制公交管理平台 (14张表):
+    TD_PS_XA_MAIN_DRIVER_DA (TD水上巴士_主驾驶员信息)
+    TD_PS_XA_ASSISTANT_DRIVER_DA (TD水上巴士_副驾驶员信息)
+    TD_PS_XA_ROUTE_DA (TD水上巴士_航线信息)
+    TD_PS_XA_STATION_DA (TD水上巴士_航线站点信息)
+    TD_PS_XA_DEVICE_DA (TD水上巴士_船舶设备信息)
+    TD_PS_XA_ARRANGE_DA (TD水上巴士_排班信息)
+    TF_DZGJ_JHLD_DI (定制公交计划路单)
+    TF_DZGJ_SJLD_DI (定制公交实际路单)
+    TF_DZGJ_CZKLHSRJS_DI (定制公交车组客流和收入结算订单)
+    TF_DZGJ_LD_DAY_MI (定制公交-实时路单)
+    ... +4 more
+
+  一路同行APP管理平台 (13张表):
+    TA_APP_ASSISTANT_LOGIN_DETAIL_DI (app登陆详情表)
+    TA_APP_ASSISTANT_LOGIN_HI (app登陆表小时)
+    TA_APP_ASSISTANT_REGISTE_ACCUMULATE_DI (app用户注册统计表)
+    TA_APP_ASSISTANT_REGISTE_DI (app注册表)
+    TA_APP_ASSISTANT_USER_BEHAVIOR_ACCUMULATE_DI (app用户行为统计)
+    TA_APP_ASSISTANT_USER_BEHAVIOR_ACCUMULATE_DI_1 (app用户行为统计备份)
+    TA_APP_ASSISTANT_USER_BEHAVIOR_DI (app用户行为分析)
+    TA_APP_ASSISTANT_USER_BEHAVIOR_HI (APP用户行为分析)
+    TA_APP_ASSISTANT_USER_BEHAVIOR_MI (app用户行为分析-分钟粒度)
+    TA_APP_ASSISTANT_VIEWSCREEN_DI (APP页面浏览统计_天)
+    ... +3 more
+
+  线网业务管理 (12张表):
+    TD_LINE_BOOK_ROUTE_NODE (格网路口link表)
+    TD_LINE_BOOK_ROUTE_NODE_2024 (格网路口link表)
+    TI_V_HPAGE_TINFO_DA (线路类型统计（调度接入大屏用）)
+    TI_V_LINE_OPER_TINFO_DA (线路长度统计（调度计算大屏用）)
+    TI_V_LINE_TINFO_DA (线网线路信息（调度接入大屏用）)
+    TI_V_STATION_TINFO_DA (线网需求--首页站位指标行政区划日统计表)
+    TA_XW_XL_ZD_HCDJL_DI (线网-线路站点全天登降量)
+    TA_XW_XL_ZD_SD_TGL_DI (线网-线路站间小时通过量)
+    TA_XW_XL_ZD_TGL_DI (线网-线路站间全天通过量)
+    TA_XW_XL_ZD_WF_JZXS_TGL_DI (线网-线路站间峰段小时通过量满载率)
+    ... +2 more
+
+  融合数仓 (9张表):
+    TD_PERIOD_DIM (时间轴)
+    TD_GW_LINE_BOOK_ROUTE (格网路口link表)
+    TA_ZTGZ_BUS_STATUS_MI (车辆状态最新)
+    TA_ZTGZ_STATION_ONBOARD_MI (车次运行态势站间五峰时组)
+    TD_MODEL_XLXX_DI (车辆停驶仿真-线路信息)
+    TA_MODEL_CLYY_DI (算法-车辆运营历史)
+    TD_MODEL_CLXX_DI (车辆停驶仿真-车辆信息)
+    TA_GJZX_STATION_ONBOARD_MI (站间通过量低告警明细)
+    TD_MONITOR_ZHKH_DA (检录实时监控账号卡号数据)
+
+  报表平台 (9张表):
+    TM_JC_RY_JSKL_DI (计财报表-人员结算客流-天表)
+    TA_JC_XL_JSKL_DI (计财报表-线路结算客流-天表)
+    TM_JC_RY_LC_DI (计财报表-人员里程-天表)
+    TM_JC_CL_GZCR_DI (计财报表-车辆工作车日-天表)
+    TA_JC_XL_LC_KYL_DI (计财报表-线路里程客运量_车辆统计-天表)
+    TM_JC_CL_NH_DI (计财报表-车辆能耗-天表)
+    TM_JC_RY_CL_BGLNH_DI (计财报表-人员车辆百公里能耗-天表)
+    TD_JC_MD_CL_DA (计财报表-主数据车辆基本信息)
+    TD_JC_MD_XL_DA (计财报表-主数据线路基本信息)
+
+  北京BS调度生产环境 (7张表):
+    TA_BS_BUSSTATUS_CLZBH_MI (BS-车辆状态-车辆自编号主键表)
+    TA_BS_BUSSTATUS_MI (BS车辆状态)
+    TA_BS_DLZ_CLZBH_DAY_MI (BS-到离站)
+    TA_BS_DLZ_DAY_MI (BS-车辆到离站表)
+    TA_BS_LD_DAY_MI (BS路单)
+    TA_SGKB_SGLD_GPS_VIEW (事故看板-事故路单-GPS)
+    TA_SGKB_SGLD_GPS_MI (事故看板-事故路单-GPS)
+
+  大型活动后台管理系统 (6张表):
+    TA_DA_WBQK_CL_DI (冬奥-维保情况-车辆)
+    TA_NDBG_JSY_YEAR_DI (年度报告-驾驶员-年表)
+    TD_PS_KEY_MONITOR_BUS_DA (大型活动--重点监控车辆)
+    TD_PS_KEY_MONITOR_AREA_DA (大型活动--重点监控区域)
+    TD_PS_KEY_MONITOR_PERSONS_DA (大型活动--重点监控人员)
+    TD_PS_KEY_MONITOR_LINES_DA (大型活动--重点监控线路)
+
+  综合生产要素 (6张表):
+    TA_YSZHCX_CLGDMX_DI (要素综合查询-车辆工单明细)
+    TA_YSZHCX_CLRWZB_DAY_MI (要素综合查询-车辆任务指标-天表)
+    TA_YSZHCX_CLSJL_DAY_MI (要素综合查询-车辆时间链-天表)
+    TA_YSZHCX_CL_WXCZ_YEAR_DI (要素综合查询-维修厂站-年)
+    TA_YSZHCX_CL_YEAR_DI (要素综合查询-车辆-年表)
+    TA_YSZHCX_CL_YYXL_YEAR_DI (要素综合查询-车辆运营线路)
+
+  宗地管理模块 (6张表):
+    TF_PS_ZD_BUSI_CANTEEN_DAY_PERSON_DI (宗地-食堂每日人次明细表)
+    TF_PS_ZD_BUSI_CANTEEN_DAY_PERSON_TYPE_DI (宗地-食堂每日人员就餐类型关系表)
+    TF_PS_ZD_BUSI_CANTEEN_DAY_MENU_DI (宗地-食堂每日菜品明细表)
+    TF_PS_ZD_BUSI_CANTEEN_DAY_BUSI_RENT_DI (宗地-出租信息)
+    TF_PS_ZD_BUSI_CANTEEN_DAY_BUSI_USE_HOUSE_DI (宗地-房屋使用信息表)
+    TF_PS_ZD_BUSI_CANTEEN_DAY_BUSI_USE_LAND_DI (宗地-土地使用信息)
+
+  通学定制公交学校业务管理子系统 (6张表):
+    TF_PS_TXGJ_DD_XCJH_JHAP_PD_DI (通学公交-计划主表)
+    TA_TXGJ_MONITOR_LOG_DI (计划排班监控表)
+    TA_PS_TXGJ_YYXC_XLHZ_DI_BAK (通学线路行程运营人次金额统计备份数据（请勿删除）)
+    TA_PS_TXGJ_CUSTOM_PAY_ORDER_XLHZ_DI_BAK (通学线路订单人次金额统计表备份数据（请勿删除）)
+    TA_TXGJ_XSXCJCXX_DAY_MI_20240118 (通学公交-学生行程基础信息-修改学号备份)
+    TA_TXGJ_XSXCGJXX_DAY_MI_20240118 (通学公交-学生行程轨迹信息-修改学号-备份)
+
+  人力资源数字化管理(在建) (5张表):
+    TI_RL_KQRB_MI (人力考勤日报-天表)
+    TF_HUMAN_12POINT_DI (人力绩效_人员12分扣罚流水)
+    TA_BQ_RCGX_DAY_MI (北汽-北汽人车关系)
+    TA_BQ_RLSB_DAY_MI (北汽-北汽司机人脸识别)
+    TA_BQ_SJLP_DAY_MI (北汽-北汽司机领票)
+
+  OA数字化协同办公平台 (3张表):
+    TF_PS_OA_UF_ZBRYPZBQD_DI (值班人员排班信息)
+    TF_PS_OA_UF_ZBRYPZBF_DI (oa-部门排班表)
+    TF_PS_OA_UF_ZBRYPZBXJ_DI (oa-单位排班表)
+
+  智能助手 (3张表):
+    TF_PS_ZNZS_ACCESS_SITE_MERGE_DI (智能助手-扫码出入场站合并表)
+    TF_ZNZS_RYDW_MI (智能助手人员定位数据)
+    TF_SMART_ASSISTANT_CODE_SHARING_DA (智能助手-口令码分享记录)
+
+  人力资源管理 (3张表):
+    TF_PS_RL_TJRYXX_DA (人力-体检人员信息)
+    TF_HUMAN_PERFORMINDEX_DA (人力绩效_指标管理)
+    TA_HUMAN_12POINT_SUM_DI (人力绩效_人员12分扣罚年度汇总)
+
+  财务共享 (2张表):
+    TF_PS_JC_QZK_GRYYSCRB_DI (数据开放-计财个人运营生产日报)
+    TI_PS_CY_DEZJJK_DI (大额资金监测)
+
+  重大活动客户端 (2张表):
+    TA_DXHD_ZDLDSPEEDAVG_MI (大型活动_重点路段平均运速)
+    TA_DXHD_ZDLDSPEEDAVG_ALL_MI (大型活动_重点路段平均运速_全量数据)
+
+  场站能源管控 (1张表):
+    TA_SJTS_LRSU_CHARGEORDER_DAY_DI (隆瑞三优充电工单)
+
+   (1张表):
+    DIM_SYS_DICT_ITEM (码表)
+
+  统一应用管理 (1张表):
+    TA_5A_ZHBB_RY_FWCS_DI (5A_综合报表模块_人员访问次数)
+
+  能源管控中心 (1张表):
+    TD_PS_GDS_GJSBJCXX_DA (供电所-工井设备基础信息)
+
+  综合报表 (1张表):
+    TA_ZHBB_BUS_BB_DI (综合报表-车辆报表)
+
+【事件池-未接入】
+  TA_SJC_SUB_ZHJRQKL_QIJY_DETAIL_MI | 事件池-子表-充气加燃-非电交易表-加气 | 车辆业务事件/能源业务域/加气交易表
+  TA_SJC_SUB_ZHJRQKL_QJY_DETAIL_MI | 事件池-子表-充气加燃-非电交易表-加氢 | 车辆业务事件/能源业务域/加氢交易表
+  TA_SJC_SUB_ZHJRQKL_CQYJY_DETAIL_MI | 事件池-子表-充气加燃-非电交易表-柴汽油 | 车辆业务事件/能源业务域/加油交易表
+  TA_SJC_SUB_MD_CDZSB_MI | 事件池-子表-主数据充电设备表 | 主数据变动事件/主数据变更/主数据充电设备表
+  TA_SJC_SUB_FUEL_DEVICESTATE_DETAIL_MI | 事件池-子表-充气加燃-充电实时状态表 | 车辆业务事件/能源业务域/充电桩实时状态表
+  TA_SJC_SUB_MD_NYZ_MI | 事件池-子表-主数据能源站信息表 | 主数据变动事件/主数据变更/主数据能源站信息表
+  TA_SJC_SUB_MD_CL_MI | 事件池-子表-主数据车辆表 | 主数据变动事件/主数据变更/主数据车辆表
+  TA_SJC_SUB_JSBX_WXGD_MI | 事件池-子表-维修工单 | 车辆业务事件/维保业务域/维修工单
+  TA_SJC_SUB_KL_ICQR_MI | 事件池-子表-刷卡刷码数据 | 车辆业务事件/客流业务域/刷卡刷码数据
+  TA_SJC_SUB_AQ_DRIVERABNORMAL_MI | 事件池-子表-驾驶员异常驾驶行为识别 | 车辆业务事件/安全业务域/驾驶员异常驾驶模型识别
+  TA_SJC_SUB_AQ_BUSABNORMAL_MI | 事件池-子表-车辆异常事件模型识别 | 车辆业务事件/安全业务域/车辆异常事件模型识别
+  TA_SJC_SUB_AQ_SSCLGZXX_MI | 事件池-子表-CAN总线故障报警 | 车辆业务事件/安全业务域/CAN总线故障报警
+  TA_SJC_SUB_MD_CZ_MI | 事件池-子表-主数据场站表 | 主数据变动事件/主数据变更/主数据场站表
+  TA_SJC_SUB_MD_ZW_MI | 事件池-子表-主数据站位表 | 主数据变动事件/主数据变更/主数据站位表
+  TA_SJC_SUB_MD_QY_MI | 事件池-子表-主数据区域信息表 | 主数据变动事件/主数据变更/主数据区域信息表
+  TA_SJC_SUB_MD_XLXLKXX_MI | 事件池-子表-主数据路口信息表 | 主数据变动事件/主数据变更/主数据路口信息表
+  TA_SJC_SUB_MD_BYD_MI | 事件池-子表-主数据保养点表 | 主数据变动事件/主数据变更/主数据保养点表
+  TA_SJC_SUB_MD_QXZDXX_MI | 事件池-子表-主数据抢修站点表 | 主数据变动事件/主数据变更/主数据抢修站点表
+  TA_SJC_SUB_JSBX_QXRW_MI | 事件池-子表-抢修工单 | 车辆业务事件/维保业务域/抢修工单
+  TA_SJC_SUB_JSBX_ZZX_MI | 事件池-子表-中整修 | 车辆业务事件/维保业务域/中整修工单
+  TA_SJC_SUB_JSBX_TX_MI | 事件池-子表-特修 | 车辆业务事件/维保业务域/特修工单
+  TA_SJC_SUB_AQ_SSSG_MI | 事件池-子表-事故报警 | 车辆业务事件/安全业务域/事故报警
+  TA_SJC_SUB_AQ_ZZCLCLJG_MI | 事件池-子表-滞站告警 | 车辆业务事件/安全业务域/滞站报警

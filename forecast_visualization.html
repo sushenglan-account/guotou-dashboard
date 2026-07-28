@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>玉米期货预测v7 vs 验证集 拟合度可视化</title>
+<script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js"></script>
+<style>
+  body { font-family: -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif; background: #f5f5f7; margin: 0; padding: 20px; color: #333; }
+  .fc-wrap { max-width: 1200px; margin: 0 auto; background: #fff; border-radius: 12px; padding: 24px; box-shadow: 0 1px 3px rgba(0,0,0,0.08); }
+  .fc-header { display: flex; align-items: flex-start; justify-content: space-between; margin-bottom: 20px; flex-wrap: wrap; gap: 12px; }
+  .fc-title { font-size: 24px; font-weight: 700; line-height: 1.3; }
+  .fc-subtitle { font-size: 13px; color: #666; margin-top: 4px; }
+  .fc-badge { display: inline-flex; align-items: center; gap: 6px; padding: 6px 14px; border-radius: 100px; font-size: 12px; font-weight: 600; background: rgba(62,132,255,0.1); color: #3e84ff; border: 0.5px solid rgba(62,132,255,0.2); }
+  .fc-metrics { display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 12px; margin-bottom: 24px; }
+  .fc-metric-card { background: #fafafa; border: 0.5px solid #e8e8e8; border-radius: 8px; padding: 16px; text-align: center; }
+  .fc-metric-value { font-size: 22px; font-weight: 700; line-height: 1.2; }
+  .fc-metric-label { font-size: 12px; color: #666; margin-top: 4px; }
+  .fc-metric-sub { font-size: 11px; color: #999; margin-top: 2px; }
+  .fc-val-good { color: #0f6e56; }
+  .fc-val-warn { color: #c2550a; }
+  .fc-val-bad { color: #c22d2d; }
+  .fc-chart-section { background: #fafafa; border: 0.5px solid #e8e8e8; border-radius: 8px; padding: 16px; margin-bottom: 20px; }
+  .fc-chart-title { font-size: 16px; font-weight: 600; margin-bottom: 8px; }
+  .fc-chart-desc { font-size: 12px; color: #888; margin-bottom: 12px; }
+  .fc-canvas-wrap { position: relative; width: 100%; height: 360px; }
+  .fc-monthly-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 12px; margin-bottom: 20px; }
+  .fc-month-card { background: #fafafa; border: 0.5px solid #e8e8e8; border-radius: 8px; padding: 14px; }
+  .fc-month-card.fc-hit { border-left: 3px solid #0f6e56; }
+  .fc-month-card.fc-miss { border-left: 3px solid #c22d2d; }
+  .fc-month-head { display: flex; justify-content: space-between; align-items: center; margin-bottom: 10px; }
+  .fc-month-name { font-size: 15px; font-weight: 600; }
+  .fc-month-tag { font-size: 11px; padding: 2px 8px; border-radius: 100px; font-weight: 500; }
+  .fc-tag-hit { background: rgba(15,110,86,0.1); color: #0f6e56; }
+  .fc-tag-miss { background: rgba(194,45,45,0.1); color: #c22d2d; }
+  .fc-month-rows { display: grid; grid-template-columns: 1fr 1fr; gap: 6px 12px; }
+  .fc-month-row { display: flex; justify-content: space-between; font-size: 13px; }
+  .fc-month-row span:first-child { color: #666; }
+  .fc-month-row span:last-child { font-weight: 500; font-family: 'SF Mono', monospace; }
+  .fc-err-bar { height: 4px; border-radius: 100px; margin-top: 8px; background: #eee; overflow: hidden; }
+  .fc-err-fill { height: 100%; border-radius: 100px; }
+  .fc-notes { background: #f0f0f2; border-radius: 8px; padding: 16px; margin-top: 4px; }
+  .fc-notes-title { font-size: 14px; font-weight: 600; margin-bottom: 8px; }
+  .fc-notes ul { margin: 0; padding-left: 18px; font-size: 12px; color: #555; line-height: 1.7; }
+  .fc-h1-bar { display: flex; align-items: flex-start; gap: 24px; margin-bottom: 20px; flex-wrap: wrap; }
+  .fc-h1-item { display: flex; flex-direction: column; gap: 2px; }
+  .fc-h1-val { font-size: 24px; font-weight: 700; }
+  .fc-h1-lbl { font-size: 12px; color: #666; }
+</style>
+</head>
+<body>
+<div class="fc-wrap">
+  <div class="fc-header">
+    <div>
+      <div class="fc-title">玉米期货预测 vs 实际验证 拟合度分析</div>
+      <div class="fc-subtitle">实验: corn_price_v7 · 目标: DCE玉米期货主连收盘价 · 预测期: 2026-01-01 至 2026-06-22 · 验证集: 伐谋_验证数据集0713.xlsx</div>
+    </div>
+    <div class="fc-badge">平台评分 105.3</div>
+  </div>
+
+  <div class="fc-h1-bar">
+    <div class="fc-h1-item"><span class="fc-h1-val">2210</span><span class="fc-h1-lbl">预测H1均值 (元/吨)</span></div>
+    <div class="fc-h1-item"><span class="fc-h1-val">2338.0</span><span class="fc-h1-lbl">实际H1均值 (元/吨)</span></div>
+    <div class="fc-h1-item"><span class="fc-h1-val fc-val-warn">+128.0 (+5.8%)</span><span class="fc-h1-lbl">H1整体偏差</span></div>
+    <div class="fc-h1-item"><span class="fc-h1-val" style="color:#3e84ff;">季节性+趋势外推</span><span class="fc-h1-lbl">预测方法</span></div>
+  </div>
+
+  <div class="fc-metrics">
+    <div class="fc-metric-card"><div class="fc-metric-value fc-val-warn">127.7</div><div class="fc-metric-label">MAE 平均绝对误差</div><div class="fc-metric-sub">元/吨</div></div>
+    <div class="fc-metric-card"><div class="fc-metric-value fc-val-warn">5.4%</div><div class="fc-metric-label">MAPE 百分比误差</div><div class="fc-metric-sub">月均偏差幅度</div></div>
+    <div class="fc-metric-card"><div class="fc-metric-value fc-val-warn">136.0</div><div class="fc-metric-label">RMSE 均方根误差</div><div class="fc-metric-sub">元/吨</div></div>
+    <div class="fc-metric-card"><div class="fc-metric-value fc-val-bad">-9.60</div><div class="fc-metric-label">R² 决定系数</div><div class="fc-metric-sub">负值=劣于均值基线</div></div>
+    <div class="fc-metric-card"><div class="fc-metric-value fc-val-bad">33%</div><div class="fc-metric-label">区间命中率</div><div class="fc-metric-sub">2/6 月落入预测区间</div></div>
+    <div class="fc-metric-card"><div class="fc-metric-value fc-val-bad">40%</div><div class="fc-metric-label">方向准确率</div><div class="fc-metric-sub">2/5 次方向预测正确</div></div>
+  </div>
+
+  <div class="fc-chart-section">
+    <div class="fc-chart-title">日线收盘价 vs 月度预测区间</div>
+    <div class="fc-chart-desc">蓝色实线为验证集实际日收盘价，橙色虚线为月度预测均值，浅橙带为预测区间 [low, high]</div>
+    <div class="fc-canvas-wrap"><canvas id="fc-chart-main"></canvas></div>
+  </div>
+
+  <div class="fc-chart-section">
+    <div class="fc-chart-title">月度预测均值 vs 实际均值 对比</div>
+    <div class="fc-chart-desc">柱状对比 + 误差标注，绿色=落入区间，红色=超出区间</div>
+    <div class="fc-canvas-wrap"><canvas id="fc-chart-monthly"></canvas></div>
+  </div>
+
+  <div class="fc-chart-section">
+    <div class="fc-chart-title">历史同期对比 (2024 / 2025 / 2026实际)</div>
+    <div class="fc-chart-desc">三年同期月均收盘价走势，观察趋势延续性</div>
+    <div class="fc-canvas-wrap"><canvas id="fc-chart-hist"></canvas></div>
+  </div>
+
+  <div class="fc-monthly-grid" id="fc-month-cards"></div>
+
+  <div class="fc-notes">
+    <div class="fc-notes-title">分析结论与建议</div>
+    <ul>
+      <li><b>系统性低估</b>：6个月全部为正向偏差（实际 &gt; 预测），H1平均低估128元/吨，说明趋势外推模型过度延续了2024→2025的下行趋势</li>
+      <li><b>3-4月偏差最大</b>：误差分别达195.8和184.5元/吨（9.0%和8.4%），对应春节后售粮进度加快+深加工补库周期，季节性系数未能捕捉此结构性上行</li>
+      <li><b>区间覆盖率不足</b>：仅1-2月实际均值落入预测区间，3月起实际价格持续运行在预测上限之上，区间宽度偏窄</li>
+      <li><b>R²为负值</b>：模型预测劣于"用历史均值做基线"的朴素策略，说明当前季节性+趋势外推方法在2026H1特殊行情下失效</li>
+      <li><b>建议</b>：引入实时基本面信号（港口库存、售粮进度、CBOT联动）替代纯历史外推；扩大预测区间宽度或采用分位数回归；将3-4月作为独立季节段单独建模</li>
+    </ul>
+  </div>
+</div>
+
+<script>
+const DAILY = [["2026-01-05",2224],["2026-01-06",2222],["2026-01-07",2248],["2026-01-08",2266],["2026-01-09",2263],["2026-01-12",2290],["2026-01-13",2284],["2026-01-14",2272],["2026-01-15",2295],["2026-01-16",2281],["2026-01-19",2281],["2026-01-20",2280],["2026-01-21",2283],["2026-01-22",2295],["2026-01-23",2300],["2026-01-26",2293],["2026-01-27",2283],["2026-01-28",2274],["2026-01-29",2281],["2026-01-30",2271],["2026-02-02",2261],["2026-02-03",2267],["2026-02-04",2271],["2026-02-05",2273],["2026-02-06",2279],["2026-02-09",2274],["2026-02-10",2286],["2026-02-11",2316],["2026-02-12",2320],["2026-02-13",2320],["2026-02-24",2332],["2026-02-25",2342],["2026-02-26",2342],["2026-02-27",2360],["2026-03-02",2384],["2026-03-03",2373],["2026-03-04",2379],["2026-03-05",2384],["2026-03-06",2393],["2026-03-09",2395],["2026-03-10",2381],["2026-03-11",2395],["2026-03-12",2396],["2026-03-13",2386],["2026-03-16",2379],["2026-03-17",2386],["2026-03-18",2382],["2026-03-19",2384],["2026-03-20",2387],["2026-03-23",2415],["2026-03-24",2383],["2026-03-25",2376],["2026-03-26",2376],["2026-03-27",2369],["2026-03-30",2346],["2026-03-31",2351],["2026-04-01",2350],["2026-04-02",2356],["2026-04-03",2344],["2026-04-07",2343],["2026-04-08",2345],["2026-04-09",2354],["2026-04-10",2379],["2026-04-13",2373],["2026-04-14",2397],["2026-04-15",2390],["2026-04-16",2394],["2026-04-17",2402],["2026-04-20",2414],["2026-04-21",2432],["2026-04-22",2434],["2026-04-23",2426],["2026-04-24",2417],["2026-04-27",2427],["2026-04-28",2429],["2026-04-29",2431],["2026-04-30",2427],["2026-05-06",2391],["2026-05-07",2377],["2026-05-08",2365],["2026-05-11",2353],["2026-05-12",2359],["2026-05-13",2378],["2026-05-14",2367],["2026-05-15",2355],["2026-05-18",2353],["2026-05-19",2365],["2026-05-20",2351],["2026-05-21",2324],["2026-05-22",2331],["2026-05-25",2327],["2026-05-26",2316],["2026-05-27",2311],["2026-05-28",2310],["2026-05-29",2322],["2026-06-01",2330],["2026-06-02",2333],["2026-06-03",2307],["2026-06-04",2300],["2026-06-05",2323],["2026-06-08",2332],["2026-06-09",2339],["2026-06-10",2335],["2026-06-11",2346],["2026-06-12",2351],["2026-06-15",2320],["2026-06-16",2325],["2026-06-17",2323],["2026-06-18",2329]];
+
+const MONTHLY = [
+  {month:"2026-01",pred:2197,actual:2274.3,low:2049,high:2345,amin:2222,amax:2300,err:77.3,errpct:3.5,inrange:true,h2024:2375.9,h2025:2260.1},
+  {month:"2026-02",pred:2199,actual:2303.1,low:2074,high:2323,amin:2261,amax:2360,err:104.1,errpct:4.7,inrange:true,h2024:2427.4,h2025:2288.8},
+  {month:"2026-03",pred:2186,actual:2381.8,low:2105,high:2268,amin:2346,amax:2415,err:195.8,errpct:9.0,inrange:false,h2024:2427.3,h2025:2290.8},
+  {month:"2026-04",pred:2209,actual:2393.5,low:2131,high:2286,amin:2343,amax:2434,err:184.5,errpct:8.4,inrange:false,h2024:2404.8,h2025:2311.4},
+  {month:"2026-05",pred:2224,actual:2347.5,low:2139,high:2310,amin:2310,amax:2391,err:123.5,errpct:5.6,inrange:false,h2024:2449.6,h2025:2340.6},
+  {month:"2026-06",pred:2247,actual:2328.1,low:2173,high:2321,amin:2300,amax:2351,err:81.1,errpct:3.6,inrange:false,h2024:2474.9,h2025:2373.8}
+];
+
+const cardContainer = document.getElementById('fc-month-cards');
+const maxErr = Math.max(...MONTHLY.map(m => Math.abs(m.err)));
+MONTHLY.forEach(m => {
+  const hit = m.inrange;
+  const errPctColor = m.errpct <= 5 ? 'fc-val-good' : m.errpct <= 7 ? 'fc-val-warn' : 'fc-val-bad';
+  const errWidth = Math.min(100, Math.abs(m.err) / maxErr * 100);
+  const errColor = m.errpct <= 5 ? '#0F6E56' : m.errpct <= 7 ? '#C2550A' : '#C22D2D';
+  const card = document.createElement('div');
+  card.className = 'fc-month-card ' + (hit ? 'fc-hit' : 'fc-miss');
+  card.innerHTML = `
+    <div class="fc-month-head">
+      <span class="fc-month-name">${m.month}</span>
+      <span class="fc-month-tag ${hit ? 'fc-tag-hit' : 'fc-tag-miss'}">${hit ? '✓ 区间内' : '✗ 超区间'}</span>
+    </div>
+    <div class="fc-month-rows">
+      <div class="fc-month-row"><span>预测均值</span><span>${m.pred}</span></div>
+      <div class="fc-month-row"><span>实际均值</span><span>${m.actual.toFixed(1)}</span></div>
+      <div class="fc-month-row"><span>预测区间</span><span>${m.low}~${m.high}</span></div>
+      <div class="fc-month-row"><span>实际范围</span><span>${m.amin}~${m.amax}</span></div>
+      <div class="fc-month-row"><span>误差</span><span class="${errPctColor}">${m.err > 0 ? '+' : ''}${m.err.toFixed(1)}</span></div>
+      <div class="fc-month-row"><span>误差率</span><span class="${errPctColor}">${m.errpct > 0 ? '+' : ''}${m.errpct.toFixed(1)}%</span></div>
+    </div>
+    <div class="fc-err-bar"><div class="fc-err-fill" style="width:${errWidth}%;background:${errColor};"></div></div>
+  `;
+  cardContainer.appendChild(card);
+});
+
+Chart.defaults.font.family = "'PingFang SC','Microsoft YaHei',sans-serif";
+Chart.defaults.color = '#888';
+
+const dailyLabels = DAILY.map(d => d[0]);
+const dailyPrices = DAILY.map(d => d[1]);
+const forecastLine = [], forecastLow = [], forecastHigh = [];
+DAILY.forEach(d => {
+  const monthKey = d[0].substring(0, 7);
+  const m = MONTHLY.find(x => x.month === monthKey);
+  if (m) { forecastLine.push(m.pred); forecastLow.push(m.low); forecastHigh.push(m.high); }
+  else { forecastLine.push(null); forecastLow.push(null); forecastHigh.push(null); }
+});
+
+new Chart(document.getElementById('fc-chart-main'), {
+  type: 'line',
+  data: {
+    labels: dailyLabels,
+    datasets: [
+      { label: '预测区间上限', data: forecastHigh, borderColor: 'rgba(255,159,64,0.25)', backgroundColor: 'rgba(255,159,64,0.08)', fill: '+1', pointRadius: 0, borderWidth: 1, tension: 0, stepped: true },
+      { label: '预测区间下限', data: forecastLow, borderColor: 'rgba(255,159,64,0.25)', backgroundColor: 'rgba(255,159,64,0.08)', fill: false, pointRadius: 0, borderWidth: 1, tension: 0, stepped: true },
+      { label: '预测均值', data: forecastLine, borderColor: 'rgba(255,159,64,0.9)', backgroundColor: 'transparent', pointRadius: 0, borderWidth: 2, borderDash: [6,4], tension: 0, stepped: true },
+      { label: '实际收盘价', data: dailyPrices, borderColor: 'rgba(62,132,255,1)', backgroundColor: 'rgba(62,132,255,0.06)', pointRadius: 0, borderWidth: 2, fill: false, tension: 0.3 }
+    ]
+  },
+  options: {
+    responsive: true, maintainAspectRatio: false,
+    interaction: { mode: 'index', intersect: false },
+    plugins: {
+      legend: { display: true, position: 'top', labels: { boxWidth: 16, boxHeight: 2, font: { size: 11 } } },
+      tooltip: { callbacks: { label: (ctx) => { const v = ctx.parsed.y; if (v === null) return null; return ctx.dataset.label + ': ' + v.toFixed(0) + ' 元/吨'; } } }
+    },
+    scales: { x: { display: true, ticks: { maxTicksLimit: 12, font: { size: 10 } }, grid: { display: false } }, y: { display: true, title: { display: true, text: '价格 (元/吨)', font: { size: 11 } }, ticks: { font: { size: 10 } } } }
+  }
+});
+
+new Chart(document.getElementById('fc-chart-monthly'), {
+  type: 'bar',
+  data: {
+    labels: MONTHLY.map(m => m.month),
+    datasets: [
+      { label: '预测均值', data: MONTHLY.map(m => m.pred), backgroundColor: MONTHLY.map(m => m.inrange ? 'rgba(15,110,86,0.6)' : 'rgba(194,45,45,0.6)'), borderColor: MONTHLY.map(m => m.inrange ? 'rgba(15,110,86,1)' : 'rgba(194,45,45,1)'), borderWidth: 1, borderRadius: 4 },
+      { label: '实际均值', data: MONTHLY.map(m => m.actual), backgroundColor: 'rgba(62,132,255,0.6)', borderColor: 'rgba(62,132,255,1)', borderWidth: 1, borderRadius: 4 }
+    ]
+  },
+  options: {
+    responsive: true, maintainAspectRatio: false,
+    plugins: { legend: { display: true, position: 'top', labels: { boxWidth: 14, font: { size: 11 } } }, tooltip: { callbacks: { afterLabel: (ctx) => { const m = MONTHLY[ctx.dataIndex]; if (ctx.datasetIndex === 1) { return ['误差: ' + (m.err > 0 ? '+' : '') + m.err.toFixed(1), '误差率: ' + (m.errpct > 0 ? '+' : '') + m.errpct.toFixed(1) + '%', m.inrange ? '✓ 落入区间' : '✗ 超出区间']; } return null; } } } },
+    scales: { x: { grid: { display: false } }, y: { title: { display: true, text: '元/吨', font: { size: 11 } }, grid: { color: 'rgba(128,128,128,0.1)' } } }
+  }
+});
+
+new Chart(document.getElementById('fc-chart-hist'), {
+  type: 'line',
+  data: {
+    labels: MONTHLY.map(m => m.month.substring(5)),
+    datasets: [
+      { label: '2024年同期', data: MONTHLY.map(m => m.h2024), borderColor: 'rgba(148,103,189,0.7)', backgroundColor: 'transparent', pointRadius: 4, borderWidth: 2, tension: 0.3, borderDash: [4,3] },
+      { label: '2025年同期', data: MONTHLY.map(m => m.h2025), borderColor: 'rgba(210,180,60,0.7)', backgroundColor: 'transparent', pointRadius: 4, borderWidth: 2, tension: 0.3, borderDash: [4,3] },
+      { label: '2026年实际', data: MONTHLY.map(m => m.actual), borderColor: 'rgba(62,132,255,1)', backgroundColor: 'rgba(62,132,255,0.06)', pointRadius: 4, borderWidth: 2.5, fill: false, tension: 0.3 },
+      { label: '2026年预测', data: MONTHLY.map(m => m.pred), borderColor: 'rgba(255,159,64,0.9)', backgroundColor: 'transparent', pointRadius: 4, borderWidth: 2, borderDash: [6,4], tension: 0.3 }
+    ]
+  },
+  options: {
+    responsive: true, maintainAspectRatio: false,
+    plugins: { legend: { display: true, position: 'top', labels: { boxWidth: 14, font: { size: 11 } } }, tooltip: { mode: 'index', intersect: false } },
+    scales: { x: { grid: { display: false } }, y: { title: { display: true, text: '元/吨', font: { size: 11 } }, grid: { color: 'rgba(128,128,128,0.1)' } } }
+  }
+});
+</script>
+</body>
+</html>

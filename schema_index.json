@@ -1,0 +1,6296 @@
+{
+  "已接入_数据湖指标表": [
+    {
+      "name": "TD_MD_HX_CL_DA",
+      "cn": "主数据车辆维表",
+      "sys": "主数据管理",
+      "lib": "PROD_DW",
+      "fields": [
+        {
+          "name": "RQ",
+          "desc": "日期",
+          "type": "date"
+        },
+        {
+          "name": "CLZBH",
+          "desc": "车辆资产编号(5位)",
+          "type": "varchar"
+        },
+        {
+          "name": "CLID",
+          "desc": "主数据对象ID （用于对象唯一ID，保持最新(FLAG=1)记录ID不变，历史记录(FLAG<>1)ID变化）",
+          "type": "varchar"
+        },
+        {
+          "name": "CLZBH8",
+          "desc": "车辆自编号（7位）",
+          "type": "varchar"
+        },
+        {
+          "name": "CLIDO",
+          "desc": "主数据对象IDO ： 对象ID最早生成的值，永远不变；对象IDO标识此业务对象全部变更的历史；",
+          "type": "varchar"
+        },
+        {
+          "name": "CSID",
+          "desc": "城市ID",
+          "type": "varchar"
+        },
+        {
+          "name": "GSID",
+          "desc": "单位ID",
+          "type": "varchar"
+        },
+        {
+          "name": "PZH",
+          "desc": "牌照号",
+          "type": "varchar"
+        },
+        {
+          "name": "CXID",
+          "desc": "车型ID",
+          "type": "varchar"
+        },
+        {
+          "name": "CXIDO",
+          "desc": "主数据对象IDO ： 对象ID最早生成的值，永远不变；对象IDO标识此业务对象全部变更的历史；",
+          "type": "varchar"
+        },
+        {
+          "name": "CXMC",
+          "desc": "车型名称",
+          "type": "varchar"
+        },
+        {
+          "name": "CXBM",
+          "desc": "车型编码（别名，全局唯一）",
+          "type": "varchar"
+        },
+        {
+          "name": "CZ",
+          "desc": "车种",
+          "type": "varchar"
+        },
+        {
+          "name": "CLFL",
+          "desc": "车辆分类",
+          "type": "varchar"
+        },
+        {
+          "name": "ZZC",
+          "desc": "制造厂",
+          "type": "varchar"
+        },
+        {
+          "name": "CP",
+          "desc": "厂牌",
+          "type": "varchar"
+        },
+        {
+          "name": "QDXS",
+          "desc": "驱动形式",
+          "type": "varchar"
+        },
+        {
+          "name": "MJ",
+          "desc": "米级",
+          "type": "varchar"
+        },
+        {
+          "name": "RL",
+          "desc": "燃料",
+          "type": "varchar"
+        },
+        {
+          "name": "BZCZSXS",
+          "desc": "标准车折算系数",
+          "type": "varchar"
+        },
+        {
+          "name": "FDJ_PFBZ",
+          "desc": "发动机排放标准",
+          "type": "varchar"
+        },
+        {
+          "name": "CC",
+          "desc": "车长（MM）",
+          "type": "varchar"
+        },
+        {
+          "name": "CK",
+          "desc": "车宽（MM）",
+          "type": "varchar"
+        },
+        {
+          "name": "CG",
+          "desc": "车高（MM）",
+          "type": "varchar"
+        },
+        {
+          "name": "CKMS",
+          "desc": "乘客门数",
+          "type": "varchar"
+        },
+        {
+          "name": "ZXS",
+          "desc": "乘客座数（人）",
+          "type": "bigint"
+        },
+        {
+          "name": "CYS",
+          "desc": "车型定员（人）",
+          "type": "bigint"
+        },
+        {
+          "name": "CANX",
+          "desc": "CAN线(是否安装)，1-是， 0 否",
+          "type": "varchar"
+        },
+        {
+          "name": "ZCJGID",
+          "desc": "资产归属机构ID",
+          "type": "varchar"
+        },
+        {
+          "name": "ZCJGMC",
+          "desc": "资产归属机构名称",
+          "type": "varchar"
+        },
+        {
+          "name": "DWID",
+          "desc": "分公司ID",
+          "type": "varchar"
+        },
+        {
+          "name": "DWMC",
+          "desc": "分公司名称(冗余)",
+          "type": "varchar"
+        },
+        {
+          "name": "DWJC",
+          "desc": "分公司简称",
+          "type": "varchar"
+        },
+        {
+          "name": "DWPX",
+          "desc": "分公司排序",
+          "type": "bigint"
+        },
+        {
+          "name": "CDID",
+          "desc": "运营机构ID",
+          "type": "varchar"
+        },
+        {
+          "name": "CDMC",
+          "desc": "运营机构名称（冗余）",
+          "type": "varchar"
+        },
+        {
+          "name": "CDJC",
+          "desc": "运营机构简称",
+          "type": "varchar"
+        },
+        {
+          "name": "CDPX",
+          "desc": "运营机构排序",
+          "type": "bigint"
+        },
+        {
+          "name": "XLID",
+          "desc": "线路ID",
+          "type": "varchar"
+        },
+        {
+          "name": "XLMC",
+          "desc": "线路名称（冗余）",
+          "type": "varchar"
+        },
+        {
+          "name": "XLBH",
+          "desc": "线路编号",
+          "type": "varchar"
+        },
+        {
+          "name": "XLBHIC",
+          "desc": "IC线路编号",
+          "type": "varchar"
+        },
+        {
+          "name": "XLPX",
+          "desc": "线路排序",
+          "type": "varchar"
+        },
+        {
+          "name": "XLH",
+          "desc": "线路号",
+          "type": "varchar"
+        },
+        {
+          "name": "DJH",
+          "desc": "车辆识别码VIN：（底架号）",
+          "type": "varchar"
+        },
+        {
+          "name": "JDCDJZBH",
+          "desc": "机动车登记证编号",
+          "type": "varchar"
+        },
+        {
+          "name": "YYXKZBH",
+          "desc": "运营许可证编号(哈公交管字号）",
+          "type": "varchar"
+        },
+        {
+          "name": "CDRQ",
+          "desc": "初登日期",
+          "type": "varchar"
+        },
+        {
+          "name": "CLZT",
+          "desc": "车辆状态",
+          "type": "varchar"
+        },
+        {
+          "name": "CLYT",
+          "desc": "车辆用途",
+          "type": "varchar"
+        },
+        {
+          "name": "CSYS",
+          "desc": "车身颜色",
+          "type": "varchar"
+        },
+        {
+          "name": "JSDAH",
+          "desc": "技术档案号",
+          "type": "varchar"
+        },
+        {
+          "name": "DLYSZH",
+          "desc": "道路运输证号",
+          "type": "varchar"
+        },
+        {
+          "name": "FDJH",
+          "desc": "发动机号",
+          "type": "varchar"
+        },
+        {
+          "name": "FDJJYXH",
+          "desc": "发动机机油型号",
+          "type": "varchar"
+        },
+        {
+          "name": "FDJJYPP",
+          "desc": "发动机机油品牌",
+          "type": "varchar"
+        },
+        {
+          "name": "BSXYXH",
+          "desc": "变速箱油型号",
+          "type": "varchar"
+        },
+        {
+          "name": "BSXYPP",
+          "desc": "变速箱油品牌",
+          "type": "varchar"
+        },
+        {
+          "name": "CJYXH",
+          "desc": "车桥油型号",
+          "type": "varchar"
+        },
+        {
+          "name": "CJYPP",
+          "desc": "车桥油品牌",
+          "type": "varchar"
+        },
+        {
+          "name": "ZXZLYXH",
+          "desc": "转向助力油型号",
+          "type": "varchar"
+        },
+        {
+          "name": "ZXZLYPP",
+          "desc": "转向助力油品牌",
+          "type": "varchar"
+        },
+        {
+          "name": "JZRHYXH",
+          "desc": "集中润滑油型号",
+          "type": "varchar"
+        },
+        {
+          "name": "JZRHYPP",
+          "desc": "集中润滑油品牌",
+          "type": "varchar"
+        },
+        {
+          "name": "FDYPP",
+          "desc": "防冻液品牌",
+          "type": "varchar"
+        },
+        {
+          "name": "NSPP",
+          "desc": "尿素品牌",
+          "type": "varchar"
+        },
+        {
+          "name": "NYNX",
+          "desc": "耐用年限",
+          "type": "varchar"
+        },
+        {
+          "name": "BFSJ",
+          "desc": "报废时间",
+          "type": "varchar"
+        },
+        {
+          "name": "GBBM",
+          "desc": "国标编号(28181协议通讯使用，216虚拟组织目录编码，20位数字，详见编码规则定义文档)",
+          "type": "varchar"
+        },
+        {
+          "name": "CL",
+          "desc": "车龄",
+          "type": "bigint"
+        },
+        {
+          "name": "RLID",
+          "desc": "燃料id",
+          "type": "varchar"
+        },
+        {
+          "name": "LJGL",
+          "desc": "累计里程",
+          "type": "varchar"
+        },
+        {
+          "name": "XLLX_ZL",
+          "desc": "线路类型子类",
+          "type": "varchar"
+        },
+        {
+          "name": "MJDY",
+          "desc": "米级定员",
+          "type": "double"
+        },
+        {
+          "name": "EDZWS",
+          "desc": "额定座位数",
+          "type": "bigint"
+        },
+        {
+          "name": "ZKRS",
+          "desc": "载客人数",
+          "type": "bigint"
+        },
+        {
+          "name": "QYBH",
+          "desc": "区域编号",
+          "type": "varchar"
+        },
+        {
+          "name": "QYMC",
+          "desc": "区域名称",
+          "type": "varchar"
+        },
+        {
+          "name": "QYPX",
+          "desc": "区域排序",
+          "type": "varchar"
+        }
+      ]
+    },
+    {
+      "name": "TD_MD_HX_XL_DA",
+      "cn": "主数据_线路表",
+      "sys": "主数据管理",
+      "lib": "PROD_DIM",
+      "fields": [
+        {
+          "name": "rq",
+          "desc": "【字段名】日期",
+          "type": "date"
+        },
+        {
+          "name": "xlid",
+          "desc": "【字段名】线路ID 【解释】主数据对象ID （用于对象唯一ID，保持最新(FLAG=1)记录ID不变，历史记录(FLAG<>1)ID变化）",
+          "type": "varchar"
+        },
+        {
+          "name": "xlido",
+          "desc": "【字段名】线路IDO【解释】主数据对象IDO ： 对象ID最早生成的值，永远不变；对象IDO标识此业务对象全部变更的历史；",
+          "type": "varchar"
+        },
+        {
+          "name": "xlbh",
+          "desc": "【字段名】线路编号【解释】线路编号(可以带英文字母或纯数字的)",
+          "type": "varchar"
+        },
+        {
+          "name": "flag",
+          "desc": "【字段名】记录标识【解释】记录标识 0-历史;1-最新;2-预生效;3-预生效历史",
+          "type": "int"
+        },
+        {
+          "name": "kssj",
+          "desc": "【字段名】生效时间【解释】生效时间 格式:YYYY-MM-DD HH24:MI:SS",
+          "type": "varchar"
+        },
+        {
+          "name": "jssj",
+          "desc": "【字段名】失效时间【解释】失效时间 格式:YYYY-MM-DD HH24:MI:SS",
+          "type": "varchar"
+        },
+        {
+          "name": "zt",
+          "desc": "【字段名】状态【解释】状态 ： 1 有效 0 无效",
+          "type": "int"
+        },
+        {
+          "name": "czsj",
+          "desc": "【字段名】操作时间【解释】操作时间",
+          "type": "varchar"
+        },
+        {
+          "name": "czrid",
+          "desc": "【字段名】操作人ID【解释】操作人ID",
+          "type": "varchar"
+        },
+        {
+          "name": "czr",
+          "desc": "【字段名】操作人【解释】操作人",
+          "type": "varchar"
+        },
+        {
+          "name": "ysxywbz",
+          "desc": "【字段名】预生效业务标志【解释】预生效业务标志:1 预成立 2 预撤销 3 预调动4 预成立生效5 预撤销生效6 预调动生效",
+          "type": "int"
+        },
+        {
+          "name": "csid",
+          "desc": "【字段名】城市ID【解释】城市ID",
+          "type": "varchar"
+        },
+        {
+          "name": "dwid",
+          "desc": "【字段名】单位ID【解释】单位ID",
+          "type": "varchar"
+        },
+        {
+          "name": "xlmc",
+          "desc": "【字段名】线路名称【解释】线路名称（站牌上显示的文字，可以带中文路字）",
+          "type": "varchar"
+        },
+        {
+          "name": "gsid",
+          "desc": "【字段名】公司ID【解释】归属公司ID",
+          "type": "varchar"
+        },
+        {
+          "name": "gsmc",
+          "desc": "【字段名】公司名称【解释】归属公司名称（冗余）",
+          "type": "varchar"
+        },
+        {
+          "name": "jgid",
+          "desc": "【字段名】运营机构ID【解释】运营机构ID（归属车队）",
+          "type": "varchar"
+        },
+        {
+          "name": "jgmc",
+          "desc": "【字段名】运营机构名称【解释】运营机构名称（冗余）",
+          "type": "varchar"
+        },
+        {
+          "name": "szzdid",
+          "desc": "【字段名】首站站点ID【解释】首站站点ID，（首站->末站为下行，下行第一站）",
+          "type": "varchar"
+        },
+        {
+          "name": "szzdmc",
+          "desc": "【字段名】首站站点名称【解释】首站站点名称，（首站->末站为下行，下行第一站）",
+          "type": "varchar"
+        },
+        {
+          "name": "mzzdid",
+          "desc": "【字段名】末站站点ID【解释】末站站点ID，（末站->首站为上行，上行第一站）",
+          "type": "varchar"
+        },
+        {
+          "name": "mzzdmc",
+          "desc": "【字段名】末站站点名称【解释】末站站点名称，（末站->首站为上行，上行第一站）",
+          "type": "varchar"
+        },
+        {
+          "name": "xlbhic",
+          "desc": "【字段名】线路编号IC卡【解释】线路编号IC卡",
+          "type": "varchar"
+        },
+        {
+          "name": "sfhxxl",
+          "desc": "【字段名】是否环形线路【解释】是否环形线路",
+          "type": "int"
+        },
+        {
+          "name": "sfdypj",
+          "desc": "【字段名】是否单一票制【解释】是否单一票制",
+          "type": "int"
+        },
+        {
+          "name": "jjlx",
+          "desc": "【字段名】计价类型【解释】计价类型（10-5-5）",
+          "type": "varchar"
+        },
+        {
+          "name": "qbj",
+          "desc": "【字段名】起步价【解释】起步价（分）",
+          "type": "int"
+        },
+        {
+          "name": "xllx",
+          "desc": "【字段名】线路类型【解释】线路类型(常规线路，多样化线路，其他线路)",
+          "type": "varchar"
+        },
+        {
+          "name": "pjzjxlcd",
+          "desc": "【字段名】平均站距线路长度【解释】平均站距线路长度(米)(上下行累计站距公里的平均值)",
+          "type": "int"
+        },
+        {
+          "name": "pjjjxlcd",
+          "desc": "【字段名】平均计价线路长度【解释】平均计价线路长度(米)(上下行累计计价公里的平均值)",
+          "type": "int"
+        },
+        {
+          "name": "sxrq",
+          "desc": "【字段名】生效日期【解释】生效日期（线路正式生效日期）",
+          "type": "varchar"
+        },
+        {
+          "name": "fbrq",
+          "desc": "【字段名】发布日期【解释】发布日期（线网推送日期）",
+          "type": "varchar"
+        },
+        {
+          "name": "bz",
+          "desc": "【字段名】备注【解释】备注",
+          "type": "varchar"
+        }
+      ]
+    },
+    {
+      "name": "TD_MD_HX_XL_ZD_DA",
+      "cn": "主数据线路站点",
+      "sys": "主数据管理",
+      "lib": "PROD_DIM",
+      "fields": [
+        {
+          "name": "rq",
+          "desc": "【字段名】日期",
+          "type": "date"
+        },
+        {
+          "name": "zdid",
+          "desc": "【字段名】线路站点ID【解释】主数据对象ID （用于对象唯一ID，保持最新(FLAG=1)记录ID不变，历史记录(FLAG<>1)ID变化）",
+          "type": "varchar"
+        },
+        {
+          "name": "zdido",
+          "desc": "【字段名】线路站点IDO【解释】主数据对象IDO ： 对象ID最早生成的值，永远不变；对象IDO标识此业务对象全部变更的历史；",
+          "type": "varchar"
+        },
+        {
+          "name": "xlid",
+          "desc": "【字段名】线路ID【解释】线路ID",
+          "type": "varchar"
+        },
+        {
+          "name": "xlfx",
+          "desc": "【字段名】线路方向【解释】线路方向： 0-上行，1-下行 ",
+          "type": "int"
+        },
+        {
+          "name": "zwid",
+          "desc": "【字段名】站位ID【解释】站位ID",
+          "type": "varchar"
+        },
+        {
+          "name": "zdxh",
+          "desc": "【字段名】站点序号【解释】站点序号(按始发站开始排序)",
+          "type": "int"
+        },
+        {
+          "name": "zdmc",
+          "desc": "【字段名】站点名称【解释】站点名称",
+          "type": "varchar"
+        },
+        {
+          "name": "flag",
+          "desc": "【字段名】记录标识【解释】记录标识 0-历史;1-最新;2-预生效;3-预生效历史",
+          "type": "int"
+        },
+        {
+          "name": "kssj",
+          "desc": "【字段名】生效时间【解释】生效时间 格式:YYYY-MM-DD HH24:MI:SS",
+          "type": "varchar"
+        },
+        {
+          "name": "jssj",
+          "desc": "【字段名】失效时间【解释】失效时间 格式:YYYY-MM-DD HH24:MI:SS",
+          "type": "varchar"
+        },
+        {
+          "name": "zt",
+          "desc": "【字段名】状态【解释】状态 ： 1 有效 0 无效",
+          "type": "int"
+        },
+        {
+          "name": "czsj",
+          "desc": "【字段名】操作时间【解释】操作时间",
+          "type": "varchar"
+        },
+        {
+          "name": "czrid",
+          "desc": "【字段名】操作人ID【解释】操作人ID",
+          "type": "varchar"
+        },
+        {
+          "name": "czr",
+          "desc": "【字段名】操作人【解释】操作人",
+          "type": "varchar"
+        },
+        {
+          "name": "ysxywbz",
+          "desc": "【字段名】预生效业务标志【解释】预生效业务标志:1 预成立 2 预撤销 3 预调动4 预成立生效5 预撤销生效6 预调动生效",
+          "type": "int"
+        },
+        {
+          "name": "fxj",
+          "desc": "【字段名】方向角【解释】方向角",
+          "type": "int"
+        },
+        {
+          "name": "xzqh",
+          "desc": "【字段名】行政区划【解释】行政区划 [冗余]",
+          "type": "varchar"
+        },
+        {
+          "name": "zflwz",
+          "desc": "【字段名】主辅路位置【解释】主辅路位置 [冗余]",
+          "type": "varchar"
+        },
+        {
+          "name": "fx",
+          "desc": "【字段名】方向【解释】方向 [冗余]",
+          "type": "varchar"
+        },
+        {
+          "name": "sfsqn",
+          "desc": "【字段名】是否市区内【解释】是否市区内 [冗余]",
+          "type": "int"
+        },
+        {
+          "name": "jszjl",
+          "desc": "【字段名】距始发站距离【解释】距始发站距离 单位:米",
+          "type": "bigint"
+        },
+        {
+          "name": "jmzjl",
+          "desc": "【字段名】距终点站距离【解释】距终点站距离 单位:米",
+          "type": "bigint"
+        },
+        {
+          "name": "jxzjl",
+          "desc": "【字段名】距下站距离【解释】距下站距离 单位:米",
+          "type": "bigint"
+        },
+        {
+          "name": "jshangzjl",
+          "desc": "【字段名】距上站距离【解释】距上站距离 单位:米",
+          "type": "bigint"
+        },
+        {
+          "name": "JD",
+          "desc": "经度",
+          "type": "double"
+        },
+        {
+          "name": "WD",
+          "desc": "纬度",
+          "type": "double"
+        },
+        {
+          "name": "GDJD",
+          "desc": "高德经度",
+          "type": "double"
+        },
+        {
+          "name": "GDWD",
+          "desc": "高德纬度",
+          "type": "double"
+        },
+        {
+          "name": "BDJD",
+          "desc": "百度经度",
+          "type": "double"
+        },
+        {
+          "name": "BDWD",
+          "desc": "百度纬度",
+          "type": "double"
+        },
+        {
+          "name": "HLWZ",
+          "desc": "环路位置",
+          "type": "varchar"
+        },
+        {
+          "name": "BZ",
+          "desc": "备注",
+          "type": "varchar"
+        },
+        {
+          "name": "JJH",
+          "desc": "计价号",
+          "type": "varchar"
+        }
+      ]
+    },
+    {
+      "name": "TI_MD_HX_CZ_DA",
+      "cn": "主数据场站表",
+      "sys": "主数据管理",
+      "lib": "PROD_DW",
+      "fields": [
+        {
+          "name": "rq",
+          "desc": "日期",
+          "type": "date"
+        },
+        {
+          "name": "czid",
+          "desc": " 【字段名】场站ID【解释】主数据对象ID （用于对象唯一ID，保持最新(FLAG=1)记录ID不变，历史记录(FLAG<>1)ID变化）",
+          "type": "varchar"
+        },
+        {
+          "name": "flag",
+          "desc": "【字段名】记录标识【解释】记录标识 0-历史;1-最新;2-预生效;3-预生效历史",
+          "type": "bigint"
+        },
+        {
+          "name": "zt",
+          "desc": "【字段名】状态【解释】状态 ： 1 有效 0 无效",
+          "type": "bigint"
+        },
+        {
+          "name": "czido",
+          "desc": "【字段名】场站IDO【解释】主数据对象IDO ： 对象ID最早生成的值，永远不变；对象IDO标识此业务对象全部变更的历史；",
+          "type": "varchar"
+        },
+        {
+          "name": "kssj",
+          "desc": "【字段名】生效时间【解释】生效时间 格式:YYYY-MM-DD HH24:MI:SS",
+          "type": "varchar"
+        },
+        {
+          "name": "jssj",
+          "desc": "【字段名】失效时间【解释】失效时间 格式:YYYY-MM-DD HH24:MI:SS",
+          "type": "varchar"
+        },
+        {
+          "name": "czsj",
+          "desc": "【字段名】操作时间【解释】操作时间",
+          "type": "varchar"
+        },
+        {
+          "name": "czrid",
+          "desc": "【字段名】操作人ID【解释】操作人ID",
+          "type": "varchar"
+        },
+        {
+          "name": "czr",
+          "desc": "【字段名】操作人【解释】操作人",
+          "type": "varchar"
+        },
+        {
+          "name": "csid",
+          "desc": "【字段名】城市ID【解释】城市ID",
+          "type": "varchar"
+        },
+        {
+          "name": "dwid",
+          "desc": "【字段名】单位ID【解释】单位ID",
+          "type": "varchar"
+        },
+        {
+          "name": "czbm",
+          "desc": "【字段名】场站编码【解释】场站编码",
+          "type": "varchar"
+        },
+        {
+          "name": "czmc",
+          "desc": "【字段名】场站名称【解释】场站名称",
+          "type": "varchar"
+        },
+        {
+          "name": "czjc",
+          "desc": "【字段名】场站简称【解释】场站简称",
+          "type": "varchar"
+        },
+        {
+          "name": "jgid",
+          "desc": "【字段名】机构ID【解释】分公司ID(管理单位)",
+          "type": "varchar"
+        },
+        {
+          "name": "jgmc",
+          "desc": "【字段名】机构名称【解释】分公司名称(冗余)",
+          "type": "varchar"
+        },
+        {
+          "name": "czlx",
+          "desc": "【字段名】场站类型【解释】场站类型(独立，综合)",
+          "type": "varchar"
+        },
+        {
+          "name": "czxz",
+          "desc": "【字段名】场站性质【解释】场站性质（自有，三方）",
+          "type": "varchar"
+        },
+        {
+          "name": "czyt",
+          "desc": "【字段名】场站用途【解释】场站用途",
+          "type": "varchar"
+        },
+        {
+          "name": "syzt",
+          "desc": "【字段名】使用状态【解释】使用状态 ： 1 在用 0 停用",
+          "type": "bigint"
+        },
+        {
+          "name": "xzqh",
+          "desc": "【字段名】行政区划【解释】行政区划",
+          "type": "varchar"
+        },
+        {
+          "name": "hlwz",
+          "desc": "【字段名】环路位置【解释】环路位置",
+          "type": "varchar"
+        },
+        {
+          "name": "jd",
+          "desc": "【字段名】经度【解释】经度",
+          "type": "double"
+        },
+        {
+          "name": "wd",
+          "desc": "【字段名】纬度【解释】纬度",
+          "type": "double"
+        },
+        {
+          "name": "gdjd",
+          "desc": "【字段名】高德经度【解释】高德经度",
+          "type": "double"
+        },
+        {
+          "name": "gdwd",
+          "desc": "【字段名】高德纬度【解释】高德纬度",
+          "type": "double"
+        },
+        {
+          "name": "bdjd",
+          "desc": "【字段名】百度经度【解释】百度经度",
+          "type": "double"
+        },
+        {
+          "name": "bdwd",
+          "desc": "【字段名】百度纬度【解释】百度纬度",
+          "type": "double"
+        },
+        {
+          "name": "tdbm",
+          "desc": "【字段名】土地编码【解释】土地编码",
+          "type": "varchar"
+        },
+        {
+          "name": "tdmc",
+          "desc": "【字段名】土地名称【解释】土地名称",
+          "type": "varchar"
+        },
+        {
+          "name": "jymj",
+          "desc": "【字段名】经营面积【解释】经营面积",
+          "type": "double"
+        },
+        {
+          "name": "zymj",
+          "desc": "【字段名】占用面积【解释】占用面积",
+          "type": "double"
+        },
+        {
+          "name": "zysj",
+          "desc": "【字段名】占用时间【解释】占用时间",
+          "type": "varchar"
+        },
+        {
+          "name": "xzmj",
+          "desc": "【字段名】闲置面积【解释】闲置面积",
+          "type": "double"
+        },
+        {
+          "name": "qtmj",
+          "desc": "【字段名】其他面积【解释】其他面积",
+          "type": "double"
+        },
+        {
+          "name": "tcrq",
+          "desc": "【字段名】投产日期【解释】投产日期",
+          "type": "varchar"
+        },
+        {
+          "name": "zfrq",
+          "desc": "【字段名】作废日期【解释】作废日期",
+          "type": "varchar"
+        },
+        {
+          "name": "czid_zd",
+          "desc": "【字段名】原场站ID【解释】原宗地系统场站ID(冗余 调度系统及场站设备使用)",
+          "type": "varchar"
+        },
+        {
+          "name": "dz",
+          "desc": "【字段名】地址【解释】地址",
+          "type": "varchar"
+        },
+        {
+          "name": "bz",
+          "desc": "备注",
+          "type": "varchar"
+        },
+        {
+          "name": "lqsj",
+          "desc": "【字段名】拉取时间【解释】拉取时间/推送时间",
+          "type": "varchar"
+        },
+        {
+          "name": "rksj",
+          "desc": "【字段名】入库时间【解释】入库时间",
+          "type": "varchar"
+        }
+      ]
+    }
+  ],
+  "已接入_事件池": [
+    {
+      "name": "TA_SJC_MASTER_MI",
+      "cn": "事件池-主表",
+      "cat1": "",
+      "cat2": "",
+      "cat3": "",
+      "desc": "",
+      "fields": [
+        {
+          "name": "RQ",
+          "desc": "事件日期"
+        },
+        {
+          "name": "TYPE",
+          "desc": "类型，1:时间插帧;2:业务事件"
+        },
+        {
+          "name": "ID",
+          "desc": "事件唯一标识"
+        },
+        {
+          "name": "FSSJ",
+          "desc": "发生时间"
+        },
+        {
+          "name": "FSSJC",
+          "desc": "发生时间戳"
+        },
+        {
+          "name": "STLX",
+          "desc": "实体类型"
+        },
+        {
+          "name": "STID",
+          "desc": "实体id"
+        },
+        {
+          "name": "KRTIME",
+          "desc": "Kafka时间"
+        },
+        {
+          "name": "PTE",
+          "desc": "写入时间"
+        },
+        {
+          "name": "SPEED",
+          "desc": "事件时车速(km/h)"
+        },
+        {
+          "name": "XHLC",
+          "desc": "当前剩余续航里程(km)"
+        },
+        {
+          "name": "SOC",
+          "desc": "当前SOC"
+        },
+        {
+          "name": "JD",
+          "desc": "经度"
+        },
+        {
+          "name": "WD",
+          "desc": "纬度"
+        },
+        {
+          "name": "CQID",
+          "desc": "城区位置ID"
+        },
+        {
+          "name": "CQMC",
+          "desc": "城区位置名称"
+        },
+        {
+          "name": "HLID",
+          "desc": "环路位置ID"
+        },
+        {
+          "name": "HLMC",
+          "desc": "环路位置名称"
+        },
+        {
+          "name": "ZWID",
+          "desc": "直线距离最近的站位ID"
+        },
+        {
+          "name": "ZWMC",
+          "desc": "直线距离最近的站位名称"
+        },
+        {
+          "name": "ZWJL",
+          "desc": "直线距离最近的站位距离"
+        },
+        {
+          "name": "QLID",
+          "desc": "桥ID"
+        },
+        {
+          "name": "QLMC",
+          "desc": "桥名称"
+        },
+        {
+          "name": "QLJL",
+          "desc": "桥距离"
+        },
+        {
+          "name": "MID",
+          "desc": "门ID"
+        },
+        {
+          "name": "MMC",
+          "desc": "门名称"
+        },
+        {
+          "name": "MJL",
+          "desc": "门距离"
+        },
+        {
+          "name": "QCLZID",
+          "desc": "七站两场ID"
+        },
+        {
+          "name": "QCLZMC",
+          "desc": "七站两场名称"
+        },
+        {
+          "name": "QCLZJL",
+          "desc": "七站两场距离"
+        },
+        {
+          "name": "YYID",
+          "desc": "医院ID"
+        },
+        {
+          "name": "YYMC",
+          "desc": "医院名称"
+        },
+        {
+          "name": "YYJL",
+          "desc": "医院距离"
+        },
+        {
+          "name": "XXID",
+          "desc": "学校ID"
+        },
+        {
+          "name": "XXMC",
+          "desc": "学校名称"
+        },
+        {
+          "name": "XXJL",
+          "desc": "学校距离"
+        },
+        {
+          "name": "JDID",
+          "desc": "景点ID"
+        },
+        {
+          "name": "JDMC",
+          "desc": "景点名称"
+        },
+        {
+          "name": "JDJL",
+          "desc": "景点距离"
+        },
+        {
+          "name": "SWQID",
+          "desc": "商务区ID"
+        },
+        {
+          "name": "SWQMC",
+          "desc": "商务区名称"
+        },
+        {
+          "name": "SWQJL",
+          "desc": "商务区距离"
+        },
+        {
+          "name": "BZQLX",
+          "desc": "0:运营区;1:场站;2:保养点;3:能源站;"
+        },
+        {
+          "name": "BZQID",
+          "desc": "所在保障区ID"
+        },
+        {
+          "name": "BZQMC",
+          "desc": "所在保障区名称"
+        },
+        {
+          "name": "JSDID",
+          "desc": "积水点ID"
+        },
+        {
+          "name": "JSDMC",
+          "desc": "积水点名称"
+        },
+        {
+          "name": "JSDJL",
+          "desc": "积水点距离"
+        },
+        {
+          "name": "CYSTLX",
+          "desc": "事件参与实体类型,0:司机;1:车辆;2:线路;3:站点4:场站"
+        },
+        {
+          "name": "CYSTID",
+          "desc": "事件参与实体id"
+        },
+        {
+          "name": "SJYJFL",
+          "desc": "事件一级分类"
+        },
+        {
+          "name": "SJEJFL",
+          "desc": "事件二级分类"
+        },
+        {
+          "name": "SJSJFL",
+          "desc": "事件三级分类"
+        },
+        {
+          "name": "YWDJID",
+          "desc": "业务单据id"
+        },
+        {
+          "name": "GSDWID",
+          "desc": "归属分公司ID"
+        },
+        {
+          "name": "GSDWMC",
+          "desc": "归属分公司名称"
+        },
+        {
+          "name": "GSDWJC",
+          "desc": "归属分公司简称"
+        },
+        {
+          "name": "GSDWPX",
+          "desc": "归属分公司排序"
+        },
+        {
+          "name": "GSCDID",
+          "desc": "归属车队ID"
+        },
+        {
+          "name": "GSCDMC",
+          "desc": "归属车队名称"
+        },
+        {
+          "name": "GSCDJC",
+          "desc": "归属车队简称"
+        },
+        {
+          "name": "GSCDPX",
+          "desc": "归属车队排序"
+        },
+        {
+          "name": "GSXLID",
+          "desc": "归属线路ID"
+        },
+        {
+          "name": "GSXLMC",
+          "desc": "归属线路名称"
+        },
+        {
+          "name": "GSXLPX",
+          "desc": "归属线路排序"
+        },
+        {
+          "name": "CDRQ",
+          "desc": "车辆初登日期"
+        },
+        {
+          "name": "CLMJ",
+          "desc": "车辆米级"
+        },
+        {
+          "name": "RLLX",
+          "desc": "车辆燃料类型"
+        },
+        {
+          "name": "CXMC",
+          "desc": "车型名称"
+        },
+        {
+          "name": "CPMC",
+          "desc": "车牌名称"
+        },
+        {
+          "name": "ZLC",
+          "desc": "总行驶里程(km)"
+        },
+        {
+          "name": "SJINFO",
+          "desc": "事件详细数据"
+        }
+      ]
+    },
+    {
+      "name": "TA_SJC_SUB_BS_LD_DAY_MI",
+      "cn": "事件池-子表-车辆运营路单",
+      "cat1": "车辆业务事件",
+      "cat2": "运营业务域",
+      "cat3": "路单",
+      "desc": "",
+      "fields": [
+        {
+          "name": "RQ",
+          "desc": "事件日期"
+        },
+        {
+          "name": "TYPE",
+          "desc": "类型，1:时间插帧;2:业务事件"
+        },
+        {
+          "name": "ID",
+          "desc": "事件唯一标识"
+        },
+        {
+          "name": "FSSJ",
+          "desc": "发生时间"
+        },
+        {
+          "name": "FSSJC",
+          "desc": "发生时间戳"
+        },
+        {
+          "name": "STLX",
+          "desc": "实体类型"
+        },
+        {
+          "name": "STID",
+          "desc": "实体id"
+        },
+        {
+          "name": "KRTIME",
+          "desc": "Kafka时间"
+        },
+        {
+          "name": "PTE",
+          "desc": "写入时间"
+        },
+        {
+          "name": "SPEED",
+          "desc": "事件时车速(km/h)"
+        },
+        {
+          "name": "XHLC",
+          "desc": "当前剩余续航里程(km)"
+        },
+        {
+          "name": "SOC",
+          "desc": "当前SOC"
+        },
+        {
+          "name": "JD",
+          "desc": "经度"
+        },
+        {
+          "name": "WD",
+          "desc": "纬度"
+        },
+        {
+          "name": "CQID",
+          "desc": "城区位置ID"
+        },
+        {
+          "name": "CQMC",
+          "desc": "城区位置名称"
+        },
+        {
+          "name": "HLID",
+          "desc": "环路位置ID"
+        },
+        {
+          "name": "HLMC",
+          "desc": "环路位置名称"
+        },
+        {
+          "name": "ZWID",
+          "desc": "直线距离最近的站位ID"
+        },
+        {
+          "name": "ZWMC",
+          "desc": "直线距离最近的站位名称"
+        },
+        {
+          "name": "ZWJL",
+          "desc": "直线距离最近的站位距离"
+        },
+        {
+          "name": "QLID",
+          "desc": "桥ID"
+        },
+        {
+          "name": "QLMC",
+          "desc": "桥名称"
+        },
+        {
+          "name": "QLJL",
+          "desc": "桥距离"
+        },
+        {
+          "name": "MID",
+          "desc": "门ID"
+        },
+        {
+          "name": "MMC",
+          "desc": "门名称"
+        },
+        {
+          "name": "MJL",
+          "desc": "门距离"
+        },
+        {
+          "name": "QCLZID",
+          "desc": "七站两场ID"
+        },
+        {
+          "name": "QCLZMC",
+          "desc": "七站两场名称"
+        },
+        {
+          "name": "QCLZJL",
+          "desc": "七站两场距离"
+        },
+        {
+          "name": "YYID",
+          "desc": "医院ID"
+        },
+        {
+          "name": "YYMC",
+          "desc": "医院名称"
+        },
+        {
+          "name": "YYJL",
+          "desc": "医院距离"
+        },
+        {
+          "name": "XXID",
+          "desc": "学校ID"
+        },
+        {
+          "name": "XXMC",
+          "desc": "学校名称"
+        },
+        {
+          "name": "XXJL",
+          "desc": "学校距离"
+        },
+        {
+          "name": "JDID",
+          "desc": "景点ID"
+        },
+        {
+          "name": "JDMC",
+          "desc": "景点名称"
+        },
+        {
+          "name": "JDJL",
+          "desc": "景点距离"
+        },
+        {
+          "name": "SWQID",
+          "desc": "商务区ID"
+        },
+        {
+          "name": "SWQMC",
+          "desc": "商务区名称"
+        },
+        {
+          "name": "SWQJL",
+          "desc": "商务区距离"
+        },
+        {
+          "name": "BZQLX",
+          "desc": "0:运营区;1:场站;2:保养点;3:能源站;"
+        },
+        {
+          "name": "BZQID",
+          "desc": "所在保障区ID"
+        },
+        {
+          "name": "BZQMC",
+          "desc": "所在保障区名称"
+        },
+        {
+          "name": "JSDID",
+          "desc": "积水点ID"
+        },
+        {
+          "name": "JSDMC",
+          "desc": "积水点名称"
+        },
+        {
+          "name": "JSDJL",
+          "desc": "积水点距离"
+        },
+        {
+          "name": "CYSTLX",
+          "desc": "事件参与实体类型,0:司机;1:车辆;2:线路;3:站点4:场站"
+        },
+        {
+          "name": "CYSTID",
+          "desc": "事件参与实体id"
+        },
+        {
+          "name": "SJYJFL",
+          "desc": "事件一级分类"
+        },
+        {
+          "name": "SJEJFL",
+          "desc": "事件二级分类"
+        },
+        {
+          "name": "SJSJFL",
+          "desc": "事件三级分类"
+        },
+        {
+          "name": "YWDJID",
+          "desc": "业务单据id"
+        },
+        {
+          "name": "GSDWID",
+          "desc": "归属分公司ID"
+        },
+        {
+          "name": "GSDWMC",
+          "desc": "归属分公司名称"
+        },
+        {
+          "name": "GSDWJC",
+          "desc": "归属分公司简称"
+        },
+        {
+          "name": "GSDWPX",
+          "desc": "归属分公司排序"
+        },
+        {
+          "name": "GSCDID",
+          "desc": "归属车队ID"
+        },
+        {
+          "name": "GSCDMC",
+          "desc": "归属车队名称"
+        },
+        {
+          "name": "GSCDJC",
+          "desc": "归属车队简称"
+        },
+        {
+          "name": "GSCDPX",
+          "desc": "归属车队排序"
+        },
+        {
+          "name": "GSXLID",
+          "desc": "归属线路ID"
+        },
+        {
+          "name": "GSXLMC",
+          "desc": "归属线路名称"
+        },
+        {
+          "name": "GSXLPX",
+          "desc": "归属线路排序"
+        },
+        {
+          "name": "CDRQ",
+          "desc": "车辆初登日期"
+        },
+        {
+          "name": "CLMJ",
+          "desc": "车辆米级"
+        },
+        {
+          "name": "RLLX",
+          "desc": "车辆燃料类型"
+        },
+        {
+          "name": "CXMC",
+          "desc": "车型名称"
+        },
+        {
+          "name": "CPMC",
+          "desc": "车牌名称"
+        },
+        {
+          "name": "ZLC",
+          "desc": "总行驶里程(km)"
+        },
+        {
+          "name": "DDRQ",
+          "desc": "调度日期"
+        },
+        {
+          "name": "XLMC",
+          "desc": "线路名称"
+        },
+        {
+          "name": "YXFX",
+          "desc": "运行方向"
+        },
+        {
+          "name": "INDEX_DD",
+          "desc": "调度索引"
+        },
+        {
+          "name": "DWID",
+          "desc": "单位ID"
+        },
+        {
+          "name": "DWMC",
+          "desc": "单位名称"
+        },
+        {
+          "name": "DWPX",
+          "desc": "单位排序"
+        },
+        {
+          "name": "CDID",
+          "desc": "车队ID"
+        },
+        {
+          "name": "CDMC",
+          "desc": "车队名称"
+        },
+        {
+          "name": "CDPX",
+          "desc": "车队排序"
+        },
+        {
+          "name": "XLJGID",
+          "desc": "线路机构ID"
+        },
+        {
+          "name": "XLPX",
+          "desc": "线路排序"
+        },
+        {
+          "name": "XLID",
+          "desc": "线路ID"
+        },
+        {
+          "name": "LINENO",
+          "desc": "线路编号"
+        },
+        {
+          "name": "CLZBH",
+          "desc": "车辆自编号"
+        },
+        {
+          "name": "KRTIME",
+          "desc": "KAFKA时间戳"
+        },
+        {
+          "name": "PTE",
+          "desc": "处理完成时间戳"
+        },
+        {
+          "name": "RSVTIME",
+          "desc": "监控时间戳"
+        },
+        {
+          "name": "STATE",
+          "desc": "事件编码,2 车辆发出; 1 车辆终到"
+        },
+        {
+          "name": "BC",
+          "desc": "班次"
+        },
+        {
+          "name": "BB",
+          "desc": "班别"
+        },
+        {
+          "name": "BCBS",
+          "desc": "班型"
+        },
+        {
+          "name": "BUSNO",
+          "desc": "实际车号"
+        },
+        {
+          "name": "TC",
+          "desc": "实际趟次"
+        },
+        {
+          "name": "SJ_RYID",
+          "desc": "司机_人员ID"
+        },
+        {
+          "name": "SJ",
+          "desc": "司机名称"
+        },
+        {
+          "name": "JHFCSJ",
+          "desc": "计划发车时间_调度"
+        },
+        {
+          "name": "BDFCSJ",
+          "desc": "表定发车时间"
+        },
+        {
+          "name": "SJFCSJ",
+          "desc": "实际发车时间"
+        },
+        {
+          "name": "JHDDSJ",
+          "desc": "计划达到时间_调度"
+        },
+        {
+          "name": "SJDDSJ",
+          "desc": "实际到达时间"
+        },
+        {
+          "name": "FCZD",
+          "desc": "发车站点"
+        },
+        {
+          "name": "DDZD",
+          "desc": "到达站点"
+        },
+        {
+          "name": "YXGL",
+          "desc": "运行公里"
+        },
+        {
+          "name": "SCDDRQ",
+          "desc": "上次到达日期"
+        },
+        {
+          "name": "SCDDSJ",
+          "desc": "上次到达时间"
+        },
+        {
+          "name": "MANUALTAG",
+          "desc": "手动修改标识"
+        },
+        {
+          "name": "SCMDKIND",
+          "desc": "发车指令"
+        },
+        {
+          "name": "ECMDKIND",
+          "desc": "终到指令"
+        },
+        {
+          "name": "CWY_Q_ID",
+          "desc": "志愿者ID"
+        },
+        {
+          "name": "CWY_Z_ID",
+          "desc": "乘务员ID"
+        },
+        {
+          "name": "CWY_H_ID",
+          "desc": "后乘编号"
+        },
+        {
+          "name": "RUNTYPE",
+          "desc": "线路运行方案编号"
+        },
+        {
+          "name": "FCZDNAME",
+          "desc": "发车站点名称"
+        },
+        {
+          "name": "DDZDNAME",
+          "desc": "到达站点名称"
+        },
+        {
+          "name": "GH",
+          "desc": "员工工号"
+        },
+        {
+          "name": "CWY_Q_NAME",
+          "desc": "志愿者姓名"
+        },
+        {
+          "name": "CWY_Z_NAME",
+          "desc": "乘务员姓名"
+        },
+        {
+          "name": "CWY_H_NAME",
+          "desc": "后乘务员名称"
+        },
+        {
+          "name": "ISEMPTY",
+          "desc": "是否空放"
+        },
+        {
+          "name": "BUSNO_JH",
+          "desc": "计划车号"
+        },
+        {
+          "name": "JHFCSJC_JH",
+          "desc": "原始计划发车时间戳"
+        },
+        {
+          "name": "JHFCSJC_DD",
+          "desc": "调度修改计划发车时间戳"
+        },
+        {
+          "name": "SJFCSJC",
+          "desc": "实际发车时间戳"
+        },
+        {
+          "name": "JHDDSJC_DD",
+          "desc": "调度修改计划到达时间戳"
+        },
+        {
+          "name": "SJDDSJC",
+          "desc": "实际到达时间戳"
+        },
+        {
+          "name": "SJ_RYID_JH",
+          "desc": "计划司机ID"
+        },
+        {
+          "name": "GH_JH",
+          "desc": "计划司机工号"
+        },
+        {
+          "name": "SJ_JH",
+          "desc": "计划司机名称"
+        },
+        {
+          "name": "GLGS",
+          "desc": "公里归属"
+        },
+        {
+          "name": "TJRQ",
+          "desc": "统计日期"
+        },
+        {
+          "name": "IS_CHANGELINE",
+          "desc": "是否跨线"
+        },
+        {
+          "name": "LINENO_TJ",
+          "desc": "线路编号_统计用"
+        },
+        {
+          "name": "LINENO_SRC",
+          "desc": "线路编号来源"
+        },
+        {
+          "name": "RUNTYPE_JH",
+          "desc": "计划线路运行方案编号"
+        },
+        {
+          "name": "CWY_Q_ID_JH",
+          "desc": "计划乘务员编号(前)"
+        },
+        {
+          "name": "CWY_Z_ID_JH",
+          "desc": "计划乘务员编号(中)"
+        },
+        {
+          "name": "CWY_H_ID_JH",
+          "desc": "计划乘务员编号(后)"
+        },
+        {
+          "name": "SCDDSJC",
+          "desc": "上次到达时间戳"
+        },
+        {
+          "name": "DOWNLINE",
+          "desc": "离线类型"
+        },
+        {
+          "name": "SJYXGL",
+          "desc": "服务器计算的运行公里"
+        },
+        {
+          "name": "MAKEUP",
+          "desc": "手动补录类型"
+        },
+        {
+          "name": "MANUALTAG_REASION",
+          "desc": "手动补录原因"
+        },
+        {
+          "name": "ISCROSS",
+          "desc": "越站标识"
+        },
+        {
+          "name": "CROSSSTATION",
+          "desc": "越站站点"
+        },
+        {
+          "name": "DDZX_STIME",
+          "desc": "等待执行开始时间"
+        },
+        {
+          "name": "CHANGEBCREASON",
+          "desc": "修改班次原因"
+        },
+        {
+          "name": "CHANGEBUSREASON",
+          "desc": "修改车辆原因"
+        },
+        {
+          "name": "CHANGESJREASON",
+          "desc": "修改驾驶员原因"
+        },
+        {
+          "name": "CHANGECW1REASON",
+          "desc": "修改乘务员1原因"
+        },
+        {
+          "name": "CHANGECW2REASON",
+          "desc": "修改乘务员2原因"
+        },
+        {
+          "name": "CHANGECW3REASON",
+          "desc": "修改乘务员3原因"
+        },
+        {
+          "name": "RUNTYPENAME",
+          "desc": "行车方案名称"
+        },
+        {
+          "name": "RUNTYPE_ATTR",
+          "desc": "行车方案属性"
+        },
+        {
+          "name": "RUNTYPE_STARTTYPE",
+          "desc": "发车地点类型"
+        },
+        {
+          "name": "RUNTYPE_ENDTYPE",
+          "desc": "终到地点类型"
+        },
+        {
+          "name": "RUNTYPE_EXPECTTIME",
+          "desc": "计划单程点"
+        },
+        {
+          "name": "RUNTYPE_RESERVED",
+          "desc": "行车方案备注"
+        },
+        {
+          "name": "RUNVALID",
+          "desc": "是否有效趟次"
+        },
+        {
+          "name": "TZTIME",
+          "desc": "停站时间"
+        },
+        {
+          "name": "XLSZXH",
+          "desc": "线路首站序号"
+        },
+        {
+          "name": "XLSZMC",
+          "desc": "线路首站名称"
+        },
+        {
+          "name": "XLMZXH",
+          "desc": "线路末站序号"
+        },
+        {
+          "name": "XLMZMC",
+          "desc": "线路末站名称"
+        },
+        {
+          "name": "PZH",
+          "desc": "牌照号"
+        },
+        {
+          "name": "CDRQ",
+          "desc": "初登日期"
+        },
+        {
+          "name": "CHANGEID",
+          "desc": "修改编号"
+        },
+        {
+          "name": "SENDTIME",
+          "desc": "数据服务接收到数据时的系统时间戳-微妙级"
+        },
+        {
+          "name": "BXMC",
+          "desc": "班型名称"
+        },
+        {
+          "name": "FASXMC",
+          "desc": "方案属性名称"
+        },
+        {
+          "name": "STATE_ZY",
+          "desc": "记录状态—转义"
+        },
+        {
+          "name": "YXFALXMC",
+          "desc": "运行方案类型名称"
+        },
+        {
+          "name": "FCSBFSMC",
+          "desc": "发车识别方式名称"
+        },
+        {
+          "name": "DDSBFSMC",
+          "desc": "到达识别方式名称"
+        },
+        {
+          "name": "CLZBH_JH",
+          "desc": "计划车辆自编号"
+        },
+        {
+          "name": "SJ_LXDH",
+          "desc": "司机_联系电话"
+        },
+        {
+          "name": "SJ_JH_LXDH",
+          "desc": "司机_计划_联系电话"
+        },
+        {
+          "name": "CWY_Q_LXDH",
+          "desc": "志愿者联系电话"
+        },
+        {
+          "name": "CWY_Z_LXDH",
+          "desc": "乘务员联系电话"
+        },
+        {
+          "name": "CWY_H_LXDH",
+          "desc": "乘务员_后_联系电话"
+        },
+        {
+          "name": "XLLX_ZL",
+          "desc": "线路类型-子类"
+        },
+        {
+          "name": "RZNS",
+          "desc": "入职年数"
+        },
+        {
+          "name": "JSYAQFL",
+          "desc": "驾驶员安全分类"
+        },
+        {
+          "name": "JSYAQFLMC",
+          "desc": "驾驶员安全分类名称"
+        },
+        {
+          "name": "CLYT",
+          "desc": "车辆归属车辆用途"
+        },
+        {
+          "name": "SFAZDMS",
+          "desc": "是否安装DMS，0否1是"
+        },
+        {
+          "name": "SFAZADAS",
+          "desc": "是否安装ADAS，0否1是"
+        }
+      ]
+    },
+    {
+      "name": "TA_SJC_SUB_BS_DLZ_CLZBH_DAY_MI",
+      "cn": "事件池-子表-服务计算到离站",
+      "cat1": "车辆业务事件",
+      "cat2": "运营业务域",
+      "cat3": "调度计算到离站",
+      "desc": "",
+      "fields": [
+        {
+          "name": "RQ",
+          "desc": "事件日期"
+        },
+        {
+          "name": "TYPE",
+          "desc": "类型，1:时间插帧;2:业务事件"
+        },
+        {
+          "name": "ID",
+          "desc": "事件唯一标识"
+        },
+        {
+          "name": "FSSJ",
+          "desc": "发生时间"
+        },
+        {
+          "name": "FSSJC",
+          "desc": "发生时间戳"
+        },
+        {
+          "name": "STLX",
+          "desc": "实体类型"
+        },
+        {
+          "name": "STID",
+          "desc": "实体id"
+        },
+        {
+          "name": "KRTIME",
+          "desc": "Kafka时间"
+        },
+        {
+          "name": "PTE",
+          "desc": "写入时间"
+        },
+        {
+          "name": "SPEED",
+          "desc": "事件时车速(km/h)"
+        },
+        {
+          "name": "XHLC",
+          "desc": "当前剩余续航里程(km)"
+        },
+        {
+          "name": "SOC",
+          "desc": "当前SOC"
+        },
+        {
+          "name": "JD",
+          "desc": "经度"
+        },
+        {
+          "name": "WD",
+          "desc": "纬度"
+        },
+        {
+          "name": "CQID",
+          "desc": "城区位置ID"
+        },
+        {
+          "name": "CQMC",
+          "desc": "城区位置名称"
+        },
+        {
+          "name": "HLID",
+          "desc": "环路位置ID"
+        },
+        {
+          "name": "HLMC",
+          "desc": "环路位置名称"
+        },
+        {
+          "name": "ZWID",
+          "desc": "直线距离最近的站位ID"
+        },
+        {
+          "name": "ZWMC",
+          "desc": "直线距离最近的站位名称"
+        },
+        {
+          "name": "ZWJL",
+          "desc": "直线距离最近的站位距离"
+        },
+        {
+          "name": "QLID",
+          "desc": "桥ID"
+        },
+        {
+          "name": "QLMC",
+          "desc": "桥名称"
+        },
+        {
+          "name": "QLJL",
+          "desc": "桥距离"
+        },
+        {
+          "name": "MID",
+          "desc": "门ID"
+        },
+        {
+          "name": "MMC",
+          "desc": "门名称"
+        },
+        {
+          "name": "MJL",
+          "desc": "门距离"
+        },
+        {
+          "name": "QCLZID",
+          "desc": "七站两场ID"
+        },
+        {
+          "name": "QCLZMC",
+          "desc": "七站两场名称"
+        },
+        {
+          "name": "QCLZJL",
+          "desc": "七站两场距离"
+        },
+        {
+          "name": "YYID",
+          "desc": "医院ID"
+        },
+        {
+          "name": "YYMC",
+          "desc": "医院名称"
+        },
+        {
+          "name": "YYJL",
+          "desc": "医院距离"
+        },
+        {
+          "name": "XXID",
+          "desc": "学校ID"
+        },
+        {
+          "name": "XXMC",
+          "desc": "学校名称"
+        },
+        {
+          "name": "XXJL",
+          "desc": "学校距离"
+        },
+        {
+          "name": "JDID",
+          "desc": "景点ID"
+        },
+        {
+          "name": "JDMC",
+          "desc": "景点名称"
+        },
+        {
+          "name": "JDJL",
+          "desc": "景点距离"
+        },
+        {
+          "name": "SWQID",
+          "desc": "商务区ID"
+        },
+        {
+          "name": "SWQMC",
+          "desc": "商务区名称"
+        },
+        {
+          "name": "SWQJL",
+          "desc": "商务区距离"
+        },
+        {
+          "name": "BZQLX",
+          "desc": "0:运营区;1:场站;2:保养点;3:能源站;"
+        },
+        {
+          "name": "BZQID",
+          "desc": "所在保障区ID"
+        },
+        {
+          "name": "BZQMC",
+          "desc": "所在保障区名称"
+        },
+        {
+          "name": "JSDID",
+          "desc": "积水点ID"
+        },
+        {
+          "name": "JSDMC",
+          "desc": "积水点名称"
+        },
+        {
+          "name": "JSDJL",
+          "desc": "积水点距离"
+        },
+        {
+          "name": "CYSTLX",
+          "desc": "事件参与实体类型,0:司机;1:车辆;2:线路;3:站点4:场站"
+        },
+        {
+          "name": "CYSTID",
+          "desc": "事件参与实体id"
+        },
+        {
+          "name": "SJYJFL",
+          "desc": "事件一级分类"
+        },
+        {
+          "name": "SJEJFL",
+          "desc": "事件二级分类"
+        },
+        {
+          "name": "SJSJFL",
+          "desc": "事件三级分类"
+        },
+        {
+          "name": "YWDJID",
+          "desc": "业务单据id"
+        },
+        {
+          "name": "GSDWID",
+          "desc": "归属分公司ID"
+        },
+        {
+          "name": "GSDWMC",
+          "desc": "归属分公司名称"
+        },
+        {
+          "name": "GSDWJC",
+          "desc": "归属分公司简称"
+        },
+        {
+          "name": "GSDWPX",
+          "desc": "归属分公司排序"
+        },
+        {
+          "name": "GSCDID",
+          "desc": "归属车队ID"
+        },
+        {
+          "name": "GSCDMC",
+          "desc": "归属车队名称"
+        },
+        {
+          "name": "GSCDJC",
+          "desc": "归属车队简称"
+        },
+        {
+          "name": "GSCDPX",
+          "desc": "归属车队排序"
+        },
+        {
+          "name": "GSXLID",
+          "desc": "归属线路ID"
+        },
+        {
+          "name": "GSXLMC",
+          "desc": "归属线路名称"
+        },
+        {
+          "name": "GSXLPX",
+          "desc": "归属线路排序"
+        },
+        {
+          "name": "CDRQ",
+          "desc": "车辆初登日期"
+        },
+        {
+          "name": "CLMJ",
+          "desc": "车辆米级"
+        },
+        {
+          "name": "RLLX",
+          "desc": "车辆燃料类型"
+        },
+        {
+          "name": "CXMC",
+          "desc": "车型名称"
+        },
+        {
+          "name": "CPMC",
+          "desc": "车牌名称"
+        },
+        {
+          "name": "ZLC",
+          "desc": "总行驶里程(km)"
+        },
+        {
+          "name": "BZRQ",
+          "desc": "报站日期"
+        },
+        {
+          "name": "LNA",
+          "desc": "线路名称"
+        },
+        {
+          "name": "BNA",
+          "desc": "车辆自编号"
+        },
+        {
+          "name": "STATIONTIME",
+          "desc": "报站时间戳"
+        },
+        {
+          "name": "STATIONSJ",
+          "desc": "报站时间"
+        },
+        {
+          "name": "STATE",
+          "desc": "状态 0, 未知; 1, 进站; 2 出站"
+        },
+        {
+          "name": "STATIONID",
+          "desc": "站点ID"
+        },
+        {
+          "name": "STATIONNO",
+          "desc": "站点编号"
+        },
+        {
+          "name": "STATIONNAME",
+          "desc": "站点名称"
+        },
+        {
+          "name": "DIRECTION",
+          "desc": "报站方向"
+        },
+        {
+          "name": "DDBZKRTIME",
+          "desc": "KAFKA时间戳"
+        },
+        {
+          "name": "DDBZPTE",
+          "desc": "处理完成时间戳"
+        },
+        {
+          "name": "RSVTIME",
+          "desc": "监控时间戳"
+        },
+        {
+          "name": "BUSNO",
+          "desc": "车号"
+        },
+        {
+          "name": "LINENO",
+          "desc": "线路号"
+        },
+        {
+          "name": "DATATYPE",
+          "desc": "数据类型"
+        },
+        {
+          "name": "SENDTIME",
+          "desc": "数据服务接收到数据时的系统时间戳-微秒级"
+        }
+      ]
+    },
+    {
+      "name": "TA_SJC_BUS_CAN_METESTATE_MI",
+      "cn": "事件池-子表-CAN数据报警-仪表",
+      "cat1": "车辆业务事件",
+      "cat2": "安全业务域",
+      "cat3": "CAN数据报警-仪表",
+      "desc": "",
+      "fields": [
+        {
+          "name": "RQ",
+          "desc": "事件日期"
+        },
+        {
+          "name": "TYPE",
+          "desc": "类型，1:时间插帧;2:业务事件"
+        },
+        {
+          "name": "ID",
+          "desc": "事件唯一标识"
+        },
+        {
+          "name": "FSSJ",
+          "desc": "发生时间"
+        },
+        {
+          "name": "FSSJC",
+          "desc": "发生时间戳"
+        },
+        {
+          "name": "STLX",
+          "desc": "实体类型"
+        },
+        {
+          "name": "STID",
+          "desc": "实体id"
+        },
+        {
+          "name": "KRTIME",
+          "desc": "Kafka时间"
+        },
+        {
+          "name": "PTE",
+          "desc": "写入时间"
+        },
+        {
+          "name": "SPEED",
+          "desc": "事件时车速(km/h)"
+        },
+        {
+          "name": "XHLC",
+          "desc": "当前剩余续航里程(km)"
+        },
+        {
+          "name": "SOC",
+          "desc": "当前SOC"
+        },
+        {
+          "name": "JD",
+          "desc": "经度"
+        },
+        {
+          "name": "WD",
+          "desc": "纬度"
+        },
+        {
+          "name": "CQID",
+          "desc": "城区位置ID"
+        },
+        {
+          "name": "CQMC",
+          "desc": "城区位置名称"
+        },
+        {
+          "name": "HLID",
+          "desc": "环路位置ID"
+        },
+        {
+          "name": "HLMC",
+          "desc": "环路位置名称"
+        },
+        {
+          "name": "ZWID",
+          "desc": "直线距离最近的站位ID"
+        },
+        {
+          "name": "ZWMC",
+          "desc": "直线距离最近的站位名称"
+        },
+        {
+          "name": "ZWJL",
+          "desc": "直线距离最近的站位距离"
+        },
+        {
+          "name": "QLID",
+          "desc": "桥ID"
+        },
+        {
+          "name": "QLMC",
+          "desc": "桥名称"
+        },
+        {
+          "name": "QLJL",
+          "desc": "桥距离"
+        },
+        {
+          "name": "MID",
+          "desc": "门ID"
+        },
+        {
+          "name": "MMC",
+          "desc": "门名称"
+        },
+        {
+          "name": "MJL",
+          "desc": "门距离"
+        },
+        {
+          "name": "QCLZID",
+          "desc": "七站两场ID"
+        },
+        {
+          "name": "QCLZMC",
+          "desc": "七站两场名称"
+        },
+        {
+          "name": "QCLZJL",
+          "desc": "七站两场距离"
+        },
+        {
+          "name": "YYID",
+          "desc": "医院ID"
+        },
+        {
+          "name": "YYMC",
+          "desc": "医院名称"
+        },
+        {
+          "name": "YYJL",
+          "desc": "医院距离"
+        },
+        {
+          "name": "XXID",
+          "desc": "学校ID"
+        },
+        {
+          "name": "XXMC",
+          "desc": "学校名称"
+        },
+        {
+          "name": "XXJL",
+          "desc": "学校距离"
+        },
+        {
+          "name": "JDID",
+          "desc": "景点ID"
+        },
+        {
+          "name": "JDMC",
+          "desc": "景点名称"
+        },
+        {
+          "name": "JDJL",
+          "desc": "景点距离"
+        },
+        {
+          "name": "SWQID",
+          "desc": "商务区ID"
+        },
+        {
+          "name": "SWQMC",
+          "desc": "商务区名称"
+        },
+        {
+          "name": "SWQJL",
+          "desc": "商务区距离"
+        },
+        {
+          "name": "BZQLX",
+          "desc": "0:运营区;1:场站;2:保养点;3:能源站;"
+        },
+        {
+          "name": "BZQID",
+          "desc": "所在保障区ID"
+        },
+        {
+          "name": "BZQMC",
+          "desc": "所在保障区名称"
+        },
+        {
+          "name": "JSDID",
+          "desc": "积水点ID"
+        },
+        {
+          "name": "JSDMC",
+          "desc": "积水点名称"
+        },
+        {
+          "name": "JSDJL",
+          "desc": "积水点距离"
+        },
+        {
+          "name": "CYSTLX",
+          "desc": "事件参与实体类型,0:司机;1:车辆;2:线路;3:站点4:场站;5:能源站"
+        },
+        {
+          "name": "CYSTID",
+          "desc": "事件参与实体id"
+        },
+        {
+          "name": "SJYJFL",
+          "desc": "事件一级分类"
+        },
+        {
+          "name": "SJEJFL",
+          "desc": "事件二级分类"
+        },
+        {
+          "name": "SJSJFL",
+          "desc": "事件三级分类"
+        },
+        {
+          "name": "YWDJID",
+          "desc": "业务单据id"
+        },
+        {
+          "name": "GSDWID",
+          "desc": "归属分公司ID"
+        },
+        {
+          "name": "GSDWMC",
+          "desc": "归属分公司名称"
+        },
+        {
+          "name": "GSDWJC",
+          "desc": "归属分公司简称"
+        },
+        {
+          "name": "GSDWPX",
+          "desc": "归属分公司排序"
+        },
+        {
+          "name": "GSCDID",
+          "desc": "归属车队ID"
+        },
+        {
+          "name": "GSCDMC",
+          "desc": "归属车队名称"
+        },
+        {
+          "name": "GSCDJC",
+          "desc": "归属车队简称"
+        },
+        {
+          "name": "GSCDPX",
+          "desc": "归属车队排序"
+        },
+        {
+          "name": "GSXLID",
+          "desc": "归属线路ID"
+        },
+        {
+          "name": "GSXLMC",
+          "desc": "归属线路名称"
+        },
+        {
+          "name": "GSXLPX",
+          "desc": "归属线路排序"
+        },
+        {
+          "name": "CDRQ",
+          "desc": "车辆初登日期"
+        },
+        {
+          "name": "CLMJ",
+          "desc": "车辆米级"
+        },
+        {
+          "name": "RLLX",
+          "desc": "车辆燃料类型"
+        },
+        {
+          "name": "CXMC",
+          "desc": "车型名称"
+        },
+        {
+          "name": "CPMC",
+          "desc": "车牌名称"
+        },
+        {
+          "name": "ZLC",
+          "desc": "总行驶里程(km)"
+        },
+        {
+          "name": "OEDATE",
+          "desc": "原始上报日期"
+        },
+        {
+          "name": "CLZBH",
+          "desc": "车辆自编号"
+        },
+        {
+          "name": "OETIME",
+          "desc": "原始发生时间"
+        },
+        {
+          "name": "PRTIME",
+          "desc": "解析侧收到时间"
+        },
+        {
+          "name": "PSTIME",
+          "desc": "解析侧发送时间"
+        },
+        {
+          "name": "ETLTIME",
+          "desc": "数仓清洗时间"
+        },
+        {
+          "name": "METERKRTIME",
+          "desc": "Kafka写入时间"
+        },
+        {
+          "name": "WRTIME",
+          "desc": "写入时间"
+        },
+        {
+          "name": "RFDOOR_OPEN_STATE",
+          "desc": "前门开"
+        },
+        {
+          "name": "RMDOOR_OPEN_STATE",
+          "desc": "中门开"
+        },
+        {
+          "name": "RBDOOR_OPEN_STATE",
+          "desc": "后门开"
+        },
+        {
+          "name": "BACKDOOR_STATE",
+          "desc": "后舱门状态"
+        },
+        {
+          "name": "LDOOR_OPEN_STATE",
+          "desc": "左舱门开"
+        },
+        {
+          "name": "RDOOR_OPEN_STATE",
+          "desc": "右舱门开"
+        },
+        {
+          "name": "KEY1_STATE",
+          "desc": "钥匙1档"
+        },
+        {
+          "name": "KEY2_STATE",
+          "desc": "钥匙2档"
+        },
+        {
+          "name": "KEY3_STATE",
+          "desc": "钥匙3档"
+        }
+      ]
+    },
+    {
+      "name": "TA_SJC_SUB_ZHJRQKL_CDJY_DETAIL",
+      "cn": "事件池-子表-充电交易表",
+      "cat1": "车辆业务事件",
+      "cat2": "能源业务域",
+      "cat3": "充电交易表",
+      "desc": "",
+      "fields": [
+        {
+          "name": "RQ",
+          "desc": "事件日期"
+        },
+        {
+          "name": "TYPE",
+          "desc": "类型，1:时间插帧;2:业务事件"
+        },
+        {
+          "name": "ID",
+          "desc": "事件唯一标识"
+        },
+        {
+          "name": "FSSJ",
+          "desc": "发生时间"
+        },
+        {
+          "name": "FSSJC",
+          "desc": "发生时间戳"
+        },
+        {
+          "name": "STLX",
+          "desc": "实体类型"
+        },
+        {
+          "name": "STID",
+          "desc": "实体id"
+        },
+        {
+          "name": "KRTIME",
+          "desc": "Kafka时间"
+        },
+        {
+          "name": "PTE",
+          "desc": "写入时间"
+        },
+        {
+          "name": "SPEED",
+          "desc": "事件时车速(km/h)"
+        },
+        {
+          "name": "XHLC",
+          "desc": "当前剩余续航里程(km)"
+        },
+        {
+          "name": "SOC",
+          "desc": "当前SOC"
+        },
+        {
+          "name": "JD",
+          "desc": "经度"
+        },
+        {
+          "name": "WD",
+          "desc": "纬度"
+        },
+        {
+          "name": "CQID",
+          "desc": "城区位置ID"
+        },
+        {
+          "name": "CQMC",
+          "desc": "城区位置名称"
+        },
+        {
+          "name": "HLID",
+          "desc": "环路位置ID"
+        },
+        {
+          "name": "HLMC",
+          "desc": "环路位置名称"
+        },
+        {
+          "name": "ZWID",
+          "desc": "直线距离最近的站位ID"
+        },
+        {
+          "name": "ZWMC",
+          "desc": "直线距离最近的站位名称"
+        },
+        {
+          "name": "ZWJL",
+          "desc": "直线距离最近的站位距离"
+        },
+        {
+          "name": "QLID",
+          "desc": "桥ID"
+        },
+        {
+          "name": "QLMC",
+          "desc": "桥名称"
+        },
+        {
+          "name": "QLJL",
+          "desc": "桥距离"
+        },
+        {
+          "name": "MID",
+          "desc": "门ID"
+        },
+        {
+          "name": "MMC",
+          "desc": "门名称"
+        },
+        {
+          "name": "MJL",
+          "desc": "门距离"
+        },
+        {
+          "name": "QCLZID",
+          "desc": "七站两场ID"
+        },
+        {
+          "name": "QCLZMC",
+          "desc": "七站两场名称"
+        },
+        {
+          "name": "QCLZJL",
+          "desc": "七站两场距离"
+        },
+        {
+          "name": "YYID",
+          "desc": "医院ID"
+        },
+        {
+          "name": "YYMC",
+          "desc": "医院名称"
+        },
+        {
+          "name": "YYJL",
+          "desc": "医院距离"
+        },
+        {
+          "name": "XXID",
+          "desc": "学校ID"
+        },
+        {
+          "name": "XXMC",
+          "desc": "学校名称"
+        },
+        {
+          "name": "XXJL",
+          "desc": "学校距离"
+        },
+        {
+          "name": "JDID",
+          "desc": "景点ID"
+        },
+        {
+          "name": "JDMC",
+          "desc": "景点名称"
+        },
+        {
+          "name": "JDJL",
+          "desc": "景点距离"
+        },
+        {
+          "name": "SWQID",
+          "desc": "商务区ID"
+        },
+        {
+          "name": "SWQMC",
+          "desc": "商务区名称"
+        },
+        {
+          "name": "SWQJL",
+          "desc": "商务区距离"
+        },
+        {
+          "name": "BZQLX",
+          "desc": "0:运营区;1:场站;2:保养点;3:能源站;"
+        },
+        {
+          "name": "BZQID",
+          "desc": "所在保障区ID"
+        },
+        {
+          "name": "BZQMC",
+          "desc": "所在保障区名称"
+        },
+        {
+          "name": "JSDID",
+          "desc": "积水点ID"
+        },
+        {
+          "name": "JSDMC",
+          "desc": "积水点名称"
+        },
+        {
+          "name": "JSDJL",
+          "desc": "积水点距离"
+        },
+        {
+          "name": "CYSTLX",
+          "desc": "事件参与实体类型,0:司机;1:车辆;2:线路;3:站点4:场站;5:能源站"
+        },
+        {
+          "name": "CYSTID",
+          "desc": "事件参与实体id"
+        },
+        {
+          "name": "SJYJFL",
+          "desc": "事件一级分类"
+        },
+        {
+          "name": "SJEJFL",
+          "desc": "事件二级分类"
+        },
+        {
+          "name": "SJSJFL",
+          "desc": "事件三级分类"
+        },
+        {
+          "name": "YWDJID",
+          "desc": "业务单据id"
+        },
+        {
+          "name": "GSDWID",
+          "desc": "归属分公司ID"
+        },
+        {
+          "name": "GSDWMC",
+          "desc": "归属分公司名称"
+        },
+        {
+          "name": "GSDWJC",
+          "desc": "归属分公司简称"
+        },
+        {
+          "name": "GSDWPX",
+          "desc": "归属分公司排序"
+        },
+        {
+          "name": "GSCDID",
+          "desc": "归属车队ID"
+        },
+        {
+          "name": "GSCDMC",
+          "desc": "归属车队名称"
+        },
+        {
+          "name": "GSCDJC",
+          "desc": "归属车队简称"
+        },
+        {
+          "name": "GSCDPX",
+          "desc": "归属车队排序"
+        },
+        {
+          "name": "GSXLID",
+          "desc": "归属线路ID"
+        },
+        {
+          "name": "GSXLMC",
+          "desc": "归属线路名称"
+        },
+        {
+          "name": "GSXLPX",
+          "desc": "归属线路排序"
+        },
+        {
+          "name": "CDRQ",
+          "desc": "车辆初登日期"
+        },
+        {
+          "name": "CLMJ",
+          "desc": "车辆米级"
+        },
+        {
+          "name": "RLLX",
+          "desc": "车辆燃料类型"
+        },
+        {
+          "name": "CXMC",
+          "desc": "车型名称"
+        },
+        {
+          "name": "CPMC",
+          "desc": "车牌名称"
+        },
+        {
+          "name": "ZLC",
+          "desc": "总行驶里程(km)"
+        },
+        {
+          "name": "CDJYRQ",
+          "desc": "原始上报日期"
+        },
+        {
+          "name": "NYZBM",
+          "desc": "能源站编号"
+        },
+        {
+          "name": "CDZHUANGBM",
+          "desc": "能源设备编号"
+        },
+        {
+          "name": "CLZBH",
+          "desc": "车辆自编号"
+        },
+        {
+          "name": "JYDDH",
+          "desc": "交易订单号全局唯一"
+        },
+        {
+          "name": "CDJYKRTIME",
+          "desc": "Kafka写入时间"
+        },
+        {
+          "name": "WRTIME",
+          "desc": "写入时间"
+        },
+        {
+          "name": "SJFSSJ",
+          "desc": "数据发送时间"
+        },
+        {
+          "name": "KH",
+          "desc": "物理卡号"
+        },
+        {
+          "name": "JYDWBH",
+          "desc": "经营单位编号"
+        },
+        {
+          "name": "JYDWID",
+          "desc": "经营单位ID"
+        },
+        {
+          "name": "JYDWMC",
+          "desc": "经营单位名称"
+        },
+        {
+          "name": "DWID",
+          "desc": "单位ID"
+        },
+        {
+          "name": "DWMC",
+          "desc": "单位名称(全称)"
+        },
+        {
+          "name": "DWJC",
+          "desc": "单位简称"
+        },
+        {
+          "name": "DWPX",
+          "desc": "单位排序"
+        },
+        {
+          "name": "CDID",
+          "desc": "车队ID"
+        },
+        {
+          "name": "CDMC",
+          "desc": "车队名称"
+        },
+        {
+          "name": "CDJC",
+          "desc": "车队简称"
+        },
+        {
+          "name": "CDPX",
+          "desc": "车队排序"
+        },
+        {
+          "name": "XLID",
+          "desc": "线路ID"
+        },
+        {
+          "name": "XLMC",
+          "desc": "线路名称"
+        },
+        {
+          "name": "XLPX",
+          "desc": "线路排序"
+        },
+        {
+          "name": "NYZID",
+          "desc": "能源站ID"
+        },
+        {
+          "name": "NYZMC",
+          "desc": "能源站名称"
+        },
+        {
+          "name": "CZID",
+          "desc": "场站ID"
+        },
+        {
+          "name": "CZMC",
+          "desc": "场站名称"
+        },
+        {
+          "name": "SZID",
+          "desc": "时组ID"
+        },
+        {
+          "name": "SZMC",
+          "desc": "时组名称"
+        },
+        {
+          "name": "NYLX",
+          "desc": "能源类型 NYLX-D电 NYLX-QY汽油 NYLX-CY柴油 NYLX-CNG CNG NYLX-LNG LNG NYLX-H氢"
+        },
+        {
+          "name": "YGSKSJ",
+          "desc": "员工刷卡时间（交易确认）"
+        },
+        {
+          "name": "CDKSSJ",
+          "desc": "交易开始时间（设备工作开始时间）"
+        },
+        {
+          "name": "CDJSSJ",
+          "desc": "交易结束时间（设备工作结束时间）"
+        },
+        {
+          "name": "KSSOC",
+          "desc": "开始SOC"
+        },
+        {
+          "name": "JSSOC",
+          "desc": "结束SOC"
+        },
+        {
+          "name": "SCSOC",
+          "desc": "实充SOC"
+        },
+        {
+          "name": "CDSC",
+          "desc": "充电时长"
+        },
+        {
+          "name": "CDDL",
+          "desc": "充电总电量"
+        },
+        {
+          "name": "JFDL",
+          "desc": "尖峰电量（度）"
+        },
+        {
+          "name": "GFDL",
+          "desc": "高峰电量（度）"
+        },
+        {
+          "name": "PDDL",
+          "desc": "平段电量（度）"
+        },
+        {
+          "name": "DGDL",
+          "desc": "低谷电量（度）"
+        },
+        {
+          "name": "STOPSTATUS",
+          "desc": "停止状态0正常1异常"
+        }
+      ]
+    },
+    {
+      "name": "",
+      "cn": "事件池-子表-充气加燃-非电交易表",
+      "cat1": "车辆业务事件",
+      "cat2": "能源业务域",
+      "cat3": "非电交易表",
+      "desc": "-- 加气\nPROD_DW.TF_ZHJRQKL_QIJY_DETAIL_MI\n-- 加氢\nPROD_DW.TF_ZHJRQKL_QJY_DETAIL_MI\n-- 柴汽油\nPROD_DW.TF_ZHJRQKL_CQYJY_DETAIL_MI",
+      "fields": [
+        {
+          "name": "RQ",
+          "desc": "事件日期"
+        },
+        {
+          "name": "TYPE",
+          "desc": "类型，1:时间插帧;2:业务事件"
+        },
+        {
+          "name": "ID",
+          "desc": "事件唯一标识"
+        },
+        {
+          "name": "FSSJ",
+          "desc": "发生时间"
+        },
+        {
+          "name": "FSSJC",
+          "desc": "发生时间戳"
+        },
+        {
+          "name": "STLX",
+          "desc": "实体类型"
+        },
+        {
+          "name": "STID",
+          "desc": "实体id"
+        },
+        {
+          "name": "KRTIME",
+          "desc": "Kafka时间"
+        },
+        {
+          "name": "PTE",
+          "desc": "写入时间"
+        },
+        {
+          "name": "SPEED",
+          "desc": "事件时车速(km/h)"
+        },
+        {
+          "name": "XHLC",
+          "desc": "当前剩余续航里程(km)"
+        },
+        {
+          "name": "SOC",
+          "desc": "当前SOC"
+        },
+        {
+          "name": "JD",
+          "desc": "经度"
+        },
+        {
+          "name": "WD",
+          "desc": "纬度"
+        },
+        {
+          "name": "CQID",
+          "desc": "城区位置ID"
+        },
+        {
+          "name": "CQMC",
+          "desc": "城区位置名称"
+        },
+        {
+          "name": "HLID",
+          "desc": "环路位置ID"
+        },
+        {
+          "name": "HLMC",
+          "desc": "环路位置名称"
+        },
+        {
+          "name": "ZWID",
+          "desc": "直线距离最近的站位ID"
+        },
+        {
+          "name": "ZWMC",
+          "desc": "直线距离最近的站位名称"
+        },
+        {
+          "name": "ZWJL",
+          "desc": "直线距离最近的站位距离"
+        },
+        {
+          "name": "QLID",
+          "desc": "桥ID"
+        },
+        {
+          "name": "QLMC",
+          "desc": "桥名称"
+        },
+        {
+          "name": "QLJL",
+          "desc": "桥距离"
+        },
+        {
+          "name": "MID",
+          "desc": "门ID"
+        },
+        {
+          "name": "MMC",
+          "desc": "门名称"
+        },
+        {
+          "name": "MJL",
+          "desc": "门距离"
+        },
+        {
+          "name": "QCLZID",
+          "desc": "七站两场ID"
+        },
+        {
+          "name": "QCLZMC",
+          "desc": "七站两场名称"
+        },
+        {
+          "name": "QCLZJL",
+          "desc": "七站两场距离"
+        },
+        {
+          "name": "YYID",
+          "desc": "医院ID"
+        },
+        {
+          "name": "YYMC",
+          "desc": "医院名称"
+        },
+        {
+          "name": "YYJL",
+          "desc": "医院距离"
+        },
+        {
+          "name": "XXID",
+          "desc": "学校ID"
+        },
+        {
+          "name": "XXMC",
+          "desc": "学校名称"
+        },
+        {
+          "name": "XXJL",
+          "desc": "学校距离"
+        },
+        {
+          "name": "JDID",
+          "desc": "景点ID"
+        },
+        {
+          "name": "JDMC",
+          "desc": "景点名称"
+        },
+        {
+          "name": "JDJL",
+          "desc": "景点距离"
+        },
+        {
+          "name": "SWQID",
+          "desc": "商务区ID"
+        },
+        {
+          "name": "SWQMC",
+          "desc": "商务区名称"
+        },
+        {
+          "name": "SWQJL",
+          "desc": "商务区距离"
+        },
+        {
+          "name": "BZQLX",
+          "desc": "0:运营区;1:场站;2:保养点;3:能源站;"
+        },
+        {
+          "name": "BZQID",
+          "desc": "所在保障区ID"
+        },
+        {
+          "name": "BZQMC",
+          "desc": "所在保障区名称"
+        },
+        {
+          "name": "JSDID",
+          "desc": "积水点ID"
+        },
+        {
+          "name": "JSDMC",
+          "desc": "积水点名称"
+        },
+        {
+          "name": "JSDJL",
+          "desc": "积水点距离"
+        },
+        {
+          "name": "CYSTLX",
+          "desc": "事件参与实体类型,0:司机;1:车辆;2:线路;3:站点4:场站"
+        },
+        {
+          "name": "CYSTID",
+          "desc": "事件参与实体id"
+        },
+        {
+          "name": "SJYJFL",
+          "desc": "事件一级分类"
+        },
+        {
+          "name": "SJEJFL",
+          "desc": "事件二级分类"
+        },
+        {
+          "name": "SJSJFL",
+          "desc": "事件三级分类"
+        },
+        {
+          "name": "YWDJID",
+          "desc": "业务单据id"
+        },
+        {
+          "name": "GSDWID",
+          "desc": "归属分公司ID"
+        },
+        {
+          "name": "GSDWMC",
+          "desc": "归属分公司名称"
+        },
+        {
+          "name": "GSDWJC",
+          "desc": "归属分公司简称"
+        },
+        {
+          "name": "GSDWPX",
+          "desc": "归属分公司排序"
+        },
+        {
+          "name": "GSCDID",
+          "desc": "归属车队ID"
+        },
+        {
+          "name": "GSCDMC",
+          "desc": "归属车队名称"
+        },
+        {
+          "name": "GSCDJC",
+          "desc": "归属车队简称"
+        },
+        {
+          "name": "GSCDPX",
+          "desc": "归属车队排序"
+        },
+        {
+          "name": "GSXLID",
+          "desc": "归属线路ID"
+        },
+        {
+          "name": "GSXLMC",
+          "desc": "归属线路名称"
+        },
+        {
+          "name": "GSXLPX",
+          "desc": "归属线路排序"
+        },
+        {
+          "name": "CDRQ",
+          "desc": "车辆初登日期"
+        },
+        {
+          "name": "CLMJ",
+          "desc": "车辆米级"
+        },
+        {
+          "name": "RLLX",
+          "desc": "车辆燃料类型"
+        },
+        {
+          "name": "CXMC",
+          "desc": "车型名称"
+        },
+        {
+          "name": "CPMC",
+          "desc": "车牌名称"
+        },
+        {
+          "name": "ZLC",
+          "desc": "总行驶里程(km)"
+        },
+        {
+          "name": "NYZBM",
+          "desc": "能源站编码"
+        },
+        {
+          "name": "NYSBBM",
+          "desc": "能源设备编号"
+        },
+        {
+          "name": "JRQ",
+          "desc": "加燃枪编号"
+        },
+        {
+          "name": "NYZID",
+          "desc": "能源站ID"
+        },
+        {
+          "name": "NYZMC",
+          "desc": "能源站名称"
+        },
+        {
+          "name": "DWID",
+          "desc": "单位ID"
+        },
+        {
+          "name": "DWMC",
+          "desc": "单位名称(全称)"
+        },
+        {
+          "name": "DWJC",
+          "desc": "单位简称"
+        },
+        {
+          "name": "DWPX",
+          "desc": "单位排序"
+        },
+        {
+          "name": "CDID",
+          "desc": "车队ID"
+        },
+        {
+          "name": "CDMC",
+          "desc": "车队名称(简称)"
+        },
+        {
+          "name": "CDQC",
+          "desc": "车队全称"
+        },
+        {
+          "name": "CDPX",
+          "desc": "车队排序"
+        },
+        {
+          "name": "XLID",
+          "desc": "线路ID"
+        },
+        {
+          "name": "XLMC",
+          "desc": "线路名称"
+        },
+        {
+          "name": "XLPX",
+          "desc": "线路排序"
+        },
+        {
+          "name": "SZID",
+          "desc": "时组ID"
+        },
+        {
+          "name": "SZMC",
+          "desc": "时组名称"
+        },
+        {
+          "name": "JYKSSJ",
+          "desc": "交易时间戳"
+        },
+        {
+          "name": "JYJSSJ",
+          "desc": "交易时间戳"
+        },
+        {
+          "name": "JYSCSJ",
+          "desc": "交易上传时间戳"
+        },
+        {
+          "name": "JYLX",
+          "desc": "交易类型_1司机签字_2司机刷卡_3司机登录_4司机扫码登录"
+        },
+        {
+          "name": "YSKWLKH",
+          "desc": "钥匙扣物理卡号"
+        },
+        {
+          "name": "SJGH",
+          "desc": "司机员工号"
+        },
+        {
+          "name": "SJXM",
+          "desc": "司机姓名"
+        },
+        {
+          "name": "JRGBH",
+          "desc": "加燃工编号"
+        },
+        {
+          "name": "RLBH",
+          "desc": "燃料编号"
+        },
+        {
+          "name": "RLMC",
+          "desc": "燃料名称"
+        },
+        {
+          "name": "JRL",
+          "desc": "加燃量"
+        },
+        {
+          "name": "ZSC",
+          "desc": "加油总时长_秒"
+        },
+        {
+          "name": "NYLX",
+          "desc": "能源类型"
+        },
+        {
+          "name": "JYDWBH",
+          "desc": "经营单位编号"
+        },
+        {
+          "name": "JYDWID",
+          "desc": "经营单位ID"
+        },
+        {
+          "name": "JYDWMC",
+          "desc": "经营单位名称"
+        },
+        {
+          "name": "UNIT_PRICE",
+          "desc": "单价"
+        },
+        {
+          "name": "TOTAL_AMOUNT",
+          "desc": "总价"
+        },
+        {
+          "name": "FEEMODEL_CODE",
+          "desc": "计费模型编号"
+        },
+        {
+          "name": "IS_DEl",
+          "desc": "是否作废_0不作废"
+        },
+        {
+          "name": "RESEND_FlAG",
+          "desc": "补发标识0正常1补发"
+        },
+        {
+          "name": "WRTIME",
+          "desc": "写入时间戳"
+        }
+      ]
+    },
+    {
+      "name": "",
+      "cn": "事件池-子表-主数据充电设备表",
+      "cat1": "车辆业务事件",
+      "cat2": "安全业务域",
+      "cat3": "主数据充电设备表",
+      "desc": "PROD_DIM.TD_MD_QT_NY_CDZSB_DA主数据-能源充电设备",
+      "fields": [
+        {
+          "name": "RQ",
+          "desc": "事件日期"
+        },
+        {
+          "name": "TYPE",
+          "desc": "类型，1:时间插帧;2:业务事件"
+        },
+        {
+          "name": "ID",
+          "desc": "事件唯一标识"
+        },
+        {
+          "name": "FSSJ",
+          "desc": "发生时间"
+        },
+        {
+          "name": "FSSJC",
+          "desc": "发生时间戳"
+        },
+        {
+          "name": "STLX",
+          "desc": "实体类型"
+        },
+        {
+          "name": "STID",
+          "desc": "实体id"
+        },
+        {
+          "name": "CDZSBID",
+          "desc": "【字段名】充电桩设备ID【解释】主数据对象ID （用于对象唯一ID，保持最新(FLAG=1)记录ID不变，历史记录(FLAG<>1)ID变化）"
+        },
+        {
+          "name": "CDZSBBH",
+          "desc": "【字段名】充电桩编号【解释】充电桩编号"
+        },
+        {
+          "name": "CDZSBMC",
+          "desc": "【字段名】充电桩名称【解释】充电桩名称"
+        },
+        {
+          "name": "NYZID",
+          "desc": "【字段名】能源站ID【解释】能源站ID（充电站）"
+        },
+        {
+          "name": "NYZBM",
+          "desc": "【字段名】能源站编码【解释】能源站编码（充电站）"
+        },
+        {
+          "name": "CDQSL",
+          "desc": "【字段名】充电枪数量【解释】充电枪数量"
+        },
+        {
+          "name": "CDLX",
+          "desc": "【字段名】充电类型【解释】充电类型：0-交流，1-直流"
+        },
+        {
+          "name": "CDZSBFL",
+          "desc": "【字段名】充电桩分类【解释】充电桩分类：1-快充，2-慢充"
+        },
+        {
+          "name": "CDZSBGL",
+          "desc": "【字段名】充电桩功率【解释】充电桩功率，单位KW"
+        },
+        {
+          "name": "CDZSBGLSM",
+          "desc": "【字段名】充电桩功率说明【解释】充电桩功率说明：450KW直流/180KW直流/360KW直流"
+        },
+        {
+          "name": "SYZT",
+          "desc": "【字段名】使用状态【解释】使用状态:0-停用，1-启用"
+        },
+        {
+          "name": "SFGJKY",
+          "desc": "【字段名】是否公交可用【解释】是否公交可用：1-不可用，2-可用，3-降功率使用 （使用状态为1-启用时，标识此字段）"
+        },
+        {
+          "name": "BZ",
+          "desc": "【字段名】备注【解释】备注"
+        },
+        {
+          "name": "CDZSBIDO",
+          "desc": "【字段名】充电桩设备IDO【解释】主数据对象IDO:对象ID最早生成的值，永远不变；对象IDO标识此业务对象全部变更的历史；"
+        },
+        {
+          "name": "KSSJ",
+          "desc": "【字段名】生效时间【解释】生效时间 格式:YYYY-MM-DD HH24:MI:SS"
+        },
+        {
+          "name": "JSSJ",
+          "desc": "【字段名】失效时间【解释】失效时间 格式:YYYY-MM-DD HH24:MI:SS"
+        },
+        {
+          "name": "CZSJ",
+          "desc": "【字段名】操作时间【解释】操作时间"
+        },
+        {
+          "name": "CZRID",
+          "desc": "【字段名】操作人ID【解释】操作人ID"
+        },
+        {
+          "name": "CZR",
+          "desc": "【字段名】操作人【解释】操作人"
+        },
+        {
+          "name": "SFGX",
+          "desc": "是否共享"
+        }
+      ]
+    },
+    {
+      "name": "",
+      "cn": "事件池-子表-充气加燃-充电实时状态表",
+      "cat1": "车辆业务事件",
+      "cat2": "能源业务域",
+      "cat3": "充电桩实时状态表",
+      "desc": "充气加燃-充电实时状态表",
+      "fields": [
+        {
+          "name": "RQ",
+          "desc": "事件日期"
+        },
+        {
+          "name": "TYPE",
+          "desc": "类型，1:时间插帧;2:业务事件"
+        },
+        {
+          "name": "ID",
+          "desc": "事件唯一标识"
+        },
+        {
+          "name": "FSSJ",
+          "desc": "发生时间"
+        },
+        {
+          "name": "FSSJC",
+          "desc": "发生时间戳"
+        },
+        {
+          "name": "STLX",
+          "desc": "实体类型"
+        },
+        {
+          "name": "STID",
+          "desc": "实体id"
+        },
+        {
+          "name": "KRTIME",
+          "desc": "Kafka时间"
+        },
+        {
+          "name": "PTE",
+          "desc": "写入时间"
+        },
+        {
+          "name": "SPEED",
+          "desc": "事件时车速(km/h)"
+        },
+        {
+          "name": "XHLC",
+          "desc": "当前剩余续航里程(km)"
+        },
+        {
+          "name": "SOC",
+          "desc": "当前SOC"
+        },
+        {
+          "name": "JD",
+          "desc": "经度"
+        },
+        {
+          "name": "WD",
+          "desc": "纬度"
+        },
+        {
+          "name": "CQID",
+          "desc": "城区位置ID"
+        },
+        {
+          "name": "CQMC",
+          "desc": "城区位置名称"
+        },
+        {
+          "name": "HLID",
+          "desc": "环路位置ID"
+        },
+        {
+          "name": "HLMC",
+          "desc": "环路位置名称"
+        },
+        {
+          "name": "ZWID",
+          "desc": "直线距离最近的站位ID"
+        },
+        {
+          "name": "ZWMC",
+          "desc": "直线距离最近的站位名称"
+        },
+        {
+          "name": "ZWJL",
+          "desc": "直线距离最近的站位距离"
+        },
+        {
+          "name": "QLID",
+          "desc": "桥ID"
+        },
+        {
+          "name": "QLMC",
+          "desc": "桥名称"
+        },
+        {
+          "name": "QLJL",
+          "desc": "桥距离"
+        },
+        {
+          "name": "MID",
+          "desc": "门ID"
+        },
+        {
+          "name": "MMC",
+          "desc": "门名称"
+        },
+        {
+          "name": "MJL",
+          "desc": "门距离"
+        },
+        {
+          "name": "QCLZID",
+          "desc": "七站两场ID"
+        },
+        {
+          "name": "QCLZMC",
+          "desc": "七站两场名称"
+        },
+        {
+          "name": "QCLZJL",
+          "desc": "七站两场距离"
+        },
+        {
+          "name": "YYID",
+          "desc": "医院ID"
+        },
+        {
+          "name": "YYMC",
+          "desc": "医院名称"
+        },
+        {
+          "name": "YYJL",
+          "desc": "医院距离"
+        },
+        {
+          "name": "XXID",
+          "desc": "学校ID"
+        },
+        {
+          "name": "XXMC",
+          "desc": "学校名称"
+        },
+        {
+          "name": "XXJL",
+          "desc": "学校距离"
+        },
+        {
+          "name": "JDID",
+          "desc": "景点ID"
+        },
+        {
+          "name": "JDMC",
+          "desc": "景点名称"
+        },
+        {
+          "name": "JDJL",
+          "desc": "景点距离"
+        },
+        {
+          "name": "SWQID",
+          "desc": "商务区ID"
+        },
+        {
+          "name": "SWQMC",
+          "desc": "商务区名称"
+        },
+        {
+          "name": "SWQJL",
+          "desc": "商务区距离"
+        },
+        {
+          "name": "BZQLX",
+          "desc": "0:运营区;1:场站;2:保养点;3:能源站;"
+        },
+        {
+          "name": "BZQID",
+          "desc": "所在保障区ID"
+        },
+        {
+          "name": "BZQMC",
+          "desc": "所在保障区名称"
+        },
+        {
+          "name": "JSDID",
+          "desc": "积水点ID"
+        },
+        {
+          "name": "JSDMC",
+          "desc": "积水点名称"
+        },
+        {
+          "name": "JSDJL",
+          "desc": "积水点距离"
+        },
+        {
+          "name": "CYSTLX",
+          "desc": "事件参与实体类型,0:司机;1:车辆;2:线路;3:站点4:场站"
+        },
+        {
+          "name": "CYSTID",
+          "desc": "事件参与实体id"
+        },
+        {
+          "name": "SJYJFL",
+          "desc": "事件一级分类"
+        },
+        {
+          "name": "SJEJFL",
+          "desc": "事件二级分类"
+        },
+        {
+          "name": "SJSJFL",
+          "desc": "事件三级分类"
+        },
+        {
+          "name": "YWDJID",
+          "desc": "业务单据id"
+        },
+        {
+          "name": "GSDWID",
+          "desc": "归属分公司ID"
+        },
+        {
+          "name": "GSDWMC",
+          "desc": "归属分公司名称"
+        },
+        {
+          "name": "GSDWJC",
+          "desc": "归属分公司简称"
+        },
+        {
+          "name": "GSDWPX",
+          "desc": "归属分公司排序"
+        },
+        {
+          "name": "GSCDID",
+          "desc": "归属车队ID"
+        },
+        {
+          "name": "GSCDMC",
+          "desc": "归属车队名称"
+        },
+        {
+          "name": "GSCDJC",
+          "desc": "归属车队简称"
+        },
+        {
+          "name": "GSCDPX",
+          "desc": "归属车队排序"
+        },
+        {
+          "name": "GSXLID",
+          "desc": "归属线路ID"
+        },
+        {
+          "name": "GSXLMC",
+          "desc": "归属线路名称"
+        },
+        {
+          "name": "GSXLPX",
+          "desc": "归属线路排序"
+        },
+        {
+          "name": "CDRQ",
+          "desc": "车辆初登日期"
+        },
+        {
+          "name": "CLMJ",
+          "desc": "车辆米级"
+        },
+        {
+          "name": "RLLX",
+          "desc": "车辆燃料类型"
+        },
+        {
+          "name": "CXMC",
+          "desc": "车型名称"
+        },
+        {
+          "name": "CPMC",
+          "desc": "车牌名称"
+        },
+        {
+          "name": "ZLC",
+          "desc": "总行驶里程(km)"
+        },
+        {
+          "name": "STATIONNO",
+          "desc": "能源站编号"
+        },
+        {
+          "name": "DEVICENO",
+          "desc": "能源设备编号"
+        },
+        {
+          "name": "OETIME",
+          "desc": "原始上报时间"
+        },
+        {
+          "name": "PSTIME",
+          "desc": "解析发送时间"
+        },
+        {
+          "name": "ETLTIME",
+          "desc": "数据清洗时间"
+        },
+        {
+          "name": "WRTIME",
+          "desc": "写入时间"
+        },
+        {
+          "name": "DEVICE_NUM",
+          "desc": "能源设备个数"
+        },
+        {
+          "name": "SYS_VERSION",
+          "desc": "站级系统版本"
+        },
+        {
+          "name": "BOARD_VERISON",
+          "desc": "主板版本"
+        },
+        {
+          "name": "SCREEN_VERSION",
+          "desc": "充电桩主屏版本"
+        },
+        {
+          "name": "CHARGEPILETIME",
+          "desc": "充电桩时间"
+        },
+        {
+          "name": "STARTTIME",
+          "desc": "开始时间"
+        },
+        {
+          "name": "CARD",
+          "desc": "卡号"
+        },
+        {
+          "name": "LICENCE",
+          "desc": "车牌号"
+        },
+        {
+          "name": "STARTSOC",
+          "desc": "开始SOC"
+        },
+        {
+          "name": "ENDSOC",
+          "desc": "当前SOC"
+        },
+        {
+          "name": "OUTPUTCUR",
+          "desc": "输出电流"
+        },
+        {
+          "name": "OUTPUTVOL",
+          "desc": "输出电压"
+        },
+        {
+          "name": "MINCELLVOL",
+          "desc": "最小单体电压"
+        },
+        {
+          "name": "MINCELLPOS",
+          "desc": "单体最小电压位置"
+        },
+        {
+          "name": "MAXCELLVOL",
+          "desc": "最大单体电压"
+        },
+        {
+          "name": "MAXCELLPOS",
+          "desc": "最大单体电压位置"
+        },
+        {
+          "name": "DURATION",
+          "desc": "充电时长 单位秒"
+        },
+        {
+          "name": "QUANTITY",
+          "desc": "已充电量"
+        },
+        {
+          "name": "COMM_STATE",
+          "desc": "通讯状态 0正常1异常"
+        },
+        {
+          "name": "CONNECT_STATE",
+          "desc": "枪连接状态 0：未连接1：已连接"
+        },
+        {
+          "name": "CHARGE_STATE",
+          "desc": "充电状态 0：未连接1：已连接"
+        },
+        {
+          "name": "STARTFAULT",
+          "desc": "启动故障码"
+        },
+        {
+          "name": "STOPFAULT",
+          "desc": "停机故障码"
+        },
+        {
+          "name": "DEVICEFAULT",
+          "desc": "设备故障码"
+        },
+        {
+          "name": "ORIMETRE",
+          "desc": "开始电表号"
+        }
+      ]
+    },
+    {
+      "name": "",
+      "cn": "事件池-子表-主数据能源站信息表",
+      "cat1": "主数据变动事件",
+      "cat2": "主数据变更",
+      "cat3": "主数据能源站信息表",
+      "desc": "PROD_DW.TA_MD_NYZ_DA按照操作时间,关联到前一个30秒的指标上",
+      "fields": [
+        {
+          "name": "RQ",
+          "desc": "事件日期"
+        },
+        {
+          "name": "TYPE",
+          "desc": "类型，1:时间插帧;2:业务事件"
+        },
+        {
+          "name": "ID",
+          "desc": "事件唯一标识"
+        },
+        {
+          "name": "FSSJ",
+          "desc": "发生时间"
+        },
+        {
+          "name": "FSSJC",
+          "desc": "发生时间戳"
+        },
+        {
+          "name": "STLX",
+          "desc": "实体类型"
+        },
+        {
+          "name": "STID",
+          "desc": "实体id"
+        },
+        {
+          "name": "DWID",
+          "desc": "单位ID"
+        },
+        {
+          "name": "DWMC",
+          "desc": "单位名称"
+        },
+        {
+          "name": "DWPX",
+          "desc": "单位排序"
+        },
+        {
+          "name": "CZID",
+          "desc": "场站ID"
+        },
+        {
+          "name": "CZBM",
+          "desc": "场站编码"
+        },
+        {
+          "name": "CZMC",
+          "desc": "场站名称"
+        },
+        {
+          "name": "CZJC",
+          "desc": "场站简称"
+        },
+        {
+          "name": "NYZID",
+          "desc": "能源站ID"
+        },
+        {
+          "name": "NYZIDO",
+          "desc": "能源站IDO"
+        },
+        {
+          "name": "CSID",
+          "desc": "城市ID"
+        },
+        {
+          "name": "NYZBM",
+          "desc": "能源站编码"
+        },
+        {
+          "name": "NYZMC",
+          "desc": "能源站名称"
+        },
+        {
+          "name": "NYZMCJP",
+          "desc": "能源站名称简拼"
+        },
+        {
+          "name": "PX",
+          "desc": "排序"
+        },
+        {
+          "name": "NYZLX",
+          "desc": "能源站类型"
+        },
+        {
+          "name": "CDZFWLX",
+          "desc": "充电站服务类型"
+        },
+        {
+          "name": "NYZFL",
+          "desc": "能源站分类"
+        },
+        {
+          "name": "NYZZT",
+          "desc": "能源站状态"
+        },
+        {
+          "name": "NYLX",
+          "desc": "能源类型"
+        },
+        {
+          "name": "CQSFJTDW",
+          "desc": "产权是否集团单位"
+        },
+        {
+          "name": "CQDWID",
+          "desc": "产权单位ID"
+        },
+        {
+          "name": "CQDWMC",
+          "desc": "产权单位"
+        },
+        {
+          "name": "JYSFJTDW",
+          "desc": "经营是否集团单位"
+        },
+        {
+          "name": "JYDWID",
+          "desc": "经营单位ID"
+        },
+        {
+          "name": "JYDWMC",
+          "desc": "经营单位"
+        },
+        {
+          "name": "JYMS",
+          "desc": "经营模式"
+        },
+        {
+          "name": "SBCSID",
+          "desc": "设备厂商ID"
+        },
+        {
+          "name": "SBCSMC",
+          "desc": "设备厂商"
+        },
+        {
+          "name": "SFXFSY",
+          "desc": "是否具备消防水源"
+        },
+        {
+          "name": "FZR",
+          "desc": "负责人"
+        },
+        {
+          "name": "LXDH",
+          "desc": "联系电话"
+        },
+        {
+          "name": "GZSJ",
+          "desc": "工作时间"
+        },
+        {
+          "name": "ZDMJ",
+          "desc": "占地面积"
+        },
+        {
+          "name": "JSFQ",
+          "desc": "建设分期"
+        },
+        {
+          "name": "JSRQ",
+          "desc": "建设日期"
+        },
+        {
+          "name": "JCRQ",
+          "desc": "建成日期"
+        },
+        {
+          "name": "TCRQ",
+          "desc": "投产日期"
+        },
+        {
+          "name": "TYRQ",
+          "desc": "停用日期"
+        },
+        {
+          "name": "CCRQ",
+          "desc": "拆除日期"
+        },
+        {
+          "name": "XZQH",
+          "desc": "行政区划"
+        },
+        {
+          "name": "HLWZ",
+          "desc": "环路位置"
+        },
+        {
+          "name": "NYZDZ",
+          "desc": "能源站地址"
+        },
+        {
+          "name": "JD",
+          "desc": "经度"
+        },
+        {
+          "name": "WD",
+          "desc": "纬度"
+        },
+        {
+          "name": "GDJD",
+          "desc": "高德经度"
+        },
+        {
+          "name": "GDWD",
+          "desc": "高德纬度"
+        },
+        {
+          "name": "BDJD",
+          "desc": "百度经度"
+        },
+        {
+          "name": "BDWD",
+          "desc": "百度纬度"
+        },
+        {
+          "name": "BZ",
+          "desc": "备注"
+        },
+        {
+          "name": "BSRQ",
+          "desc": "报审日期"
+        }
+      ]
+    },
+    {
+      "name": "",
+      "cn": "事件池-子表-主数据车辆表",
+      "cat1": "主数据变动事件",
+      "cat2": "主数据变更",
+      "cat3": "主数据车辆表",
+      "desc": "ZDCOM_RHSC.MD_HX_CL，按照操作时间，关联到前一个30秒的指标上",
+      "fields": [
+        {
+          "name": "RQ",
+          "desc": "事件日期"
+        },
+        {
+          "name": "TYPE",
+          "desc": "类型，1:时间插帧;2:业务事件"
+        },
+        {
+          "name": "ID",
+          "desc": "事件唯一标识"
+        },
+        {
+          "name": "FSSJ",
+          "desc": "发生时间"
+        },
+        {
+          "name": "FSSJC",
+          "desc": "发生时间戳"
+        },
+        {
+          "name": "STLX",
+          "desc": "实体类型"
+        },
+        {
+          "name": "STID",
+          "desc": "实体id"
+        },
+        {
+          "name": "KRTIME",
+          "desc": "Kafka时间"
+        },
+        {
+          "name": "PTE",
+          "desc": "写入时间"
+        },
+        {
+          "name": "SPEED",
+          "desc": "事件时车速(km/h)"
+        },
+        {
+          "name": "XHLC",
+          "desc": "当前剩余续航里程(km)"
+        },
+        {
+          "name": "SOC",
+          "desc": "当前SOC"
+        },
+        {
+          "name": "JD",
+          "desc": "经度"
+        },
+        {
+          "name": "WD",
+          "desc": "纬度"
+        },
+        {
+          "name": "CQID",
+          "desc": "城区位置ID"
+        },
+        {
+          "name": "CQMC",
+          "desc": "城区位置名称"
+        },
+        {
+          "name": "HLID",
+          "desc": "环路位置ID"
+        },
+        {
+          "name": "HLMC",
+          "desc": "环路位置名称"
+        },
+        {
+          "name": "ZWID",
+          "desc": "直线距离最近的站位ID"
+        },
+        {
+          "name": "ZWMC",
+          "desc": "直线距离最近的站位名称"
+        },
+        {
+          "name": "ZWJL",
+          "desc": "直线距离最近的站位距离"
+        },
+        {
+          "name": "QLID",
+          "desc": "桥ID"
+        },
+        {
+          "name": "QLMC",
+          "desc": "桥名称"
+        },
+        {
+          "name": "QLJL",
+          "desc": "桥距离"
+        },
+        {
+          "name": "MID",
+          "desc": "门ID"
+        },
+        {
+          "name": "MMC",
+          "desc": "门名称"
+        },
+        {
+          "name": "MJL",
+          "desc": "门距离"
+        },
+        {
+          "name": "QCLZID",
+          "desc": "七站两场ID"
+        },
+        {
+          "name": "QCLZMC",
+          "desc": "七站两场名称"
+        },
+        {
+          "name": "QCLZJL",
+          "desc": "七站两场距离"
+        },
+        {
+          "name": "YYID",
+          "desc": "医院ID"
+        },
+        {
+          "name": "YYMC",
+          "desc": "医院名称"
+        },
+        {
+          "name": "YYJL",
+          "desc": "医院距离"
+        },
+        {
+          "name": "XXID",
+          "desc": "学校ID"
+        },
+        {
+          "name": "XXMC",
+          "desc": "学校名称"
+        },
+        {
+          "name": "XXJL",
+          "desc": "学校距离"
+        },
+        {
+          "name": "JDID",
+          "desc": "景点ID"
+        },
+        {
+          "name": "JDMC",
+          "desc": "景点名称"
+        },
+        {
+          "name": "JDJL",
+          "desc": "景点距离"
+        },
+        {
+          "name": "SWQID",
+          "desc": "商务区ID"
+        },
+        {
+          "name": "SWQMC",
+          "desc": "商务区名称"
+        },
+        {
+          "name": "SWQJL",
+          "desc": "商务区距离"
+        },
+        {
+          "name": "BZQLX",
+          "desc": "0:运营区;1:场站;2:保养点;3:能源站;"
+        },
+        {
+          "name": "BZQID",
+          "desc": "所在保障区ID"
+        },
+        {
+          "name": "BZQMC",
+          "desc": "所在保障区名称"
+        },
+        {
+          "name": "JSDID",
+          "desc": "积水点ID"
+        },
+        {
+          "name": "JSDMC",
+          "desc": "积水点名称"
+        },
+        {
+          "name": "JSDJL",
+          "desc": "积水点距离"
+        },
+        {
+          "name": "CYSTLX",
+          "desc": "事件参与实体类型,0:司机;1:车辆;2:线路;3:站点4:场站"
+        },
+        {
+          "name": "CYSTID",
+          "desc": "事件参与实体id"
+        },
+        {
+          "name": "SJYJFL",
+          "desc": "事件一级分类"
+        },
+        {
+          "name": "SJEJFL",
+          "desc": "事件二级分类"
+        },
+        {
+          "name": "SJSJFL",
+          "desc": "事件三级分类"
+        },
+        {
+          "name": "YWDJID",
+          "desc": "业务单据id"
+        },
+        {
+          "name": "GSDWID",
+          "desc": "归属分公司ID"
+        },
+        {
+          "name": "GSDWMC",
+          "desc": "归属分公司名称"
+        },
+        {
+          "name": "GSDWJC",
+          "desc": "归属分公司简称"
+        },
+        {
+          "name": "GSDWPX",
+          "desc": "归属分公司排序"
+        },
+        {
+          "name": "GSCDID",
+          "desc": "归属车队ID"
+        },
+        {
+          "name": "GSCDMC",
+          "desc": "归属车队名称"
+        },
+        {
+          "name": "GSCDJC",
+          "desc": "归属车队简称"
+        },
+        {
+          "name": "GSCDPX",
+          "desc": "归属车队排序"
+        },
+        {
+          "name": "GSXLID",
+          "desc": "归属线路ID"
+        },
+        {
+          "name": "GSXLMC",
+          "desc": "归属线路名称"
+        },
+        {
+          "name": "GSXLPX",
+          "desc": "归属线路排序"
+        },
+        {
+          "name": "CDRQ",
+          "desc": "车辆初登日期"
+        },
+        {
+          "name": "CLMJ",
+          "desc": "车辆米级"
+        },
+        {
+          "name": "RLLX",
+          "desc": "车辆燃料类型"
+        },
+        {
+          "name": "CXMC",
+          "desc": "车型名称"
+        },
+        {
+          "name": "CPMC",
+          "desc": "车牌名称"
+        },
+        {
+          "name": "ZLC",
+          "desc": "总行驶里程(km)"
+        }
+      ]
+    },
+    {
+      "name": "",
+      "cn": "事件池-子表-刷卡刷码数据",
+      "cat1": "车辆业务事件",
+      "cat2": "客流业务域",
+      "cat3": "刷卡刷码数据",
+      "desc": "PROD_STAT.TI_GJLD_ICQR_ALL_MI，按照刷卡和刷码时间，关联到前一个30秒的指标上",
+      "fields": [
+        {
+          "name": "RQ",
+          "desc": "事件日期"
+        },
+        {
+          "name": "TYPE",
+          "desc": "类型，1:时间插帧;2:业务事件"
+        },
+        {
+          "name": "ID",
+          "desc": "事件唯一标识"
+        },
+        {
+          "name": "FSSJ",
+          "desc": "发生时间"
+        },
+        {
+          "name": "FSSJC",
+          "desc": "发生时间戳"
+        },
+        {
+          "name": "STLX",
+          "desc": "实体类型"
+        },
+        {
+          "name": "STID",
+          "desc": "实体id"
+        },
+        {
+          "name": "KRTIME",
+          "desc": "Kafka时间"
+        },
+        {
+          "name": "PTE",
+          "desc": "写入时间"
+        },
+        {
+          "name": "SPEED",
+          "desc": "事件时车速(km/h)"
+        },
+        {
+          "name": "XHLC",
+          "desc": "当前剩余续航里程(km)"
+        },
+        {
+          "name": "SOC",
+          "desc": "当前SOC"
+        },
+        {
+          "name": "JD",
+          "desc": "经度"
+        },
+        {
+          "name": "WD",
+          "desc": "纬度"
+        },
+        {
+          "name": "CQID",
+          "desc": "城区位置ID"
+        },
+        {
+          "name": "CQMC",
+          "desc": "城区位置名称"
+        },
+        {
+          "name": "HLID",
+          "desc": "环路位置ID"
+        },
+        {
+          "name": "HLMC",
+          "desc": "环路位置名称"
+        },
+        {
+          "name": "ZWID",
+          "desc": "直线距离最近的站位ID"
+        },
+        {
+          "name": "ZWMC",
+          "desc": "直线距离最近的站位名称"
+        },
+        {
+          "name": "ZWJL",
+          "desc": "直线距离最近的站位距离"
+        },
+        {
+          "name": "QLID",
+          "desc": "桥ID"
+        },
+        {
+          "name": "QLMC",
+          "desc": "桥名称"
+        },
+        {
+          "name": "QLJL",
+          "desc": "桥距离"
+        },
+        {
+          "name": "MID",
+          "desc": "门ID"
+        },
+        {
+          "name": "MMC",
+          "desc": "门名称"
+        },
+        {
+          "name": "MJL",
+          "desc": "门距离"
+        },
+        {
+          "name": "QCLZID",
+          "desc": "七站两场ID"
+        },
+        {
+          "name": "QCLZMC",
+          "desc": "七站两场名称"
+        },
+        {
+          "name": "QCLZJL",
+          "desc": "七站两场距离"
+        },
+        {
+          "name": "YYID",
+          "desc": "医院ID"
+        },
+        {
+          "name": "YYMC",
+          "desc": "医院名称"
+        },
+        {
+          "name": "YYJL",
+          "desc": "医院距离"
+        },
+        {
+          "name": "XXID",
+          "desc": "学校ID"
+        },
+        {
+          "name": "XXMC",
+          "desc": "学校名称"
+        },
+        {
+          "name": "XXJL",
+          "desc": "学校距离"
+        },
+        {
+          "name": "JDID",
+          "desc": "景点ID"
+        },
+        {
+          "name": "JDMC",
+          "desc": "景点名称"
+        },
+        {
+          "name": "JDJL",
+          "desc": "景点距离"
+        },
+        {
+          "name": "SWQID",
+          "desc": "商务区ID"
+        },
+        {
+          "name": "SWQMC",
+          "desc": "商务区名称"
+        },
+        {
+          "name": "SWQJL",
+          "desc": "商务区距离"
+        },
+        {
+          "name": "BZQLX",
+          "desc": "0:运营区;1:场站;2:保养点;3:能源站;"
+        },
+        {
+          "name": "BZQID",
+          "desc": "所在保障区ID"
+        },
+        {
+          "name": "BZQMC",
+          "desc": "所在保障区名称"
+        },
+        {
+          "name": "JSDID",
+          "desc": "积水点ID"
+        },
+        {
+          "name": "JSDMC",
+          "desc": "积水点名称"
+        },
+        {
+          "name": "JSDJL",
+          "desc": "积水点距离"
+        },
+        {
+          "name": "CYSTLX",
+          "desc": "事件参与实体类型,0:司机;1:车辆;2:线路;3:站点4:场站"
+        },
+        {
+          "name": "CYSTID",
+          "desc": "事件参与实体id"
+        },
+        {
+          "name": "SJYJFL",
+          "desc": "事件一级分类"
+        },
+        {
+          "name": "SJEJFL",
+          "desc": "事件二级分类"
+        },
+        {
+          "name": "SJSJFL",
+          "desc": "事件三级分类"
+        },
+        {
+          "name": "YWDJID",
+          "desc": "业务单据id"
+        },
+        {
+          "name": "GSDWID",
+          "desc": "归属分公司ID"
+        },
+        {
+          "name": "GSDWMC",
+          "desc": "归属分公司名称"
+        },
+        {
+          "name": "GSDWJC",
+          "desc": "归属分公司简称"
+        },
+        {
+          "name": "GSDWPX",
+          "desc": "归属分公司排序"
+        },
+        {
+          "name": "GSCDID",
+          "desc": "归属车队ID"
+        },
+        {
+          "name": "GSCDMC",
+          "desc": "归属车队名称"
+        },
+        {
+          "name": "GSCDJC",
+          "desc": "归属车队简称"
+        },
+        {
+          "name": "GSCDPX",
+          "desc": "归属车队排序"
+        },
+        {
+          "name": "GSXLID",
+          "desc": "归属线路ID"
+        },
+        {
+          "name": "GSXLMC",
+          "desc": "归属线路名称"
+        },
+        {
+          "name": "GSXLPX",
+          "desc": "归属线路排序"
+        },
+        {
+          "name": "CDRQ",
+          "desc": "车辆初登日期"
+        },
+        {
+          "name": "CLMJ",
+          "desc": "车辆米级"
+        },
+        {
+          "name": "RLLX",
+          "desc": "车辆燃料类型"
+        },
+        {
+          "name": "CXMC",
+          "desc": "车型名称"
+        },
+        {
+          "name": "CPMC",
+          "desc": "车牌名称"
+        },
+        {
+          "name": "ZLC",
+          "desc": "总行驶里程(km)"
+        }
+      ]
+    }
+  ],
+  "未接入_数据湖指标表概要": [
+    "TA_CAN_AIRCONDITIONERINFO | CAN融合-空调数据 | 整车CAN数据监控分析",
+    "TA_CAN_AIRCONDITIONERINFO_ALL | CAN融合-空调数据车辆接入 | 整车CAN数据监控分析",
+    "TA_CAN_BUS_CANID | CAN融合-CAN车辆协议接入 | 整车CAN数据监控分析",
+    "TA_CAN_BUS_CANID_ALL | CAN融合-CAN车辆协议接入 | 整车CAN数据监控分析",
+    "TA_LRSU_CHARGEORDER | 龙瑞三优-充电工单 | 智慧加燃管理系统",
+    "TA_NE_BUS_NEID | CAN融合-新能源车辆接入表 | 整车CAN数据监控分析",
+    "TD_PERIOD_DIM | 时间轴 | 融合数仓",
+    "TF_BLALARM_DCFSJG_DI | 北理-电池评分数据表 | 整车CAN数据监控分析",
+    "TF_HNS_CLGZMX_DI | 汉纳森-车辆故障明细 | 整车CAN数据监控分析",
+    "TF_HNS_CLGZTJ_DI | 汉纳森-车辆故障统计 | 整车CAN数据监控分析",
+    "TF_HNS_CLXWTJ_DI | 汉纳森回吐-车辆行为统计 | 整车CAN数据监控分析",
+    "TF_HNS_JGGZTJ_DI | 汉纳森回吐-机构故障统计 | 整车CAN数据监控分析",
+    "TF_HNS_JGXWTJ_DI | 汉纳森回吐-机构行为统计 | 整车CAN数据监控分析",
+    "TF_HNS_JSTZ_DI | 汉纳森回吐-驾驶特征数据表 | 整车CAN数据监控分析",
+    "TF_HNS_JSYHX_CANJSXWQK_DI | 汉纳森回吐-驾驶员画像-CAN驾驶行为表现情况 | 整车CAN数据监控分析",
+    "TF_HNS_JSYHX_JSYJBXX_DI | 汉纳森回吐-驾驶员画像驾驶员基本信息 | 整车CAN数据监控分析",
+    "TF_HNS_JSYHX_XSDFX_DI | 汉纳森回吐-驾驶员画像相似度分析 | 整车CAN数据监控分析",
+    "TF_HNS_JSYHX_ZHPJ_DI | 汉纳森回吐-驾驶员画像综合评价 | 整车CAN数据监控分析",
+    "TF_HNS_JSYPJMXSJ_DI | 汉纳森回吐-驾驶员评价明细数据表 | 整车CAN数据监控分析",
+    "TF_HNS_JSYXWTJ_DI | 汉纳森回吐-驾驶员行为统计 | 整车CAN数据监控分析",
+    "TF_HNS_SCCSTJ_DI | 汉纳森回吐-刹车次数统计 | 整车CAN数据监控分析",
+    "TF_HNS_SJJSXW_DI | 汉纳森回吐-司机驾驶行为 | 整车CAN数据监控分析",
+    "TF_HNS_XLGZTJ_DI | 汉纳森回吐-车辆故障统计 | 整车CAN数据监控分析",
+    "TF_HNS_XLHX_GFHDZS_DI | 汉纳森回吐-线路画像-高发黑点展示 | 整车CAN数据监控分析",
+    "TF_HNS_XLHX_XLXX_DI | 汉纳森回吐-线路画像-线路信息 | 整车CAN数据监控分析",
+    "TF_HNS_XLXWTJ_DI | 汉纳森回吐-线路行为统计 | 整车CAN数据监控分析",
+    "TI_CAN_AIRCONDITIONERINFO | CAN融合-空调数据表 | 整车CAN数据监控分析",
+    "TI_CAN_AIRCONDITIONERINFO_CFG2 | CAN融合—空调_双系统数据表 | 整车CAN数据监控分析",
+    "TI_CAN_AIRCONDITIONERINFO_LATEST | CAN融合-空调_最新数据表 | 整车CAN数据监控分析",
+    "TI_CAN_BATTERYCHARGE | CAN融合-电池充电 | 整车CAN数据监控分析",
+    "TI_CAN_BATTERYCHARGE_BMS2 | CAN融合-电池充电_双系统 | 整车CAN数据监控分析",
+    "TI_CAN_BATTERYCHARGE_LATEST | CAN融合-电池充电_最新 | 整车CAN数据监控分析",
+    "TI_CAN_BATTERYDIM | CAN融合-电池维度数据表 | 整车CAN数据监控分析",
+    "TI_CAN_BATTERYDIM_BMS2 | CAN融合-电池维度_双系统数据表 | 整车CAN数据监控分析",
+    "TI_CAN_BATTERYDIM_LATEST | CAN融合-电池维度_最新数据表 | 整车CAN数据监控分析",
+    "TI_CAN_BATTERYFAULT | CAN融合-电池箱故障数据表 | 整车CAN数据监控分析",
+    "TI_CAN_BATTERYFAULT_BMS2 | CAN融合-电池箱故障_双系统数据表 | 整车CAN数据监控分析",
+    "TI_CAN_BATTERYSWITCH | CAN融合-电池箱开关 | 整车CAN数据监控分析",
+    "TI_CAN_BATTERYSWITCH_BMS2 | CAN融合-电池开关_双系统数据表 | 整车CAN数据监控分析",
+    "TI_CAN_BATTERYTEMPERATURE | CAN融合-电池温度数据表 | 整车CAN数据监控分析",
+    "TI_CAN_BATTERYTEMPERATURE_BMS2 | CAN融合—电池温度_双系统数据表 | 整车CAN数据监控分析",
+    "TI_CAN_BATTERYTEMPERATURE_BMS2_DETAIL | CAN融合-电池温度_双系统_明细 | 整车CAN数据监控分析",
+    "TI_CAN_BATTERYTEMPERATURE_BMS2_LATEST | CAN融合-电池温度_双系统_最新数据表 | 整车CAN数据监控分析",
+    "TI_CAN_BATTERYTEMPERATURE_DETAIL | CAN融合—电池温度_明细数据表 | 整车CAN数据监控分析",
+    "TI_CAN_BATTERYTEMPERATURE_LATEST | CAN融合-电池温度_最新数据表 | 整车CAN数据监控分析",
+    "TI_CAN_BATTERYVOLTAGE | CAN融合-电池电压 | 整车CAN数据监控分析",
+    "TI_CAN_BATTERYVOLTAGE_BMS2 | CAN融合-电池电压_双系统数据表 | 整车CAN数据监控分析",
+    "TI_CAN_BATTERYVOLTAGE_BMS2_DETAIL | CAN融合-电池电压_双系统_明细 | 整车CAN数据监控分析",
+    "TI_CAN_BATTERYVOLTAGE_BMS2_LATEST | CAN融合-电池电压_双系统_最新数据表 | 整车CAN数据监控分析",
+    "TI_CAN_BATTERYVOLTAGE_DETAIL | CAN融合-电池电压_明细 | 整车CAN数据监控分析",
+    "TI_CAN_BATTERYVOLTAGE_LATEST | CAN融合-电池电压_最新数据表 | 整车CAN数据监控分析",
+    "TI_CAN_BMSFAULT | CAN-CAN电池异常告警信息 | 整车CAN数据监控分析",
+    "TI_CAN_BMSFAULT_LATEST | CAN-CAN电池故障信息-最新 | 整车CAN数据监控分析",
+    "TI_CAN_BUSCONTROLLERFAULT | CAN-CAN整车控制器异常告警信息 | 整车CAN数据监控分析",
+    "TI_CAN_BUSCONTROLLERFAULT_LATEST | CAN-CAN整车控制器异常告警信息-最新 | 整车CAN数据监控分析",
+    "TI_CAN_DC_CFG2 | CAN融合-无轨双源数据表 | 整车CAN数据监控分析",
+    "TI_CAN_ENGINE | CAN融合-发动机数据表 | 整车CAN数据监控分析",
+    "TI_CAN_ENGINEFAULT_DETAIL | CAN-CAN发动机故障信息 | 整车CAN数据监控分析",
+    "TI_CAN_ENGINE_LATEST | CAN融合-发动机_最新 | 整车CAN数据监控分析",
+    "TI_CAN_FUELBATTERYCONTROLLER | CAN融合-燃料电池 | 整车CAN数据监控分析",
+    "TI_CAN_FUELBATTERYCONTROLLER_LATEST | CAN融合-燃料电池_最新 | 整车CAN数据监控分析",
+    "TI_CAN_GAS | CAN融合-燃气模块数据表 | 整车CAN数据监控分析",
+    "TI_CAN_GAS_LATEST | CAN融合-燃气模块_最新数据表 | 整车CAN数据监控分析",
+    "TI_CAN_GEARBOX | CAN融合-变速箱数据表 | 整车CAN数据监控分析",
+    "TI_CAN_HYDROGENSYSTEM | CAN融合-氢系统数据表 | 整车CAN数据监控分析",
+    "TI_CAN_HYDROGENSYSTEM_LATEST | CAN融合-氢系统_最新 | 整车CAN数据监控分析",
+    "TI_CAN_LOWVOLDISTRIBUTIONBOX | CAN融合-低压配电盒 | 整车CAN数据监控分析",
+    "TI_CAN_MOTORCONTROLLER | CAN融合-电机控制器数据表 | 整车CAN数据监控分析",
+    "TI_CAN_MOTORCONTROLLER_AM | CAN融合-AM电池控制器 | 整车CAN数据监控分析",
+    "TI_CAN_MOTORCONTROLLER_AM_LATEST | CAN融合-AM电机控制器_最新 | 整车CAN数据监控分析",
+    "TI_CAN_MOTORCONTROLLER_LATEST | CAN融合-电机控制器_最新数据表 | 整车CAN数据监控分析",
+    "TI_CAN_PROTECT | CAN融合-安全保护数据表 | 整车CAN数据监控分析",
+    "TI_CAN_PROTECT_LATEST | CAN融合-安全防护_最新 | 整车CAN数据监控分析",
+    "TI_CAN_PUMPDC | CAN融合-油气泵数据表 | 整车CAN数据监控分析",
+    "TI_CAN_PUMPDC_LATEST | CAN融合-油气泵_最新 | 整车CAN数据监控分析",
+    "TI_CAN_TERMINAL | CAN融合-版本信息 | 整车CAN数据监控分析",
+    "TI_LRSU_CHARGEPILE | 龙瑞三优-充电桩状态信息 | 车辆能源管控",
+    "TI_MG_BATTERYEXTREMUM | CAN融合-电池极值 | 整车CAN数据监控分析",
+    "TI_MG_BATTERYEXTREMUM_BMS2 | CAN融合-电池极值_双系统 | 整车CAN数据监控分析",
+    "TI_MG_BATTERYEXTREMUM_LATEST | CAN融合-电池极值_最新数据表 | 整车CAN数据监控分析",
+    "TI_MG_BUSCONTROLLER | CAN融合-整车控制器 | 整车CAN数据监控分析",
+    "TI_MG_BUSCONTROLLER_LATEST | CAN融合-整车控制器数据表 | 整车CAN数据监控分析",
+    "TI_MG_INSULATION | CAN融合-绝缘模块 | 整车CAN数据监控分析",
+    "TI_MG_INSULATION_LATEST | CAN融合-绝缘模块_最新数据表 | 整车CAN数据监控分析",
+    "TI_MG_METERSTATE | CAN融合-仪表数据表 | 整车CAN数据监控分析",
+    "TI_MG_METERSTATE_LATEST | CAN融合-仪表_最新数据表 | 整车CAN数据监控分析",
+    "TI_NE_BATTERYTEMPERATURE | 新能源-电池温度 | 整车CAN数据监控分析",
+    "TI_NE_BATTERYVOLTAGE | 新能源-电池电压数据表 | 整车CAN数据监控分析",
+    "TI_NE_DRIVERMOTOR | 新能源-驱动电机数据表 | 整车CAN数据监控分析",
+    "TI_NE_ENGINE | 新能源-发动机数据表 | 整车CAN数据监控分析",
+    "TI_NE_FUELBETTERY | 新能源-燃料电池数据表 | 整车CAN数据监控分析",
+    "TI_NE_POSITION | 新能源-车辆位置 | 整车CAN数据监控分析",
+    "TM_CAN_TEMPERATURESTATIS_DI | CAN-CAN部件温度稽核 | 整车CAN数据监控分析",
+    "TF_HNS_SSCLGZXX_MI | CAN-汉娜森车辆故障信息 | 整车CAN数据监控分析",
+    "TF_CAN_TEMPERATURCHECK_MI | CAN车辆温差稽核 | 整车CAN数据监控分析",
+    "TF_CAN_RUNNINGPERIOD_DI | 车辆运行时段分析表 | 整车CAN数据监控分析",
+    "TA_CAN_INDEX_LAST_DI | 车辆指标台账表 | 整车CAN数据监控分析",
+    "TF_HNS_DLYHXX_DI | 汉纳森回吐数据-登录用户信息 | 整车CAN数据监控分析",
+    "TF_VIOLATE_ABNORMAL_STATIS_DI | 车辆违规信息_分神驾驶 | 整车CAN数据监控分析",
+    "TF_VIOLATE_BACKWARD_STATIS_DI | 车辆违规信息_倒车超速 | 整车CAN数据监控分析",
+    "TF_VIOLATE_DZ_STATIS_DI | 车辆违规信息_进出站不规范_到站 | 整车CAN数据监控分析",
+    "TF_VIOLATE_LZ_STATIS_DI | 车辆违规信息_进出站不规范_离站 | 整车CAN数据监控分析",
+    "TF_VIOLATE_STOP_STATIS_DI | 车辆违规信息_驻车不规范 | 整车CAN数据监控分析",
+    "TF_CAN_TURNCAL_DI | can指标计算_车辆转弯数据推断 | 整车CAN数据监控分析",
+    "TF_DRIVER_INFORMALSTOP_STATIS_DI | 非正式停车车辆统计明细 | 整车CAN数据监控分析",
+    "TI_CAN_TYRE | CAN车辆轮胎信息 | 整车CAN数据监控分析",
+    "TI_CAN_TYRE_LATEST | CAN车辆轮胎信息_每日最新 | 整车CAN数据监控分析",
+    "TF_GPS_TURNCAL_DI | CAN指标计算_车辆转弯数据推断 | 整车CAN数据监控分析",
+    "TI_CAN_MOTORCONTROLLER_TCU_LATEST | CAN电机控制器TCU_每日最新 | 整车CAN数据监控分析",
+    "TI_CAN_MOTORCONTROLLER_TCU | CAN电机控制器TCU | 整车CAN数据监控分析",
+    "TF_SAFE_BRAKEALARM_DI | 驻车制动报警 | 整车CAN数据监控分析",
+    "TF_SAFE_ENGINEMOTOROVER_DI | 发动机超速 | 整车CAN数据监控分析",
+    "TF_SAFE_ENGINEWATERHOT_DI | 发动机水温高 | 整车CAN数据监控分析",
+    "TF_SAFE_OILPRESSLOW_DI | 发动机超速 | 整车CAN数据监控分析",
+    "TA_BQNE_BUS_NEID | CAN融合-北汽新能源车辆接入表 | 整车CAN数据监控分析",
+    "TF_SAFE_INPUTPRESS_DI | 进气歧管压力报警 | 整车CAN数据监控分析",
+    "TF_SAFE_LOWVOLCURRENT_DI | 低压电压电流报警 | 整车CAN数据监控分析",
+    "TF_SAFE_GASBREAKSIMUL_DI | 加速踏板制动踏板同时有开度 | 整车CAN数据监控分析",
+    "TA_HNS_CLGZTJ_DI | 汉纳森回吐-车辆故障统计 | 整车CAN数据监控分析",
+    "TA_JSBX_ZZX_GD_DI | 技术保修-中整修工单 | 车辆技术保修综合管理",
+    "TA_SJTS_JSBX_WBTJ_CL_DI | 数据探索-技术保修-维保统计-车辆 | 车辆技术保修综合管理",
+    "TA_SJTS_JSBX_WBTJ_XL_DI | 数据探索-技术保修-维保统计-线路维度 | 车辆技术保修综合管理",
+    "TA_SJTS_JSBX_WL_DETAIL_DI | 数据探索-技术保修-物料明细 | 车辆技术保修综合管理",
+    "TA_SJTS_JSBX_WXGD_DI | 数据探索-技术保修-维修工单 | 车辆技术保修综合管理",
+    "TA_SJTS_JSBX_WXGD_WL_DI | 数据探索-技术保修-维修工单-物料 | 车辆技术保修综合管理",
+    "TA_SJTS_LRSU_CHARGEORDER_DAY_DI | 隆瑞三优充电工单 | 场站能源管控",
+    "TA_SJTS_YYDD_DD_LD_DAY_DI | 数据探索-路单表 | 线路运营调度管理",
+    "TF_JSBX_WL_DCCBMX_DI | 技术保修-物料-单车成本明细 | 车辆技术保修综合管理",
+    "TF_JSBX_WXGDMX_DI | 技术保修-维修工单明细 | 车辆技术保修综合管理",
+    "TF_JSBX_WXGD_NEW_DI | 技术保修-维修工单 | 车辆技术保修综合管理",
+    "TF_SJTS_SECURITY_DSM_RECORD_DI | 数据探索dsm明细表 | 线路运营调度管理",
+    "TM_JSBX_QX_RW_DI | 技术保修-抢修任务 | 车辆技术保修综合管理",
+    "TM_JSBX_TXGD_DI | 技术保修-特修工单 | 车辆技术保修综合管理",
+    "TD_CDFX_SD_DA | 能源-充电分析时段 | 主数据管理",
+    "TD_MD_CZ_NYZ_XL_DA | 主数据_场站能源站关系 | 主数据管理",
+    "TD_MD_CZ_NYZ_XL_TJ_DA | 主数据距场站最近能源站信息 | 主数据管理",
+    "TD_MD_HX_JG_DA | 主数据-机构表 | 主数据管理",
+    "TD_MD_HX_RY_DA | 主数据_人员表 | 主数据管理",
+    "TD_MD_HX_XL_DA | 主数据_线路表 | 主数据管理",
+    "TD_MD_HX_XL_ZD_DA | 主数据线路站点 | 主数据管理",
+    "TD_MD_QT_NY_CDZSB_DA | 主数据-能源充电设备 | 主数据管理",
+    "TD_ORGAF_DIM | 安服数据-组织机构信息 | 主数据管理",
+    "TD_PS_TXGJ_PW_CUSTOM_REQUIREMENT_REL_DA | 通学公交-学校线路关系 | 通学公交学校业务",
+    "TD_PS_ZHJR_CD_CDZFSDJ_DA | 智慧加燃-充电站分时电价 | 智慧加燃管理系统",
+    "TD_SZ_DA | 主数据-时组表 | 主数据管理",
+    "TD_T_JC_SJZD | 发车、终到识别类型表 | 主数据管理",
+    "TD_VIN2BUSID | 车辆vin号维表 | 主数据管理",
+    "TD_WF_DA | 五峰表 | 主数据管理",
+    "TD_XL_XZQH | 线路行政区划 | 主数据管理",
+    "TF_PS_ZHJC_INSPECTION_STANDARD_ITEMS_DI | 综合稽查-项目标准项 | 综合运维管理",
+    "ta_md_xl_qy | 主数据线路区域 | 主数据管理",
+    "TD_DALIAN_DRIVER_DIM | 为大连理工提供数据-司机列表 | 主数据管理",
+    "TD_DALIAN_BUSLIST_DIM | 为大连理工提供数据-车辆列表 | 主数据管理",
+    "TD_DZ_ICLINE_ZM | 定制公交-线路站名 | 主数据管理",
+    "TD_PS_XAGJ_JCXX_CL_DA | 雄安公交-基础数据-车辆 | 主数据管理",
+    "TD_MD_HX_XL_ZD_ZW_GW_DA | 主数据线路站点站位格网维表 | 主数据管理",
+    "TD_MD_GRID_500M | 主数据500米格网维表 | 主数据管理",
+    "TD_MD_GRID_1000M | 主数据1000米格网维表 | 主数据管理",
+    "TD_MD_GRID_5000M | 主数据5000米格网维表 | 主数据管理",
+    "TD_MD_GRID_25M | 主数据25米格网维表 | 主数据管理",
+    "TD_MD_GRID_100M | 主数据100米格网维表 | 主数据管理",
+    "TD_MD_GRID_50M | 主数据50米格网维表 | 主数据管理",
+    "TD_MD_GRID_50000M | 主数据50000米格网维表 | 主数据管理",
+    "TD_MD_CZ_XS_RQ_DA | 主数据节假日日期表 | 主数据管理",
+    "TD_MD_HX_JGGS_DA_VIEW | 机构归属视图-保修使用 | 主数据管理",
+    "TD_MD_HX_XL_ZTFL_DA | 主数据-线路名称字头分类配置表（自定义导入） | 主数据管理",
+    "TD_GW_LINE_BOOK_ROUTE | 格网路口link表 | 融合数仓",
+    "TD_SZ_30MIN_DA | 主数据-30分钟时组表 | 主数据管理",
+    "TD_MD_QT_FW_DA | 主数据-房屋表 | 主数据管理",
+    "TD_MD_QT_TD_DA | 主数据-土地表 | 主数据管理",
+    "TD_LINE_BOOK_ROUTE_NODE | 格网路口link表 | 线网业务管理",
+    "TD_JG_LB | 机构类别表 | 主数据管理",
+    "TD_MD_GX_CZ_JG_DA | 主数据场站机构关系 | 主数据管理",
+    "TI_MD_CZ_MB_ZB_DA | 主数据码表 | 主数据管理",
+    "TD_MD_GX_CZ_XL_DA | 主数据线路场站关系表 | 主数据管理",
+    "TD_MD_QT_QY_DA | 主数据区域信息-停靠点明细表 | 主数据管理",
+    "TD_LINE_BOOK_ROUTE_NODE_2024 | 格网路口link表 | 线网业务管理",
+    "TD_PS_DD_JSD_LINE_REL_DA | 积水点线路关联表 | 线路运营调度管理",
+    "TD_JSBX_SCFL_DA | 技术保修-生产分类 | 车辆技术保修综合管理",
+    "TD_MD_HX_CL_QXC_DA | 主数据-抢修车 | 主数据管理",
+    "DIM_SYS_DICT_ITEM | 码表 | ",
+    "QA_TABLEDATA_MONITOR_DI | QA表数据监控 | 数据资产管理",
+    "TA_APP_ASSISTANT_LOGIN_DETAIL_DI | app登陆详情表 | 一路同行APP管理平台",
+    "TA_APP_ASSISTANT_LOGIN_HI | app登陆表小时 | 一路同行APP管理平台",
+    "TA_APP_ASSISTANT_REGISTE_ACCUMULATE_DI | app用户注册统计表 | 一路同行APP管理平台",
+    "TA_APP_ASSISTANT_REGISTE_DI | app注册表 | 一路同行APP管理平台",
+    "TA_APP_ASSISTANT_USER_BEHAVIOR_ACCUMULATE_DI | app用户行为统计 | 一路同行APP管理平台",
+    "TA_APP_ASSISTANT_USER_BEHAVIOR_ACCUMULATE_DI_1 | app用户行为统计备份 | 一路同行APP管理平台",
+    "TA_APP_ASSISTANT_USER_BEHAVIOR_DI | app用户行为分析 | 一路同行APP管理平台",
+    "TA_APP_ASSISTANT_USER_BEHAVIOR_HI | APP用户行为分析 | 一路同行APP管理平台",
+    "TA_APP_ASSISTANT_USER_BEHAVIOR_MI | app用户行为分析-分钟粒度 | 一路同行APP管理平台",
+    "TA_APP_ASSISTANT_VIEWSCREEN_DI | APP页面浏览统计_天 | 一路同行APP管理平台",
+    "TA_APP_ASSISTANT_VIEWSCREEN_HI | APP页面浏览统计 | 一路同行APP管理平台",
+    "TA_AQJH_ALARM_STATISTICS_QUARTER_DI | 驾驶员画像-驾驶员季度报警情况分项统计 | 安服管理",
+    "TA_AQJH_ALARM_STATISTICS_YEAR_DI | 驾驶员画像-驾驶员年度报警情况分项统计 | 安服管理",
+    "TA_AQJH_OVERVIEW_STATISTICS_QUARTER_DI | 驾驶员画像-驾驶员画像概况 | 安服管理",
+    "TA_AQJH_PBQD_MONTH_DI | 驾驶员画像-月度排班计划-日增 | 安服管理",
+    "TA_AQJH_PJQK_QUARTER_DI | 驾驶员画像-驾驶员评价情况 | 安服管理",
+    "TA_AQJH_STATISTICS_YEAR_DI | 驾驶员画像-驾驶员年度情况统计 | 安服管理",
+    "TA_AQJH_XLTJ_QUARTER_DI | 安全驾画-线路统计-季度表 | 安服管理",
+    "TA_AS_BJ_ACCIDENT_DA | 驾驶员画像-驾驶员事故明细 | 安服管理",
+    "TA_AS_BJ_BREAK_LAW_DA | 驾驶员画像-驾驶员违法信息 | 安服管理",
+    "TA_AS_BJ_CUSTOMER_COMPLAINT_DA | 驾驶员画像-驾驶员客诉明细 | 安服管理",
+    "TA_AS_BJ_DRIVER_INFO_DA | 驾驶员画像-驾驶员基本信息 | 安服管理",
+    "TA_AS_BJ_INSPECT_DA | 驾驶员画像-驾驶员稽查明细 | 安服管理",
+    "TA_AS_BJ_MANPOWER_CHANGE_DA | 驾驶员画像-驾驶员调岗明细 | 安服管理",
+    "TA_AS_BJ_PERSONAL_HONOR_DA | 驾驶员画像 | 安服管理",
+    "TA_AS_BJ_PERSONNEL_TRANSFER_DA | 安全驾画-驾驶员划转明细 | 安服管理",
+    "TA_AS_BJ_SECURITY_TRAINING_DA | 驾驶员画像-驾驶员培训明细 | 安服管理",
+    "TA_AS_BJ_STAR_LEVEL_CHANGE_DA | 驾驶员画像-驾驶员星级变动明细 | 安服管理",
+    "TA_AS_BJ_TECHNICAL_LEVEL_DA | 驾驶员画像-驾驶员职业技能等级变动明细 | 安服管理",
+    "TA_BSDD_SMSB_BZF_MONTH_MI | 首末三班不准发原因月表 | 线路运营调度管理",
+    "TA_BS_BUSSTATUS_CLZBH_MI | BS-车辆状态-车辆自编号主键表 | 北京BS调度生产环境",
+    "TA_BS_BUSSTATUS_MI | BS车辆状态 | 北京BS调度生产环境",
+    "TA_BS_DLZ_CLZBH_DAY_MI | BS-到离站 | 北京BS调度生产环境",
+    "TA_BS_DLZ_DAY_MI | BS-车辆到离站表 | 北京BS调度生产环境",
+    "TA_BS_LD_DAY_MI | BS路单 | 北京BS调度生产环境",
+    "TA_CAMERA_BUS_MZL_MI | 视频通道人数识别 | 物联管理平台",
+    "TA_CA_CLEAN_BUS_DI | 车辆结算客流表 | 数字化票务管理平台",
+    "TA_CA_CLEAN_LINE_DI | 线路结算客流 | 数字化票务管理平台",
+    "TA_CA_CLEAN_LINE_MONTH_DI | 检录结算统计_月 | 数字化票务管理平台",
+    "TA_CA_CLEAN_LINE_YEAR_DI | 线路结算客流年表 | 数字化票务管理平台",
+    "TA_CA_CLEAN_QY_DI | 区域结算客流 | 数字化票务管理平台",
+    "TA_CA_CLEAN_SJTS_BUS_DI | 数据探索车辆结算客流表 | 数字化票务管理平台",
+    "TA_CLJS_BUS_LSGD_MI | 技术保修历史工单 | 车辆综合管理",
+    "TA_CLJS_BUS_STATUS_MI | 技术保修-车辆状态 | 车辆综合管理",
+    "TA_CLJS_CLFX_DA | 车辆技术-车辆分析 | 车辆综合管理",
+    "TA_CLJS_CLFX_GJY_MONA | 车辆技术-车辆分析-公交月-月表 | 车辆综合管理",
+    "TA_CLJS_CLFX_ZRY_MONA | soa车辆明细表 | 车辆综合管理",
+    "TA_CLJS_QX_BUS_DAY_MI | 车辆技术-抢修车辆表 | 车辆综合管理",
+    "TA_CLJS_WB_BUS_DAY_MI | 车辆技术-车辆维保 | 车辆综合管理",
+    "TA_CL_CJBZ_INFO_DI | 车机报站表 | 线路运营调度管理",
+    "TA_CZFZSB_CDKQJL_DAY_DI | 场站辅助设备-车队考勤记录 | 物联管理平台",
+    "TA_CZFZSB_CDKQJL_DAY_MI | 场站辅助设备-车队考勤记录 | 物联管理平台",
+    "TA_CZFZSB_CJSFHG_DAY_DI | 场站辅助设备-车检是否合格 | 物联管理平台",
+    "TA_CZFZSB_CJZPXQ_DAY_DI | 场站辅助设备-车检照片详情 | 物联管理平台",
+    "TA_CZFZSB_CJZPXQ_DAY_MI | 场站辅助设备-车检照片详情 | 物联管理平台",
+    "TA_CZFZSB_RYKQJL_DAY_DI | 场站辅助设备-人员考勤记录 | 物联管理平台",
+    "TA_CZFZSB_RYKQJL_DAY_MI | 场站辅助设备-人员考勤记录 | 物联管理平台",
+    "TA_CZFZSB_RYKQXQ_DAY_DI | 场站辅助设备-人员考勤详情 | 物联管理平台",
+    "TA_CZFZSB_RYKQXQ_DAY_MI | 场站辅助设备-人员考勤详情 | 物联管理平台",
+    "TA_DA_WBQK_CL_DI | 冬奥-维保情况-车辆 | 大型活动后台管理系统",
+    "TA_EPIDEMIC_STATISTICS_JT_DI | 集团复工情况 | 综合安全防范管理",
+    "TA_EPIDEMIC_STATISTICS_NYZMX_DI | 能源站疫情防控信息 | 综合安全防范管理",
+    "TA_EPIDEMIC_STATISTICS_WXCZMX_DI | 保养点疫情防控信息 | 综合安全防范管理",
+    "TA_ETA_DATA_QA_1_DI | ETA-数据稽核程序-1 | 线路运营调度管理",
+    "TA_ETA_DATA_QA_2_DI | ETA-数据稽核程序-2 | 线路运营调度管理",
+    "TA_ETA_DATA_QA_3_DI | ETA-数据稽核程序-3 | 线路运营调度管理",
+    "TA_ETA_GPS_BZ_DAY_MI | ETA-GPS计算报站 | 线路运营调度管理",
+    "TA_ETA_RC_DI | ETA站间用时 | 线路运营调度管理",
+    "TA_ETA_RC_MI | ETA站间用时 | 线路运营调度管理",
+    "TA_FUEL_NYLXDSUM_BUS_MI_VIEW | 充气加燃-充电车辆级汇总_视图 | 车辆能源管控",
+    "TA_FUEL_NYLXDSUM_BUS_SZ_MI_VIEW | 充气加燃-充电车辆级汇总_时组_视图 | 车辆能源管控",
+    "TA_FUEL_NYLXDSUM_LINE_MI_VIEW | 充气加燃_线路_视图 | 车辆能源管控",
+    "TA_FUEL_NYLXDSUM_LINE_SZ_MI_VIEW | 充气加燃-充电线路汇总_时组 | 车辆能源管控",
+    "TA_FUEL_NYLXDSUM_PILE_MI_VIEW | 充气加燃-充电桩汇总_视图 | 车辆能源管控",
+    "TA_FUEL_NYLXDSUM_PILE_SZ_MI_VIEW | 充气加燃-充电充电桩级汇总_时组_视图 | 车辆能源管控",
+    "TA_FUEL_NYLXDSUM_STATION_MI_VIEW | 充气加燃-能源站汇总-视图 | 车辆能源管控",
+    "TA_FUEL_NYLXDSUM_STATION_SZ_MI_VIEW | 充气加燃-充电场站汇总_时组 | 车辆能源管控",
+    "TA_GJZL_YS_MG_DI | 公交走廊运速统计 | 线路运营调度管理",
+    "TA_GPS_XHQS_BUS_DAY_DI | 车辆gps信号缺失统计 | 车辆综合管理",
+    "TA_GRRB_KL_RY_DI | 个人日报人员客流表 | 数字化票务管理平台",
+    "TA_GRRB_LC_RY_DI | 个人日报里程人员表 | 线路运营调度管理",
+    "TA_JGFX_LINE_MI | 运营大间隔分析 | 线路运营调度管理",
+    "TA_JJJ_WEATHER_AIR_ALARM_HI | 京津冀天气预警和空气重污染预警 | 数据资产管理",
+    "TA_JJJ_WEATHER_AIR_ALARM_NEW_HI | 万云天气京津冀预警 | 数据资产管理",
+    "TA_JL_KL_ZW_DAY_DI | 站位客流表 | 线路运营调度管理",
+    "TA_JL_KL_ZW_SZ_DI | 站位时组客流表 | 线路运营调度管理",
+    "TA_JSBX_BX_XX_DI | 技术保修-报修信息 | 车辆技术保修综合管理",
+    "TA_JSBX_BYJH_DI | 技术保修-保养计划 | 车辆技术保修综合管理",
+    "TA_JSBX_CLDD | 技术保修-车辆调动 | 车辆技术保修综合管理",
+    "TA_JSBX_CLDD_PRE | 技术保修-车辆预调动 | 车辆技术保修综合管理",
+    "TA_JSBX_CLYXQDFX_CL_DI | 技术保修-车辆运行强度分析-车辆 | 车辆技术保修综合管理",
+    "TA_JSBX_QX_QXRB_DI | 技术保修-抢修日报 | 车辆技术保修综合管理",
+    "TA_JSBX_QX_RW_CZ_DAY_MI | 技术保修-抢修任务处置 | 车辆技术保修综合管理",
+    "TA_JSBX_QX_RW_DAY_MI | 技术保修-抢修任务 | 车辆技术保修综合管理",
+    "TA_JSBX_QX_RW_PG_DAY_MI | 技术保修-抢修任务派工 | 车辆技术保修综合管理",
+    "TA_JSBX_QX_RW_ZX_DAY_MI | 技术保修-抢修任务执行 | 车辆技术保修综合管理",
+    "TA_JSBX_QX_XL_DI | 技术保修-抢修-线路 | 车辆技术保修综合管理",
+    "TA_JSBX_SCGL_WXGD_BUS_DI | 技术保修-维修工单-车辆 | 车辆技术保修综合管理",
+    "TA_JSBX_SCGL_WXGD_DAY_MI | 技术保修-维修工单 | 车辆技术保修综合管理",
+    "TA_JSBX_SCGL_WXGD_LINE_DI | 技术保修-维修工单-线路 | 车辆技术保修综合管理",
+    "TA_JSBX_WL_CLGD_ALL | 技术保修-所有工单-物料 | 车辆技术保修综合管理",
+    "TA_JSBX_WL_DCCB_CC_DI | 技术保修-物料-单车成本-出厂 | 车辆技术保修综合管理",
+    "TA_JSBX_WL_DDFHMX_DI | 技术保修-物料-订单发货明细 | 车辆技术保修综合管理",
+    "TA_JSBX_WL_LKKCMX_DI | 技术保修-物料-料库库存明细 | 车辆技术保修综合管理",
+    "TA_JSBX_ZXWX_TX_DAY_MI | 技术保修-专项维修-特修 | 车辆技术保修综合管理",
+    "TA_JSBX_ZXWX_ZZX_DAY_MI | 技术保修-专项维修-中整修 | 车辆技术保修综合管理",
+    "TA_JSYHX_GJ_DAY_MI_VIEW | 驾驶员画像-实时告警数据 | 综合安全防范管理",
+    "TA_LRSU_CHARGEORDER_DAY_DI | 隆瑞三优充电工单 | 车辆能源管控",
+    "TA_MD_CZ_DA | 场站维表 | 主数据管理",
+    "TA_MD_CZ_QY_DA | 主数据区域场站信息 | 主数据管理",
+    "TA_MD_NYZ_DA | 能源站信息维表（共享doris） | 主数据管理",
+    "TA_MD_XL_DA | 主数据-线路表（共享doris） | 主数据管理",
+    "TA_MD_XL_QY_DA | 主数据区域线路表 | 主数据管理",
+    "TA_NDBG_JSY_YEAR_DI | 年度报告-驾驶员-年表 | 大型活动后台管理系统",
+    "TA_NY_BLNH_CL_DI | 能源-北理能耗-车辆 | 车辆能源管控",
+    "TA_NY_CDFX_BUS_DAY_DI | 能源-充电分析-车辆-天 | 车辆能源管控",
+    "TA_NY_CDFX_BUS_SJTS_DAY_DI | 能源-充电分析-车辆 | 车辆能源管控",
+    "TA_NY_ZHJR_CDRB_DI | 能源-智慧加燃-充电日报 | 智慧加燃管理系统",
+    "TA_NY_ZHJR_CDYB | 能源-智慧加燃-充电月报 | 智慧加燃管理系统",
+    "TA_PS_DD_DM_DDB_DD_DI | 老路单表 | 线路运营调度管理",
+    "TA_PS_DD_PLANASSIS_T_BREAKPOINT_SCHOOLDETAIL_DI | 通学公交-校车区段点 | 通学公交学校业务",
+    "TA_PS_ZHJC_INSPECTION_TASK_BZXMX_DI | 综合稽查-检查任务标准项明细 | 综合运维管理",
+    "TA_PS_ZHJC_INSPECTION_TASK_DI | 综合稽查-检查任务明细 | 综合运维管理",
+    "TA_PS_ZHJC_TASK_TJ_DI | 综合稽查-检查任务指标统计 | 综合运维管理",
+    "TA_RLZY_CQFX_GJY_DI | 人力资源出勤分析公交月 | 主数据管理",
+    "TA_SCZC_DAY_DI | 数仓资产表（数据库表信息） | 数据资产管理",
+    "TA_SCZY_MD_ZW_DI | 生产资源站位统计表 | 主数据管理",
+    "TA_SCZY_ZCRYTJ_XL_DA | 生产资源-在册人员统计-线路 | 主数据管理",
+    "TA_SECURITY_DSM_DRIVER_DI | DSM司机聚合表 | 综合安全防范管理",
+    "TA_SECURITY_DSM_DRIVER_MI | DSM主动安全司机数据 | 综合安全防范管理",
+    "TA_SECURITY_DSM_LINE_DI | DSM线路聚合表 | 综合安全防范管理",
+    "TA_SECURITY_DSM_LINE_MI | DSM主动安全统计_线路 | 综合安全防范管理",
+    "TA_SECURITY_DSM_LINE_MI_VIEW | DSM-线路级告警汇总_视图 | 综合安全防范管理",
+    "TA_SECURITY_DSM_PERIOD_DI | DSM离线时段聚合表 | 综合安全防范管理",
+    "TA_SECURITY_DSM_PERIOD_MI | DSM线路时段聚合表 | 综合安全防范管理",
+    "TA_SMYJ_TSJSTJ_LINE_DI | 市民意见-投诉件数统计-线路 | 市民意见管理",
+    "TA_SMYJ_TSJSTJ_LINE_MONTH_DI | 市民意见-投诉件数统计-线路-月表 | 市民意见管理",
+    "TA_SMYJ_TSJSTJ_LINE_TSLX_DI | 市民意见-投诉件数统计-线路-投诉类型 | 市民意见管理",
+    "TA_SMYJ_TSJSTJ_LINE_TSLX_WTFL_DI | 市民意见-投诉件数统计-线路-投诉类型-问题分类 | 市民意见管理",
+    "TA_SMYJ_TSJSTJ_LINE_YEAR_DI | 市民意见-投诉件数统计-线路-年 | 市民意见管理",
+    "TA_SS_CLBYJH_DAY_BUS_MI | 杉数-车辆保养计划 | 车辆技术保修综合管理",
+    "TA_V_COMPANY_LINE_DA | 分公司线路表（调度接入大屏用） | 主数据管理",
+    "TA_WEATHER_24HOUR_ALL_HI | 万云天气24预报-全量 | 数据资产管理",
+    "TA_WEATHER_24HOUR_HI | 万云天气24预报-最新 | 数据资产管理",
+    "TA_WEATHER_BWL_ALL_HI | 万云天气报文类全量 | 数据资产管理",
+    "TA_WEATHER_DLYXSK_ALL_HI | 道路沿线实况数据_全量 | 数据资产管理",
+    "TA_WEATHER_DLYXSK_HI | 道路沿线实况数据_最新 | 数据资产管理",
+    "TA_WEATHER_DLYXYB_ALL_HI | 万云天气道路沿线预报数据_全量 | 数据资产管理",
+    "TA_WEATHER_DLYXYB_HI | 万云天气道路沿线预报 | 数据资产管理",
+    "TA_WEATHER_PONDINGRAIN_ALL_HI | 气象数据-易积水点降水实况_全量 | 数据资产管理",
+    "TA_WEATHER_PONDINGRAIN_FORCAST3H_ALL_HI | 气象数据-易积水点未来3小时格点降水预报_全量 | 数据资产管理",
+    "TA_WEATHER_PONDINGRAIN_FORCAST3H_HI | 气象数据-易积水点未来3小时格点降水预报 | 数据资产管理",
+    "TA_WEATHER_PONDINGRAIN_HI | 气象数据-易积水点降水实况-最新 | 数据资产管理",
+    "TA_WEATHER_WEEKFORECAST_ALL_HI | 万云天气周预报全量 | 数据资产管理",
+    "TA_WEATHER_WEEKFORECAST_HI | 万云天气周预报最新 | 数据资产管理",
+    "TA_YSZHCX_CLGDMX_DI | 要素综合查询-车辆工单明细 | 综合生产要素",
+    "TA_YSZHCX_CLRWZB_DAY_MI | 要素综合查询-车辆任务指标-天表 | 综合生产要素",
+    "TA_YSZHCX_CLSJL_DAY_MI | 要素综合查询-车辆时间链-天表 | 综合生产要素",
+    "TA_YSZHCX_CL_WXCZ_YEAR_DI | 要素综合查询-维修厂站-年 | 综合生产要素",
+    "TA_YSZHCX_CL_YEAR_DI | 要素综合查询-车辆-年表 | 综合生产要素",
+    "TA_YSZHCX_CL_YYXL_YEAR_DI | 要素综合查询-车辆运营线路 | 综合生产要素",
+    "TA_YYDD_BUS_YLFX_VIEW | 运营调度-车辆运力分析 | 线路运营调度管理",
+    "TA_YYDD_CJBZ_DAY_MI | 运营调度-车机报站 | 线路运营调度管理",
+    "TA_YYDD_CJBZ_LD_DAY_MI_VIEW | 运营调度-车机报站-站点过往车辆视图 | 线路运营调度管理",
+    "TA_YYDD_DATA_INFO_DI | 日志表 | 主数据管理",
+    "TA_YYDD_DD_BCLFX_CD_GJY_DI | 运营调度车队备车率分析_公交月 | 线路运营调度管理",
+    "TA_YYDD_DD_BCLFX_CYCLMX_GJY_DI | 备车率分析公交月车辆明细表 | 线路运营调度管理",
+    "TA_YYDD_DD_BCLFX_FGS_GJY_DI | 备车率分析分公司公交月 | 线路运营调度管理",
+    "TA_YYDD_DD_BCLFX_LINE_GJY_DI | 运营调度备车率分析_公交月 | 线路运营调度管理",
+    "TA_YYDD_DD_BCLFX_YYCNXMX_GJY_DI | 备车率分析运营车类型明细公交月 | 线路运营调度管理",
+    "TA_YYDD_DD_BCLFX_ZCZCCNXMX_GJY_DI | 备车率分析在册车类型明细公交月 | 线路运营调度管理",
+    "TA_YYDD_DD_CFDJG_LINE_DAY_DI | 运营调度线路发出大间隔_天 | 线路运营调度管理",
+    "TA_YYDD_DD_CFDJG_LINE_WF_DI | 发车大间隔五峰表 | 线路运营调度管理",
+    "TA_YYDD_DD_CHECFX_QY_DAY_2023_DI | 综合报表-车次分析-区域-全日 | 线路运营调度管理",
+    "TA_YYDD_DD_CHECFX_QY_DAY_DI | 运营调度区域出车分析_天 | 线路运营调度管理",
+    "TA_YYDD_DD_CHECFX_QY_WF_2023_DI | 综合报表-车次分析-区域-五峰 | 线路运营调度管理",
+    "TA_YYDD_DD_CHECFX_QY_WF_DI | 运营调度区域车次分析_五峰 | 线路运营调度管理",
+    "TA_YYDD_DD_CHUCFX_QY_DAY_2023_DI | 综合报表-出车分析 | 线路运营调度管理",
+    "TA_YYDD_DD_CHUCFX_QY_DAY_DI | 运营调度区域出车分析—天 | 线路运营调度管理",
+    "TA_YYDD_DD_CHUCFX_QY_WF_2023_DI | 综合报表-出车分析-区域-五峰 | 线路运营调度管理",
+    "TA_YYDD_DD_CHUCFX_QY_WF_DI | 运营调度区域出车分析_五峰 | 线路运营调度管理",
+    "TA_YYDD_DD_CLFX_MCTS_DAY_DI | 运营调度-末车驻场情况 | 线路运营调度管理",
+    "TA_YYDD_DD_CLLJTSJL_DAY_DI | 运营调度-车辆累计停驶记录 | 线路运营调度管理",
+    "TA_YYDD_DD_CLSYQK_DAY_DI | 运营调度车辆使用情况_天 | 线路运营调度管理",
+    "TA_YYDD_DD_DDDJG_LINE_DAY_DI | 运营调度大间隔分析_天 | 线路运营调度管理",
+    "TA_YYDD_DD_DDDJG_LINE_WF_DI | 线路大间隔五峰表 | 线路运营调度管理",
+    "TA_YYDD_DD_DMFX_QY_DAY_DI | 运营调度区域断面分析-天 | 数字化票务管理平台",
+    "TA_YYDD_DD_DMFX_QY_DAY_MI | 运营调度区域段main分析-天 | 数字化票务管理平台",
+    "TA_YYDD_DD_DMFX_QY_WF_DI | 运营调度区域断面分析_五峰 | 数字化票务管理平台",
+    "TA_YYDD_DD_DMFX_QY_WF_MI | 运营调度区域断面分析-五峰 | 数字化票务管理平台",
+    "TA_YYDD_DD_FCMX_DI | 运营调度-发车明细 | 线路运营调度管理",
+    "TA_YYDD_DD_FZGZCLFX_LINE_DI | 新工作车辆分析线路分钟 | 线路运营调度管理",
+    "TA_YYDD_DD_GZCLFX_LINE_DI | 新工作车辆分析-线路 | 线路运营调度管理",
+    "TA_YYDD_DD_JGFX_LINE_MI | 运营调度线路间隔分析 | 线路运营调度管理",
+    "TA_YYDD_DD_JGFX_QY_WF_MI | 运营调度区域间隔分析_五峰 | 线路运营调度管理",
+    "TA_YYDD_DD_JG_QY_WF_SZ_MI | 综合报表-间隔分析_五峰时组 | 线路运营调度管理",
+    "TA_YYDD_DD_JHAP_DAY_DI | 线路计划安排 | 线路运营调度管理",
+    "TA_YYDD_DD_JH_PB_DAY_DI | 行车计划明细 | 线路运营调度管理",
+    "TA_YYDD_DD_KLFX_LINE_DAY_DI | 客流分析_天 | 线路运营调度管理",
+    "TA_YYDD_DD_KLFX_LINE_DAY_MI | 客流分析-线路-天表 | 数字化票务管理平台",
+    "TA_YYDD_DD_KLFX_LINE_SZ_DI | 运营调度客流分析_时组 | 线路运营调度管理",
+    "TA_YYDD_DD_KLFX_LINE_WF_DI | 运营调度运力分析_五峰 | 线路运营调度管理",
+    "TA_YYDD_DD_KLFX_LINE_WF_DI_1 | 线路运力分析五峰表 | 线路运营调度管理",
+    "TA_YYDD_DD_KLFX_QY_DAY_DI | 运营调度区域客流分析_天 | 线路运营调度管理",
+    "TA_YYDD_DD_KLFX_QY_DAY_MI | 运营调度区域客流分析-天 | 数字化票务管理平台",
+    "TA_YYDD_DD_KLFX_QY_SZ_DI | 运营调度区域客流分析_时组 | 线路运营调度管理",
+    "TA_YYDD_DD_KLFX_QY_WF_DI | 运营调度区域客流分析_五峰 | 线路运营调度管理",
+    "TA_YYDD_DD_LCFX_BUS_WF_DI | 运营调度车辆里程分析_五峰 | 线路运营调度管理",
+    "TA_YYDD_DD_LCFX_QY_DAY_DI | 运营调度区域里程分析_天 | 线路运营调度管理",
+    "TA_YYDD_DD_LCFX_QY_DAY_MI | 运营调度里程分析区域_天 | 线路运营调度管理",
+    "TA_YYDD_DD_LCFX_QY_SZ_MI | 运营调度区域里程分析-时组 | 线路运营调度管理",
+    "TA_YYDD_DD_LCFX_QY_WF_DI | 运营调度区域里程分析_五峰 | 线路运营调度管理",
+    "TA_YYDD_DD_LCFX_QY_WF_MI | 运营调度区域里程分析_五峰 | 线路运营调度管理",
+    "TA_YYDD_DD_LCFX_SJTS_BUS_DAY_DI | 数据探索车辆里程分析 | 线路运营调度管理",
+    "TA_YYDD_DD_LCFX_YY_BUS_DAY_DI | 运营调度车辆里程分析 | 线路运营调度管理",
+    "TA_YYDD_DD_LCFX_YY_LINE_DAY_DI | 运营调度里程分析运营线路 | 线路运营调度管理",
+    "TA_YYDD_DD_LD_DAY_2022_DI | 新实际路单 | 线路运营调度管理",
+    "TA_YYDD_DD_LD_DAY_DI | 运营调度路单 | 线路运营调度管理",
+    "TA_YYDD_DD_LD_DAY_MI | 运营调度路单明细 | 线路运营调度管理",
+    "TA_YYDD_DD_PBFX_BX_DAY_DI | 运营调度排班分析班型_天 | 线路运营调度管理",
+    "TA_YYDD_DD_PBFX_LINE_GJY_DI | 运营调度配班分析_公交月 | 线路运营调度管理",
+    "TA_YYDD_DD_PBFX_QY_DAY_DI | 运营调度区域配班分析_天 | 线路运营调度管理",
+    "TA_YYDD_DD_PBFX_QY_WF_DI | 运营调度区域配班分析_五峰 | 线路运营调度管理",
+    "TA_YYDD_DD_PJHDL_BUS_DAY_DI | 车辆平均耗电量 | 整车CAN数据监控分析",
+    "TA_YYDD_DD_PLAN_LINE_DAY_DI | 行车计划统计_天 | 线路运营调度管理",
+    "TA_YYDD_DD_PLAN_LINE_SZ_DI | 线路计划指标时组表（出车配班里程T+0） | 线路运营调度管理",
+    "TA_YYDD_DD_PLAN_LINE_WF_DI | 运营调度计划配班配车 | 线路运营调度管理",
+    "TA_YYDD_DD_PLAN_QY_DAY_DI | 行车计划统计区域_天 | 线路运营调度管理",
+    "TA_YYDD_DD_SDFX_QY_DAY_DI | 运营调度区域线路速度分析 | 线路运营调度管理",
+    "TA_YYDD_DD_SDFX_QY_SZ_DI | 运营调度区域线速度分析_时组 | 线路运营调度管理",
+    "TA_YYDD_DD_SDFX_QY_WFSZ_MI | 运营调度区域速度分析_五峰时组 | 线路运营调度管理",
+    "TA_YYDD_DD_SDFX_QY_WF_DI | 运营调度区域速度分析_五峰 | 线路运营调度管理",
+    "TA_YYDD_DD_SMSBFX_LINE_DAY_DI | 运营调度首末三班不准发_天 | 线路运营调度管理",
+    "TA_YYDD_DD_XLYYXY_QY_DAY_2022_DI | 新备车率分析运营车类型明细区域公交月 | 线路运营调度管理",
+    "TA_YYDD_DD_XLYYXY_QY_DAY_DI | 运营调度区域线路运营效益 | 线路运营调度管理",
+    "TA_YYDD_DD_XLYYZL_QY_DAY_DI | 运营调度区域线路运营质量 | 线路运营调度管理",
+    "TA_YYDD_DD_YLFX_BUS_DAY_DI | 运力分析车辆表 | 线路运营调度管理",
+    "TA_YYDD_DD_YLFX_JSY_WF_SZ_MI | 运营调度-驾驶员运力分析-五峰时组 | 线路运营调度管理",
+    "TA_YYDD_DD_YLFX_LINE_DAY_DI | 运营调度运力分析_天 | 线路运营调度管理",
+    "TA_YYDD_DD_YLFX_LINE_DAY_MI | 运营调度线路运力分析-天 | 线路运营调度管理",
+    "TA_YYDD_DD_YLFX_LINE_MONTH_DI | 运营调度线路运力分析月度统计表 | 线路运营调度管理",
+    "TA_YYDD_DD_YLFX_LINE_SZ_DI | 运营调度运力分析_时组 | 线路运营调度管理",
+    "TA_YYDD_DD_YLFX_LINE_SZ_MI | 运营调度运力分析-时组 | 线路运营调度管理",
+    "TA_YYDD_DD_YLFX_LINE_WF_DI | 运营调度-线路站间间隔-天 | 线路运营调度管理",
+    "TA_YYDD_DD_YLFX_LINE_WF_MI | 运营调度线路运力分析-五峰 | 线路运营调度管理",
+    "TA_YYDD_DD_YLFX_LINE_YEAR_DI | 运营调度运力分析_年 | 线路运营调度管理",
+    "TA_YYDD_DD_YLFX_QY_DAY_MI | 运营调度区域运力分析 | 线路运营调度管理",
+    "TA_YYDD_DD_YLFX_QY_SZ_MI | 运营调度区域运力分析_时组 | 线路运营调度管理",
+    "TA_YYDD_DD_YLFX_QY_WF_MI | 运营调度区域运力分析_五峰 | 线路运营调度管理",
+    "TA_YYDD_DD_YLHS_DAY_DI | 换手率表 | 线路运营调度管理",
+    "TA_YYDD_DD_YYCNXMX_QY_DI | 备车率分析运营车类型明细区域公交月 | 线路运营调度管理",
+    "TA_YYDD_DD_YYPJ_BUS_DAY_DI | 运营调度车辆运营评价天表 | 线路运营调度管理",
+    "TA_YYDD_DD_ZDFX_BUS_MI | 运营调度车辆准点分析 | 线路运营调度管理",
+    "TA_YYDD_DD_ZDFX_LINE_DAY_DI | 运营调度-线路中途准点-天 | 线路运营调度管理",
+    "TA_YYDD_DD_ZDFX_LINE_MI | 运营调度线路准点分析 | 线路运营调度管理",
+    "TA_YYDD_DD_ZDFX_LINE_SZ_DI | 运营调度准点分析_时组 | 线路运营调度管理",
+    "TA_YYDD_DD_ZDFX_LINE_WF_DI | 运营调度准点分析_五峰 | 线路运营调度管理",
+    "TA_YYDD_DD_ZDFX_QY_DAY_DI | 运营调度区域准点分析-天 | 线路运营调度管理",
+    "TA_YYDD_DD_ZDFX_QY_WFSZ_MI | 运营调度区域准点分析-五峰时组 | 线路运营调度管理",
+    "TA_YYDD_DD_ZDFX_QY_WF_DI | 运营调度区域准点分析-五峰 | 线路运营调度管理",
+    "TA_YYDD_DD_ZHBB_SZ_DI | 综合报表时组表 | 线路运营调度管理",
+    "TA_YYDD_DD_ZHBB_WF_DI | 综合报表五峰 | 线路运营调度管理",
+    "TA_YYDD_DD_ZHFX_BUS_DAY_DI | 车辆准点车次数据 | 线路运营调度管理",
+    "TA_YYDD_DD_ZJJG_LINE_DI | 运营调度-线路站间间隔-天 | 线路运营调度管理",
+    "TA_YYDD_KXZY_BUS_LD_DI | 车辆跨线支援表 | 线路运营调度管理",
+    "TA_YYDD_QDDTJ_TC_DI | 运营调度-区段点统计-趟次 | 线路运营调度管理",
+    "TA_YYDD_XL_ZD_JZXS_DMMZL_DI | 线路站点集中小时断面满载率 | 线路运营调度管理",
+    "TA_YYDD_XL_ZD_ZDDMMZL_2WEEK_DI | 综合报表-最大断面满载率-双周 | 线路运营调度管理",
+    "TA_YYDD_XL_ZD_ZDDMMZL_2WEEK_GZR_DI | 综合报表-最大断面满载率-双周-工作日 | 线路运营调度管理",
+    "TA_YYDD_XL_ZD_ZDDMMZL_2WEEK_JJR_DI | 综合报表-最大断面满载率-双周-节假日 | 线路运营调度管理",
+    "TA_YYDD_XL_ZD_ZDDMMZL_DAY_DI | 综合报表-最大断面满载率-全日 | 线路运营调度管理",
+    "TA_YYDD_XL_ZD_ZDDMMZL_GJY_DI | 综合报表-最大断面满载率-公交月 | 线路运营调度管理",
+    "TA_YYDD_XL_ZD_ZDDMMZL_GJY_GZR_DI | 综合报表-最大断面满载率-公交月-工作日 | 线路运营调度管理",
+    "TA_YYDD_XL_ZD_ZDDMMZL_GJY_JJR_DI | 综合报表-最大断面满载率-公交月-节假日 | 线路运营调度管理",
+    "TA_YYDD_XL_ZD_ZW_DJL_DI | 综合报表-登降量-线路-站点-站位 | 线路运营调度管理",
+    "TA_YYDD_XL_ZD_ZW_OD_DI | 综合报表-线路站点站位OD客流 | 线路运营调度管理",
+    "TA_YYDD_XL_ZD_ZW_SZ_OD_DI | 综合报表-线路站点站位时组OD客流 | 线路运营调度管理",
+    "TA_YYDD_XL_ZD_ZW_WF_OD_DI | 综合报表-线路站点站位OD客流-五峰 | 线路运营调度管理",
+    "TA_YYDD_XW_CXLFX_DAY_DI | 运营调度线网出行链分析_天 | 数字化票务管理平台",
+    "TA_YYDD_XW_CXLFX_DETAIL_DAY_DI | 运营调度-线网-出行率分析明细-天 | 数字化票务管理平台",
+    "TA_YYDD_XW_CXLFX_DETAIL_NEW_DAY_DI | 运营调度-线网-出行率分析明细-天 | 数字化票务管理平台",
+    "TA_YYDD_XW_CXLFX_NEW_DAY_DI | 运营调度-线网-出行率分析-五峰 | 数字化票务管理平台",
+    "TA_YYDD_XW_GJZL_XL_SZ_DI | 运营调度-线网-线路客流-时组 | 线路运营调度管理",
+    "TA_YYDD_XW_GJZL_XL_WF_DI | 运营调度-线网-站位客流-五峰 | 线路运营调度管理",
+    "TA_YYDD_XW_ODKL_DAY_DI | 线网OD客流分析 | 线路运营调度管理",
+    "TA_YYDD_XW_ODKL_SZ_DI | 线网OD客流分析_时组 | 线路运营调度管理",
+    "TA_YYDD_XW_ODKL_WUF_DI | 线网OD客流分析_五峰 | 线路运营调度管理",
+    "TA_YYDD_XW_XL_DAY_DI | 运营调度-线网-线路运营指标-天 | 数字化票务管理平台",
+    "TA_YYDD_XW_XL_SZ_DI | 运营调度-线网-线路运营指标-时组 | 数字化票务管理平台",
+    "TA_YYDD_XW_XL_WF_DI | 运营调度-线网-线路运营指标-五峰 | 数字化票务管理平台",
+    "TA_YYDD_XW_ZWXL_DAY_DI | 运营调度-线网-站位客流-天 | 数字化票务管理平台",
+    "TA_YYDD_XW_ZWXL_SZ_DI | 运营调度-线网-站位客流-时组 | 数字化票务管理平台",
+    "TA_YYDD_XW_ZWXL_WF_DI | 运营调度-线网-站位客流-五峰 | 数字化票务管理平台",
+    "TA_YYDD_XW_ZW_DAY_DI | 运营调度-线网-站位客流-天 | 数字化票务管理平台",
+    "TA_YYDD_XW_ZW_SZ_DI | 运营调度-线网-站位客流-时组 | 数字化票务管理平台",
+    "TA_YYDD_XW_ZW_WF_DI | 运营调度-线网-站位登降量-五峰 | 数字化票务管理平台",
+    "TA_YYDD_ZX_JZXS_ZDDMMZL_DAY_DI | 综合报表-集中小时最大断面满载率 | 线路运营调度管理",
+    "TA_YY_BUS_STATUS_GPS_VIEW | 可视化-车辆状态-GPS定位视图 | 车辆技术保修综合管理",
+    "TA_ZDHDZB_DA_BUS_DAY_DI | 重大活动-运营指标分析-车辆表 | 线路运营调度管理",
+    "TA_ZDHDZB_DA_BUS_DAY_MI | 重大活动-运营指标分析-车辆表 | 线路运营调度管理",
+    "TA_ZDHDZB_DA_BUS_STATE_DAY_MI | 重大活动车辆状态_天 | 车辆技术保修综合管理",
+    "TA_ZDHDZB_DA_BUS_STATE_MI | 重大活动车辆状态 | 车辆技术保修综合管理",
+    "TA_ZDHDZB_DA_LINE_DAY_DI | 重大活动-运营指标分析-天 | 线路运营调度管理",
+    "TA_ZDHDZB_DA_LINE_DAY_MI | 重大活动-运营指标分析-线路表 | 线路运营调度管理",
+    "TA_ZDHDZB_DA_LINE_SZ_DI | 冬奥线路运营分析_时组 | 线路运营调度管理",
+    "TA_ZDHDZB_DA_LINE_SZ_MI | 重大活动-运营指标分析-时组 | 线路运营调度管理",
+    "TA_ZDHDZB_DA_QXDP_DAY_MI | 重大活动-抢修状态表 | 车辆技术保修综合管理",
+    "TD_CZ_DA | SOA场站表 | 主数据管理",
+    "TD_DATE_SD_DA | 时段维表 | 主数据管理",
+    "TD_DIM_FSXXL | 线路类型是否射性线路 | 主数据管理",
+    "TD_DIM_RQ | 公交月日期表 | 主数据管理",
+    "TD_ELEMENT_CONF | 表字段是否可见配置 | 主数据管理",
+    "TD_JG_DA | SOA机构 | 主数据管理",
+    "TD_JSBX_BYJH_BYDCXNL_DA | 技术保修-保养计划-保养点承修能力 | 车辆技术保修综合管理",
+    "TD_JSBX_BYJH_BYDRL_DA | 技术保修-保养计划-保养点日历 | 车辆技术保修综合管理",
+    "TD_JSBX_BYJH_CLBYJL_DA | 技术保修-保养计划-车辆保养记录 | 车辆技术保修综合管理",
+    "TD_JSBX_BYJH_CLCXGX_DA | 技术保修-保养计划-车辆承修关系 | 车辆技术保修综合管理",
+    "TD_JSBX_BYJH_CXJGGL_DA | 技术保修-保养计划-车型间隔公里 | 车辆技术保修综合管理",
+    "TD_JSBX_BYJH_HMD_DA | 技术保修-保养计划-黑名单 | 车辆技术保修综合管理",
+    "TD_JSBX_BYJH_XLSXNL_DA | 技术保修-保养计划-线路送修能力 | 车辆技术保修综合管理",
+    "TD_JSBX_BYZXJH_BASE_DA | 技术保修-保养计划-配置表 | 车辆技术保修综合管理",
+    "TD_JSBX_CCLJ_MXXM_DA | 技术保修-出车例检-明细项目 | 车辆技术保修综合管理",
+    "TD_JSBX_CLCXGX_ZIP | 技术保修-车辆承修关系-拉链表 | 车辆技术保修综合管理",
+    "TD_JSBX_WL_DA | 技术保修-物料基础表 | 车辆技术保修综合管理",
+    "TD_JSBX_WL_GYS_DA | 技术保修-物料-供应商 | 车辆技术保修综合管理",
+    "TD_JSBX_WL_LK_DA | 技术保修-物料-料库 | 车辆技术保修综合管理",
+    "TD_JSBX_ZCMXB_DA | 技术保修-整车明细 | 车辆技术保修综合管理",
+    "TD_MD_GX_WBD_CL_DA | 主数据-车辆-维保点-关系 | 主数据管理",
+    "TD_MD_GX_WBD_CL_ZIP_DA | 主数据-关系-维保点-车辆-拉链表 | 主数据管理",
+    "TD_MD_HX_CL_DA | 主数据车辆维表 | 主数据管理",
+    "TD_MD_HX_DTXL_DA | 主数据-地铁线路维表 | 主数据管理",
+    "TD_MD_HX_JG_ORI_DA | 主数据-机构表 | 主数据管理",
+    "TD_MD_HX_RY_NEW_DA | 主数据-人员表 | 主数据管理",
+    "TD_MD_HX_XL_NEW_DA | 主数据线路表 | 主数据管理",
+    "TD_MD_HX_XZQH_DA | 主数据-行政区划维表 | 主数据管理",
+    "TD_PERIOD_DIM | 小时维度表 | 主数据管理",
+    "TD_PS_TXGJ_PW_CUSTOM_REQUIREMENT_REL_DA | 通学公交-学校线路关系 | 通学公交学校业务",
+    "TD_PS_TXGJ_XXXX_DA | 通学公交-学校信息 | 通学公交学校业务",
+    "TD_SD_DA | 时组表 | 主数据管理",
+    "TD_SECURITY_DSM_BUSID_MI | DSM-车辆列表 | 综合安全防范管理",
+    "TD_ZHZB_ZZJG_DA | soa线路机构维表 | 主数据管理",
+    "TF_CZFZSB_RYDZMX_DAY_DI | 场站辅助设备-人员叮嘱明细 | 物联管理平台",
+    "TF_FUEL_BOTTLE_ALARM_MI | 充气加燃-加氢站气瓶站报警 | 车辆能源管控",
+    "TF_FUEL_BOTTLE_CTRL_MI | 充气加燃-加氢站气瓶站控数据 | 车辆能源管控",
+    "TF_FUEL_CHARGE_DEVICESTATE_EXT_MI | 充气加燃-状态感知表 | 车辆能源管控",
+    "TF_FUEL_CHARGE_DEVICESTATE_MI | 充气加燃-充电实时状态表 | 车辆能源管控",
+    "TF_FUEL_COMPRESSOR_ALARM_MI | 充气加燃-压缩机报警 | 车辆能源管控",
+    "TF_FUEL_COMPRESSOR_CTRL_MI | 充气加燃-加氢站压缩机站控数据 | 车辆能源管控",
+    "TF_FUEL_COOLWATER_ALARM_MI | 充气加燃-加氢站压缩机报警 | 车辆能源管控",
+    "TF_FUEL_COOLWATER_CTRL_MI | 充气加燃-加氢站冷水机站控数据 | 车辆能源管控",
+    "TF_FUEL_CTRLPLATE_ALARM_MI | 充气加燃-加氢站顺控盘报警 | 车辆能源管控",
+    "TF_FUEL_CTRLPLATE_CTRL_MI | 充气加燃-加氢站顺控盘站控数据 | 车辆能源管控",
+    "TF_FUEL_DISCHARGEPILE_ALARM_MI | 充气加燃-加氢站卸气柱报警 | 车辆能源管控",
+    "TF_FUEL_DISCHARGEPILE_CTRL_MI | 充气加燃-加氢站卸气柱站控数据 | 车辆能源管控",
+    "TF_FUEL_FREEZER_ALARM_MI | 充气加燃-加氢冷冻机站报警 | 车辆能源管控",
+    "TF_FUEL_FREEZER_CTRL_MI | 充气加燃-加氢站冷冻机站控数据 | 车辆能源管控",
+    "TF_FUEL_HYDR_ALARM_MI | 充气加燃-加氢站加氢机报警数据 | 车辆能源管控",
+    "TF_FUEL_HYDR_CTRL_MI | 充气加燃-加氢站加氢机站控数据 | 车辆能源管控",
+    "TF_FUEL_LOGIN_MI | 充气加燃-终端登录 | 车辆能源管控",
+    "TF_FUEL_NITROGN_CTRL_MI | 充气加燃-加氢站氮气架站控数据 | 车辆能源管控",
+    "TF_FUEL_NONYLXD_TRADE_MI | 充气加燃-非纯电交易数据表 | 车辆能源管控",
+    "TF_FUEL_NYLXD_TRADE_EXCEPTION_MI | 充气加燃-异常交易数据信息 | 车辆能源管控",
+    "TF_FUEL_NYLXD_TRADE_EXT_MI | 充气加燃-充电交易表 | 车辆能源管控",
+    "TF_FUEL_NYLXD_TRADE_MI | 充气加燃-纯电交易数据表 | 车辆能源管控",
+    "TF_FUEL_OILGAS_DEVICESTATE_MI | 充气加燃-加油机加气机加氢机实时状态 | 车辆能源管控",
+    "TF_FUEL_OTHER_ALARM_MI | 充气加燃-加氢站其他报警数据 | 车辆能源管控",
+    "TF_JSBX_WL_MX | 技术保修-物料明细 | 车辆技术保修综合管理",
+    "TF_PS_DD_DM_PAIBAN_DD_DI | 排班计划表 | 线路运营调度管理",
+    "TF_PS_DD_PLANASSIS_T_ZB_BCBX_DI | 调度班次班型信息 | 线路运营调度管理",
+    "TF_PS_DD_SCHEDULE_T_SCHEDULE_BBSJ_DI | 数据开放-调度司机备班信息表 | 线路运营调度管理",
+    "TF_PS_DD_T_DD_YWKQZTB_DI | 数据开放-调度结算酒测考勤信息 | 物联管理平台",
+    "TF_PS_JC_QZK_GRYYSCRB_DI | 数据开放-计财个人运营生产日报 | 财务共享",
+    "TF_PS_OA_UF_ZBRYPZBQD_DI | 值班人员排班信息 | OA数字化协同办公平台",
+    "TF_SECURITY_DSM_FILE_MI | 主动安全附件数据 | 综合安全防范管理",
+    "TF_SECURITY_DSM_RECORD_DI | DSM明细表 | 综合安全防范管理",
+    "TF_SECURITY_DSM_RECORD_MI | DSM明细数据 | 综合安全防范管理",
+    "TF_SMYJ_TSXXGL_DI | 市民意见-投诉信息管理 | 市民意见管理",
+    "TF_T_APP_BREATHTEST_DI | 数据开放-考勤酒测实时表 | 物联管理平台",
+    "TF_T_APP_KEY_DI | 数据开放-考勤领钥匙实时表 | 物联管理平台",
+    "TF_T_APP_MASTER_DI | 数据开放实时考勤主表 | 物联管理平台",
+    "TF_YYDD_DD_T_DM_LINERUNINF_DA | 行车方案表 | 线路运营调度管理",
+    "TF_YY_BUS_STATUS_ALL_MI | 可视化-车辆状态表 | 车辆技术保修综合管理",
+    "TI_BLENERGY_AIRCONDITIONER_WORKMODE_DI | 北理-空调能耗 | 整车CAN数据监控分析",
+    "TI_BLENERGY_CHARGING_EFFICIENCY_DI | 北理-充电效率表 | 整车CAN数据监控分析",
+    "TI_BLENERGY_CONSUME_ABNORMAL_DI | 北理_高能源 | 整车CAN数据监控分析",
+    "TI_BLENERGY_CONSUME_LINE_DI | 北理-线路能耗表 | 整车CAN数据监控分析",
+    "TI_BLENERGY_CONSUME_MODEL_DI | 北理-车型能耗表 | 整车CAN数据监控分析",
+    "TI_BLENERGY_DRIVING_BEHAVIOR_DI | 北理-司机驾驶行为表 | 整车CAN数据监控分析",
+    "TI_BLENERGY_DRIVING_BEHAVIOR_MONTH_DI | 北理-驾驶员行为分析_月 | 整车CAN数据监控分析",
+    "TI_BLENERGY_VEHICLE_ENERGY_CONSUME_DI | 北理-车辆能耗 | 整车CAN数据监控分析",
+    "TI_CZFZSB_JC_DAY_MI | 场站辅助设备-酒测 | 物联管理平台",
+    "TI_MD_HX_CZ_DA | 主数据场站表 | 主数据管理",
+    "TI_PS_CY_DEZJJK_DI | 大额资金监测 | 财务共享",
+    "TI_PS_DD_JK_ARRIVESTATION_DI | 调度到站表 | 线路运营调度管理",
+    "TI_V_HPAGE_TINFO_DA | 线路类型统计（调度接入大屏用） | 线网业务管理",
+    "TI_V_LINE_OPER_TINFO_DA | 线路长度统计（调度计算大屏用） | 线网业务管理",
+    "TI_V_LINE_TINFO_DA | 线网线路信息（调度接入大屏用） | 线网业务管理",
+    "TI_V_STATION_TINFO_DA | 线网需求--首页站位指标行政区划日统计表 | 线网业务管理",
+    "TM_CLJS_CLMX_DA | 车辆技术-车辆明细 | 主数据管理",
+    "TM_CLJS_CLMX_DA_VIEW | 车辆信息视图 | 主数据管理",
+    "TM_CL_CX_INFO_DA | 主数据车辆车型关系表 | 主数据管理",
+    "TM_CZRB_LC_KL_BUS_YYXL_DI | 车组日报车辆运营线路里程客流表 | 线路运营调度管理",
+    "TM_FUEL_ALARM_SUM_MI | 充气加燃-告警汇总数据 | 车辆能源管控",
+    "TM_GRRB_LC_KL_RY_BUS_YYXL_DI | 个人日报人员车辆里程客流表 | 线路运营调度管理",
+    "TM_JSBX_CLDD_FGS_DA | 技术保修-分公司车辆调度明细 | 车辆技术保修综合管理",
+    "TM_JSBX_CLDD_XL_DA | 技术保修-车辆调动-线路表 | 车辆技术保修综合管理",
+    "TM_MD_CLCXGX_DA | 主数据-车辆承修关系 | 主数据管理",
+    "TM_MD_HX_XL_XLLX_DA | 主数据线路类型 | 主数据管理",
+    "TM_SCZY_MD_RY_DA | 生产资源-主数据-人员表 | 主数据管理",
+    "TM_SCZY_MD_XL_DI | 生产资源主数据线路表 | 主数据管理",
+    "TM_TOPIC_CL_DAY_DI | 主题层-车辆-天表 | 主数据管理",
+    "TM_YYDD_DD_CZ_CCLC_DAY_DA | 运营调度-车种车次里程-天 | 线路运营调度管理",
+    "TM_YYDD_DD_CZ_SJCCLC_DAY_DA | 实际车辆车次里程方案次数明细数据 | 线路运营调度管理",
+    "TM_YYDD_LD_BZ_TGL_DI | 新通过量表 | 线路运营调度管理",
+    "T_APPLICATION_CONF | APP指标展示权限配置 | 主数据管理",
+    "T_DETAIL_CONF | 表字段相关信息配置 | 主数据管理",
+    "T_DIM_COMPANY | 单位维表 | 主数据管理",
+    "T_RELATION_CONF | 表名字段关系配置 | 主数据管理",
+    "T_SCYS_CD_CDHZTJB | 充电汇总统计表 | 智慧加燃管理系统",
+    "T_SCYS_CD_CDJL_ZJB | 能源-充电记录表 | 智慧加燃管理系统",
+    "T_SCYS_CD_CDSDTJB | 能源-充电记录时段表 | 智慧加燃管理系统",
+    "TD_JSBX_BYJH_NEXT_MAINTAIN_TYPE_DA | 车辆执行下次保养类型 | 车辆技术保修综合管理",
+    "TD_JSBX_BYJH_BZRL_DA | 班组日历表 | 车辆技术保修综合管理",
+    "TD_JSBX_BYJH_BZCXNL_DA | 班组承修能力 | 车辆技术保修综合管理",
+    "TF_PS_ZD_BUSI_CANTEEN_DAY_PERSON_DI | 宗地-食堂每日人次明细表 | 宗地管理模块",
+    "TF_PS_ZD_BUSI_CANTEEN_DAY_PERSON_TYPE_DI | 宗地-食堂每日人员就餐类型关系表 | 宗地管理模块",
+    "TD_PS_XA_MAIN_DRIVER_DA | TD水上巴士_主驾驶员信息 | 定制公交管理平台",
+    "TD_PS_XA_ASSISTANT_DRIVER_DA | TD水上巴士_副驾驶员信息 | 定制公交管理平台",
+    "TD_PS_XA_ROUTE_DA | TD水上巴士_航线信息 | 定制公交管理平台",
+    "TD_PS_XA_STATION_DA | TD水上巴士_航线站点信息 | 定制公交管理平台",
+    "TD_PS_XA_DEVICE_DA | TD水上巴士_船舶设备信息 | 定制公交管理平台",
+    "TD_PS_XA_ARRANGE_DA | TD水上巴士_排班信息 | 定制公交管理平台",
+    "TF_PS_ZD_BUSI_CANTEEN_DAY_MENU_DI | 宗地-食堂每日菜品明细表 | 宗地管理模块",
+    "TD_MD_HX_CL_BQ_DA | 主数据-北汽车辆表 | 主数据管理",
+    "TD_JSBX_BYJH_FZSXNL_DA | 线路分组送修能力 | 车辆技术保修综合管理",
+    "TD_JSBX_BYJH_FGSSXNL_DA | 分公司送修能力 | 车辆技术保修综合管理",
+    "TD_JSBX_BYJH_CDSXNL_DA | 车队送修能力 | 车辆技术保修综合管理",
+    "TD_PS_TXGJ_XSXX_DA | 通学公交-学生信息 | 通学公交学校业务",
+    "TD_PS_TXGJ_JZXSGX_DA | 通学公交-家长学生关系 | 通学公交学校业务",
+    "TD_PS_TXGJ_JZXX_DA | 通学公交-家长信息 | 通学公交学校业务",
+    "TD_PS_TXGJ_LSXX_DA | 通学公交-老师信息 | 通学公交学校业务",
+    "TA_JSBX_BYJH_BOARD_STAT_JT_GJY_DI | 车辆保养执行监控看板-指标统计-集团维度 | 车辆技术保修综合管理",
+    "TA_JSBX_BYJH_BOARD_DETAIL_HMD_ZIP | 车辆保养执行监控看板-明细数据-黑名单 | 车辆技术保修综合管理",
+    "TD_TXGJ_XX_XS_JZ_DA | 通学公交-学校学生家长信息表 | 通学公交学校业务",
+    "TA_FUEL_PILEUSE_MI_VIEW | 共享充电站实时占用信息 | 车辆能源管控",
+    "TD_GJY | 公交月维表 | 主数据管理",
+    "TA_JSBX_BYJH_BOARD_STAT_CD_GJY_DI | 车辆保养执行监控看板-指标统计-车队维度 | 车辆技术保修综合管理",
+    "TA_JSBX_BYJH_BOARD_STAT_BYCJ_GJY_DI | 车辆保养执行监控看板-指标统计-保养车间维度 | 车辆技术保修综合管理",
+    "TA_JSBX_BYJH_BOARD_STAT_BYD_GJY_DI | 车辆保养执行监控看板-指标统计-保养点维度 | 车辆技术保修综合管理",
+    "TA_JSBX_BYJH_BOARD_STAT_FGS_GJY_DI | 车辆保养执行监控看板-指标统计-分公司维度 | 车辆技术保修综合管理",
+    "TA_JSBX_BYJH_BOARD_DETAIL_TBCL_DI | 车辆保养执行监控看板-明细数据-脱保车辆 | 车辆技术保修综合管理",
+    "TF_PS_TXGJ_DD_XCJH_JHAP_PD_DI | 通学公交-计划主表 | 通学定制公交学校业务管理子系统",
+    "TA_TXGJ_MONITOR_LOG_DI | 计划排班监控表 | 通学定制公交学校业务管理子系统",
+    "TD_MD_HX_XL_ZD_ZW_XZQH_DA | 主数据线路站点行政区划表 | 主数据管理",
+    "TD_SJCC_LINE | 交委邮件线路列表 | 主数据管理",
+    "TD_PS_TXGJ_ZYZXX_DA | 通学公交-志愿者信息 | 通学公交学校业务",
+    "TD_TXGJ_MD_HX_XL_ZD_ZW_XZQH_DA | 通学公交主数据线路站点行政区划表 | 主数据管理",
+    "TA_CZFZSB_CDKQJL_TXGJ_DAY_MI | 场站辅助设备-车队考勤记录-天表 | 通学公交学校业务",
+    "TA_FUEL_PILEUSE_PEROIDSTATIS_DI_VIEW | 共享充电站分时统计信息 | 车辆能源管控",
+    "TF_SMYJ_12328_ORDERINFO_DI | 市民意见-12328-工单信息 | 市民意见管理",
+    "TI_STATION_KEYCABINET_HI | 钥匙柜信息表 | 物联管理平台",
+    "TD_JSBX_JC_BMD_DA | 技术保修业务白名单 | 车辆技术保修综合管理",
+    "TA_JSBX_QXBXMX_DAY_MI | 技术保修-抢修报修明细-天表 | 车辆技术保修综合管理",
+    "TA_JSBX_WANGZUO_WLGYTJ_LK_DI | 技术保修-王佐项目-物料供应统计-库房-天表 | 车辆技术保修综合管理",
+    "TA_JSBX_WANGZUO_WLGYTJ_LK_GYS_DI | 技术保修-王佐项目-物料供应统计-库房-供应商-天表 | 车辆技术保修综合管理",
+    "TA_JSBX_TCXX_DAY_MI | 技术保修-停厂信息-天表 | 车辆技术保修综合管理",
+    "TF_PS_XAGJ_SKSM_DI | 雄安公交-刷卡刷码 | 线路运营调度管理",
+    "TF_JSBX_QX_PB_DI | 抢修排班 | 车辆技术保修综合管理",
+    "TD_MD_HX_QXZDXX_DA | 主数据-抢修站点信息 | 主数据管理",
+    "TA_JSBX_WANGZUO_QXZBTJ_DI | 技术保修-王佐项目-抢修指标统计-天表 | 车辆技术保修综合管理",
+    "TD_JSBX_WL_KF_ZZJG_DA | 库房组织机构 | 车辆技术保修综合管理",
+    "TD_JSBX_DG_DA | 地沟基础表 | 车辆技术保修综合管理",
+    "TA_JSBX_WANGZUO_SCNL_WXCZ_DI | 技术保修-王佐项目-生产能力-维修场站-天表 | 车辆技术保修综合管理",
+    "TD_MD_HX_RY_DA | 主数据-人员表 | 主数据管理",
+    "TA_JSBX_QXCXX_MI | 技术保修-抢修车信息 | 车辆技术保修综合管理",
+    "TA_JSBX_DGZYSC_MI | 技术保修-地沟占用时长 | 车辆技术保修综合管理",
+    "TD_JSBX_DG_SXT_DA | 地沟-摄像头基础表 | 车辆技术保修综合管理",
+    "TM_PS_TXGJ_PW_CUSTOM_PAY_ORDER_INFO_DI | 通学支付订单信息表 | 通学公交学校业务",
+    "TD_MD_QT_WX_BYD_DA | 主数据-维修保养点 | 主数据管理",
+    "TA_JSBX_WANGZUO_WBZBTJ_DI | 技术保修-王佐项目-维保指标统计 | 车辆技术保修综合管理",
+    "TA_JSBX_WXGDMXLATEST_DAY_MI | 技术保修-历史未完成及当日最新维修工单明细-天表 | 车辆技术保修综合管理",
+    "TA_JSBX_WANGZUO_JYZBTJ_LC_GJY_DI | 技术保修-王佐项目-经营指标统计-里程-公交月 | 车辆技术保修综合管理",
+    "TA_JSBX_WANGZUO_JYZBTJ_DI | 技术保修-王佐项目-经营指标统计 | 车辆技术保修综合管理",
+    "TA_JSBX_WXGDCSTJ_SZ_MI | 技术保修-维修工单车数统计-时组表 | 车辆技术保修综合管理",
+    "TA_JSBX_WXGDCSTJ_DAY_MI | 技术保修-维修工单车数统计-天表 | 车辆技术保修综合管理",
+    "TD_JSBX_CLCXGX_DA | 车辆承修关系 | 车辆技术保修综合管理",
+    "TF_CZFZSB_RYKEY_DI | can指标计算_车辆转弯数据推断 | 车辆综合管理",
+    "TA_JSBX_WANGZUO_CL_DA | 技术保修-王佐项目-车辆明细表 | 车辆技术保修综合管理",
+    "TA_PS_TXGJ_CUSTOM_PAY_ORDER_XLHZ_DI | 通学线路订单人次金额统计表 | 通学公交学校业务",
+    "TA_PS_TXGJ_YYXC_XLHZ_DI | 通学线路行程运营人次金额统计 | 通学公交学校业务",
+    "TA_JSBX_WANGZUO_SCNL_BXCJ_DI | 技术保修-王佐项目-生产能力-保修车间-天表 | 车辆技术保修综合管理",
+    "TA_JSBX_WANGZUO_WLGYTJ_LK_GJY_DI | 技术保修-王佐项目-物料供应统计-料库-公交月 | 车辆技术保修综合管理",
+    "TA_JSBX_WANGZUO_CLCXGX_DA | 技术保修-王佐-车辆承修关系 | 车辆技术保修综合管理",
+    "TA_JSBX_WANGZUO_JYZBTJ_GJY_PLUS_DI | 技术保修-王佐项目-经营指标统计2-月度指标 | 车辆技术保修综合管理",
+    "TF_PS_BQ_QH_CLZB_DA | 北汽-车辆指标表 | 车辆综合管理",
+    "TF_PS_SMYJ_T_BJCSS_TSXXGL_HSCLB_DI | 市民意见-投诉信息核实处理表 | 市民意见管理",
+    "TF_PS_T_BJCSS_TSXXJR_96166_DI | 市民意见-96166热线信息表 | 市民意见管理",
+    "TF_PS_WS_12345V2_ORDERINFO_DI | 市民意见-12345明细信息表 | 市民意见管理",
+    "TF_PS_WS_12345V2_ORDERLIST_DI | 市民意见-12345列表信息 | 市民意见管理",
+    "TF_PS_ZNZS_ACCESS_SITE_MERGE_DI | 智能助手-扫码出入场站合并表 | 智能助手",
+    "TD_SGKB_MD_JSY_DA | 事故看板-主数据-驾驶员表 | 安服管理",
+    "TD_SGKB_MD_CL_YYZC_DA | 事故看板-主数据-运营在册车车辆维表 | 安服管理",
+    "TM_SGKB_SGJCXX_MX_DI | 事故看板-事故基础信息明细表 | 安服管理",
+    "TA_BUS_MTONLINE_MI | 车辆媒体在线 | 车辆综合管理",
+    "TA_SGKB_SGLD_GPS_VIEW | 事故看板-事故路单-GPS | 北京BS调度生产环境",
+    "TA_ZHJR_CDHZTJ_SD_MI | 智慧加燃-充电汇总统计-时段表 | 智慧加燃管理系统",
+    "TA_ZHJR_CDHZTJ_DAY_MI | 智慧加燃-充电汇总统计-加维-天表 | 智慧加燃管理系统",
+    "TA_ZHJR_CDZSSJY_DIM_DAY_MI | 智慧加燃-充电桩实时交易-加维-天表 | 智慧加燃管理系统",
+    "TA_JSBX_QX_GZFX_DI | 技术保修-抢修-故障分析 | 车辆技术保修综合管理",
+    "TA_PS_TXGJ_YYXC_XLHZ_DI_BAK | 通学线路行程运营人次金额统计备份数据（请勿删除） | 通学定制公交学校业务管理子系统",
+    "TA_PS_TXGJ_CUSTOM_PAY_ORDER_XLHZ_DI_BAK | 通学线路订单人次金额统计表备份数据（请勿删除） | 通学定制公交学校业务管理子系统",
+    "TA_PS_ZHJC_TASK_FGS_TJ_DI | 综合稽查-检查任务指标统计-分公司统计 | 车辆综合管理",
+    "TA_PS_ZHJC_TASK_BZX_TJ_DI | 综合稽查-检查任务指标统计-标准项统计 | 车辆综合管理",
+    "TM_SCAN_SC_CJ_XL_DI | 线路乘坐时长乘距统计 | 数字化票务管理平台",
+    "TA_XW_XL_CK_WF_TJ_DI | 线网-线路乘客乘车五峰统计 | 线路运营调度管理",
+    "TA_XW_XL_CK_TJ_DI | 线网-线路乘客乘车统计 | 线路运营调度管理",
+    "TA_XW_QW_CK_WF_TJ_DI | 线网-全网乘客乘车五峰统计 | 线路运营调度管理",
+    "TA_XW_QW_CK_TJ_DI | 线网-全网乘客乘车统计 | 线路运营调度管理",
+    "TD_JSBX_BYJH_BZTSBYNL_DA | 保养点特殊承修能力日期配置 | 车辆技术保修综合管理",
+    "TD_JSBX_BYJH_KYSXRL_DA | 保养计划—客运送修日历 | 车辆技术保修综合管理",
+    "TD_PS_BYJH_CLCXGX_DA | 分公司承修关系管理 | 车辆技术保修综合管理",
+    "TD_JSBX_BYJH_TSSXNL_DA | 保养计划-特殊送修日历 | 车辆技术保修综合管理",
+    "TM_YYDD_LD_ZJ_SD_DI | 运营调度站间平均速度表 | 线路运营调度管理",
+    "TM_YYDD_LD_ZJ_DZJG_DI | 运营调度站间到站间隔表 | 线路运营调度管理",
+    "TA_YYDD_XL_WF_KL_ZDMZL_DI | 运营调度线路五峰客流最大满载率 | 线路运营调度管理",
+    "TA_YYDD_XL_FX_WF_KL_ZDMZL_DI | 运营调度线路方向五峰客流最大满载率 | 线路运营调度管理",
+    "TA_ZTGZ_BUS_STATUS_MI | 车辆状态最新 | 融合数仓",
+    "TA_ZTGZ_STATION_ONBOARD_MI | 车次运行态势站间五峰时组 | 融合数仓",
+    "TM_SCAN_OD_XCTJ_DAY_DI | od-行程统计天表 | 数字化票务管理平台",
+    "TM_SCAN_OD_XCTJ_WF_DI | od-行程统计五峰表 | 数字化票务管理平台",
+    "TM_SCAN_OD_XCTJ_FX_DAY_DI | od-行程统计方向天表 | 数字化票务管理平台",
+    "TM_SCAN_OD_XCTJ_FX_WF_DI | od-行程统计方向五峰表 | 数字化票务管理平台",
+    "TF_ZHJRQKL_CQYJY_DETAIL_MI | 区块链加燃-柴汽油交易明细数据 | 智慧加燃管理系统",
+    "TF_ZHJRQKL_CDJY_NYZ_SZ_MI | 区块链加燃-能源站充电交易时组汇总 | 智慧加燃管理系统",
+    "TF_ZHJRQKL_QJY_NYZ_SZ_MI | 区块链加燃-能源站氢交易时组汇总 | 智慧加燃管理系统",
+    "TF_ZHJRQKL_QIJY_NYZ_SZ_MI | 区块链加燃-能源站气交易时组汇总 | 智慧加燃管理系统",
+    "TF_ZHJRQKL_CQYJY_NYZ_SZ_MI | 区块链加燃-能源站柴油交易时组汇总 | 智慧加燃管理系统",
+    "TF_ZHJRQKL_CDJY_DETAIL_MI | 区块链加燃-充电交易表 | 智慧加燃管理系统",
+    "TF_ZHJRQKL_QJY_DETAIL_MI | 区块链加燃-加氢交易明细数据 | 智慧加燃管理系统",
+    "TF_ZHJRQKL_QIJY_DETAIL_MI | 区块链加燃-加气交易明细数据 | 智慧加燃管理系统",
+    "TD_MD_HX_XL_SXX_DA | 主数据线路表-上下行 | 主数据管理",
+    "TA_ZHJR_NYZ_JRTJ_DI | 智慧加燃_能源站加燃统计 | 车辆综合管理",
+    "TA_XW_XL_ZD_HCDJL_DI | 线网-线路站点全天登降量 | 线网业务管理",
+    "TA_XW_XL_ZD_SD_TGL_DI | 线网-线路站间小时通过量 | 线网业务管理",
+    "TA_XW_XL_ZD_TGL_DI | 线网-线路站间全天通过量 | 线网业务管理",
+    "TA_XW_XL_ZD_WF_JZXS_TGL_DI | 线网-线路站间峰段小时通过量满载率 | 线网业务管理",
+    "TA_SGKB_SGLD_GPS_MI | 事故看板-事故路单-GPS | 北京BS调度生产环境",
+    "TF_PS_OA_UF_ZBRYPZBF_DI | oa-部门排班表 | OA数字化协同办公平台",
+    "TF_PS_OA_UF_ZBRYPZBXJ_DI | oa-单位排班表 | OA数字化协同办公平台",
+    "TF_PS_ZD_BUSI_CANTEEN_DAY_BUSI_RENT_DI | 宗地-出租信息 | 宗地管理模块",
+    "TF_PS_ZD_BUSI_CANTEEN_DAY_BUSI_USE_HOUSE_DI | 宗地-房屋使用信息表 | 宗地管理模块",
+    "TF_PS_ZD_BUSI_CANTEEN_DAY_BUSI_USE_LAND_DI | 宗地-土地使用信息 | 宗地管理模块",
+    "TF_ZHAQ_SQCS_MX_DI | 智慧安全系统-山区超速明细-天表 | 综合安全防范管理",
+    "TF_ZHAQ_ZWCS_MX_DI | 智慧安全系统-转弯超速明细-天表 | 综合安全防范管理",
+    "TF_ZHAQ_CZWG_MX_DI | 智慧安全系统-出站违规明细-天表 | 综合安全防范管理",
+    "TF_ZHAQ_JZWG_MX_DI | 智慧安全系统-进站违规明细-天表 | 综合安全防范管理",
+    "TF_ZHAQ_SCWG_MX_DI | 智慧安全系统-刹车违规明细-天表 | 综合安全防范管理",
+    "TF_ZHAQ_ZCWG_MX_DI | 智慧安全系统-驻车违规明细-天表 | 综合安全防范管理",
+    "TM_ZHAQ_JSYGJ_TJ_DI | 智慧安全系统-驾驶员告警统计-天表 | 综合安全防范管理",
+    "TF_ZNZS_RYDW_MI | 智能助手人员定位数据 | 智能助手",
+    "TM_JC_RY_JSKL_DI | 计财报表-人员结算客流-天表 | 报表平台",
+    "TA_YYDD_CLBZJGMX_DAY_MI | 运营调度-车辆报站间隔明细-天表 | 线路运营调度管理",
+    "TA_YYDD_CLBZJGTJ_DAY_MI | 运营调度-车辆报站间隔统计-天表 | 线路运营调度管理",
+    "TA_YYDD_CLBZJGTJ_LATEST_DAY_MI | 运营调度-车辆报站间隔统计-最新-天表 | 线路运营调度管理",
+    "TA_JC_XL_JSKL_DI | 计财报表-线路结算客流-天表 | 报表平台",
+    "TM_JC_RY_LC_DI | 计财报表-人员里程-天表 | 报表平台",
+    "TM_JC_CL_GZCR_DI | 计财报表-车辆工作车日-天表 | 报表平台",
+    "TA_JC_XL_LC_KYL_DI | 计财报表-线路里程客运量_车辆统计-天表 | 报表平台",
+    "TM_YYDD_BUS_LC_ALL_DI | 运营调度-车辆里程统计-天表 | 车辆综合管理",
+    "TF_JSBX_QX_RW_DI | 技术保修—抢修任务 | 车辆技术保修综合管理",
+    "TA_YYDD_CLBZJGTJ_HALFHOUR_DAY_MI | 运营调度-车辆报站间隔每半小时统计-天表 | 线路运营调度管理",
+    "TD_PS_KEY_MONITOR_BUS_DA | 大型活动--重点监控车辆 | 大型活动后台管理系统",
+    "TD_PS_KEY_MONITOR_AREA_DA | 大型活动--重点监控区域 | 大型活动后台管理系统",
+    "TD_PS_KEY_MONITOR_PERSONS_DA | 大型活动--重点监控人员 | 大型活动后台管理系统",
+    "TD_PS_KEY_MONITOR_LINES_DA | 大型活动--重点监控线路 | 大型活动后台管理系统",
+    "TM_JC_CL_NH_DI | 计财报表-车辆能耗-天表 | 报表平台",
+    "TM_JC_RY_CL_BGLNH_DI | 计财报表-人员车辆百公里能耗-天表 | 报表平台",
+    "TD_JC_MD_CL_DA | 计财报表-主数据车辆基本信息 | 报表平台",
+    "TD_JC_MD_XL_DA | 计财报表-主数据线路基本信息 | 报表平台",
+    "TI_PS_SCGL_BYJH_INTELLECT_FORMAT_DI | 技术保修-保修调整后杉数保养计划 | 车辆技术保修综合管理",
+    "TA_WEATHER_DLYXLDJSSK_HI | 气象数据-易积水点未来3小时格点降水预报 | 数据资产管理",
+    "TA_WEATHER_DLYXLDJSSK_ALL_HI | 气象数据-易积水点未来3小时格点降水预报 | 数据资产管理",
+    "TD_PS_DD_CORE_DICITEM_DA | 运营调度-调度字典表 | 线路运营调度管理",
+    "TF_PS_RL_TJRYXX_DA | 人力-体检人员信息 | 人力资源管理",
+    "TF_PS_PROPERTY_HOTLINE_RECORDS_DA | 物业通话记录 | 物业食堂管理",
+    "TF_PS_POLITICAL_STYLE_LETTER_LIST_DA | 政风行风信件详情表 | 市民意见管理",
+    "TF_PS_SYS_DICT_DATA_DA | 物业数据字典表 | 物业食堂管理",
+    "TF_PS_PUBLIC_FEEDBACK_ARCHIVES_PARTY_DA | 市民意见办理当事人信息表 | 市民意见管理",
+    "TF_PS_TRAVEL_TOGETHER_WORK_ORDER_DA | 一路同行单 | 一路同行APP管理平台",
+    "TF_PS_REPAIR_REPORT_ORDER_DETAIL_DA | 物业报修工单详情表 | 物业食堂管理",
+    "TF_PS_REPAIR_REPORT_ORDER_DA | 物业报修工单表 | 物业食堂管理",
+    "TF_PS_MAYORTEL_ORDER_INFO_DA | 12345市长热线工单详情 | 市民意见管理",
+    "TF_PS_SERVICE_BUS_HOTLINE_RECORDS_DA | 96166热线通话记录 | 市民意见管理",
+    "TF_PS_MAYORTEL_ORDER_NOTICE_DA | 12345审核通知 | 市民意见管理",
+    "TF_PS_POLITICAL_STYLE_LETTER_INFO_DA | 政风行风信件详情表 | 市民意见管理",
+    "TF_PS_SERVICE_THEME_WORDS_DA | 客服主题词表 | 市民意见管理",
+    "TF_PS_PUBLIC_FEEDBACK_ARCHIVES_DA | 市民意见档案表 | 市民意见管理",
+    "TF_PS_MAYORTEL_BASE_REQUEST_TYPE_DA | 12345热线问题分类 | 市民意见管理",
+    "TF_PS_SERVICE_BUS_HOTLINE_ORDER_DA | 96166热线工单 | 市民意见管理",
+    "TF_PS_TRANSPORTATION_HOTLINE_NOTICE_DA | 12328审核通知 | 市民意见管理",
+    "TF_PS_REPAIR_FIX_ORDER_DA | 物业维修工单表 | 物业食堂管理",
+    "TF_PS_TRANSPORTATION_HOTLINE_LIST_DA | 12328工单列表 | 市民意见管理",
+    "TF_PS_SERVICE_DICTIONARY_DETAILED_DA | 客服字典信息明细表 | 市民意见管理",
+    "TF_PS_MAYORTEL_ORDER_LIST_DA | 12345市长热线承办信息列表 | 市民意见管理",
+    "TF_PS_MAYORTEL_BASE_DICT_DA | 12345热线基础字典表 | 市民意见管理",
+    "TF_PS_PROPERTY_CONFIG_FOLLOWUP_DA | 物业回访信息表 | 物业食堂管理",
+    "TF_PS_PROPERTY_HOTLINE_ORDER_DA | 物业工单 | 物业食堂管理",
+    "TD_MODEL_XLXX_DI | 车辆停驶仿真-线路信息 | 融合数仓",
+    "TF_PS_TRAVEL_TOGETHER_WORK_ORDER_DETAIL_DA | 一码通乘工单详情 | 一路同行APP管理平台",
+    "TF_PS_ZHJC_JCWTGDLZMXB_DA | 稽查问题工单流转明细表 | 稽查管理",
+    "TF_PS_ZHJC_RWXZCYGXB_DA | 综合稽查任务小组成员对应关系表 | 稽查管理",
+    "TF_PS_INS_PROPERTY_COMP_INVENTORY_DA | 物业稽查记录 | 物业食堂管理",
+    "TF_PS_ZHJC_XLJCJL_DA | 综合稽查-线路稽查记录 | 稽查管理",
+    "TF_PS_INS_PROPERTY_COMP_TASK_CONTENT_DA | 物业稽查任务派班明细表 | 物业食堂管理",
+    "TF_PS_ZHJC_DMKLJCJL_DA | 综合稽查-断面客流稽查记录 | 稽查管理",
+    "TF_PS_INS_PROPERTY_COMP_TASK_CONTENT_MEMBER_DA | 物业综合稽查任务小组成员对应关系表 | 物业食堂管理",
+    "TF_PS_ZHJC_YCDMKLJCJLXQ_DA | 综合稽查-远程断面客流稽查记录详情 | 稽查管理",
+    "TF_PS_ZHJC_SMZJCJL_DA | 综合稽查-首末站稽稽查记录 | 稽查管理",
+    "TF_PS_INS_PROPERTY_COMP_TASK_DA | 物业综合稽查任务表 | 物业食堂管理",
+    "TF_PS_ZHJC_YCCZJCJL_DA | 综合稽查-远程场站稽查记录 | 稽查管理",
+    "TF_PS_INS_PROPERTY_COMP_ILLEGAL_INVENTORY_TRANSFER_DTL_DA | 物业稽查问题工单流转明细表 | 物业食堂管理",
+    "TA_MODEL_CLYY_DI | 算法-车辆运营历史 | 融合数仓",
+    "TF_PS_ZHJC_DMKLJCJLXQ_DA | 综合稽查-断面客流稽查记录详情 | 稽查管理",
+    "TF_PS_ZHJC_YCDMKLJCJL_DA | 综合稽查-远程断面客流稽查记录 | 稽查管理",
+    "TF_PS_ZHJC_SMZJCJLXQ_DA | 综合稽查-首末站稽查记录详情 | 稽查管理",
+    "TF_PS_ZHJC_PBRWB_DA | 综合稽查派班任务表 | 物业食堂管理",
+    "TF_PS_INS_PROPERTY_COMP_ILLEGAL_INVENTORY_PROCESS_DA | 物业稽查问题工单处理记录表 | 物业食堂管理",
+    "TF_PS_ZHJC_CZJCJL_DA | 综合稽查-场站稽查记录 | 稽查管理",
+    "TF_PS_ZHJC_YCXLJCJL_DA | 综合稽查-远程线路稽查记录 | 稽查管理",
+    "TF_PS_ZHJC_YCSMZJCJLXQ_DA | 综合稽查-远程首末站稽查记录详情 | 稽查管理",
+    "TF_PS_ZHJC_YCSMZJCJL_DA | 综合稽查-远程首末站稽稽查记录 | 稽查管理",
+    "TF_PS_ZHJC_PBRWNRB_DA | 综合稽查派班任务内容表 | 稽查管理",
+    "TD_MODEL_CLXX_DI | 车辆停驶仿真-车辆信息 | 融合数仓",
+    "TF_PS_ZHJC_JCWTGDCLJL_DA | 稽查问题工单处理记录表 | 稽查管理",
+    "TA_PS_SMYJ_GDMX_DA | 市民意见工单明细表 | 市民意见管理",
+    "TI_RL_KQRB_MI | 人力考勤日报-天表 | 人力资源数字化管理(在建)",
+    "TF_PS_ANF_AS_ILLEGAL_DA | 安服-违法信息表 | 安服管理",
+    "TA_PS_ZHJC_JCWTGDCLJL_DA | 稽查问题工单处理记录TA | 稽查管理",
+    "TA_NY_ZHJR_JY_YB | 充电加燃-加油月报 | 智慧加燃管理系统",
+    "TA_NY_ZHJR_JYRB_DI | 充电加燃-加油日报 | 智慧加燃管理系统",
+    "TA_NY_ZHJR_JQING_YB | 充电加燃-加氢月报 | 智慧加燃管理系统",
+    "TA_NY_ZHJR_JQINGRB_DI | 充电加燃-加氢日报 | 智慧加燃管理系统",
+    "TA_NY_ZHJR_JQIRB_DI | 充电加燃-加气日报 | 智慧加燃管理系统",
+    "TA_NY_ZHJR_JQI_CNG_YB | 充电加燃-加气CNG月报 | 智慧加燃管理系统",
+    "TA_NY_ZHJR_JQI_LNG_YB | 充电加燃-加气LNG月报 | 智慧加燃管理系统",
+    "TF_PS_HOTLINE_FEEDBACK_SCORE_DA | 12345服务热线三率综合得分统计表 | 市民意见管理",
+    "TM_PS_REPAIR_REPORT_ORDER_DETAIL_DA | 物业报修工单详情表 | 物业食堂管理",
+    "TA_5A_ZHBB_RY_FWCS_DI | 5A_综合报表模块_人员访问次数 | 统一应用管理",
+    "TF_AF_JSYYCXW_DAY_MI | 驾驶员异常行为明细表 | 安服管理",
+    "TF_SMART_ASSISTANT_CODE_SHARING_DA | 智能助手-口令码分享记录 | 智能助手",
+    "TM_ZHAQ_JSY_YYXLCL_TJ_DI | 智慧安全系统-驾驶员运营线路车辆指标统计 | 安服管理",
+    "TD_MD_HX_XL_NEW_ALL_DA | 主数据线路表 | 主数据管理",
+    "TA_PS_TXGJ_YYXC_XLHZ_DI_2024 | 通学线路行程运营人次金额统计 | 通学公交学校业务",
+    "TA_AF_JSYYCXWGW_DAY_DI | 驾驶员异常行为明细加格网表 | 安服管理",
+    "TA_PS_TXGJ_ZFQD_XLHZ_DI | 通学公交支付渠道结算报表 | 通学公交学校业务",
+    "TF_ZHAQ_WGGW_MX_DI | 智慧安全系统-违规格网明细-天表 | 安服管理",
+    "TF_ZHAQ_ZWCSGW_MX_DI | 智慧安全系统-转弯超速格网明细-天表 | 安服管理",
+    "TF_ZHAQ_SQCSGW_MX_DI | 智慧安全系统-山区超速明细-天表 | 安服管理",
+    "TF_PROVIDE_ANFU_ADASALARM_GW_DI | 智慧安全系统-驾驶员画像北太告警格网-天表 | 安服管理",
+    "TF_PS_DD_T_DM_LINERUNINF_DA | 行车方案表 | 线路运营调度管理",
+    "TF_ZTYC_ZZCLCLJG_DAY_MI | 中途异常-滞站车辆处理结果 | 车辆综合管理",
+    "TA_NY_ZHJR_JQIRB_ORI_DI | 智慧加燃-原始加气日报 | 智慧加燃管理系统",
+    "TA_NY_ZHJR_CDRB_ORI_DI | 智慧加燃-原始充电日报 | 智慧加燃管理系统",
+    "TA_NY_ZHJR_JYRB_ORI_DI | 智慧加燃-原始加油日报 | 智慧加燃管理系统",
+    "TA_NY_ZHJR_JQINGRB_ORI_DI | 智慧加燃-原始加氢日报 | 智慧加燃管理系统",
+    "TF_PS_ANF_AS_BJ_DRIVER_MANAGE_DA | 安服-北京驾驶员信息管理管理 | 安服管理",
+    "TA_YYDD_DD_GZCLFX_LINE_DI_SOA | 工作车辆分析表 | 线路运营调度管理",
+    "TA_YYDD_DD_FZGZCLFX_LINE_DI_SOA | 工作车辆分析线路分钟表 | 线路运营调度管理",
+    "TA_ANF_GWPFTJ_50M_DA | 安全点-格网评分统计表 | 安服管理",
+    "TA_ANF_GWPFMX_50M_DA | 安全点-格网评分明细表 | 安服管理",
+    "TD_MD_HX_CZ_WYFW_DA | 主数据-场站服务表 | 主数据管理",
+    "TD_PS_TXGJ_SEMESTER_CONFIG_DA | 学期起止配置表 | 通学公交学校业务",
+    "TA_JL_KL_ZW_DAY_DI_SOA | 站位客流表 | 线路运营调度管理",
+    "TA_JL_KL_ZW_SZ_DI_SOA | 站位客流时组表 | 数字化票务管理平台",
+    "TD_PS_TXGJ_BASE_ROUTE_INFO_DA | 线路运营状态表 | 通学公交学校业务",
+    "TA_ZHST_STQCDDMX_DAY_MI | 食堂取餐订单明细 | 安服管理",
+    "TF_PS_ZHJC_JCJLCLXQ_DA | 稽查记录车辆详情 | 稽查管理",
+    "TA_ZHST_STQCDDTJ_GJY_DI | 食堂取餐订单统计-公交月 | 物业食堂管理",
+    "TF_ZHJR_QIJG_MI | 智慧加燃_气价格 | 车辆能源管控",
+    "TF_ZHJR_QJG_MI | 智慧加燃_氢价格 | 车辆能源管控",
+    "TF_ZHJR_YHYJ_MI | 智慧加燃_油号油价 | 车辆能源管控",
+    "TF_ZHJR_CDZDJ_MI | 智慧加燃_充电站电价 | 车辆能源管控",
+    "TA_YWZT_WYBXGDTJ_MONTH_DI | 物业报修工单统计表 | 物业食堂管理",
+    "TD_PS_GDS_GJSBJCXX_DA | 供电所-工井设备基础信息 | 能源管控中心",
+    "TF_DZGJ_JHLD_DI | 定制公交计划路单 | 定制公交管理平台",
+    "TF_DZGJ_SJLD_DI | 定制公交实际路单 | 定制公交管理平台",
+    "TF_DZGJ_CZKLHSRJS_DI | 定制公交车组客流和收入结算订单 | 定制公交管理平台",
+    "TA_YYDD_LINK_XZQH_TGL_DAY_DI | link、行政区划通过量天表 | 线路运营调度管理",
+    "TA_YYDD_LINK_XZQH_TGL_WF_DI | link、行政区划通过量五峰表 | 线路运营调度管理",
+    "TA_YYDD_LINK_XZQH_TGL_SZ_DI | link、行政区划通过量时组表 | 线路运营调度管理",
+    "TA_YYDD_XL_LINK_XZQH_TGL_WF_DI | 线路link、行政区划通过量五峰表 | 线路运营调度管理",
+    "TA_YYDD_XL_LINK_XZQH_TGL_SZ_DI | 线路link、行政区划通过量时组表 | 线路运营调度管理",
+    "TA_YYDD_LINK_XL_COUNT_DI | link、线路统计表表 | 线路运营调度管理",
+    "TA_YYDD_LINK_XZQH_DI | link、行政区划维表 | 线路运营调度管理",
+    "TF_HUMAN_12POINT_DI | 人力绩效_人员12分扣罚流水 | 人力资源数字化管理(在建)",
+    "TF_HUMAN_PERFORMINDEX_DA | 人力绩效_指标管理 | 人力资源管理",
+    "TA_HUMAN_12POINT_SUM_DI | 人力绩效_人员12分扣罚年度汇总 | 人力资源管理",
+    "TA_YYDD_XW_ZW_KL_SZ_DI | 全网客流-客流热力图(按时段) | 线路运营调度管理",
+    "TA_YYDD_XW_ZW_KL_WF_DI | 全网客流-客流热力图(按峰谷) | 线路运营调度管理",
+    "TA_YYDD_XW_ZW_KL_DAY_DI | 全网客流-客流热力图(按日期) | 线路运营调度管理",
+    "TA_YYDD_XW_ZD_OD_DI | 站点OD | 线路运营调度管理",
+    "TA_YYDD_XW_ZWTC_KL_DAY_DI | 站位图层 | 线路运营调度管理",
+    "TA_YYDD_XW_ZWTC_KL_SZ_DI | 站位图层-时段 | 线路运营调度管理",
+    "TA_YYDD_XW_ZWTC_XL_KL_DAY_DI | 站位图层-途径线路 | 线路运营调度管理",
+    "TA_YYDD_XW_ZWTC_XL_KL_WF_DI | 站位图层-途径线路-五峰 | 线路运营调度管理",
+    "TA_YYDD_XW_ZWTC_XL_KL_SZ_DI | 站位图层-时段-途径线路 | 线路运营调度管理",
+    "TF_JSD_FJXX_MI | 积水点-附件上传信息 | 物联管理平台",
+    "TF_CZFZSB_CJSCQDJG_DAY_MI | 场站辅助设备-车机上传签到结果-天表 | 物联管理平台",
+    "TF_WYGJ_DLZ_MI | 网约公交-到离站表 | 线路运营调度管理",
+    "TI_WYGJ_LJGHSJ_MI | 网约公交-路径规划表 | 线路运营调度管理",
+    "TF_WYGJ_CLZTBH_MI | 网约公交-车辆状态变化表 | 线路运营调度管理",
+    "TF_WYGJ_CDJG_MI | 网约公交-撮单结果表 | 线路运营调度管理",
+    "TF_WYGJ_SJZTBH_MI | 网约公交-司机状态变化 | 线路运营调度管理",
+    "TF_WYGJ_BZSJ_MI | 网约公交-班组数据表 | 线路运营调度管理",
+    "TI_WYGJ_APPDD_MI | 网约公交-APP订单表 | 线路运营调度管理",
+    "TF_WYGJ_DDJRZTZZ_MI | 网约公交-到达加燃站停驻点 | 线路运营调度管理",
+    "TA_WYGJ_ZDSFXJ_MI | 网约公交-站点是否下架 | 线路运营调度管理",
+    "TA_WYGJ_QYSFXJ_MI | 网约公交-区域是否下架 | 线路运营调度管理",
+    "TA_WYGJ_XLYYGKTJ_MI | 网约公交-线路运营概况统计表 | 线路运营调度管理",
+    "TA_WYGJ_DCKLTJ_MI | 网约公交-单车客流统计表 | 线路运营调度管理",
+    "TA_WYGJ_XLZDDJL_MI | 网约公交-线路站点登降量表 | 线路运营调度管理",
+    "TA_WYGJ_CLSSZT_MI | 网约公交-车辆实时状态 | 线路运营调度管理",
+    "TA_WYGJ_GJMX_MI | 网约公交-告警明细 | 线路运营调度管理",
+    "TA_WYGJ_DDMX_MI | 网约公交-订单明细 | 线路运营调度管理",
+    "TI_WYGJ_DLZ_MI | 网约公交-到离站表 | 线路运营调度管理",
+    "TD_WYGJ_ZDSFXJ_DA | 网约公交-站点是否下架表 | 线路运营调度管理",
+    "TD_MD_HX_RY_TXRY_DA | 退休人员信息表 | 主数据管理",
+    "TI_WYGJ_DDJRZTZZ_MI | 网约公交-到达加燃站停驻点 | 线路运营调度管理",
+    "TD_WYGJ_QYSFXJ_DA | 网约公交-区域是否下架表 | 线路运营调度管理",
+    "TI_WYGJ_SJZTBH_MI | 网约公交-司机状态变化 | 线路运营调度管理",
+    "TI_WYGJ_BZSJ_MI | 网约公交-班组数据表 | 线路运营调度管理",
+    "TM_JSD_FJXX_DI | 积水点-附件上传信息 | 安服管理",
+    "TD_ANF_AQDFXY_MI | 安服-安全点风险源 | 安服管理",
+    "TD_ANF_AQDLY_MI | 安服-安全点路 | 安服管理",
+    "TD_ANF_AQDSYRQ_MI | 安服-安全点使用日期 | 安服管理",
+    "TD_ANF_AQDXXGL_MI | 安服-安全点信息管理 | 安服管理",
+    "TD_ANF_AQDFX_MI | 安服-安全点方向 | 安服管理",
+    "TD_ANF_AQDGLXL_MI | 安服-安全点关联线路 | 安服管理",
+    "TF_ZHAQ_WGMX_MI_VIEW | 智慧安全-违规明细_视图 | 安服管理",
+    "TF_AQTS_JSZZALARM_MI | 安全态势_资质违规告警 | 安服管理",
+    "TF_AQTS_YFBALARM_MI | 安全态势_硬翻班告警 | 安服管理",
+    "TF_ZHAQ_JZWG_MX_MI | 智慧安全系统_进站违规明细_实时表 | 安服管理",
+    "TF_AQTS_LJYYALARM_MI | 安全态势_累计运营超长告警 | 安服管理",
+    "TF_ZHAQ_JZZXDWG_MX_MI | 智慧安全系统_进站不打转向灯违规_实时表 | 安服管理",
+    "TA_ZHAQ_WGSUM_SJ_MI | 智慧安全系统_违规告警司机级汇总表_实时表 | 安服管理",
+    "TF_ZHAQ_SQCS_MX_MI | 智慧安全系统_山区超速明细_实时表 | 安服管理",
+    "TF_ZHAQ_DCWG_MX_MI | 智慧安全系统_倒车超速违规明细_实时表 | 安服管理",
+    "TF_ZHAQ_JSGCMDWG_MX_MI | 智慧安全系统_驾驶过程鸣笛违规明细_实时表 | 安服管理",
+    "TA_YYDD_DD_KLFX_TC_DAY_MI | 客流分析-车次-实时天表 | 数字化票务管理平台",
+    "TF_ZHAQ_CZWG_MX_MI | 智慧安全系统_出站违规明细_实时表 | 安服管理",
+    "TF_ZHAQ_CZZXDWG_MX_MI | 智慧安全系统_出站不打转向灯违规_实时表 | 安服管理",
+    "TA_ZHAQ_WGSUM_SJ_DI | 智慧安全系统_违规告警司机级汇总表_离线表 | 安服管理",
+    "TD_ANF_AQDXXRH_MI | 安服-安全点信息融合 | 安服管理",
+    "TA_YYDD_DD_LD_PLAN_2022_DI | 运营调度-计划排班表 | 线路运营调度管理",
+    "TF_PS_ANF_AS_BJ_DRIVER_MANAGE_MI | 安服-北京驾驶员信息管理管理 | 安服管理",
+    "TI_ANF_SSSG_DAY_MI | 安服-实时事故 | 安服管理",
+    "TD_PS_ANF_SYS_DICT_DATA_DA | 安服-字典数据表 | 安服管理",
+    "TD_PS_ANF_AS_BJ_ACCIDENT_CODE_VALUE_DA | 安服-北京事故多层级码值 | 安服管理",
+    "TF_AQTS_LJYYALL_MI | 安全态势_累计运营全量 | 安服管理",
+    "TM_YYDD_LC_KYL_BUS_LINE_DI | 运营调度-车辆线路里程客运量表 | 线路运营调度管理",
+    "TF_AQTS_LXYYALARM_MI | 安全态势_连续运营超长告警 | 安服管理",
+    "TF_MAYORTEL_THREE_RATE_SCORE_STATISTICS_DEPT_DA | 12345三率评分统计(处室) | 市民意见管理",
+    "TF_MAYORTEL_THREE_RATE_SCORE_ENTERPRISE_DA | 国企三率统计 | 市民意见管理",
+    "TF_AQTS_LXYYALL_MI | 安全态势_连续运营全量明细 | 安服管理",
+    "TA_SJC_CLWB_BUS_MI | 事件池-车辆维保事件-全量 | 线路运营调度管理",
+    "TA_SJC_BUS_ALL_MI_VIEW | 事件池-车辆事件视图-全量 | 线路运营调度管理",
+    "TA_SJC_CLWB_BUS_LATEST_MI | 事件池-车辆维保事件-最新 | 线路运营调度管理",
+    "TA_SJC_CLYY_BUS_LATEST_MI | 事件池-车辆运营事件-最新 | 线路运营调度管理",
+    "TA_YYDD_XL_ZZL_KYL_DA | 线路周转量、平均乘距、客运量统计表 | 线路运营调度管理",
+    "TA_SJC_CLYY_BUS_MI | 事件池-车辆运营事件-全量 | 线路运营调度管理",
+    "TA_SJC_CLZT_BUS_LATEST_MI_VIEW | 事件池-车辆状态视图-最新 | 线路运营调度管理",
+    "TF_ZHAQ_ZWCS_MX_MI | 智慧安全系统_车辆转弯数据推断_实时表 | 安服管理",
+    "TM_YYDD_BUS_LC_KYL_DCCB_DI | 车辆里程、结算客流、单车成本指标表 | 线路运营调度管理",
+    "TF_AQTS_TEPORSCHEDUAL_MI | 安全态势_临时调度告警 | 安服管理",
+    "TF_AQTS_LINECHANGE_MI | 安全态势_线路变更告警 | 安服管理",
+    "TF_AQTS_WORKOVERPERIOND_MI | 安全态势_工作天数超期告警 | 安服管理",
+    "TF_AQTS_RESTLACK_MI | 安全态势_休息不足告警 | 安服管理",
+    "TF_AQTS_BLOODPRESSALARM_MI | 安全态势_血压告警 | 安服管理",
+    "TF_AQTS_IMPORTANT_POSITIVE_MI | 安全态势_重大阳性告警 | 安服管理",
+    "TF_AQTS_BCBSCHANGE_MI | 安全态势_班型更换告警 | 安服管理",
+    "TF_AQTS_CLDEVIATE_MI | 安全态势_车辆与计划不一致告警 | 安服管理",
+    "TF_AQTS_BCDEVIATE_MI | 安全态势_班次与计划不一致告警 | 安服管理",
+    "TA_YYDD_LINE_LC_NY_KYL_DCCB_DI | 线路里程能耗客运量材料费 | 线路运营调度管理",
+    "BUS_ALARM_CHECK | CAN车辆故障稽核 | 整车CAN数据监控分析",
+    "QA_CAN_BUS_CANID | CAN数据正常上报轨迹表 | 整车CAN数据监控分析",
+    "QA_CAN_BUS_CANID_DATE_MI | CAN数据正常上报轨迹_天表 | 整车CAN数据监控分析",
+    "QA_CAN_BUS_ERRINFO | CAN异常车辆协议轨迹 | 整车CAN数据监控分析",
+    "QA_CAN_TA_DATA_VALIDITY | CAN数据有效性校验 | 整车CAN数据监控分析",
+    "QA_CAN_TA_ERROR_DRILL | CAN数据异常字段解析 | 整车CAN数据监控分析",
+    "QA_FLINK_CAN2DFS_COUNT_MI | CAN落盘HDFS条数QA表 | 整车CAN数据监控分析",
+    "TA_BUSFAULT_ANALYSE_MI | CAN车辆故障稽核 | 整车CAN数据监控分析",
+    "TA_BUS_ALARMANALYSE_MANUAL | 告警数据手工录入 | 整车CAN数据监控分析",
+    "TA_BUS_BUSINESS_CHECK_DI | 车辆CAN数据稽核表 | 整车CAN数据监控分析",
+    "TA_CAN_BUS_DT | 车辆CAN运营gps稽核 | 整车CAN数据监控分析",
+    "TA_DORIS_QUETY_INFO_DI | Doirs查询日志提取表 | 数据资产管理",
+    "TA_NE_ALARM_ANALYSE_MI | 新能源-告警分析 | 整车CAN数据监控分析",
+    "TA_OLYMPICBUS_BUSINESS_CHECK_DI | 车辆CAN数据_冬奥稽核表 | 整车CAN数据监控分析",
+    "TD_CAN_BUSINFO_DT | CAN车辆信息表 | 整车CAN数据监控分析",
+    "TD_CAN_BUSINFO_STAND | CAN-CAN车辆基础列表信息 | 整车CAN数据监控分析",
+    "TD_CAN_TOPIC | CAN主题信息表 | 整车CAN数据监控分析",
+    "TD_REPORT_BUSTYPE | 车型协议信息表 | 整车CAN数据监控分析",
+    "TM_CAN_COMPLETECHECK_DI | CAN协议完整性稽核表 | 整车CAN数据监控分析",
+    "TM_CAN_COMPLETECHECK_DI_VIEW | CAN完整性稽核视图 | 整车CAN数据监控分析",
+    "TD_CAN_OLYMPICBUSINFO_DT | 冬奥-车辆信息 | 整车CAN数据监控分析",
+    "QA_FLINK_NE2DFS_COUNT_MI | NE落盘HDFS条数QA表 | 整车CAN数据监控分析",
+    "QA_FLINK_GPS2DFS_COUNT_MI | GPS落盘HDFS条数QA表 | 车辆综合管理",
+    "GPS808_10MI_ONLINE_BUS_DAY | 车辆808gps连续10分钟上线车辆表 | 车辆综合管理",
+    "GPS808_10MI_ONLINE_RATE_DAY | 车辆808gps连续10分钟上线率表 | 车辆综合管理",
+    "GPS808_ONLINE_BUS_DAY | 车辆808gps在线率车辆天表 | 车辆综合管理",
+    "GPS808_ONLINE_BUS_HOUR | 车辆808gps在线率车辆小时表 | 车辆综合管理",
+    "GPS808_ONLINE_JG_DAY | 车辆808gps在线率机构天表 | 车辆综合管理",
+    "GPS808_ONLINE_JG_HOUR | 车辆808gps在线率机构小时表 | 车辆综合管理",
+    "GPS808_ONLINE_JG_MINUTE | 车辆808在线率机构分钟 | 车辆综合管理",
+    "GPSMIX_10MI_ONLINE_BUS_DAY | 车辆融合gps连续十分钟上线 | 车辆综合管理",
+    "GPSMIX_10MI_ONLINE_RATE_DAY | 车辆融合gps连续10分钟上线率表 | 车辆综合管理",
+    "GPSMIX_ONLINE_BUS_DAY | 车辆融合gps在线率车辆天表 | 车辆综合管理",
+    "GPSMIX_ONLINE_BUS_HOUR | 车辆融合gps在线率车辆小时 | 车辆综合管理",
+    "GPSMIX_ONLINE_JG_DAY | 车辆融合在线率机构天表 | 车辆综合管理",
+    "GPSMIX_ONLINE_JG_HOUR | 车辆融合gps在线率机构小时 | 车辆综合管理",
+    "GPSMIX_ONLINE_JG_MINUTE | 车辆融合gps在线率机构分钟表 | 车辆综合管理",
+    "GPS_10MI_ONLINE_BUS_DAY | 车辆地标gps连续十分钟上线表 | 车辆综合管理",
+    "GPS_10MI_ONLINE_RATE_DAY | 车辆地标gps连续十分钟上线率 | 车辆综合管理",
+    "GPS_ONLINE_BUS_DAY | 车辆地标gps在线率车辆天表 | 车辆综合管理",
+    "GPS_ONLINE_BUS_HOUR | GPS设备在线率_小时 | 车辆综合管理",
+    "GPS_ONLINE_JG_DAY | 车辆地标gps在线率机构天表 | 车辆综合管理",
+    "GPS_ONLINE_JG_HOUR | 车辆地标gps在线率机构小时表 | 车辆综合管理",
+    "GPS_ONLINE_JG_MINUTE | 车辆地标gps在线率机构分钟 | 车辆综合管理",
+    "LINEONBOARD | 线路通过量 | 线路运营调度管理",
+    "PROD_STATIS_ONBOARD_COUNTER | 车上人数统计表 | 数字化票务管理平台",
+    "PROD_STATIS_PASSENGERCOUNTER | 客流分析-客流统计 | 数字化票务管理平台",
+    "PROD_STATIS_PASSENGEROD | 客流分析-客流OD | 数字化票务管理平台",
+    "TA_BQ_CLBJ_DAY_MI | 北汽-北汽车辆报警 | 综合安全防范管理",
+    "TA_BQ_CLYY_DAY_MI | 北汽-北汽车辆运营 | 线路运营调度管理",
+    "TA_BQ_GPS_DAY_MI | 北汽-808GPS定位数据 | 车辆综合管理",
+    "TA_BQ_RCGX_DAY_MI | 北汽-北汽人车关系 | 人力资源数字化管理(在建)",
+    "TA_BQ_RLSB_DAY_MI | 北汽-北汽司机人脸识别 | 人力资源数字化管理(在建)",
+    "TA_BQ_SJLP_DAY_MI | 北汽-北汽司机领票 | 人力资源数字化管理(在建)",
+    "TA_ENCRYPT_PWPT_JJDY_HS_PX_VIEW | 机具调用-核酸-查验排序视图 | 数字化票务管理平台",
+    "TA_GDS_GJJCSJ_DAY_MI | 供电所-工井监测数据 | 综合安全防范管理",
+    "TA_GPS_808INDEX_MI_VIEW | GPS808卫星信号强度等指标视图 | 车辆综合管理",
+    "TA_HDFS_UTILITY_DI | HDFS使用空间统计 | 数据资产管理",
+    "TA_PWPT_AZYY_ZDJJS_XL_DI | 新机具安装运营汇总表--线路级 | 数字化票务管理平台",
+    "TA_PWPT_JKMHS_JKDYTJ_DI | 健康码核酸-接口调用次数天表 | 数字化票务管理平台",
+    "TA_PWPT_JLS_BUS_HI | 票务平台车辆机具数 | 数字化票务管理平台",
+    "TA_PWPT_JSL_BUS_HI | 票务平台车辆机具及时率 | 数字化票务管理平台",
+    "TA_PWPT_LJ_CYCS_DI | 票务平台-累计查验次数表 | 数字化票务管理平台",
+    "TA_PWPT_SGYY_MBCLS_XL_DI | 机具施工运营预计目标车辆数--线路级 | 数字化票务管理平台",
+    "TA_PWPT_SGYY_MBCLS_XL_DI_VIEW | 机具施工运营预计目标车辆数--线路级--线路类型 | 数字化票务管理平台",
+    "TA_PWPT_SGYY_YCJJZS_XL_DI | 运营监控-上线车辆异常机具总数--线路级 | 数字化票务管理平台",
+    "TA_PWPT_SGYY_YCJJ_CLZS_XL_DI | 运营监控-上线车辆有异常机具车辆总数--线路级 | 数字化票务管理平台",
+    "TA_PWPT_YYJH_JL_JSL_DI | 票务平台机具累计及时率 | 数字化票务管理平台",
+    "TA_SBAZ_CZSBSMX_VIEW_MI | 项目-分公司-场站设备安装数明细 | 综合运维管理",
+    "TA_SBAZ_CZSBS_VIEW_MI | 项目-场站设备安装视图 | 综合运维管理",
+    "TA_SBAZ_FGS_CZSBMX_VIEW_MI | 项目-分公司-场站设备安装明细视图 | 综合运维管理",
+    "TA_SBAZ_FGS_CZSBS_VIEW_MI | 项目-分公司-场站设备安装视图 | 综合运维管理",
+    "TA_SBAZ_PROJECT_CZSBS_DI | 设备安装-项目场站设备安装汇总表 | 综合运维管理",
+    "TA_SBAZ_PROJECT_FGS_CZSBS_DI | 设备安装-项目分公司场站设备安装汇总表 | 综合运维管理",
+    "TA_TC_STOP_DM | 通过量 | 线路运营调度管理",
+    "TA_TICKET_CLSXAZ_MI_VIEW | 票务平台-车辆_上线与安装视图 | 数字化票务管理平台",
+    "TA_TICKET_KLFX_MI | 票务平台-客流分析表 | 数字化票务管理平台",
+    "TA_TICKET_KLFX_MI_VIEW | 票务平台-客流分析视图 | 数字化票务管理平台",
+    "TA_TICKET_ODFX_MI | 票务平台-出行分析表 | 数字化票务管理平台",
+    "TA_TICKET_TERMINAL_MI_VIEW | 票务平台-终端视图 | 数字化票务管理平台",
+    "TA_TICKET_YLFX_MI | 票务平台-运力分析表 | 数字化票务管理平台",
+    "TA_TICKET_YWRYDW_MI_VIEW | 票务平台-运维人员定位视图 | 数字化票务管理平台",
+    "TA_TICKET_ZDAZSX_BUS_MI_VIEW | 票务平台-终端安装上线-车辆在线视图 | 数字化票务管理平台",
+    "TA_TICKET_ZDSX_BUS_MI_VIEW | 票务平台-已安装机具车辆上线-机具上线-视图 | 数字化票务管理平台",
+    "TA_TXGJ_CLXSRCTJ_VIEW | 通学公交-车辆学生人次统计 | 通学公交学校业务",
+    "TA_TXGJ_CWYBJXX_DAY_MI | 通学公交-乘务员报警信息 | 通学公交学校业务",
+    "TA_TXGJ_CWYFCZL_DAY_MI | 通学公交-乘务员发车指令 | 通学公交学校业务",
+    "TA_TXGJ_CWYQDQT_DAY_MI | 通学公交-乘务员签到签退 | 通学公交学校业务",
+    "TA_TXGJ_CWYXCXXTB_DAY_MI | 通学公交-乘务员行程信息同步 | 通学公交学校业务",
+    "TA_TXGJ_FYWJCGJ_DAY_MI | 通学公交-防遗忘检测告警 | 通学公交学校业务",
+    "TA_TXGJ_PBFCSK_DAY_MI | 通学公交-排班发车时刻 | 通学公交学校业务",
+    "TA_TXGJ_XCFYWXJKGZJ_DAY_MI | 通学公交-校车防遗忘巡检开关自检 | 通学公交学校业务",
+    "TA_TXGJ_XCJLYZJ_DAY_MI | 通学公交-行车记录仪自检 | 通学公交学校业务",
+    "TA_TXGJ_XSXCGJXX_DAY_MI | 通学公交-学生行程轨迹信息 | 通学公交学校业务",
+    "TA_TXGJ_XSXCJCXX_DIM_DAY_MI | 通学公交-学生行程基础信息 | 通学公交学校业务",
+    "TA_TXGJ_ZDSXCXSTJ_ALL_VIEW | 通学公交-站点上下车学生统计-全维度 | 通学公交学校业务",
+    "TA_TXGJ_ZYZQDQTTB_DAY_MI | 通学公交-志愿者签到签退同步 | 通学公交学校业务",
+    "TA_TXGJ_ZYZRWXCTB_DAY_MI | 通学公交-志愿者任务行程同步 | 通学公交学校业务",
+    "TA_XWYS_LINK_DAY_SD_BUS_MI | 线网Link运速 | 车辆综合管理",
+    "TA_X_AN_XLZDKL_MI | 雄安-线路站点客流 | 数字化票务管理平台",
+    "TA_YYDD_DD_DMFX_LINE_DAYCONFINE_MI | 断面_限10点前 | 数字化票务管理平台",
+    "TA_YYDD_DD_DMFX_LINE_WF_MI | 运营调度-断面分析-线路-五峰 | 数字化票务管理平台",
+    "TA_YYDD_DD_DMFX_QY_DAY_MI | 运营调度区域断面分析 | 数字化票务管理平台",
+    "TA_YYDD_DD_DMFX_QY_WF_MI | 运营调度-断面分析-区域五峰表 | 数字化票务管理平台",
+    "TA_YYDD_DD_DMFX_WF_ALL_MI | 运营调度-断面分析-五峰 | 数字化票务管理平台",
+    "TA_YYDD_DD_KLFX_JSY_WF_SZ_MI | 客流分析-驾驶员-天表 | 数字化票务管理平台",
+    "TA_YYDD_KLFX_BUS_WF_SZ_MI | 运营调度-客流分析-车辆-五峰时组 | 数字化票务管理平台",
+    "TA_YYDD_KLFX_LINE_WF_SZ_MI | 客流分析-线路-五峰时组表 | 数字化票务管理平台",
+    "TA_YYDD_KLFX_LINE_WF_SZ_ZD_MI | 客流分析-线路站点-五峰时组表 | 数字化票务管理平台",
+    "TA_YYDD_KLFX_LINE_WF_SZ_ZW_MI | 客流分析-线路站点-五峰时组表 | 数字化票务管理平台",
+    "TA_YYDD_KLFX_LINE_ZD_DAY_MI | 客流分析-线路站点-天表 | 数字化票务管理平台",
+    "TA_YYDD_KLFX_QY_WF_SZ_MI | 客流分析-区域-五峰时组表 | 数字化票务管理平台",
+    "TD_PWPT_JJAZ_CLMX | 机具施工机具安装车辆明细 | 数字化票务管理平台",
+    "TD_PWPT_JJGS_BUS_DI | 票务平台-机具归属-车辆月表 | 数字化票务管理平台",
+    "TD_XA_RC_CLZBH_INFO | 雄安荣成车辆 | 主数据管理",
+    "TEMP_TA_XL_XZQH_DIM | 线路行政区划维表临时表 | 主数据管理",
+    "TF_BT_ADASALARM_EXT_MI | 驾驶员画像-ADS告警关联路单 | 综合安全防范管理",
+    "TF_BT_ADASALARM_MI | ADAS-北太告警信息 | 综合安全防范管理",
+    "TF_GPS_808NEW_MI | 808GPS | 车辆综合管理",
+    "TF_GPS_808NEW_MI_VIEW | GPS明细数据_视图 | 车辆综合管理",
+    "TF_GPS_ONLINE_BUS_MI | GPS-车辆在线表 | 车辆综合管理",
+    "TF_PWPT_AZYY_CLMX_DI | 新机具安装运营明细表 | 数字化票务管理平台",
+    "TF_PWPT_SGYY_CLMX_DI | 机具施工运营车辆明细表 | 数字化票务管理平台",
+    "TF_PWPT_SGYY_JJAZ_INFO_DI | 运营监控-机具安装明细表 | 数字化票务管理平台",
+    "TF_PWPT_SGYY_YCJJMX_DI | 运营监控-上线车辆异常机具明细表 | 数字化票务管理平台",
+    "TF_PWPT_YYJH_JLMX_DI | 运营监控-线路-车辆-机具-卡类型检录明细 | 数字化票务管理平台",
+    "TF_TICKET_MAINTAINER_MI | 票务平台-运维人员白名单表 | 数字化票务管理平台",
+    "TF_TICKET_TERMINALINSTALL_MI | 票务平台-终端安装表 | 数字化票务管理平台",
+    "TF_TICKET_TERMINALINSTALL_MI_VIEW | 票务平台-终端安装明细视图 | 数字化票务管理平台",
+    "TF_TICKET_TERMINALSTATUS_MI | 票务平台-终端状态表 | 数字化票务管理平台",
+    "TF_TICKET_TERMINAL_MI | 票务平台-终端表 | 数字化票务管理平台",
+    "TF_T_APP_MASTER_DI | 数据开放实时考勤主表 | 物联管理平台",
+    "TI_ENCRYPT_PWPT_JJDY_INFO_ALL_MI | 机具调用明细表 | 数字化票务管理平台",
+    "TI_GJLD_ICQR_ALL_MI | 公交流调-刷卡扫码明细表 | 数字化票务管理平台",
+    "TI_MD_GX_CZ_SB_MI | 主数据-场站-设备-关系表 | 主数据管理",
+    "TI_MD_HX_CPSB_MI | 主数据-产品设备信息 | 主数据管理",
+    "TI_MD_HX_CPSB_SXT_MI | 主数据-产品设备-摄像头表 | 主数据管理",
+    "TI_PS_ZHYWPT_DEVICEPROJECTDETAIL_MI | 综合运维平台-设备项目明细表 | 综合运维管理",
+    "TI_PS_ZHYWPT_DEVICEPROJECT_MI | 综合运维平台_设备安装计划总表 | 综合运维管理",
+    "TI_PS_ZHYWPT_PRODEVRELATION_MI | 综合运维平台_项目设备关联表 | 综合运维管理",
+    "TI_PS_ZHYWPT_STATIONPROJECTDETAIL_MI | 综合运维平台_场站设备安装计划明细 | 综合运维管理",
+    "TM_SBAZ_PROJECT_FGS_CZSBS_DI | 综合运维平台-项目分公司场站设备数 | 综合运维管理",
+    "TXGJ_XCJCXXZTGK_VIEW | 通学公交-行程基础信息总体概况 | 通学公交学校业务",
+    "TA_TXGJ_JZSMJL_DAY_MI | 通学公交-家长刷码检录-天表 | 通学公交学校业务",
+    "TA_TXGJ_JZXCXXTB_DAY_MI | 通学公交-家长行程信息同步-天表 | 通学公交学校业务",
+    "TA_TXGJ_CLXSRCTJ_DAY_DI | 通学公交-车辆学生人次统计 | 通学公交学校业务",
+    "PROD_STATIS_PASSENGEROD_NEW | 实时客流OD表-包含站点名称 | 数字化票务管理平台",
+    "TA_BQ_GPS_BUS_MI | 北汽-808GPS定位数据-车辆最新位置 | 车辆综合管理",
+    "TA_TXGJ_XSXCXXMX_DAY_DI | 通学公交-学生行程详情 | 通学公交学校业务",
+    "TF_XASSBS_PWCP_HI | 雄安水上巴士_票务船票 | 数字化票务管理平台",
+    "TF_XASSBS_PWJP_HI | 雄安水上巴士_票务检票 | 数字化票务管理平台",
+    "TF_XASSBS_CWYYUPD_HI | 雄安水上巴士_船务运营UDP信息 | 数字化票务管理平台",
+    "TF_XASSBS_CWYYDD_HI | 雄安水上巴士_船务运营调度信息 | 数字化票务管理平台",
+    "TA_TXGJ_ZDSXCXSTJ_ALL_VIEW_BASE | 通学公交-站点上下车学生统计-全维度 | 通学公交学校业务",
+    "TA_TXGJ_XSXCJCXX_DAY_MI | 通学公交-学生行程基础信息 | 通学公交学校业务",
+    "TA_TXGJ_ZDSXCXSTJ_ALL_DAY_DI | 通学公交-乘务员行程信息同步 | 通学公交学校业务",
+    "TA_TXGJ_YLKLFX_LINE_DAY_DI | 通学公交-运力及客流分析-线路-天表 | 通学公交学校业务",
+    "TA_TXGJ_XSXCXXMX_DAY_DI_NEW | 通学公交-学生行程详情 | 通学公交学校业务",
+    "TA_TXGJ_XSXCJCXX_DAY_MI_20230928 | 通学公交-学生行程基础信息-节前演示备份 | 通学公交学校业务",
+    "TA_TXGJ_ZDSXCXSTJ_ALL_VIEW_CJBZ | 通学公交-站点上下车学生统计-全维度 | 通学公交学校业务",
+    "TA_TXGJ_XLZDTJ_XX_VIEW | 通学公交-线路站点统计-学校 | 通学公交学校业务",
+    "TA_TXGJ_ZDSXCXSTJ_ALL_VIEW_20230928 | 通学公交-乘务员行程信息同步 | 通学公交学校业务",
+    "TA_TXGJ_YLKLFX_LINE_VIEW_OLD | 通学公交-运力及客流分析-线路 | 通学公交学校业务",
+    "TA_TXGJ_YLKLFX_LINE_VIEW | 通学公交-运力及客流分析-线路-天表 | 通学公交学校业务",
+    "TA_TXGJ_ZDSXCXSTJ_ALL_DAY_DI_20230928 | 通学公交-乘务员行程信息同步 | 通学公交学校业务",
+    "TA_TXGJ_XSXCJCXX_DAY_MI_20230919 | 通学公交-学生行程基础信息 | 通学公交学校业务",
+    "TA_TXGJ_ZDSXCXSTJ_ALL_VIEW_OLD | 通学公交-站点上下车学生统计-全维度 | 通学公交学校业务",
+    "TA_TXGJ_FWJSDLZ_DAY_MI | 通学公交-服务计算到离站表 | 通学公交学校业务",
+    "TA_TXGJ_XSXCXXMX_VIEW | 通学公交-学生行程详情 | 通学公交学校业务",
+    "TA_TXGJ_XSXCXXMX_VIEW_BASE | 通学公交-学生行程详情 | 通学公交学校业务",
+    "TA_TURNCAL_GW_DI | 车辆转向格网告警次数表 | 车辆综合管理",
+    "TA_TXGJ_XSXCXXMX_VIEW_20240118 | 通学公交-学生行程详情-修改学号备份 | 通学公交学校业务",
+    "TA_TXGJ_XSXCJCXX_DAY_MI_20240118 | 通学公交-学生行程基础信息-修改学号备份 | 通学定制公交学校业务管理子系统",
+    "TA_TXGJ_XSXCGJXX_DAY_MI_20240118 | 通学公交-学生行程轨迹信息-修改学号-备份 | 通学定制公交学校业务管理子系统",
+    "TA_SCAN_OD_CK_XLZD_DI | 票务-客流OD乘客-线路站点表 | 数字化票务管理平台",
+    "TA_ANGLE_TURNCAL_GW_DI | 车辆gps方向角转向格网告警次数表 | 车辆综合管理",
+    "TA_GJZX_STATION_ONBOARD_MI | 站间通过量低告警明细 | 融合数仓",
+    "TA_GJZX_ZZCL_DAY_MI | 告警中心-滞站车辆表 | 车辆综合管理",
+    "TI_JF_WSDCGQ_DAY_MI | 机房-温湿度传感器-天表 | 综合运维管理",
+    "TA_YYDD_KLFX_LINE_WF_SZ_ZD_MI_BAK | 客流分析-线路站点-五峰时组表 | 线路运营调度管理",
+    "TA_GJZX_FYWJCGJ_DAY_MI | 告警中心-防遗忘检测告警 | 通学公交学校业务",
+    "TA_GJZX_CWYBJXX_DAY_MI | 告警中心-乘务员报警信息-天表 | 通学公交学校业务",
+    "TD_MONITOR_ZHKH_DA | 检录实时监控账号卡号数据 | 融合数仓",
+    "TA_XWYS_LINK_DAY_15MINUTE_LATEST_BUS_MI | 线网LINK运速15分钟最新车辆表 | 线网业务管理",
+    "TA_XWYS_LINK_DAY_15MINUTE_BUS_MI | 线网Link运速 | 线网业务管理",
+    "TF_DT_ZDMZL_MI | 地铁-站点满载率 | 线路运营调度管理",
+    "TA_BT_ADASALARM_SUM_MI | ADAS告警实时汇总 | 安服管理",
+    "TA_BT_ADASALARM_SUMVERT_MI | ADAS告警实时汇总_纵表 | 安服管理",
+    "TA_BT_ADASALARM_LINE_SUM_MI | ADAS告警实时线路级汇总 | 安服管理",
+    "TA_BT_ADASALARM_LINE_SUM_DI | ADAS告警实时线路级汇总 | 安服管理",
+    "TA_GJZX_ZZCL_SPEED_DAY_MI | 告警中心-GPS速度滞站车辆表 | 线路运营调度管理",
+    "TA_BUS_MZLGW_MI | 车辆满载率格网 | 线路运营调度管理",
+    "TA_BUS_MZLGW_15MINUTE_DAY_MI | 车辆满载率格网-时刻表 | 数字化票务管理平台",
+    "TA_PR_ICQR_JLSJ_MI | 票务系统-原始检录数据P+R优惠乘车 | 数字化票务管理平台",
+    "TA_DXHD_ZDLDSPEEDAVG_MI | 大型活动_重点路段平均运速 | 重大活动客户端",
+    "TA_DXHD_ZDLDSPEEDAVG_ALL_MI | 大型活动_重点路段平均运速_全量数据 | 重大活动客户端",
+    "TA_ZTYC_ANF_ZZCLCLJG_DAY_MI | 安服-中途异常-滞站车辆处理结果 | 安服管理",
+    "TA_ANFU_YYGJ_MI | 安服-一键告警数据 | 安服管理",
+    "TA_GDS_GJGD_DAY_MI | 供电所-工井监测数据 | 综合安全防范管理",
+    "TF_DZGJ_LD_DAY_MI | 定制公交-实时路单 | 定制公交管理平台",
+    "TF_DZGJ_DD_DAY_MI | 定制公交-客流业务域检录订单 | 定制公交管理平台",
+    "TF_DZGJ_DDXCXX_DAY_MI | 定制公交-客流业务域检录订单行程信息 | 定制公交管理平台",
+    "TF_DZGJ_XCXX_DAY_MI | 定制公交-客流业务域行程信息 | 定制公交管理平台",
+    "TF_DZGJ_TD_DAY_MI | 定制公交-客流业务域退款 | 定制公交管理平台",
+    "TA_YYDD_ONBOARD_BUS_LATEST_MI | 客流分析-车上人数(分卡种)-最新 | 安服管理",
+    "TA_YYDD_ONBOARD_BUS_MI | 客流分析-车上人数(分卡种) | 安服管理",
+    "TA_BSDD_SMSB_BZF_MONTH_MI | 综合报表-首末三班不准发原因-月表 | 线路运营调度管理",
+    "TA_YYDD_DD_DDDJG_LINE_DAY_DI | 综合报表-到达大间隔-全日 | 线路运营调度管理",
+    "TA_YYDD_DD_DDDJG_LINE_WF_DI | 综合报表-到达大间隔-五峰 | 线路运营调度管理",
+    "TA_YYDD_DD_DJG_LINE_DAY_DI | 综合报表-大间隔--调度计算 | 线路运营调度管理",
+    "TA_YYDD_DD_DJG_WFHZ_DI | 综合报表-大间隔五峰汇总表 | 线路运营调度管理",
+    "TA_YYDD_DD_DJG_WF_MI_VIEW | 运营调度-大间隔五峰-视图 | 线路运营调度管理",
+    "TA_YYDD_DD_JGFX_QY_WF_MI | 综合报表-数据湖_发车及到达大间隔_实时 | 线路运营调度管理",
+    "TA_YYDD_DD_JGYZDMX_LINE_DAY_DI | 综合报表-线路间隔匀整度明细 | 线路运营调度管理",
+    "TA_YYDD_DD_JGYZDMX_LINE_WF_DI | 综合报表-间隔匀整度明细-五峰 | 线路运营调度管理",
+    "TA_YYDD_DD_PJJG_YS_DAY_DI | 综合报表-平均间隔-运速-天 | 线路运营调度管理",
+    "TA_YYDD_DD_PJJG_YS_SZ_DI | 综合报表-平均间隔-运速-时组 | 线路运营调度管理",
+    "TA_YYDD_DD_PJJG_YS_WF_DI | 综合报表-平均间隔-运速-五峰 | 线路运营调度管理",
+    "TA_YYDD_DD_SCWCQK_LINE_DAY_DI | 综合报表-生产完成情况-天 | 线路运营调度管理",
+    "TA_YYDD_DD_SCWCQK_LINE_SZ_DI | 综合报表-生产完成情况-线路-时组 | 线路运营调度管理",
+    "TA_YYDD_DD_SCWCQK_LINE_WF_DI | 综合报表-生产完成情况-五峰 | 线路运营调度管理",
+    "TA_YYDD_DD_ZDFX_ZTKZ_DAY_DI | 综合报表-中途站-准点-天 | 线路运营调度管理",
+    "TA_YYDD_DD_ZDFX_ZTKZ_SZ_DI | 综合报表-中途站-准点-时组 | 线路运营调度管理",
+    "TA_YYDD_DD_ZDFX_ZTKZ_WF_DI | 综合报表-中途站-准点-五峰 | 线路运营调度管理",
+    "TA_YYDD_DD_ZDLMX_LINE_DAY_DI | 综合报表-准点率明细-天 | 线路运营调度管理",
+    "TA_YYDD_DD_ZDLMX_LINE_SZ_DI | 综合报表-准点率明细-时组 | 线路运营调度管理",
+    "TA_YYDD_DD_ZDLMX_LINE_WF_DI | 综合报表-准点率明细-五峰 | 线路运营调度管理",
+    "TA_YYDD_DD_ZDL_LINE_DAY_DI | 综合报表-准点率-天 | 线路运营调度管理",
+    "TA_YYDD_DD_ZDL_LINE_SZ_DI | 综合报表-准点率-时组 | 线路运营调度管理",
+    "TA_YYDD_DD_ZDL_LINE_WF_DI | 综合报表 | 线路运营调度管理",
+    "TA_YYDD_DD_ZDMX_LINE_DI | 综合报表-最大断面满载率-五峰 | 线路运营调度管理",
+    "TA_ZHBB_DMFX_CUSTOM_WF_DI | 综合报表-断面分析 | 线路运营调度管理",
+    "TA_ZHBB_QDZD_DAY_MI | 综合报表-区段准点 | 线路运营调度管理",
+    "TA_ZHBB_SMSB_DAY_MI | 综合报表-首末三班 | 线路运营调度管理",
+    "TA_ZHBB_YYZDXX_DAY_MI | 综合报表-运营准点信息 | 线路运营调度管理",
+    "TD_CHUC_WF_DA | 综合报表-出车五峰维度 | 主数据管理",
+    "TD_WF_CC_PB_DA | 综合报表-五峰出车配班 | 主数据管理",
+    "TA_ZHBB_YYDD_YLFX_LINE_WF_MI | 综合报表-运营调度五峰 | 线路运营调度管理",
+    "TA_ZHBB_YYDD_YLFX_LINE_CCWF_MI | 综合报表-运营调度出车五峰 | 线路运营调度管理",
+    "TM_YYDD_LD_ZJ_SD_DI | 运营调度站间平均速度表 | 线路运营调度管理",
+    "TM_ZHBB_CC_MZL_DI | 综合报表-车次满载率明细表 | 线路运营调度管理",
+    "TA_ZHBB_SJBZXLYYQK_LINE_DAY_DI | 综合报表-市级保障线路运营情况-天表 | 线路运营调度管理",
+    "TA_ZHBB_BUS_CZ_DI | 综合报表-车辆报表-车辆场站表 | 线路运营调度管理",
+    "TA_ZHBB_BUS_BB_DI | 综合报表-车辆报表 | 综合报表",
+    "PROD_CAN_TI_BATTERYCHARGE | CAN-CAN电池充电信息 | 整车CAN数据监控分析",
+    "PROD_CAN_TI_BATTERYCHARGE_BMS2 | CAN-CAN电池充电信息-双系统 | 整车CAN数据监控分析",
+    "PROD_CAN_TI_BUSCONTROLLER | CAN-CAN整车控制器 | 整车CAN数据监控分析",
+    "PROD_CAN_TI_METERSTATE | CAN-CAN仪表信息 | 整车CAN数据监控分析",
+    "PROD_GAME_TI_WAYBILL | 驾驶员大赛-路单 | 整车CAN数据监控分析",
+    "TA_BUSINDEXCAL_MI | 车辆大赛-计算结果 | 整车CAN数据监控分析"
+  ],
+  "未接入_事件池概要": [
+    "TA_SJC_SUB_ZHJRQKL_QIJY_DETAIL_MI | 事件池-子表-充气加燃-非电交易表-加气 | 车辆业务事件/能源业务域/加气交易表",
+    "TA_SJC_SUB_ZHJRQKL_QJY_DETAIL_MI | 事件池-子表-充气加燃-非电交易表-加氢 | 车辆业务事件/能源业务域/加氢交易表",
+    "TA_SJC_SUB_ZHJRQKL_CQYJY_DETAIL_MI | 事件池-子表-充气加燃-非电交易表-柴汽油 | 车辆业务事件/能源业务域/加油交易表",
+    "TA_SJC_SUB_MD_CDZSB_MI | 事件池-子表-主数据充电设备表 | 主数据变动事件/主数据变更/主数据充电设备表",
+    "TA_SJC_SUB_FUEL_DEVICESTATE_DETAIL_MI | 事件池-子表-充气加燃-充电实时状态表 | 车辆业务事件/能源业务域/充电桩实时状态表",
+    "TA_SJC_SUB_MD_NYZ_MI | 事件池-子表-主数据能源站信息表 | 主数据变动事件/主数据变更/主数据能源站信息表",
+    "TA_SJC_SUB_MD_CL_MI | 事件池-子表-主数据车辆表 | 主数据变动事件/主数据变更/主数据车辆表",
+    "TA_SJC_SUB_JSBX_WXGD_MI | 事件池-子表-维修工单 | 车辆业务事件/维保业务域/维修工单",
+    "TA_SJC_SUB_KL_ICQR_MI | 事件池-子表-刷卡刷码数据 | 车辆业务事件/客流业务域/刷卡刷码数据",
+    "TA_SJC_SUB_AQ_DRIVERABNORMAL_MI | 事件池-子表-驾驶员异常驾驶行为识别 | 车辆业务事件/安全业务域/驾驶员异常驾驶模型识别",
+    "TA_SJC_SUB_AQ_BUSABNORMAL_MI | 事件池-子表-车辆异常事件模型识别 | 车辆业务事件/安全业务域/车辆异常事件模型识别",
+    "TA_SJC_SUB_AQ_SSCLGZXX_MI | 事件池-子表-CAN总线故障报警 | 车辆业务事件/安全业务域/CAN总线故障报警",
+    "TA_SJC_SUB_MD_CZ_MI | 事件池-子表-主数据场站表 | 主数据变动事件/主数据变更/主数据场站表",
+    "TA_SJC_SUB_MD_ZW_MI | 事件池-子表-主数据站位表 | 主数据变动事件/主数据变更/主数据站位表",
+    "TA_SJC_SUB_MD_QY_MI | 事件池-子表-主数据区域信息表 | 主数据变动事件/主数据变更/主数据区域信息表",
+    "TA_SJC_SUB_MD_XLXLKXX_MI | 事件池-子表-主数据路口信息表 | 主数据变动事件/主数据变更/主数据路口信息表",
+    "TA_SJC_SUB_MD_BYD_MI | 事件池-子表-主数据保养点表 | 主数据变动事件/主数据变更/主数据保养点表",
+    "TA_SJC_SUB_MD_QXZDXX_MI | 事件池-子表-主数据抢修站点表 | 主数据变动事件/主数据变更/主数据抢修站点表",
+    "TA_SJC_SUB_JSBX_QXRW_MI | 事件池-子表-抢修工单 | 车辆业务事件/维保业务域/抢修工单",
+    "TA_SJC_SUB_JSBX_ZZX_MI | 事件池-子表-中整修 | 车辆业务事件/维保业务域/中整修工单",
+    "TA_SJC_SUB_JSBX_TX_MI | 事件池-子表-特修 | 车辆业务事件/维保业务域/特修工单",
+    "TA_SJC_SUB_AQ_SSSG_MI | 事件池-子表-事故报警 | 车辆业务事件/安全业务域/事故报警",
+    "TA_SJC_SUB_AQ_ZZCLCLJG_MI | 事件池-子表-滞站告警 | 车辆业务事件/安全业务域/滞站报警"
+  ]
+}

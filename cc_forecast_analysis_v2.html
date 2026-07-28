@@ -1,0 +1,280 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>CC模型预测评估报告 2026</title>
+<script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"></script>
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:'Segoe UI',Arial,sans-serif;background:#0f1117;color:#e0e0e0;padding:20px}
+h1{text-align:center;font-size:22px;color:#fff;margin-bottom:20px;letter-spacing:1px}
+.metrics-panel{display:grid;grid-template-columns:repeat(6,1fr);gap:12px;margin-bottom:24px}
+.metric-card{background:#1a1d26;border:1px solid #2a2d3a;border-radius:10px;padding:14px;text-align:center}
+.metric-card .label{font-size:11px;color:#888;margin-bottom:6px;text-transform:uppercase;letter-spacing:.5px}
+.metric-card .value{font-size:22px;font-weight:700}
+.metric-card .sub{font-size:11px;color:#666;margin-top:3px}
+.charts-grid{display:grid;grid-template-columns:1fr 1fr;gap:20px;margin-bottom:24px}
+.chart-box{background:#1a1d26;border:1px solid #2a2d3a;border-radius:10px;padding:16px}
+.chart-box.full{grid-column:1/-1}
+.chart-box h3{font-size:13px;color:#aaa;margin-bottom:12px;border-bottom:1px solid #2a2d3a;padding-bottom:8px}
+.chart-wrap{position:relative;height:260px}
+.chart-wrap-tall{position:relative;height:300px}
+.monthly-grid{display:grid;grid-template-columns:repeat(6,1fr);gap:12px;margin-bottom:24px}
+.month-card{background:#1a1d26;border:1px solid #2a2d3a;border-radius:10px;padding:14px}
+.month-card .mname{font-size:12px;color:#888;margin-bottom:6px}
+.month-card .mpred{font-size:13px;color:#60a5fa}
+.month-card .mact{font-size:13px;color:#34d399}
+.month-card .merr{font-size:20px;font-weight:700;margin:6px 0 4px}
+.month-card .mpct{font-size:11px;margin-bottom:8px}
+.progress-bg{height:6px;background:#2a2d3a;border-radius:3px;overflow:hidden}
+.progress-fill{height:100%;border-radius:3px;transition:width .3s}
+.badge{display:inline-block;padding:2px 8px;border-radius:10px;font-size:10px;font-weight:700;margin-top:6px}
+.badge-ok{background:#064e3b;color:#34d399}
+.badge-fail{background:#4a1942;color:#f87171}
+.conclusions{background:#1a1d26;border:1px solid #2a2d3a;border-radius:10px;padding:16px}
+.conclusions h3{font-size:13px;color:#aaa;margin-bottom:12px;border-bottom:1px solid #2a2d3a;padding-bottom:8px}
+.conclusion-item{display:flex;align-items:flex-start;gap:10px;padding:8px 0;border-bottom:1px solid #1e2130}
+.conclusion-item:last-child{border-bottom:none}
+.ci-icon{font-size:18px;flex-shrink:0}
+.ci-text{font-size:13px;color:#ccc;line-height:1.5}
+.ci-text strong{color:#fff}
+@media(max-width:900px){.metrics-panel{grid-template-columns:repeat(3,1fr)}.charts-grid{grid-template-columns:1fr}.monthly-grid{grid-template-columns:repeat(3,1fr)}}
+</style>
+</head>
+<body>
+<h1>📊 CC模型预测评估报告 · 2026年1-6月</h1>
+
+<div class="metrics-panel" id="metricsPanel"></div>
+<div class="charts-grid">
+  <div class="chart-box"><h3>散点图：预测 vs 实际（含45°参考线）</h3><div class="chart-wrap"><canvas id="scatterChart"></canvas></div></div>
+  <div class="chart-box"><h3>残差条形图（实际 − 预测）</h3><div class="chart-wrap"><canvas id="residualChart"></canvas></div></div>
+  <div class="chart-box full"><h3>月度时间序列对比（预测区间 vs 实际均值）</h3><div class="chart-wrap"><canvas id="monthlyChart"></canvas></div></div>
+  <div class="chart-box full"><h3>日线收盘价 + 月度预测区间</h3><div class="chart-wrap-tall"><canvas id="dailyChart"></canvas></div></div>
+</div>
+<div class="monthly-grid" id="monthlyCards"></div>
+<div class="conclusions" id="conclusions"></div>
+
+<script>
+// ── 数据 ──────────────────────────────────────────────
+var monthly = [
+  {month:"2026-01",pred:2197,actual:2274.3,low:2049,high:2345,amin:2222,amax:2300,err:77.3,errpct:3.5,inrange:true},
+  {month:"2026-02",pred:2199,actual:2303.1,low:2074,high:2323,amin:2261,amax:2360,err:104.1,errpct:4.7,inrange:true},
+  {month:"2026-03",pred:2186,actual:2381.8,low:2105,high:2268,amin:2346,amax:2415,err:195.8,errpct:9.0,inrange:false},
+  {month:"2026-04",pred:2209,actual:2393.5,low:2131,high:2286,amin:2343,amax:2434,err:184.5,errpct:8.4,inrange:false},
+  {month:"2026-05",pred:2224,actual:2347.5,low:2139,high:2310,amin:2310,amax:2391,err:123.5,errpct:5.6,inrange:false},
+  {month:"2026-06",pred:2247,actual:2328.1,low:2173,high:2321,amin:2300,amax:2351,err:81.1,errpct:3.6,inrange:false}
+];
+
+var metrics = [
+  {label:"CCC",value:"-0.0023",sub:"一致性相关系数",color:"#f87171"},
+  {label:"Pearson r",value:"-0.0254",sub:"线性相关",color:"#fb923c"},
+  {label:"Spearman ρ",value:"0.0857",sub:"秩相关",color:"#facc15"},
+  {label:"R²",value:"-9.61",sub:"决定系数",color:"#f87171"},
+  {label:"MAE",value:"127.7",sub:"平均绝对误差",color:"#60a5fa"},
+  {label:"MAPE",value:"5.4%",sub:"平均绝对百分比误差",color:"#a78bfa"}
+];
+
+// 日线数据：紧凑格式 [mm-dd, close]
+var rawDaily = [
+  ["01-05",2224],["01-06",2222],["01-07",2248],["01-08",2266],["01-09",2263],
+  ["01-12",2290],["01-13",2284],["01-14",2272],["01-15",2295],["01-16",2281],
+  ["01-19",2281],["01-20",2280],["01-21",2283],["01-22",2295],["01-23",2300],
+  ["01-26",2293],["01-27",2283],["01-28",2274],["01-29",2281],["01-30",2271],
+  ["02-02",2261],["02-03",2267],["02-04",2271],["02-05",2273],["02-06",2279],
+  ["02-09",2274],["02-10",2286],["02-11",2316],["02-12",2320],["02-13",2320],
+  ["02-24",2332],["02-25",2342],["02-26",2342],["02-27",2360],
+  ["03-02",2384],["03-03",2373],["03-04",2379],["03-05",2384],["03-06",2393],
+  ["03-09",2395],["03-10",2381],["03-11",2395],["03-12",2396],["03-13",2386],
+  ["03-16",2379],["03-17",2386],["03-18",2382],["03-19",2384],["03-20",2387],
+  ["03-23",2415],["03-24",2383],["03-25",2376],["03-26",2376],["03-27",2369],
+  ["03-30",2346],["03-31",2351],
+  ["04-01",2350],["04-02",2356],["04-03",2344],["04-07",2343],["04-08",2345],
+  ["04-09",2354],["04-10",2379],["04-13",2373],["04-14",2397],["04-15",2390],
+  ["04-16",2394],["04-17",2402],["04-20",2414],["04-21",2432],["04-22",2434],
+  ["04-23",2426],["04-24",2417],["04-27",2427],["04-28",2429],["04-29",2431],["04-30",2427],
+  ["05-06",2391],["05-07",2377],["05-08",2365],["05-11",2353],["05-12",2359],
+  ["05-13",2378],["05-14",2367],["05-15",2355],["05-18",2353],["05-19",2365],
+  ["05-20",2351],["05-21",2324],["05-22",2331],["05-25",2327],["05-26",2316],
+  ["05-27",2311],["05-28",2310],["05-29",2322],
+  ["06-01",2330],["06-02",2333],["06-03",2307],["06-04",2300],["06-05",2323],
+  ["06-08",2332],["06-09",2339],["06-10",2335],["06-11",2346],["06-12",2351],
+  ["06-15",2320],["06-16",2325],["06-17",2323],["06-18",2329]
+];
+
+// 构建日线完整日期标签和收盘价数组
+var dailyLabels = rawDaily.map(function(d){return "2026-"+d[0];});
+var dailyClose  = rawDaily.map(function(d){return d[1];});
+
+// 为每个日线点匹配月度预测区间
+var monthBandMap = {};
+monthly.forEach(function(m){monthBandMap[m.month]={low:m.low,high:m.high,pred:m.pred};});
+var dailyLow=[], dailyHigh=[], dailyPred=[];
+dailyLabels.forEach(function(dt){
+  var ym = dt.substring(0,7);
+  var b = monthBandMap[ym] || {low:null,high:null,pred:null};
+  dailyLow.push(b.low); dailyHigh.push(b.high); dailyPred.push(b.pred);
+});
+
+// ── 指标面板 ──────────────────────────────────────────
+var mp = document.getElementById('metricsPanel');
+metrics.forEach(function(m){
+  mp.innerHTML += '<div class="metric-card"><div class="label">'+m.label+'</div>'
+    +'<div class="value" style="color:'+m.color+'">'+m.value+'</div>'
+    +'<div class="sub">'+m.sub+'</div></div>';
+});
+
+// ── 月度卡片 ──────────────────────────────────────────
+var mc = document.getElementById('monthlyCards');
+var shortNames = ['1月','2月','3月','4月','5月','6月'];
+monthly.forEach(function(m,i){
+  var maxErr = 200;
+  var fillPct = Math.min(m.err/maxErr*100,100).toFixed(1);
+  var fillColor = m.inrange ? '#34d399' : (m.errpct>8 ? '#f87171' : '#facc15');
+  mc.innerHTML += '<div class="month-card">'
+    +'<div class="mname">2026年'+shortNames[i]+'</div>'
+    +'<div class="mpred">预测: '+m.pred+'</div>'
+    +'<div class="mact">实际: '+m.actual+'</div>'
+    +'<div class="merr" style="color:'+fillColor+'">'+m.err+'</div>'
+    +'<div class="mpct" style="color:'+fillColor+'">误差率 '+m.errpct+'%</div>'
+    +'<div class="progress-bg"><div class="progress-fill" style="width:'+fillPct+'%;background:'+fillColor+'"></div></div>'
+    +'<span class="badge '+(m.inrange?'badge-ok':'badge-fail')+'">'+(m.inrange?'✓ 在区间内':'✗ 超出区间')+'</span>'
+    +'</div>';
+});
+
+// ── 结论 ─────────────────────────────────────────────
+var conclusions = [
+  {icon:"🔴", text:"<strong>相关性极差：</strong>CCC=-0.0023、Pearson r=-0.0254，预测值与实际值几乎无线性关联，接近随机猜测水平。"},
+  {icon:"📉", text:"<strong>R²=-9.61：</strong>负R²表明模型预测还不如用均值预测，模型存在系统性偏差。"},
+  {icon:"📦", text:"<strong>区间覆盖率仅33%：</strong>6个月中仅1-2月实际值落入预测区间，3-6月均超出高点，预测区间整体偏低。"},
+  {icon:"📈", text:"<strong>系统性低估：</strong>所有6个月实际值均高于预测值（单向偏差），MAE=127.7，平均低估约5.4%，需要正偏修正。"},
+  {icon:"🔁", text:"<strong>趋势捕捉失败：</strong>Spearman ρ=0.0857，预测未能捕捉3-4月的大幅上涨趋势，也未能体现5-6月的回调。"},
+  {icon:"💡", text:"<strong>改进建议：</strong>考虑引入上行偏差修正因子（+5~8%），重新评估特征工程，或切换至趋势感知模型（如ARIMA/Prophet）。"}
+];
+var cl = document.getElementById('conclusions');
+cl.innerHTML = '<h3>CC模型分析结论</h3>';
+conclusions.forEach(function(c){
+  cl.innerHTML += '<div class="conclusion-item"><span class="ci-icon">'+c.icon+'</span><div class="ci-text">'+c.text+'</div></div>';
+});
+
+// ── Chart.js 全局配置 ─────────────────────────────────
+Chart.defaults.color = '#888';
+Chart.defaults.borderColor = '#2a2d3a';
+
+// 通用插件配置
+var noLegend = {legend:{display:false}};
+var darkGrid = {x:{grid:{color:'#2a2d3a'},ticks:{color:'#888'}},y:{grid:{color:'#2a2d3a'},ticks:{color:'#888'}}};
+
+// ── 1. 散点图 ──────────────────────────────────────────
+(function(){
+  var pts = monthly.map(function(m){return {x:m.pred,y:m.actual};});
+  var allVals = monthly.map(function(m){return m.pred;}).concat(monthly.map(function(m){return m.actual;}));
+  var mn = Math.min.apply(null,allVals)-30, mx = Math.max.apply(null,allVals)+30;
+  new Chart(document.getElementById('scatterChart'),{
+    type:'scatter',
+    data:{datasets:[
+      {label:'预测vs实际',data:pts,backgroundColor:'#60a5fa',borderColor:'#60a5fa',pointRadius:7,pointHoverRadius:9},
+      {label:'45°参考线',data:[{x:mn,y:mn},{x:mx,y:mx}],type:'line',borderColor:'#f87171',borderWidth:1.5,borderDash:[6,4],pointRadius:0,fill:false}
+    ]},
+    options:{
+      responsive:true,maintainAspectRatio:false,
+      plugins:{...noLegend,tooltip:{callbacks:{label:function(ctx){
+        var m=monthly[ctx.dataIndex];
+        return m?'预测:'+m.pred+' 实际:'+m.actual:'';
+      }}}},
+      scales:{
+        x:{...darkGrid.x,title:{display:true,text:'预测值',color:'#888'},min:mn,max:mx},
+        y:{...darkGrid.y,title:{display:true,text:'实际值',color:'#888'},min:mn,max:mx}
+      }
+    }
+  });
+})();
+
+// ── 2. 残差条形图 ──────────────────────────────────────
+(function(){
+  var labels = monthly.map(function(m){return m.month.replace('2026-','');});
+  var residuals = monthly.map(function(m){return +(m.actual-m.pred).toFixed(1);});
+  var colors = residuals.map(function(r){return r>0?'#34d399':'#f87171';});
+  new Chart(document.getElementById('residualChart'),{
+    type:'bar',
+    data:{labels:labels,datasets:[{
+      label:'残差(实际-预测)',data:residuals,
+      backgroundColor:colors,borderColor:colors,borderWidth:1
+    }]},
+    options:{
+      responsive:true,maintainAspectRatio:false,
+      plugins:{...noLegend,tooltip:{callbacks:{label:function(ctx){return '残差: '+ctx.parsed.y;}}},
+        annotation:{drawTime:'afterDatasetsDraw'}
+      },
+      scales:{
+        x:darkGrid.x,
+        y:{...darkGrid.y,title:{display:true,text:'残差值',color:'#888'},
+          grid:{color:function(ctx){return ctx.tick&&ctx.tick.value===0?'#aaa':'#2a2d3a';}}}
+      }
+    }
+  });
+})();
+
+// ── 3. 月度时间序列图 ──────────────────────────────────
+(function(){
+  var labels = monthly.map(function(m){return m.month.replace('2026-','月').replace('-','');});
+  // 手动修正label格式
+  labels = ["1月","2月","3月","4月","5月","6月"];
+  var preds  = monthly.map(function(m){return m.pred;});
+  var actuals= monthly.map(function(m){return m.actual;});
+  var highs  = monthly.map(function(m){return m.high;});
+  var lows   = monthly.map(function(m){return m.low;});
+  new Chart(document.getElementById('monthlyChart'),{
+    type:'line',
+    data:{labels:labels,datasets:[
+      {label:'实际均值',data:actuals,borderColor:'#34d399',backgroundColor:'transparent',borderWidth:2.5,pointRadius:5,pointBackgroundColor:'#34d399',tension:0.3},
+      {label:'预测均值',data:preds,borderColor:'#60a5fa',backgroundColor:'transparent',borderWidth:2.5,pointRadius:5,pointBackgroundColor:'#60a5fa',borderDash:[6,3],tension:0.3},
+      {label:'预测上限',data:highs,borderColor:'rgba(96,165,250,0.3)',backgroundColor:'transparent',borderWidth:1,pointRadius:0,fill:false,tension:0.3},
+      {label:'预测下限',data:lows,borderColor:'rgba(96,165,250,0.3)',backgroundColor:'rgba(96,165,250,0.08)',borderWidth:1,pointRadius:0,fill:'-1',tension:0.3}
+    ]},
+    options:{
+      responsive:true,maintainAspectRatio:false,
+      plugins:{legend:{display:true,labels:{color:'#aaa',usePointStyle:true,pointStyleWidth:20,font:{size:11}}}},
+      scales:{
+        x:{...darkGrid.x,title:{display:true,text:'月份',color:'#888'}},
+        y:{...darkGrid.y,title:{display:true,text:'价格',color:'#888'},min:1900,max:2550}
+      }
+    }
+  });
+})();
+
+// ── 4. 日线图 + 月度预测区间 ─────────────────────────────
+(function(){
+  // 构建区间数据集（fill between low和high）
+  new Chart(document.getElementById('dailyChart'),{
+    type:'line',
+    data:{labels:dailyLabels,datasets:[
+      {label:'预测上限',data:dailyHigh,borderColor:'rgba(96,165,250,0.0)',backgroundColor:'rgba(96,165,250,0.15)',borderWidth:0,pointRadius:0,fill:'+1',tension:0,order:3},
+      {label:'预测下限',data:dailyLow,borderColor:'rgba(96,165,250,0.0)',backgroundColor:'rgba(96,165,250,0.15)',borderWidth:0,pointRadius:0,fill:false,tension:0,order:4},
+      {label:'预测中枢',data:dailyPred,borderColor:'rgba(96,165,250,0.6)',backgroundColor:'transparent',borderWidth:1.5,pointRadius:0,borderDash:[4,3],tension:0,order:2},
+      {label:'日收盘价',data:dailyClose,borderColor:'#f59e0b',backgroundColor:'transparent',borderWidth:2,pointRadius:2,pointBackgroundColor:'#f59e0b',tension:0.1,order:1}
+    ]},
+    options:{
+      responsive:true,maintainAspectRatio:false,
+      plugins:{
+        legend:{display:true,labels:{color:'#aaa',usePointStyle:true,pointStyleWidth:20,font:{size:11},
+          filter:function(item){return item.text!=='预测上限'&&item.text!=='预测下限';}}},
+        tooltip:{mode:'index',intersect:false,callbacks:{
+          title:function(items){return items[0]?items[0].label:'';},
+          label:function(ctx){
+            if(ctx.datasetIndex===0||ctx.datasetIndex===1)return null;
+            return ctx.dataset.label+': '+ctx.parsed.y;
+          }
+        }}
+      },
+      scales:{
+        x:{...darkGrid.x,ticks:{maxTicksLimit:12,maxRotation:45},title:{display:true,text:'日期',color:'#888'}},
+        y:{...darkGrid.y,title:{display:true,text:'价格',color:'#888'},min:2000,max:2550}
+      },
+      interaction:{mode:'index',intersect:false}
+    }
+  });
+})();
+</script>
+</body>
+</html>
