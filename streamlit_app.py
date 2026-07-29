@@ -545,8 +545,6 @@ def render_page2(df):
                 for p in payment_plans
             ])
             st.dataframe(pp_df, use_container_width=True, hide_index=True)
-    else:
-        st.info("当前筛选条件下无项目数据")
 
 
 # ============================================================
