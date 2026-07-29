@@ -591,6 +591,10 @@ def render_page3(df):
     else:
         selected_quarter = st.session_state.get("p3_quarter", 2)
 
+    # 统一定义季度映射（避免月度/季度分支作用域问题）
+    quarter_names = {1: "Q1", 2: "Q2", 3: "Q3", 4: "Q4"}
+    quarter_ranges = {1: "1-3月", 2: "4-6月", 3: "7-9月", 4: "10-12月"}
+
     # --- 季度概览卡 ---
     if dimension == "月度":
         st.markdown("#### 月度概览")
@@ -615,8 +619,6 @@ def render_page3(df):
         st.markdown("#### 季度概览")
         quarter_stats = calculate_quarter_stats(year, filtered)
         cols = st.columns(4)
-        quarter_names = {1: "Q1", 2: "Q2", 3: "Q3", 4: "Q4"}
-        quarter_ranges = {1: "1-3月", 2: "4-6月", 3: "7-9月", 4: "10-12月"}
         for i, q in enumerate([1, 2, 3, 4]):
             stat = quarter_stats[q]
             with cols[i]:
@@ -633,6 +635,9 @@ def render_page3(df):
     st.markdown("---")
 
     # --- 三栏布局 ---
+    if dimension == "月度":
+        # 月度视图也需要计算 quarter_stats 用于项目分布展示
+        quarter_stats = calculate_quarter_stats(year, filtered)
     st.markdown(f"#### {quarter_names.get(selected_quarter, 'Q2')} 项目分布")
     quarter_stat = quarter_stats.get(selected_quarter, {"launch": [], "acceptance": [], "deadline": []})
 
