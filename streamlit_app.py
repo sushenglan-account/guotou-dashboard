@@ -484,11 +484,13 @@ def render_page2(df):
     st.markdown("---")
     st.markdown("#### 项目详情（选择项目查看履约信息）")
 
-    project_options = page_data.apply(
-        lambda r: f"[{int(r['row'])}] {r['project_name']}", axis=1
-    ).tolist()
+    if page_data.empty:
+        st.info("当前筛选条件下无项目数据")
+    else:
+        project_options = page_data.apply(
+            lambda r: f"[{int(r['row'])}] {r['project_name']}", axis=1
+        ).tolist()
 
-    if project_options:
         selected_idx = st.selectbox("选择项目", range(len(project_options)),
                                     format_func=lambda i: project_options[i],
                                     key="p2_selected_project")
