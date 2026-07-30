@@ -965,13 +965,23 @@ def main():
     st.sidebar.metric("合同总额", format_money(df["contract_amount"].sum()))
     st.sidebar.metric("供应商数", df["supplier"].nunique())
 
-    # 页面路由
+    # 页面路由（带异常捕获，便于诊断部署问题）
     if page == "系统建设情况看板":
         render_dashboard(df)
     elif page == "项目履约情况":
-        render_page2(df)
+        try:
+            render_page2(df)
+        except Exception as e:
+            st.error(f"项目履约页面渲染错误: {type(e).__name__}: {str(e)}")
+            import traceback
+            st.code(traceback.format_exc())
     elif page == "资金计划情况":
-        render_page3(df)
+        try:
+            render_page3(df)
+        except Exception as e:
+            st.error(f"资金计划页面渲染错误: {type(e).__name__}: {str(e)}")
+            import traceback
+            st.code(traceback.format_exc())
 
 
 if __name__ == "__main__":
