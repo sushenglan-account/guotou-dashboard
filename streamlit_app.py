@@ -18,16 +18,23 @@ import pandas as pd
 
 @st.cache_data
 def load_data():
-    with open("data.js", "r", encoding="utf-8") as f:
-        js_content = f.read()
-    match = re.search(r"const PROJECT_DATA = (\[.*?\]);", js_content, re.DOTALL)
-    data = json.loads(match.group(1))
-    # 转为 DataFrame
-    df = pd.DataFrame(data)
-    # 日期列处理
-    for col in ["contract_sign_date", "launch_date", "acceptance_date", "deadline"]:
-        df[col] = df[col].apply(lambda x: None if (not x or x == "None") else x)
-    return df
+    try:
+        with open("data.js", "r", encoding="utf-8") as f:
+            js_content = f.read()
+        match = re.search(r"const PROJECT_DATA = (\[.*?\]);", js_content, re.DOTALL)
+        if not match:
+            st.error("无法从 data.js 中解析项目数据")
+            return pd.DataFrame()
+        data = json.loads(match.group(1))
+        # 转为 DataFrame
+        df = pd.DataFrame(data)
+        # 日期列处理
+        for col in ["contract_sign_date", "launch_date", "acceptance_date", "deadline"]:
+            df[col] = df[col].apply(lambda x: None if (not x or x == "None") else x)
+        return df
+    except Exception as e:
+        st.error(f"数据加载失败: {str(e)}")
+        return pd.DataFrame()
 
 
 # ============================================================
@@ -130,19 +137,26 @@ def get_quarter(dt):
 
 
 def map_date_to_year(date_val, target_year):
-    """将日期映射到目标年份（保留月日）"""
-    if date_val is None or (isinstance(date_val, float) and math.isnan(date_val)):
+    """将日期映射到目标年份"""
+    if not date_val:
         return None
     if isinstance(date_val, str):
         try:
-            dt = datetime.strptime(date_val.split(" ")[0], "%Y-%m-%d")
+            dt = datetime.strptime(str(date_val).split(" ")[0], "%Y-%m-%d")
         except (ValueError, TypeError):
             return None
     elif isinstance(date_val, datetime):
         dt = date_val
     else:
         return None
-    return datetime(target_year, dt.month, dt.day)
+    # 处理闰年2月29日映射到非闰年的情况
+    try:
+        return datetime(target_year, dt.month, dt.day)
+    except ValueError:
+        # 闰年2月29日映射到非闰年时，改为2月28日
+        if dt.month == 2 and dt.day == 29:
+            return datetime(target_year, 2, 28)
+        return None
 
 
 def generate_contract_stages(project_row):
@@ -458,6 +472,10 @@ def render_page2(df):
 
     page_size = st.selectbox("每页显示", [15, 30, 50, 100], index=0, key="p2_page_size")
     total_pages = max(1, math.ceil(len(filtered) / page_size))
+    # 校验session_state中保存的页码是否越界
+    saved_page = st.session_state.get("p2_page_num", 1)
+    if saved_page > total_pages:
+        st.session_state["p2_page_num"] = 1
     page_num = st.number_input("页码", min_value=1, max_value=total_pages, value=1, key="p2_page_num")
 
     start_idx = (page_num - 1) * page_size
@@ -577,6 +595,10 @@ def render_page3(df):
             sys_options = ["全部"] + df[df["platform"] == selected_platform]["system"].unique().tolist()
         else:
             sys_options = ["全部"] + df["system"].unique().tolist()
+        # 校验当前系统选项是否在新列表中，若不在则重置为"全部"
+        current_system = st.session_state.get("p3_system", "全部")
+        if current_system not in sys_options:
+            st.session_state["p3_system"] = "全部"
         selected_system = st.selectbox("系统", sys_options, key="p3_system")
 
     # 应用筛选
