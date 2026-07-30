@@ -465,20 +465,23 @@ def render_page2(df):
     page_data = filtered.iloc[start_idx:end_idx]
 
     # 显示表格
-    display_df = page_data[[
-        "row", "platform", "system", "project_name", "project_phase",
-        "contract_amount", "paid_amount", "stage_payable", "unpaid_amount"
-    ]].copy()
-    display_df.columns = [
-        "编号", "平台", "系统", "项目名称", "阶段",
-        "合同金额", "已付", "应付", "待付"
-    ]
-    display_df["合同金额"] = display_df["合同金额"].apply(format_money)
-    display_df["已付"] = display_df["已付"].apply(format_money)
-    display_df["应付"] = display_df["应付"].apply(format_money)
-    display_df["待付"] = display_df["待付"].apply(format_money)
+    if page_data.empty:
+        st.info("当前筛选条件下无项目数据")
+    else:
+        display_df = page_data[[
+            "row", "platform", "system", "project_name", "project_phase",
+            "contract_amount", "paid_amount", "stage_payable", "unpaid_amount"
+        ]].copy()
+        display_df.columns = [
+            "编号", "平台", "系统", "项目名称", "阶段",
+            "合同金额", "已付", "应付", "待付"
+        ]
+        display_df["合同金额"] = display_df["合同金额"].apply(format_money)
+        display_df["已付"] = display_df["已付"].apply(format_money)
+        display_df["应付"] = display_df["应付"].apply(format_money)
+        display_df["待付"] = display_df["待付"].apply(format_money)
 
-    st.dataframe(display_df, use_container_width=True, hide_index=True)
+        st.dataframe(display_df, use_container_width=True, hide_index=True)
 
     # --- 项目详情 ---
     st.markdown("---")
