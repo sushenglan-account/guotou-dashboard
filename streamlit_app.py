@@ -322,10 +322,6 @@ def render_dashboard(df):
 
     if selected_type != "全部" and not filtered.empty:
         filtered = filtered[filtered["project_type"] == selected_type].copy()
-    if selected_platform != "全部" and not filtered.empty:
-        filtered = filtered[filtered["platform"] == selected_platform].copy()
-    if selected_supplier != "全部" and not filtered.empty:
-        filtered = filtered[filtered["supplier"] == selected_supplier].copy()
 
     actual_phases = set()
     for s in selected_status:
@@ -335,12 +331,7 @@ def render_dashboard(df):
             actual_phases.add(s)
 
     if actual_phases and not filtered.empty:
-        # 防御：检查 project_phase 列是否存在
-        if "project_phase" not in filtered.columns:
-            st.error(f"调试: DataFrame 列缺失！现有列: {list(filtered.columns)}")
-            filtered = pd.DataFrame(columns=filtered.columns)
-        else:
-            filtered = filtered[filtered["project_phase"].isin(actual_phases)].copy()
+        filtered = filtered[filtered["project_phase"].isin(actual_phases)].copy()
 
     # 防御：如果筛选后无数据，显示提示而非继续渲染
     if filtered.empty:
