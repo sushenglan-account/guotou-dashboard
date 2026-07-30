@@ -18,23 +18,41 @@ import pandas as pd
 
 @st.cache_data
 def load_data():
+    """加载数据文件，失败时返回带列名的空DataFrame避免后续报错"""
+    required_columns = [
+        "row", "platform", "system", "project_name", "project_type",
+        "project_phase", "supplier", "contract_sign_date", "launch_date",
+        "acceptance_date", "deadline", "contract_stages", "paid_stages",
+        "contract_amount", "paid_amount", "stage_payable", "unpaid_amount",
+        "currency",
+    ]
+    empty_df = pd.DataFrame(columns=required_columns)
+    
     try:
         with open("data.js", "r", encoding="utf-8") as f:
             js_content = f.read()
         match = re.search(r"const PROJECT_DATA = (\[.*?\]);", js_content, re.DOTALL)
         if not match:
-            st.error("无法从 data.js 中解析项目数据")
-            return pd.DataFrame()
+            st.error("无法从 data.js 中解析项目数据，请检查数据文件是否存在")
+            return empty_df
         data = json.loads(match.group(1))
         # 转为 DataFrame
         df = pd.DataFrame(data)
+        # 确保必要列存在
+        missing = [c for c in required_columns if c not in df.columns]
+        if missing:
+            st.error(f"数据文件缺少必要列: {missing}")
+            return empty_df
         # 日期列处理
         for col in ["contract_sign_date", "launch_date", "acceptance_date", "deadline"]:
             df[col] = df[col].apply(lambda x: None if (not x or x == "None") else x)
         return df
+    except FileNotFoundError:
+        st.error("数据文件 data.js 不存在，请确认文件已随代码一起部署")
+        return empty_df
     except Exception as e:
         st.error(f"数据加载失败: {str(e)}")
-        return pd.DataFrame()
+        return empty_df
 
 
 # ============================================================
@@ -926,6 +944,12 @@ def main():
 
     # 加载数据
     df = load_data()
+
+    # 数据为空时显示友好提示，避免后续列访问报错
+    if df.empty:
+        st.error("⚠️ 数据加载失败或数据为空，请检查 data.js 文件是否存在且格式正确。")
+        st.info("可能原因：\n1. data.js 未随代码部署到服务器\n2. data.js 中 PROJECT_DATA 变量缺失或格式错误\n3. 数据文件路径不正确")
+        return
 
     # 侧边栏导航
     st.sidebar.markdown("### 导航菜单")
