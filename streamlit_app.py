@@ -984,23 +984,6 @@ def main():
     # 加载数据
     df = load_data()
 
-    # 注入CSS确保CJK中文字体正确渲染（macOS字体回退问题）
-    st.markdown("""
-    <style>
-    /* 覆盖所有Streamlit组件的字体，确保CJK字符正确渲染 */
-    body, .stApp, div, span, p, h1, h2, h3, h4, h5, h6, 
-    button, input, select, textarea, label, 
-    .stButton button, .stSelectbox div, .stDataFrame, 
-    .stMarkdown, .stMetric, .stInfo, .stWarning, .stError,
-    [data-testid="stMetricValue"], [data-testid="stMetricLabel"] {
-        font-family: -apple-system, "PingFang SC", "Hiragino Sans GB", 
-                     "Microsoft YaHei", "Noto Sans SC", "Noto Sans CJK SC",
-                     "WenQuanYi Micro Hei", "Heiti SC", "STHeiti", 
-                     "SimHei", "Segoe UI", Roboto, Arial, sans-serif !important;
-    }
-    </style>
-    """, unsafe_allow_html=True)
-
     # 数据为空时显示友好提示，避免后续列访问报错
     if df.empty:
         st.error("⚠️ 数据加载失败或数据为空，请检查 data.js 文件是否存在且格式正确。")
