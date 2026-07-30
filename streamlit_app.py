@@ -306,30 +306,46 @@ def render_dashboard(df):
     filtered = df.copy()
 
     if date_start or date_end:
-        filtered = filtered[filtered["acceptance_date"].notna()]
-        if date_start:
-            filtered = filtered[filtered["acceptance_date"].apply(
-                lambda x: x.split(" ")[0] >= date_start.isoformat() if x else False
-            )]
-        if date_end:
-            filtered = filtered[filtered["acceptance_date"].apply(
-                lambda x: x.split(" ")[0] <= date_end.isoformat() if x else False
-            )]
+        # 安全地处理日期筛选：先过滤非空行，再用字符串比较
+        valid_dates = filtered["launch_date"].notna()
+        filtered = filtered[valid_dates].copy()
+        if date_start and not filtered.empty:
+            mask_start = filtered["launch_date"].apply(
+                lambda x: str(x).split(" ")[0] >= date_start.isoformat() if x else False
+            )
+            filtered = filtered[mask_start].copy()
+        if date_end and not filtered.empty:
+            mask_end = filtered["launch_date"].apply(
+                lambda x: str(x).split(" ")[0] <= date_end.isoformat() if x else False
+            )
+            filtered = filtered[mask_end].copy()
 
-    if selected_type != "全部":
-        filtered = filtered[filtered["project_type"] == selected_type]
+    if selected_type != "全部" and not filtered.empty:
+        filtered = filtered[filtered["project_type"] == selected_type].copy()
+    if selected_platform != "全部" and not filtered.empty:
+        filtered = filtered[filtered["platform"] == selected_platform].copy()
+    if selected_supplier != "全部" and not filtered.empty:
+        filtered = filtered[filtered["supplier"] == selected_supplier].copy()
 
-    # 处理"进行中"
     actual_phases = set()
-    has_in_progress = any("进行中（默认）" in s for s in selected_status)
     for s in selected_status:
         if s == "进行中（默认）":
             actual_phases.update(in_progress_phases)
         else:
             actual_phases.add(s)
 
-    if actual_phases:
-        filtered = filtered[filtered["project_phase"].isin(actual_phases)]
+    if actual_phases and not filtered.empty:
+        # 防御：检查 project_phase 列是否存在
+        if "project_phase" not in filtered.columns:
+            st.error(f"调试: DataFrame 列缺失！现有列: {list(filtered.columns)}")
+            filtered = pd.DataFrame(columns=filtered.columns)
+        else:
+            filtered = filtered[filtered["project_phase"].isin(actual_phases)].copy()
+
+    # 防御：如果筛选后无数据，显示提示而非继续渲染
+    if filtered.empty:
+        st.info("当前筛选条件下无匹配项目")
+        return
 
     # --- 汇总指标卡 ---
     total = len(filtered)
@@ -440,22 +456,26 @@ def render_page2(df):
     filtered = df.copy()
 
     if date_start or date_end:
-        filtered = filtered[filtered["launch_date"].notna()]
-        if date_start:
-            filtered = filtered[filtered["launch_date"].apply(
-                lambda x: x.split(" ")[0] >= date_start.isoformat() if x else False
-            )]
-        if date_end:
-            filtered = filtered[filtered["launch_date"].apply(
-                lambda x: x.split(" ")[0] <= date_end.isoformat() if x else False
-            )]
+        # 安全地处理日期筛选：先过滤非空行，再用字符串比较
+        valid_dates = filtered["launch_date"].notna()
+        filtered = filtered[valid_dates].copy()
+        if date_start and not filtered.empty:
+            mask_start = filtered["launch_date"].apply(
+                lambda x: str(x).split(" ")[0] >= date_start.isoformat() if x else False
+            )
+            filtered = filtered[mask_start].copy()
+        if date_end and not filtered.empty:
+            mask_end = filtered["launch_date"].apply(
+                lambda x: str(x).split(" ")[0] <= date_end.isoformat() if x else False
+            )
+            filtered = filtered[mask_end].copy()
 
-    if selected_type != "全部":
-        filtered = filtered[filtered["project_type"] == selected_type]
-    if selected_platform != "全部":
-        filtered = filtered[filtered["platform"] == selected_platform]
-    if selected_supplier != "全部":
-        filtered = filtered[filtered["supplier"] == selected_supplier]
+    if selected_type != "全部" and not filtered.empty:
+        filtered = filtered[filtered["project_type"] == selected_type].copy()
+    if selected_platform != "全部" and not filtered.empty:
+        filtered = filtered[filtered["platform"] == selected_platform].copy()
+    if selected_supplier != "全部" and not filtered.empty:
+        filtered = filtered[filtered["supplier"] == selected_supplier].copy()
 
     actual_phases = set()
     for s in selected_status:
@@ -464,8 +484,18 @@ def render_page2(df):
         else:
             actual_phases.add(s)
 
-    if actual_phases:
-        filtered = filtered[filtered["project_phase"].isin(actual_phases)]
+    if actual_phases and not filtered.empty:
+        # 防御：检查 project_phase 列是否存在
+        if "project_phase" not in filtered.columns:
+            st.error(f"调试: DataFrame 列缺失！现有列: {list(filtered.columns)}")
+            filtered = pd.DataFrame(columns=filtered.columns)
+        else:
+            filtered = filtered[filtered["project_phase"].isin(actual_phases)].copy()
+
+    # 防御：如果筛选后无数据，显示提示而非继续渲染
+    if filtered.empty:
+        st.info("当前筛选条件下无匹配项目")
+        return
 
     # --- 汇总指标卡 ---
     contract_total = filtered["contract_amount"].sum()
