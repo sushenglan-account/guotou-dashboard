@@ -31,7 +31,7 @@ def load_data():
     try:
         with open("data.js", "r", encoding="utf-8") as f:
             js_content = f.read()
-        match = re.search(r"const PROJECT_DATA = (\[.*?\]);", js_content, re.DOTALL)
+        match = re.search(r"const PROJECT_DATA = (\[.*?\]\s*);", js_content, re.DOTALL)
         if not match:
             st.error("无法从 data.js 中解析项目数据，请检查数据文件是否存在")
             return empty_df
@@ -43,9 +43,15 @@ def load_data():
         if missing:
             st.error(f"数据文件缺少必要列: {missing}")
             return empty_df
-        # 日期列处理
+        # 数值列转换
+        numeric_cols = ["row", "contract_amount", "paid_amount", "stage_payable", 
+                        "unpaid_amount", "contract_stages", "paid_stages"]
+        for col in numeric_cols:
+            df[col] = pd.to_numeric(df[col], errors="coerce")
+        
+        # 日期列处理（正确处理NaN）
         for col in ["contract_sign_date", "launch_date", "acceptance_date", "deadline"]:
-            df[col] = df[col].apply(lambda x: None if (not x or x == "None") else x)
+            df[col] = df[col].apply(lambda x: None if (pd.isna(x) or not x or str(x) == "None") else x)
         return df
     except FileNotFoundError:
         st.error("数据文件 data.js 不存在，请确认文件已随代码一起部署")
@@ -111,7 +117,7 @@ PAY_RATIOS = {
 
 def format_money(value):
     """格式化金额"""
-    if value is None:
+    if value is None or (isinstance(value, float) and math.isnan(value)):
         return "¥0"
     value = float(value)
     if value >= 100_000_000:
@@ -123,7 +129,7 @@ def format_money(value):
 
 def format_money_wan(value):
     """格式化金额（万元）"""
-    if value is None:
+    if value is None or (isinstance(value, float) and math.isnan(value)):
         return "¥0万"
     return f"¥{value / 10_000:.0f}万"
 
@@ -179,10 +185,12 @@ def map_date_to_year(date_val, target_year):
 
 def generate_contract_stages(project_row):
     """生成合同履约阶段数据"""
-    stage_count = int(project_row["contract_stages"])
+    cs = project_row["contract_stages"]
+    ps = project_row["paid_stages"]
+    stage_count = int(cs) if pd.notna(cs) and str(cs) not in ("", "None", "nan") else 0
+    paid_stages = int(ps) if pd.notna(ps) and str(ps) not in ("", "None", "nan") else 0
     names = STAGE_NAMES.get(stage_count, STAGE_NAMES[4])
     ratios = PAY_RATIOS.get(stage_count, PAY_RATIOS[4])
-    paid_stages = int(project_row["paid_stages"])
 
     sign_date = project_row["contract_sign_date"]
     if sign_date and not (isinstance(sign_date, float) and math.isnan(sign_date)):
@@ -217,8 +225,8 @@ def generate_contract_stages(project_row):
             stage_date = base_date
 
         stages.append({
-            "name": names[i] if i < len(names) else f"阶段{i + 1}",
-            "ratio": f"{ratios[i] * 100:.0f}%",
+            "name": names[i] if names and i < len(names) else f"阶段{i + 1}",
+            "ratio": f"{ratios[i] * 100:.0f}%" if ratios and i < len(ratios) else "0%",
             "date": stage_date.strftime("%Y-%m-%d"),
             "status": status,
             "status_color": status_color,
@@ -228,10 +236,13 @@ def generate_contract_stages(project_row):
 
 def generate_payment_plan(project_row):
     """生成付款计划数据"""
-    stage_count = int(project_row["contract_stages"])
+    cs = project_row["contract_stages"]
+    ps = project_row["paid_stages"]
+    ca = project_row["contract_amount"]
+    stage_count = int(cs) if pd.notna(cs) and str(cs) not in ("", "None", "nan") else 0
+    paid_stages = int(ps) if pd.notna(ps) and str(ps) not in ("", "None", "nan") else 0
+    contract_amount = float(ca) if pd.notna(ca) and str(ca) not in ("", "None", "nan") else 0
     ratios = PAY_RATIOS.get(stage_count, PAY_RATIOS[4])
-    paid_stages = int(project_row["paid_stages"])
-    contract_amount = float(project_row["contract_amount"])
 
     sign_date = project_row["contract_sign_date"]
     if sign_date and not (isinstance(sign_date, float) and math.isnan(sign_date)):
@@ -295,11 +306,13 @@ def render_dashboard(df):
         with col_d3:
             all_phases = sorted(df["project_phase"].unique().tolist())
             in_progress_phases = [p for p in all_phases if p not in COMPLETED_PHASES]
-            status_options = ["进行中（默认）"] + all_phases
+            status_options = list(dict.fromkeys(["进行中（默认）"] + all_phases))
             selected_status = st.multiselect("项目状态", status_options, default=["进行中（默认）"], key="dash_status")
         with col_d4:
             st.write("")  # 占位
             if st.button("重置筛选", key="dash_reset"):
+                for k in ["dash_date_start", "dash_date_end", "dash_type", "dash_status"]:
+                    st.session_state.pop(k, None)
                 st.rerun()
 
     # 应用筛选
@@ -437,10 +450,12 @@ def render_page2(df):
     with col_s1:
         all_phases = sorted(df["project_phase"].unique().tolist())
         in_progress_phases = [p for p in all_phases if p not in COMPLETED_PHASES]
-        status_options = ["进行中（默认）"] + all_phases
+        status_options = list(dict.fromkeys(["进行中（默认）"] + all_phases))
         selected_status = st.multiselect("项目状态", status_options, default=["进行中（默认）"], key="p2_status")
     with col_s2:
         if st.button("重置筛选", key="p2_reset"):
+            for k in ["p2_date_start", "p2_date_end", "p2_type", "p2_platform", "p2_supplier", "p2_status"]:
+                st.session_state.pop(k, None)
             st.rerun()
 
     # 应用筛选
@@ -511,11 +526,14 @@ def render_page2(df):
 
     page_size = st.selectbox("每页显示", [15, 30, 50, 100], index=0, key="p2_page_size")
     total_pages = max(1, math.ceil(len(filtered) / page_size))
-    # 校验session_state中保存的页码是否越界
+    
+    # 安全地获取页码，防止越界
+    default_page = 1
     saved_page = st.session_state.get("p2_page_num", 1)
     if saved_page > total_pages:
         st.session_state["p2_page_num"] = 1
-    page_num = st.number_input("页码", min_value=1, max_value=total_pages, value=1, key="p2_page_num")
+    page_num = st.number_input("页码", min_value=1, max_value=total_pages, 
+                               value=st.session_state.get("p2_page_num", 1), key="p2_page_num")
 
     start_idx = (page_num - 1) * page_size
     end_idx = start_idx + page_size
@@ -627,11 +645,11 @@ def render_page3(df):
     with col2:
         year = st.selectbox("查询年份", [2026, 2025, 2024, 2023], key="p3_year")
     with col3:
-        platforms = ["全部"] + df["platform"].unique().tolist()
+        platforms = ["全部"] + df["platform"].dropna().unique().tolist()
         selected_platform = st.selectbox("平台", platforms, key="p3_platform")
     with col4:
         if selected_platform != "全部":
-            sys_options = ["全部"] + df[df["platform"] == selected_platform]["system"].unique().tolist()
+            sys_options = ["全部"] + df[df["platform"] == selected_platform]["system"].dropna().unique().tolist()
         else:
             sys_options = ["全部"] + df["system"].unique().tolist()
         # 校验当前系统选项是否在新列表中，若不在则重置为"全部"
@@ -771,7 +789,7 @@ def render_page3(df):
         mapped_launch = map_date_to_year(row["launch_date"], year)
         mapped_acceptance = map_date_to_year(row["acceptance_date"], year)
         mapped_deadline = map_date_to_year(row["deadline"], year)
-        stage_payable = float(row["stage_payable"]) if row["stage_payable"] else 0
+        stage_payable = float(row["stage_payable"]) if pd.notna(row["stage_payable"]) and str(row["stage_payable"]) not in ("", "None", "nan") else 0
 
         if mapped_launch and mapped_launch.month in months:
             data_by_type["上线"][mapped_launch.month] += stage_payable
@@ -824,7 +842,7 @@ def calculate_quarter_stats(year, df):
     seen_projects = {1: set(), 2: set(), 3: set(), 4: set()}
 
     for _, row in df.iterrows():
-        stage_payable = float(row["stage_payable"]) if row["stage_payable"] else 0
+        stage_payable = float(row["stage_payable"]) if pd.notna(row["stage_payable"]) and str(row["stage_payable"]) not in ("", "None", "nan") else 0
 
         for date_col, event_key in [
             ("launch_date", "launch"),
@@ -840,9 +858,9 @@ def calculate_quarter_stats(year, df):
                         "project_name": row["project_name"],
                         "date": mapped.strftime("%Y-%m-%d"),
                         "stage_payable": stage_payable,
-                        "row": int(row["row"]),
+                        "row": int(row["row"]) if pd.notna(row["row"]) else -1,
                     })
-                    seen_projects[q].add(int(row["row"]))
+                    seen_projects[q].add(int(row["row"]) if pd.notna(row["row"]) else -1)
 
     for q in [1, 2, 3, 4]:
         stats[q]["count"] = len(seen_projects[q])
@@ -867,7 +885,7 @@ def calculate_month_stats(year, df):
     seen_projects = {i: set() for i in range(1, 13)}
 
     for _, row in df.iterrows():
-        stage_payable = float(row["stage_payable"]) if row["stage_payable"] else 0
+        stage_payable = float(row["stage_payable"]) if pd.notna(row["stage_payable"]) and str(row["stage_payable"]) not in ("", "None", "nan") else 0
 
         for date_col, event_key in [
             ("launch_date", "launch"),
@@ -882,9 +900,9 @@ def calculate_month_stats(year, df):
                     "project_name": row["project_name"],
                     "date": mapped.strftime("%Y-%m-%d"),
                     "stage_payable": stage_payable,
-                    "row": int(row["row"]),
+                    "row": int(row["row"]) if pd.notna(row["row"]) else -1,
                 })
-                seen_projects[m].add(int(row["row"]))
+                seen_projects[m].add(int(row["row"]) if pd.notna(row["row"]) else -1)
 
     for m in range(1, 13):
         stats[m]["count"] = len(seen_projects[m])
