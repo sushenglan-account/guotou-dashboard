@@ -1,0 +1,1027 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>国投开发管理一体化平台 - 系统建设情况看板</title>
+    <script src="data.js"></script>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: -apple-system, "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", "Noto Sans SC", "Noto Sans CJK SC", "WenQuanYi Micro Hei", "Heiti SC", "STHeiti", "SimHei", sans-serif;
+            background-color: #f0f2f5;
+            color: #333;
+            overflow: hidden;
+        }
+        
+        /* 布局 */
+        .app-container {
+            display: flex;
+            height: 100vh;
+        }
+        
+        /* 左侧导航栏 */
+        .sidebar {
+            width: 240px;
+            background-color: #001529;
+            color: #fff;
+            display: flex;
+            flex-direction: column;
+            flex-shrink: 0;
+        }
+        
+        .logo-area {
+            padding: 16px;
+            display: flex;
+            align-items: center;
+            border-bottom: 1px solid rgba(255,255,255,0.1);
+        }
+        
+        .logo-icon {
+            width: 32px;
+            height: 32px;
+            background-color: #1890ff;
+            border-radius: 4px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-right: 10px;
+            font-weight: bold;
+            font-size: 14px;
+        }
+        
+        .logo-text {
+            font-size: 14px;
+            font-weight: 500;
+            line-height: 1.2;
+        }
+        
+        .nav-menu {
+            flex: 1;
+            padding: 8px 0;
+            overflow-y: auto;
+        }
+        
+        .nav-item {
+            padding: 12px 24px;
+            cursor: pointer;
+            transition: all 0.3s;
+            font-size: 14px;
+            color: rgba(255,255,255,0.65);
+            display: flex;
+            align-items: center;
+        }
+        
+        .nav-item:hover {
+            color: #fff;
+            background-color: rgba(255,255,255,0.05);
+        }
+        
+        .nav-item.active {
+            color: #fff;
+            background-color: #1890ff;
+            border-right: 3px solid #fff;
+        }
+        
+        .nav-icon {
+            margin-right: 10px;
+            width: 16px;
+            text-align: center;
+        }
+        
+        /* 主内容区 */
+        .main-content {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            overflow: hidden;
+        }
+        
+        /* 顶部筛选区 */
+        .filter-section {
+            background-color: #fff;
+            padding: 16px 24px;
+            border-bottom: 1px solid #e8e8e8;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 16px;
+            align-items: center;
+        }
+        
+        .filter-group {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        
+        .filter-label {
+            font-size: 13px;
+            color: #666;
+            white-space: nowrap;
+        }
+        
+        .filter-input {
+            padding: 4px 8px;
+            border: 1px solid #d9d9d9;
+            border-radius: 4px;
+            font-size: 13px;
+            outline: none;
+        }
+        
+        .filter-input:focus {
+            border-color: #1890ff;
+        }
+        
+        .filter-select {
+            padding: 4px 8px;
+            border: 1px solid #d9d9d9;
+            border-radius: 4px;
+            font-size: 13px;
+            outline: none;
+            background-color: #fff;
+            min-width: 120px;
+        }
+        
+        .filter-select:focus {
+            border-color: #1890ff;
+        }
+        
+        .filter-tags {
+            display: flex;
+            gap: 8px;
+            flex-wrap: wrap;
+            align-items: center;
+        }
+        
+        .status-tag {
+            display: inline-flex;
+            align-items: center;
+            gap: 4px;
+            padding: 2px 8px;
+            background-color: #f0f5ff;
+            border: 1px solid #d6e4ff;
+            color: #1890ff;
+            border-radius: 4px;
+            font-size: 12px;
+        }
+        
+        .tag-remove {
+            cursor: pointer;
+            font-size: 14px;
+            line-height: 1;
+        }
+        
+        .tag-remove:hover {
+            color: #f5222d;
+        }
+        
+        .btn-add-filter {
+            padding: 4px 12px;
+            border: 1px dashed #d9d9d9;
+            background-color: #fff;
+            color: #666;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 13px;
+            position: relative;
+        }
+        
+        .btn-add-filter:hover {
+            border-color: #1890ff;
+            color: #1890ff;
+        }
+        
+        .dropdown-panel {
+            display: none;
+            position: absolute;
+            top: 100%;
+            left: 0;
+            margin-top: 4px;
+            background-color: #fff;
+            border: 1px solid #e8e8e8;
+            border-radius: 4px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.15);
+            z-index: 100;
+            min-width: 160px;
+            max-height: 200px;
+            overflow-y: auto;
+        }
+        
+        .dropdown-panel.show {
+            display: block;
+        }
+        
+        .dropdown-item {
+            padding: 8px 12px;
+            cursor: pointer;
+            font-size: 13px;
+            white-space: nowrap;
+        }
+        
+        .dropdown-item:hover {
+            background-color: #f5f5f5;
+        }
+        
+        .btn-reset {
+            padding: 4px 16px;
+            border: 1px solid #d9d9d9;
+            background-color: #fff;
+            color: #666;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 13px;
+        }
+        
+        .btn-reset:hover {
+            border-color: #1890ff;
+            color: #1890ff;
+        }
+        
+        /* 汇总指标卡 */
+        .summary-section {
+            padding: 16px 24px;
+        }
+        
+        .summary-cards {
+            display: grid;
+            grid-template-columns: repeat(6, 1fr);
+            gap: 16px;
+        }
+        
+        .summary-card {
+            background-color: #fff;
+            padding: 16px;
+            border-radius: 4px;
+            box-shadow: 0 1px 2px rgba(0,0,0,0.05);
+            border-left: 4px solid;
+            display: flex;
+            flex-direction: column;
+        }
+        
+        .card-title {
+            font-size: 13px;
+            color: #666;
+            margin-bottom: 8px;
+        }
+        
+        .card-value {
+            font-size: 24px;
+            font-weight: 600;
+            color: #262626;
+        }
+        
+        .card-blue { border-left-color: #1890ff; }
+        .card-blue .card-value { color: #1890ff; }
+        
+        .card-green { border-left-color: #52c41a; }
+        .card-green .card-value { color: #52c41a; }
+        
+        .card-orange { border-left-color: #fa8c16; }
+        .card-orange .card-value { color: #fa8c16; }
+        
+        .card-red { border-left-color: #f5222d; }
+        .card-red .card-value { color: #f5222d; }
+        
+        .card-purple { border-left-color: #722ed1; }
+        .card-purple .card-value { color: #722ed1; }
+        
+        .card-black { border-left-color: #262626; }
+        .card-black .card-value { color: #262626; }
+        
+        /* 表格区域 */
+        .table-section {
+            flex: 1;
+            padding: 0 24px 16px;
+            overflow: auto;
+        }
+        
+        .table-container {
+            background-color: #fff;
+            border-radius: 4px;
+            box-shadow: 0 1px 2px rgba(0,0,0,0.05);
+            overflow: auto;
+        }
+        
+        .data-table {
+            width: 100%;
+            border-collapse: collapse;
+            font-size: 13px;
+        }
+        
+        .data-table th {
+            background-color: #fafafa;
+            padding: 12px 16px;
+            text-align: left;
+            font-weight: 600;
+            color: #333;
+            border-bottom: 1px solid #e8e8e8;
+            white-space: nowrap;
+        }
+        
+        .data-table td {
+            padding: 12px 16px;
+            border-bottom: 1px solid #e8e8e8;
+            color: #333;
+        }
+        
+        .data-table tr:hover {
+            background-color: #fafafa;
+        }
+        
+        .platform-row {
+            background-color: #f5f5f5;
+            font-weight: 600;
+            cursor: pointer;
+        }
+        
+        .platform-row:hover {
+            background-color: #e8e8e8 !important;
+        }
+        
+        .system-row {
+            /* 系统行默认显示 */
+        }
+        
+        .system-row.hidden {
+            display: none;
+        }
+        
+        .toggle-icon {
+            display: inline-block;
+            width: 16px;
+            text-align: center;
+            margin-right: 4px;
+            transition: transform 0.2s;
+            color: #999;
+        }
+        
+        .toggle-icon.expanded {
+            transform: rotate(90deg);
+        }
+        
+        .project-count {
+            color: #1890ff;
+            text-decoration: underline;
+            cursor: pointer;
+            font-weight: 500;
+        }
+        
+        .project-count:hover {
+            opacity: 0.8;
+        }
+        
+        .paid-amount {
+            color: #52c41a;
+            font-weight: 500;
+        }
+        
+        .text-right {
+            text-align: right;
+        }
+        
+        /* 弹窗 */
+        .modal-overlay {
+            display: none;
+            position: fixed;
+            z-index: 1000;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0,0,0,0.5);
+        }
+        
+        .modal-overlay.show {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .modal-content {
+            background-color: #fff;
+            width: 80%;
+            max-width: 900px;
+            max-height: 80vh;
+            border-radius: 4px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+            display: flex;
+            flex-direction: column;
+        }
+        
+        .modal-header {
+            padding: 16px 24px;
+            border-bottom: 1px solid #e8e8e8;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .modal-title {
+            font-size: 16px;
+            font-weight: 600;
+            color: #333;
+        }
+        
+        .modal-close {
+            font-size: 20px;
+            color: #999;
+            cursor: pointer;
+            line-height: 1;
+        }
+        
+        .modal-close:hover {
+            color: #333;
+        }
+        
+        .modal-body {
+            padding: 16px 24px;
+            overflow-y: auto;
+            flex: 1;
+        }
+        
+        .modal-table {
+            width: 100%;
+            border-collapse: collapse;
+            font-size: 13px;
+        }
+        
+        .modal-table th {
+            background-color: #fafafa;
+            padding: 10px 12px;
+            text-align: left;
+            font-weight: 600;
+            border-bottom: 1px solid #e8e8e8;
+        }
+        
+        .modal-table td {
+            padding: 10px 12px;
+            border-bottom: 1px solid #e8e8e8;
+        }
+        
+        .phase-tag {
+            display: inline-block;
+            padding: 2px 8px;
+            border-radius: 4px;
+            font-size: 12px;
+            font-weight: 500;
+        }
+        
+        /* 底部说明 */
+        .footer-notes {
+            padding: 16px 24px;
+            background-color: #fff;
+            border-top: 1px solid #e8e8e8;
+            font-size: 12px;
+            color: #666;
+            line-height: 1.8;
+        }
+        
+        .footer-notes h4 {
+            font-size: 13px;
+            color: #333;
+            margin-bottom: 8px;
+        }
+        
+        /* 滚动条样式 */
+        ::-webkit-scrollbar {
+            width: 8px;
+            height: 8px;
+        }
+        
+        ::-webkit-scrollbar-track {
+            background: #f1f1f1;
+        }
+        
+        ::-webkit-scrollbar-thumb {
+            background: #c1c1c1;
+            border-radius: 4px;
+        }
+        
+        ::-webkit-scrollbar-thumb:hover {
+            background: #a8a8a8;
+        }
+        
+        /* 响应式 */
+        @media (max-width: 1200px) {
+            .summary-cards {
+                grid-template-columns: repeat(3, 1fr);
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .sidebar {
+                width: 60px;
+            }
+            .logo-text, .nav-text {
+                display: none;
+            }
+            .summary-cards {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="app-container">
+        <!-- 左侧导航栏 -->
+        <aside class="sidebar">
+            <div class="logo-area">
+                <div class="logo-icon">国</div>
+                <div class="logo-text">国投开发管理<br/>一体化平台</div>
+            </div>
+            <nav class="nav-menu">
+                <div class="nav-item active">
+                    <span class="nav-icon">▤</span>
+                    <span class="nav-text">系统建设情况看板</span>
+                </div>
+                <div class="nav-item" onclick="window.location.href='page2.html'">
+                    <span class="nav-icon">▥</span>
+                    <span class="nav-text">项目履约情况</span>
+                </div>
+                <div class="nav-item" onclick="window.location.href='page3.html'">
+                    <span class="nav-icon">▦</span>
+                    <span class="nav-text">资金计划情况</span>
+                </div>
+                <div class="nav-item">
+                    <span class="nav-icon">▧</span>
+                    <span class="nav-text">项目详情</span>
+                </div>
+                <div class="nav-item">
+                    <span class="nav-icon">▨</span>
+                    <span class="nav-text">合同管理</span>
+                </div>
+                <div class="nav-item">
+                    <span class="nav-icon">▩</span>
+                    <span class="nav-text">付款管理</span>
+                </div>
+                <div class="nav-item">
+                    <span class="nav-icon">⚙</span>
+                    <span class="nav-text">报表配置</span>
+                </div>
+            </nav>
+        </aside>
+
+        <!-- 主内容区 -->
+        <main class="main-content">
+            <!-- 顶部筛选区 -->
+            <div class="filter-section">
+                <div class="filter-group">
+                    <span class="filter-label">项目付款阶段计划完成时间：</span>
+                    <input type="date" id="dateStart" class="filter-input">
+                    <span>-</span>
+                    <input type="date" id="dateEnd" class="filter-input">
+                </div>
+                
+                <div class="filter-group">
+                    <span class="filter-label">项目类型：</span>
+                    <select id="projectType" class="filter-select">
+                        <option value="">全部</option>
+                    </select>
+                </div>
+                
+                <div class="filter-group">
+                    <span class="filter-label">项目状态：</span>
+                    <div class="filter-tags" id="filterTags">
+                        <!-- 动态添加标签 -->
+                    </div>
+                    <div style="position: relative;">
+                        <button class="btn-add-filter" id="btnAddFilter" onclick="toggleDropdown()">+ 添加筛选</button>
+                        <div class="dropdown-panel" id="phaseDropdown">
+                            <!-- 动态添加选项 -->
+                        </div>
+                    </div>
+                </div>
+                
+                <button class="btn-reset" onclick="resetFilters()">重置筛选</button>
+            </div>
+
+            <!-- 汇总指标卡 -->
+            <div class="summary-section">
+                <div class="summary-cards" id="summaryCards">
+                    <div class="summary-card card-blue">
+                        <div class="card-title">项目总数量</div>
+                        <div class="card-value" id="cardTotal">0</div>
+                    </div>
+                    <div class="summary-card card-green">
+                        <div class="card-title">已完成项目</div>
+                        <div class="card-value" id="cardCompleted">0</div>
+                    </div>
+                    <div class="summary-card card-orange">
+                        <div class="card-title">未完成项目</div>
+                        <div class="card-value" id="cardUnfinished">0</div>
+                    </div>
+                    <div class="summary-card card-red">
+                        <div class="card-title">已付款金额</div>
+                        <div class="card-value" id="cardPaid">¥0</div>
+                    </div>
+                    <div class="summary-card card-purple">
+                        <div class="card-title">待付款金额</div>
+                        <div class="card-value" id="cardUnpaid">¥0</div>
+                    </div>
+                    <div class="summary-card card-black">
+                        <div class="card-title">合同总金额</div>
+                        <div class="card-value" id="cardContract">¥0</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 主体表格 -->
+            <div class="table-section">
+                <div class="table-container">
+                    <table class="data-table" id="dataTable">
+                        <thead>
+                            <tr>
+                                <th style="width: 40px;"></th>
+                                <th style="min-width: 300px;">平台/系统名称</th>
+                                <th style="width: 120px;">项目数量</th>
+                                <th style="width: 160px;">合同总金额</th>
+                                <th style="width: 160px;">已付款金额</th>
+                                <th style="width: 160px;">待付款金额</th>
+                            </tr>
+                        </thead>
+                        <tbody id="tableBody">
+                            <!-- 动态渲染 -->
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+            <!-- 底部说明 -->
+            <div class="footer-notes">
+                <h4 style="margin-bottom: 8px;">使用说明</h4>
+                <div><strong style="color: #333;">筛选条件：</strong>
+                    支持按项目付款阶段计划完成时间（以验收日期为参照）、项目类型、项目状态进行组合筛选。日期范围筛选包含起始和结束日期当天。
+                </div>
+                <div><strong style="color: #333;">汇总指标：</strong>
+                    卡片实时统计当前筛选结果下的项目总数量、已完成项目数、未完成项目数、合同总金额、已付款金额、待付款金额。
+                    其中已完成项目指项目阶段为“上线试运行”、“交付验收”或“运维完成”的项目。
+                </div>
+                <div><strong style="color: #333;">系统分类：</strong>
+                    表格按“平台 → 系统”两级分组展示，点击平台行左侧的三角图标可折叠/展开该平台下的所有系统。
+                </div>
+                <div><strong style="color: #333;">下钻交互：</strong>
+                    点击系统行中蓝色的“项目数量”可弹出弹窗，查看该系统下的详细项目列表，包括项目名称、类型、阶段、金额及供应商信息。
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <!-- 弹窗 -->
+    <div class="modal-overlay" id="modalOverlay" onclick="closeModal(event)">
+        <div class="modal-content" onclick="event.stopPropagation()">
+            <div class="modal-header">
+                <h3 class="modal-title" id="modalTitle">项目列表</h3>
+                <span class="modal-close" onclick="closeModal()">&times;</span>
+            </div>
+            <div class="modal-body">
+                <table class="modal-table">
+                    <thead>
+                        <tr>
+                            <th style="min-width: 200px;">项目名称</th>
+                            <th style="width: 100px;">项目类型</th>
+                            <th style="width: 100px;">项目阶段</th>
+                            <th style="width: 120px;">合同金额</th>
+                            <th style="width: 120px;">已付款金额</th>
+                            <th style="width: 120px;">待付款金额</th>
+                            <th style="min-width: 160px;">供应商</th>
+                        </tr>
+                    </thead>
+                    <tbody id="modalBody">
+                        <!-- 动态渲染 -->
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // 全局状态
+        let currentData = [];
+        let selectedPhases = ['进行中']; // 默认选中进行中
+        
+        // 初始化
+        document.addEventListener('DOMContentLoaded', function() {
+            // 检查 data.js 是否加载成功
+            if (typeof PROJECT_DATA === 'undefined') {
+                alert('数据加载失败，请确保 data.js 文件存在且路径正确');
+                return;
+            }
+            
+            // 初始化筛选选项
+            initFilterOptions();
+            
+            // 初始筛选：默认选中“进行中”状态
+            // 定义进行中的状态为所有非终态
+            const completedPhases = ['上线试运行', '交付验收', '运维完成'];
+            const allPhases = [...new Set(PROJECT_DATA.map(p => p.project_phase))];
+            const inProgressPhases = allPhases.filter(p => !completedPhases.includes(p));
+            selectedPhases = inProgressPhases.length > 0 ? ['进行中'] : [];
+            
+            // 更新UI显示
+            if (selectedPhases.includes('进行中')) {
+                // 将“进行中”虚拟标签显示，实际筛选时用 inProgressPhases
+                renderFilterTags();
+            }
+            
+            applyFilters();
+            
+            // 绑定事件
+            document.getElementById('dateStart').addEventListener('change', applyFilters);
+            document.getElementById('dateEnd').addEventListener('change', applyFilters);
+            document.getElementById('projectType').addEventListener('change', applyFilters);
+            
+            // 点击外部关闭下拉
+            document.addEventListener('click', function(e) {
+                const dropdown = document.getElementById('phaseDropdown');
+                const btn = document.getElementById('btnAddFilter');
+                if (!dropdown.contains(e.target) && e.target !== btn) {
+                    dropdown.classList.remove('show');
+                }
+            });
+        });
+        
+        // 初始化筛选选项
+        function initFilterOptions() {
+            // 项目类型
+            const types = [...new Set(PROJECT_DATA.map(p => p.project_type))].filter(t => t);
+            const typeSelect = document.getElementById('projectType');
+            types.forEach(type => {
+                const option = document.createElement('option');
+                option.value = type;
+                option.textContent = type;
+                typeSelect.appendChild(option);
+            });
+            
+            // 项目状态下拉
+            const phases = [...new Set(PROJECT_DATA.map(p => p.project_phase))].filter(p => p);
+            const dropdown = document.getElementById('phaseDropdown');
+            phases.forEach(phase => {
+                const item = document.createElement('div');
+                item.className = 'dropdown-item';
+                item.textContent = phase;
+                item.onclick = function() {
+                    addPhaseFilter(phase);
+                    dropdown.classList.remove('show');
+                };
+                dropdown.appendChild(item);
+            });
+        }
+        
+        // 切换下拉显示
+        function toggleDropdown() {
+            document.getElementById('phaseDropdown').classList.toggle('show');
+        }
+        
+        // 添加状态筛选标签
+        function addPhaseFilter(phase) {
+            if (!selectedPhases.includes(phase)) {
+                selectedPhases.push(phase);
+                renderFilterTags();
+                applyFilters();
+            }
+        }
+        
+        // 移除状态筛选标签
+        function removePhaseFilter(phase) {
+            selectedPhases = selectedPhases.filter(p => p !== phase);
+            renderFilterTags();
+            applyFilters();
+        }
+        
+        // 渲染筛选标签
+        function renderFilterTags() {
+            const container = document.getElementById('filterTags');
+            container.innerHTML = '';
+            selectedPhases.forEach(phase => {
+                const tag = document.createElement('span');
+                tag.className = 'status-tag';
+                tag.dataset.phase = phase;
+                tag.innerHTML = `
+                    ${phase}
+                    <span class="tag-remove" onclick="removePhaseFilter('${phase}')">×</span>
+                `;
+                container.appendChild(tag);
+            });
+        }
+        
+        // 应用筛选
+        function applyFilters() {
+            const dateStart = document.getElementById('dateStart').value;
+            const dateEnd = document.getElementById('dateEnd').value;
+            const projectType = document.getElementById('projectType').value;
+            
+            // 处理“进行中”虚拟标签
+            const completedPhases = ['上线试运行', '交付验收', '运维完成'];
+            const allPhases = [...new Set(PROJECT_DATA.map(p => p.project_phase))];
+            const inProgressPhases = allPhases.filter(p => !completedPhases.includes(p));
+            
+            let actualSelectedPhases = [];
+            if (selectedPhases.includes('进行中')) {
+                actualSelectedPhases = [...selectedPhases.filter(p => p !== '进行中'), ...inProgressPhases];
+            } else {
+                actualSelectedPhases = selectedPhases;
+            }
+            // 去重
+            actualSelectedPhases = [...new Set(actualSelectedPhases)];
+            
+            let filtered = PROJECT_DATA.filter(item => {
+                // 日期筛选：基于 acceptance_date
+                if (dateStart || dateEnd) {
+                    if (!item.acceptance_date) return false;
+                    const accDateStr = item.acceptance_date.split(' ')[0];
+                    if (dateStart && accDateStr < dateStart) return false;
+                    if (dateEnd && accDateStr > dateEnd) return false;
+                }
+                
+                if (projectType && item.project_type !== projectType) return false;
+                
+                if (actualSelectedPhases.length > 0 && !actualSelectedPhases.includes(item.project_phase)) {
+                    return false;
+                }
+                
+                return true;
+            });
+            
+            currentData = filtered;
+            renderSummary(filtered);
+            renderTable(filtered);
+        }
+        
+        // 重置筛选
+        function resetFilters() {
+            document.getElementById('dateStart').value = '';
+            document.getElementById('dateEnd').value = '';
+            document.getElementById('projectType').value = '';
+            selectedPhases = [];
+            renderFilterTags();
+            applyFilters();
+        }
+        
+        // 渲染汇总指标
+        function renderSummary(data) {
+            const summary = calculateSummary(data);
+            
+            document.getElementById('cardTotal').textContent = summary.total;
+            document.getElementById('cardCompleted').textContent = summary.completed;
+            document.getElementById('cardUnfinished').textContent = summary.unfinished;
+            document.getElementById('cardPaid').textContent = formatMoney(summary.paidTotal);
+            document.getElementById('cardUnpaid').textContent = formatMoney(summary.unpaidTotal);
+            document.getElementById('cardContract').textContent = formatMoney(summary.contractTotal);
+        }
+        
+        // 渲染表格
+        function renderTable(data) {
+            const tbody = document.getElementById('tableBody');
+            tbody.innerHTML = '';
+            
+            if (data.length === 0) {
+                const tr = document.createElement('tr');
+                tr.innerHTML = '<td colspan="6" style="text-align: center; padding: 40px; color: #999;">暂无数据</td>';
+                tbody.appendChild(tr);
+                return;
+            }
+            
+            const grouped = groupByPlatform(data);
+            const platformOrder = getPlatformOrder();
+            
+            platformOrder.forEach(platform => {
+                if (!grouped[platform]) return;
+                
+                // 平台行
+                const platformData = grouped[platform];
+                const systems = Object.keys(platformData);
+                let platformProjects = 0;
+                let platformContract = 0;
+                let platformPaid = 0;
+                let platformUnpaid = 0;
+                
+                systems.forEach(sys => {
+                    const projects = platformData[sys];
+                    platformProjects += projects.length;
+                    platformContract += projects.reduce((s, p) => s + (p.contract_amount || 0), 0);
+                    platformPaid += projects.reduce((s, p) => s + (p.paid_amount || 0), 0);
+                    platformUnpaid += projects.reduce((s, p) => s + (p.unpaid_amount || 0), 0);
+                });
+                
+                const platformRow = document.createElement('tr');
+                platformRow.className = 'platform-row';
+                platformRow.innerHTML = `
+                    <td><span class="toggle-icon expanded" data-platform="${escapeHtml(platform)}">▶</span></td>
+                    <td>${escapeHtml(platform)}</td>
+                    <td class="text-right">${platformProjects}</td>
+                    <td class="text-right">${formatMoney(platformContract)}</td>
+                    <td class="text-right paid-amount">${formatMoney(platformPaid)}</td>
+                    <td class="text-right">${formatMoney(platformUnpaid)}</td>
+                `;
+                
+                // 平台行点击折叠
+                platformRow.querySelector('.toggle-icon').addEventListener('click', function(e) {
+                    e.stopPropagation();
+                    togglePlatform(platform);
+                    this.classList.toggle('expanded');
+                });
+                
+                // 点击整行也折叠
+                platformRow.addEventListener('click', function(e) {
+                    if (e.target.closest('.toggle-icon')) return;
+                    const icon = this.querySelector('.toggle-icon');
+                    togglePlatform(platform);
+                    icon.classList.toggle('expanded');
+                });
+                
+                tbody.appendChild(platformRow);
+                
+                // 系统行
+                systems.forEach(system => {
+                    const projects = platformData[system];
+                    const sysContract = projects.reduce((s, p) => s + (p.contract_amount || 0), 0);
+                    const sysPaid = projects.reduce((s, p) => s + (p.paid_amount || 0), 0);
+                    const sysUnpaid = projects.reduce((s, p) => s + (p.unpaid_amount || 0), 0);
+                    
+                    const sysRow = document.createElement('tr');
+                    sysRow.className = 'system-row';
+                    sysRow.dataset.platform = escapeHtml(platform);
+                    sysRow.innerHTML = `
+                        <td></td>
+                        <td style="padding-left: 40px;">
+                            <span style="color: #999; margin-right: 4px;">├</span>
+                            ${escapeHtml(system)}
+                        </td>
+                        <td class="text-right">
+                            <span class="project-count" onclick="showProjects('${escapeHtml(platform)}', '${escapeHtml(system)}')">
+                                ${projects.length}
+                            </span>
+                        </td>
+                        <td class="text-right">${formatMoney(sysContract)}</td>
+                        <td class="text-right paid-amount">${formatMoney(sysPaid)}</td>
+                        <td class="text-right">${formatMoney(sysUnpaid)}</td>
+                    `;
+                    tbody.appendChild(sysRow);
+                });
+            });
+        }
+        
+        // 折叠/展开平台
+        function togglePlatform(platform) {
+            const rows = document.querySelectorAll(`.system-row[data-platform="${CSS.escape(platform)}"]`);
+            rows.forEach(row => {
+                row.classList.toggle('hidden');
+            });
+        }
+        
+        // 显示项目弹窗
+        function showProjects(platform, system) {
+            const grouped = groupByPlatform(currentData);
+            const projects = (grouped[platform] && grouped[platform][system]) || [];
+            
+            document.getElementById('modalTitle').textContent = `${platform} - ${system}（${projects.length}个项目）`;
+            
+            const tbody = document.getElementById('modalBody');
+            tbody.innerHTML = '';
+            
+            projects.forEach(p => {
+                const tr = document.createElement('tr');
+                const phaseColor = getPhaseColor(p.project_phase);
+                const phaseBg = getPhaseBgColor(p.project_phase);
+                
+                tr.innerHTML = `
+                    <td>${escapeHtml(p.project_name)}</td>
+                    <td>${escapeHtml(p.project_type)}</td>
+                    <td>
+                        <span class="phase-tag" style="background-color: ${phaseBg}; color: ${phaseColor}; border: 1px solid ${phaseColor}20;">
+                            ${escapeHtml(p.project_phase)}
+                        </span>
+                    </td>
+                    <td class="text-right">${formatMoney(p.contract_amount)}</td>
+                    <td class="text-right" style="color: #52c41a;">${formatMoney(p.paid_amount)}</td>
+                    <td class="text-right">${formatMoney(p.unpaid_amount)}</td>
+                    <td>${escapeHtml(p.supplier)}</td>
+                `;
+                tbody.appendChild(tr);
+            });
+            
+            document.getElementById('modalOverlay').classList.add('show');
+        }
+        
+        // 关闭弹窗
+        function closeModal(event) {
+            if (!event || event.target.id === 'modalOverlay' || event.target.closest('.modal-close')) {
+                document.getElementById('modalOverlay').classList.remove('show');
+            }
+        }
+        
+        // HTML转义
+        function escapeHtml(text) {
+            if (!text) return '';
+            const div = document.createElement('div');
+            div.textContent = text;
+            return div.innerHTML;
+        }
+    </script>
+</body>
+</html>
